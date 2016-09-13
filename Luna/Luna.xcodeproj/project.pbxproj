@@ -13,6 +13,8 @@
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
 		CB105A691D87B24400EA201C /* LunaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A681D87B24400EA201C /* LunaTests.swift */; };
+		CB105A771D87B7DD00EA201C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB105A751D87B7DD00EA201C /* Fabric.framework */; };
+		CB105A781D87B7DD00EA201C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB105A761D87B7DD00EA201C /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		CB105A681D87B24400EA201C /* LunaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaTests.swift; sourceTree = "<group>"; };
 		CB105A6A1D87B24400EA201C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB105A731D87B54700EA201C /* Luna.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Luna.entitlements; sourceTree = "<group>"; };
+		CB105A751D87B7DD00EA201C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		CB105A761D87B7DD00EA201C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB105A781D87B7DD00EA201C /* Crashlytics.framework in Frameworks */,
+				CB105A771D87B7DD00EA201C /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,8 @@
 		CB105A471D87B24300EA201C = {
 			isa = PBXGroup;
 			children = (
+				CB105A751D87B7DD00EA201C /* Fabric.framework */,
+				CB105A761D87B7DD00EA201C /* Crashlytics.framework */,
 				CB105A521D87B24400EA201C /* Luna */,
 				CB105A671D87B24400EA201C /* LunaTests */,
 				CB105A511D87B24400EA201C /* Products */,
@@ -108,6 +116,7 @@
 				CB105A4C1D87B24300EA201C /* Sources */,
 				CB105A4D1D87B24300EA201C /* Frameworks */,
 				CB105A4E1D87B24300EA201C /* Resources */,
+				CB105A741D87B7B000EA201C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -205,6 +214,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CB105A741D87B7B000EA201C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8203173641472eaccb3c6b71756528d1fdcaaeb1 57cd677b761b64b5505bf1b2bd98f788a4e3ceb2254eba002eec582fc6d98aff";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB105A4C1D87B24300EA201C /* Sources */ = {
@@ -351,6 +376,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEVELOPMENT_TEAM = EB79RG3HGC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Luna/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -366,6 +395,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEVELOPMENT_TEAM = EB79RG3HGC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Luna/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
