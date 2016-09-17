@@ -10,7 +10,7 @@
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
-		CB105A561D87B24400EA201C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A551D87B24400EA201C /* ViewController.swift */; };
+		CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A551D87B24400EA201C /* LoginViewController.swift */; };
 		CB105A591D87B24400EA201C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* Main.storyboard */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
@@ -40,7 +40,7 @@
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB105A551D87B24400EA201C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CB105A551D87B24400EA201C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB105A5A1D87B24400EA201C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB105A5D1D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			children = (
 				CB105A731D87B54700EA201C /* Luna.entitlements */,
 				CB105A531D87B24400EA201C /* AppDelegate.swift */,
-				CB105A551D87B24400EA201C /* ViewController.swift */,
+				CB105A551D87B24400EA201C /* LoginViewController.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CB105A571D87B24400EA201C /* Main.storyboard */,
@@ -374,7 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB105A561D87B24400EA201C /* ViewController.swift in Sources */,
+				CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
@@ -466,6 +466,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Debug;
 		};
@@ -508,6 +509,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
