@@ -22,6 +22,7 @@
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
 		CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7931F1D8CC8D40014A0EA /* Utility.swift */; };
 		CBC793221D8CCA950014A0EA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC793211D8CCA950014A0EA /* String+.swift */; };
+		CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBC7931F1D8CC8D40014A0EA /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		CBC793211D8CCA950014A0EA /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardDefaults.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				CB2827701D90387F008043BC /* Constants.swift */,
 				CB105A551D87B24400EA201C /* LoginViewController.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
+				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
 				CB105A571D87B24400EA201C /* Main.storyboard */,
@@ -381,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2827721D90387F008043BC /* Constants.swift in Sources */,
+				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				CB2827731D90387F008043BC /* Networking.swift in Sources */,
