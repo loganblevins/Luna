@@ -60,9 +60,12 @@ var count: Int
 - Spacing between operators
 
 ```
-func contains( find: String ) -> Bool
+extension String
 {
-    return range( of: find ) != nil
+    func contains( find: String ) -> Bool
+    {
+        return range( of: find ) != nil
+    }
 }
 ```
 
