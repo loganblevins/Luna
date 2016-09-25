@@ -13,4 +13,6 @@ import Foundation
 struct Constants
 {
 	let SEGUE_START_ONBOARD = "startOnboard"
+    
+    let SEGUE_TO_HEIGHT = "toHeight"
 }
