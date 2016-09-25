@@ -8,7 +8,9 @@
 
 import Foundation
 
+
+
 struct Constants
 {
-	
+	let SEGUE_START_ONBOARD = "startOnboard"
 }

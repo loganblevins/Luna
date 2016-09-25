@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Bold.tff</string>
+		<string>OpenSans-BoldItalic.tff</string>
+		<string>OpenSans-ExtraBold.tff</string>
+		<string>OpenSans-ExtraBoldItalic.tff</string>
+		<string>OpenSans-Light.tff</string>
+		<string>OpenSans-LightItalic.tff</string>
+		<string>OpenSans-Regular.tff</string>
+		<string>OpenSans-Semibold.tff</string>
+		<string>OpenSans-SemiboldItalic.tff</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -48,5 +60,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

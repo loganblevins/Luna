@@ -10,7 +10,10 @@ import Foundation
 
 class UserViewModel {
     
+    private var userService: UserService
     private var user: User
+    
+    
     
     var userID: String
     {
@@ -51,6 +54,7 @@ class UserViewModel {
     init( user: User )
     {
         self.user = user
+        self.userService = UserService()
     }
     
     func calculateAge ( birthday: Date ) -> Int
@@ -62,10 +66,12 @@ class UserViewModel {
         return age
     }
     
-    func postDataToFirebase ()
+    func loginUser( id: String, password: String )
     {
-        
+        //self.userService.loginUser( userid: id, userpassword: password ) 
+       
     }
+    
     
 }
 

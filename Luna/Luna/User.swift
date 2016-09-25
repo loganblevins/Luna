@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class User : Post {
+class User {
     
     fileprivate var _userID: String!
     fileprivate var _birthday: Date!
