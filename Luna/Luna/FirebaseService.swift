@@ -21,11 +21,11 @@ class FirebaseService {
     
     var refCurrentUser = REF_CURRENT_USER?.uid
     
-    var refUsers = FIREBASE_REF.child("users")
+    var refUsers = FIREBASE_REF.child("Users")
     
-    var refDailyEntries = FIREBASE_REF.child("dailyEntries")
+    var refDailyEntries = FIREBASE_REF.child("DailyEntries")
     
-    var refEntry = FIREBASE_REF.child("entry")
+    var refEntry = FIREBASE_REF.child("Entry")
     
 }
 

@@ -25,7 +25,6 @@
 		CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */; };
 		EA292C961D95AD2000C0B0BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C951D95AD2000C0B0BC /* User.swift */; };
 		EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C981D95AD6300C0B0BC /* FirebaseService.swift */; };
-		EA292C9C1D95AD9A00C0B0BC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C9B1D95AD9A00C0B0BC /* Post.swift */; };
 		EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */; };
 		EA292CAB1D95AE3500C0B0BC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA11D95AE3500C0B0BC /* OpenSans-Bold.ttf */; };
 		EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA21D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf */; };
@@ -38,6 +37,11 @@
 		EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */; };
 		EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */; };
 		EA292CB71D95AEF900C0B0BC /* AuthorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */; };
+		EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */; };
+		EA292CBD1D96C43200C0B0BC /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */; };
+		EA292CC11D96C76C00C0B0BC /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC01D96C76C00C0B0BC /* UserService.swift */; };
+		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
+		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +81,6 @@
 		CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardDefaults.swift; sourceTree = "<group>"; };
 		EA292C951D95AD2000C0B0BC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA292C981D95AD6300C0B0BC /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		EA292C9B1D95AD9A00C0B0BC /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		EA292CA11D95AE3500C0B0BC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		EA292CA21D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -90,6 +93,11 @@
 		EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizeViewController.swift; sourceTree = "<group>"; };
+		EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		EA292CC01D96C76C00C0B0BC /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,8 +176,8 @@
 				EA292C941D95AD1500C0B0BC /* Model */,
 				CB105A731D87B54700EA201C /* Luna.entitlements */,
 				CB105A531D87B24400EA201C /* AppDelegate.swift */,
-				CB2827701D90387F008043BC /* Constants.swift */,
 				CB105A551D87B24400EA201C /* LoginViewController.swift */,
+				CB2827701D90387F008043BC /* Constants.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
 				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
@@ -204,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				EA292C981D95AD6300C0B0BC /* FirebaseService.swift */,
+				EA292CC01D96C76C00C0B0BC /* UserService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -211,7 +220,7 @@
 		EA292C9A1D95AD8B00C0B0BC /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				EA292C9B1D95AD9A00C0B0BC /* Post.swift */,
+				EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -220,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */,
+				EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */,
+				EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -245,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */,
+				EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -488,16 +500,20 @@
 			files = (
 				CB2827721D90387F008043BC /* Constants.swift in Sources */,
 				EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */,
+				EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* AuthorizeViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */,
+				EA292CBD1D96C43200C0B0BC /* UserServiceProtocol.swift in Sources */,
+				EA292CC11D96C76C00C0B0BC /* UserService.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
+				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
 				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
 				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
+				EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */,
 				CB2827731D90387F008043BC /* Networking.swift in Sources */,
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
-				EA292C9C1D95AD9A00C0B0BC /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
