@@ -12,7 +12,6 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var pageLabel: UILabel!
     
     var uidReceived: String!
     var uid: String!
@@ -38,6 +37,8 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
 
     @IBAction func nextPressed(_ sender: AnyObject)
     {
+        var success = false
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         
@@ -46,14 +47,25 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         
         if (pageControl.currentPage != 0)
         {
-         onboardViewModel?.saveUserInfo(postType: page!, postData: selectedDate)
+            onboardViewModel?.saveInfo(postType: page!, postData: selectedDate)
+        
+            success = true
         }
         else
         {
             if (onboardViewModel?.calculateAge( birthday: datePicker.date ))!
             {
-                onboardViewModel?.saveUserInfo(postType: page!, postData: selectedDate)
+                onboardViewModel?.saveInfo(postType: page!, postData: selectedDate)
+                
+                success = true
             }
+        }
+        
+        if(success)
+        {
+            let segueType = onboardViewModel?.getSegueType(segue: pageControl.currentPage)
+            
+            self.performSegue(withIdentifier: segueType!, sender: nil)
         }
         
     }
@@ -64,6 +76,12 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         
         print("sender")
         print(sender)
+        
+        if (segue.identifier != nil)
+        {
+            let pickerVC = segue.destination as! PickerViewController
+            pickerVC.uidReceived = onboardViewModel?.anonymousID
+        }
         
     }
     

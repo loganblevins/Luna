@@ -17,7 +17,8 @@ let FIREBASE_REF = FIRDatabase.database().reference()
 let REF_CURRENT_USER = FIRAuth.auth()?.currentUser
 
 
-class FirebaseService {
+class FirebaseService
+{
     
     var refCurrentUser = REF_CURRENT_USER?.uid
     
