@@ -62,7 +62,6 @@ struct NetworkHelper: UserSerivceProtocol
                     completion(true)
                 }
                 
-                
         }
         
     }

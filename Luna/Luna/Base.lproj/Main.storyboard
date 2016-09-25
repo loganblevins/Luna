@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="137.18140929535232"/>
+            <point key="canvasLocation" x="249" y="-22"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="3D1-jX-7Xx">
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45u-7q-T78" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="918.89055472263874"/>
+            <point key="canvasLocation" x="249" y="798"/>
         </scene>
     </scenes>
 </document>
