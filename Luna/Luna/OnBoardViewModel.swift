@@ -22,8 +22,7 @@ class OnBoardViewModel
         userService = UserService()
         anonymousID = uid
         dataTypes = [0: "Birthday", 1:"Height", 2: "Weight", 3:"CycleLength", 4: "PeriodLength", 5:"LastPeriod", 6:"BirthControl"]
-        
-
+    
     }
     
     func calculateAge ( birthday: Date ) -> Bool
