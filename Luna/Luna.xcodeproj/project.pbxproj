@@ -42,6 +42,7 @@
 		EA292CC11D96C76C00C0B0BC /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC01D96C76C00C0B0BC /* UserService.swift */; };
 		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
 		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
+		EA30D9A71D985C5D00373A96 /* DatePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA30D9A51D985C5D00373A96 /* DatePickerViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		EA292CC01D96C76C00C0B0BC /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
+		EA30D9A61D985C5D00373A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatePickerViewController.storyboard; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
 				CB105A571D87B24400EA201C /* Main.storyboard */,
+				EA30D9A51D985C5D00373A96 /* DatePickerViewController.storyboard */,
 				CB105A5A1D87B24400EA201C /* Assets.xcassets */,
 				CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */,
 				CB105A5F1D87B24400EA201C /* Info.plist */,
@@ -361,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA30D9A71D985C5D00373A96 /* DatePickerViewController.storyboard in Resources */,
 				EA292CAF1D95AE3500C0B0BC /* OpenSans-Italic.ttf in Resources */,
 				EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */,
 				CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */,
@@ -550,6 +554,14 @@
 				CB105A5D1D87B24400EA201C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EA30D9A51D985C5D00373A96 /* DatePickerViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA30D9A61D985C5D00373A96 /* Base */,
+			);
+			name = DatePickerViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
