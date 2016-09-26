@@ -19,6 +19,7 @@
 		CB105A781D87B7DD00EA201C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB105A761D87B7DD00EA201C /* Crashlytics.framework */; };
 		CB2827721D90387F008043BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827701D90387F008043BC /* Constants.swift */; };
 		CB2827731D90387F008043BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827711D90387F008043BC /* Networking.swift */; };
+		CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */; };
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
 		CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7931F1D8CC8D40014A0EA /* Utility.swift */; };
 		CBC793221D8CCA950014A0EA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC793211D8CCA950014A0EA /* String+.swift */; };
@@ -78,6 +79,7 @@
 		CB105A761D87B7DD00EA201C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB2827701D90387F008043BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB2827711D90387F008043BC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaAPI.swift; sourceTree = "<group>"; };
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBC7931F1D8CC8D40014A0EA /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		CBC793211D8CCA950014A0EA /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				CB105A751D87B7DD00EA201C /* Fabric.framework */,
 				CB105A761D87B7DD00EA201C /* Crashlytics.framework */,
 				CB105A521D87B24400EA201C /* Luna */,
+				EA292CA01D95AE1F00C0B0BC /* Resources */,
 				CB105A671D87B24400EA201C /* LunaTests */,
 				CB105A511D87B24400EA201C /* Products */,
 				3CF20532D269E478BCE62B29 /* Pods */,
@@ -175,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				EA292CB51D95AEE200C0B0BC /* ViewController */,
-				EA292CA01D95AE1F00C0B0BC /* Resources */,
 				EA292C9D1D95ADBC00C0B0BC /* ViewModel */,
 				EA292C9A1D95AD8B00C0B0BC /* Protocols */,
 				EA292C971D95AD3700C0B0BC /* Service */,
@@ -185,6 +187,7 @@
 				CB105A551D87B24400EA201C /* LoginViewController.swift */,
 				CB2827701D90387F008043BC /* Constants.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
+				CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */,
 				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
@@ -258,6 +261,7 @@
 				EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */,
 			);
 			name = Resources;
+			path = Luna;
 			sourceTree = "<group>";
 		};
 		EA292CB51D95AEE200C0B0BC /* ViewController */ = {
@@ -520,6 +524,7 @@
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
 				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
+				CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */,
 				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
 				EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */,
 				CB2827731D90387F008043BC /* Networking.swift in Sources */,
