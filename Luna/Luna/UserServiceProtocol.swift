@@ -31,9 +31,8 @@ struct NetworkHelper: UserSerivceProtocol
         let user = username
         let password = userpassword
         
-        let url = NSURL(string: "http://luna-track.com/api/v1/auth/login/")
-        
-        var request = URLRequest(url: url as! URL)
+		
+        var request = URLRequest( url: URL.init( string: "http://luna-track.com/api/v1/auth/login/" )! )
         request.httpMethod = "POST"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
