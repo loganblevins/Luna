@@ -8,16 +8,48 @@
 
 import Foundation
 
-final class LunaAPI
+final class LunaAPI<T: Endpoint, Requestor>
 {
-	init<T: Requestor>( requestor: T )
+	static func login( username: String, password: String ) throws
 	{
-//		self.requestor = requestor
+		request( endpoint: .Login )
+		{
+			result in
+			
+			// TODO: Handle response
+			//
+		}
 	}
-	func request<T: Endpoint>( endpoint: T, completion: ( Result<AnyObject> ) -> Void )
+	
+	static func logout() throws
 	{
-		
+		request( endpoint: .Logout )
+		{
+			result in
+			
+			// TODO: Handle response
+			//
+		}
 	}
+	
+	static func me() throws
+	{
+		request( endpoint: .Me )
+		{
+			result in
+			
+			// TODO: Handle response
+			//
+		}
+	}
+}
 
-//	private let requestor: 
+extension LunaAPI
+{
+	static func request( endpoint: LunaEndpointAlamofire, completion: ( Result<AnyObject> ) -> Void )
+	{
+		// FIXME: Fill in later
+		//
+		completion( Result.Failure( NetworkError.Invalid( nil ) ) )
+	}
 }
