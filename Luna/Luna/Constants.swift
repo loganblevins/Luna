@@ -30,7 +30,7 @@ struct Constants
 //	}
 //	
 
-	let baseURL = "http://luna-track.com/api/v1/"
+	let baseURL = "https://luna-track.com/api/v1/"
 
 	let FirebaseBaseURL = "https://luna-c2c2f.firebaseio.com"
 	

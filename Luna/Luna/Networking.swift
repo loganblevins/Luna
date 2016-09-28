@@ -43,8 +43,6 @@ protocol Endpoint
 	var method: Method { get }
 }
 
-typealias Credentials = ( username: String, password: String )
-
 enum LunaEndpointAlamofire: Endpoint
 {
 	typealias Method = Alamofire.HTTPMethod
@@ -98,18 +96,5 @@ enum LunaEndpointAlamofire: Endpoint
 
 protocol Requestor
 {
-	associatedtype Data
-	func request<T: Endpoint>( endpoint: T, completion: ( _ result: Result<Data> ) -> Void )
-}
-
-struct RequestorAlamofire: Requestor
-{
-	typealias Data = AnyObject
-	
-	func request<T: Endpoint>( endpoint: T, completion: ( Result<Data> ) -> Void )
-	{
-		// FIXME: Fill in later
-		//
-		completion( .Failure( NetworkError.Invalid( nil ) ) )
-	}
+	func request<T: Endpoint>( endpoint: T, completion: ( _ result: Result<AnyObject> ) -> Void )
 }
