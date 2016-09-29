@@ -10,6 +10,9 @@ import Foundation
 
 final class LunaAPI<T: Endpoint, Requestor>
 {
+	// MARK: Public API
+	//
+	
 	static func login( username: String, password: String ) throws
 	{
 		request( endpoint: .Login )
@@ -41,6 +44,19 @@ final class LunaAPI<T: Endpoint, Requestor>
 			// TODO: Handle response
 			//
 		}
+	}
+	
+	// MARK: Implementation Details
+	//
+	
+	fileprivate func validLogin( response: AnyObject  ) -> Bool
+	{
+		// TODO: Parse response.
+		//
+		
+		
+		
+		return false
 	}
 }
 
