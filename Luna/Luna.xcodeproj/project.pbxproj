@@ -10,7 +10,6 @@
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
-		CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A551D87B24400EA201C /* LoginViewController.swift */; };
 		CB105A591D87B24400EA201C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* Main.storyboard */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
@@ -37,10 +36,8 @@
 		EA292CB21D95AE3500C0B0BC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA81D95AE3500C0B0BC /* OpenSans-Regular.ttf */; };
 		EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */; };
 		EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */; };
-		EA292CB71D95AEF900C0B0BC /* AuthorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */; };
+		EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */; };
 		EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */; };
-		EA292CBD1D96C43200C0B0BC /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */; };
-		EA292CC11D96C76C00C0B0BC /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC01D96C76C00C0B0BC /* UserService.swift */; };
 		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
 		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
 		EA30D9A71D985C5D00373A96 /* DatePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA30D9A51D985C5D00373A96 /* DatePickerViewController.storyboard */; };
@@ -66,7 +63,6 @@
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB105A551D87B24400EA201C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB105A5A1D87B24400EA201C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB105A5D1D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,10 +93,8 @@
 		EA292CA81D95AE3500C0B0BC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizeViewController.swift; sourceTree = "<group>"; };
+		EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
-		EA292CC01D96C76C00C0B0BC /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		EA30D9A61D985C5D00373A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatePickerViewController.storyboard; sourceTree = "<group>"; };
@@ -179,12 +173,10 @@
 			children = (
 				EA292CB51D95AEE200C0B0BC /* ViewController */,
 				EA292C9D1D95ADBC00C0B0BC /* ViewModel */,
-				EA292C9A1D95AD8B00C0B0BC /* Protocols */,
-				EA292C971D95AD3700C0B0BC /* Service */,
 				EA292C941D95AD1500C0B0BC /* Model */,
 				CB105A731D87B54700EA201C /* Luna.entitlements */,
+				EA292C981D95AD6300C0B0BC /* FirebaseService.swift */,
 				CB105A531D87B24400EA201C /* AppDelegate.swift */,
-				CB105A551D87B24400EA201C /* LoginViewController.swift */,
 				CB2827701D90387F008043BC /* Constants.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
 				CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */,
@@ -219,23 +211,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		EA292C971D95AD3700C0B0BC /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				EA292C981D95AD6300C0B0BC /* FirebaseService.swift */,
-				EA292CC01D96C76C00C0B0BC /* UserService.swift */,
-			);
-			name = Service;
-			sourceTree = "<group>";
-		};
-		EA292C9A1D95AD8B00C0B0BC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				EA292CBC1D96C43200C0B0BC /* UserServiceProtocol.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		EA292C9D1D95ADBC00C0B0BC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +242,7 @@
 		EA292CB51D95AEE200C0B0BC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA292CB61D95AEF900C0B0BC /* AuthorizeViewController.swift */,
+				EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */,
 				EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */,
 				EA30D9A81D98655000373A96 /* PickerViewController.swift */,
 			);
@@ -332,6 +307,7 @@
 					CB105A4F1D87B24300EA201C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EB79RG3HGC;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -515,12 +491,9 @@
 				CB2827721D90387F008043BC /* Constants.swift in Sources */,
 				EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */,
 				EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */,
-				EA292CB71D95AEF900C0B0BC /* AuthorizeViewController.swift in Sources */,
+				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
-				CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */,
 				EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */,
-				EA292CBD1D96C43200C0B0BC /* UserServiceProtocol.swift in Sources */,
-				EA292CC11D96C76C00C0B0BC /* UserService.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
 				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
@@ -628,6 +601,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -671,6 +645,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

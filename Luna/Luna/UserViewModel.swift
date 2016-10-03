@@ -8,70 +8,32 @@
 
 import Foundation
 
-class UserViewModel {
-    
-    private var userService: UserService
-    private var user: User
-    
-    
-    
-    var userID: String
+protocol UserViewable
+{
+	var age: Int { get }
+}
+
+final class UserViewModel
+{
+    var age: Int
     {
-        return user.userID
+        return calculateAge( (user.birthday) )
     }
-    
-    var userHeight: Int
-    {
-        return user.height
-    }
-    
-    var userWeight: Int
-    {
-        return user.weight
-    }
-    
-    var userAge: Int
-    {
-        return calculateAge( birthday: (user.birthday) )
-    }
-    
-    var userBirthCtrl: String
-    {
-        return user.birthCtrl
-    }
-    
-    var userCycleLen: Int
-    {
-        return user.cycleLen
-    }
-    
-    var userPeriodLen: Int
-    {
-        return user.periodLen
-    }
-    
-    
+	
     init( user: User )
     {
         self.user = user
-        self.userService = UserService()
     }
     
-    func calculateAge ( birthday: Date ) -> Int
+    func calculateAge ( _ birthday: Date ) -> Int
     {
-        let ageComps = NSCalendar.current.dateComponents([.year], from: birthday, to: NSDate() as Date)
+        let ageComps = Calendar.current.dateComponents( [.year], from: birthday, to: Date() )
         
         let age = ageComps.year!
         
         return age
     }
     
-    func loginUser( id: String, password: String )
-    {
-        //self.userService.loginUser( userid: id, userpassword: password ) 
-       
-    }
-    
-    
+    fileprivate var user: User
 }
 

@@ -18,7 +18,7 @@ class PickerViews
         
     }
     
-    func selectDefaultValues ( type: Int ) -> Int
+    func selectDefaultValues ( _ type: Int ) -> Int
     {
         switch type
         {
@@ -37,7 +37,7 @@ class PickerViews
         }
     }
     
-    func selectPicker ( type: Int ) -> [String]
+    func selectPicker ( _ type: Int ) -> [String]
     {
         
         switch type

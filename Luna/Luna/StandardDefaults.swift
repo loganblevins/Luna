@@ -31,7 +31,7 @@ class StandardDefaults: StandardDefaultsProtocol
 	//
 	
 	static let sharedInstance = StandardDefaults()
-	private init() {}
+	fileprivate init() {}
 	
 	// MARK: Implementation Details
 	//
@@ -39,9 +39,9 @@ class StandardDefaults: StandardDefaultsProtocol
 	// Insert keys for objects here
 	//
 	
-	private let standardDefaults = UserDefaults.standard
+	fileprivate let standardDefaults = UserDefaults.standard
 	
-	private func getValue< T >( key: String ) -> T?
+	fileprivate func getValue< T >( _ key: String ) -> T?
 	{
 		guard let objectValue = standardDefaults.object( forKey: key ) else
 		{
