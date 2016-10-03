@@ -11,24 +11,26 @@ import Alamofire
 // MARK: Public API
 //
 
+typealias Credentials = ( username: String, password: String )
+
 enum Result<T>
 {
-	case Success( T )
-	case Failure( Error? )
+	case success( T )
+	case failure( Error? )
 }
 
 enum NetworkError: Error, CustomStringConvertible
 {
-	case Invalid( String? )
-	case CannotParse( String? )
+	case invalid( String? )
+	case cannotParse( String? )
 	
 	var description: String
 	{
 		switch self
 		{
-		case .Invalid( let reason ):
+		case .invalid( let reason ):
 			return "Unable to make request: \( reason ?? "Unknown" )"
-		case .CannotParse( let reason ):
+		case .cannotParse( let reason ):
 			return "Unable to parse response: \( reason ?? "Unknown" )"
 		}
 	}
@@ -47,38 +49,38 @@ enum LunaEndpointAlamofire: Endpoint
 {
 	typealias Method = Alamofire.HTTPMethod
 	
-	case Me
-	case Login
-	case Logout
-	case ChangeUsername
-	case ChangePassword
-	case Activate
-	case Register
-	case PasswordReset
-	case PasswordResetConfirm
+	case login
+	case me
+	case logout
+	case changeUsername
+	case changePassword
+	case activate
+	case register
+	case passwordReset
+	case passwordResetConfirm
 	
 	var path: String
 	{
 		switch self
 		{
-		case .Me:
-			return "auth/me/"
-		case .Login:
-			return "auth/login/"
-		case .Logout:
-			return "auth/logout/"
-		case .ChangeUsername:
-			return "auth/username/"
-		case .ChangePassword:
-			return "auth/password/"
-		case .Activate:
-			return "auth/activate/"
-		case .Register:
-			return "auth/register"
-		case .PasswordReset:
-			return "auth/password/reset/"
-		case .PasswordResetConfirm:
-			return "auth/password/reset/confirm/"
+		case .login:
+			return Constants.LunaStrings.LoginEndpoint
+		case .me:
+			return Constants.LunaStrings.MeEndpoint
+		case .logout:
+			return Constants.LunaStrings.LogoutEndpoint
+		case .changeUsername:
+			return Constants.LunaStrings.ChangeUsernameEndpoint
+		case .changePassword:
+			return Constants.LunaStrings.ChangePasswordEndpoint
+		case .activate:
+			return Constants.LunaStrings.ActivateEndpoint
+		case .register:
+			return Constants.LunaStrings.RegisterEnpoint
+		case .passwordReset:
+			return Constants.LunaStrings.PasswordResetEndpoint
+		case .passwordResetConfirm:
+			return Constants.LunaStrings.PasswordResetConfirmEndpoint
 		}
 	}
 
@@ -86,7 +88,7 @@ enum LunaEndpointAlamofire: Endpoint
 	{
 		switch self
 		{
-		case .Me:
+		case .me:
 			return .get
 		default:
 			return .post
@@ -96,5 +98,5 @@ enum LunaEndpointAlamofire: Endpoint
 
 protocol Requestor
 {
-	func request<T: Endpoint>( endpoint: T, completion: ( _ result: Result<AnyObject> ) -> Void )
+	static func request<T: Endpoint>( endpoint: T, credentials: Credentials, completion: @escaping( _ result: Result<Any> ) -> Void )
 }

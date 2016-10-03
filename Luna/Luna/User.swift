@@ -9,149 +9,95 @@
 import Foundation
 import Firebase
 
-class User {
-    
-    fileprivate var _userID: String!
-    fileprivate var _birthday: Date!
-    fileprivate var _height: Int!
-    fileprivate var _weight: Int!
-    fileprivate var _cycleLen: Int!
-    fileprivate var _periodLen: Int!
-    fileprivate var _lastPeriod: Date!
-    fileprivate var _birthCtrl: String!
-    fileprivate var _dataService: FirebaseService
-    
-    
-    var dataService: FirebaseService
+protocol UserDataProtocol
+{
+	var uid: String { get }
+	var birthControl: String { get }
+	var birthday: Date { get }
+	var lastPeriod: Date { get }
+	var height: Int { get }
+	var weight: Int { get }
+	var cycleLength: Int { get }
+	var periodLength: Int { get }
+}
+
+struct UserData: UserDataProtocol
+{
+	init( uid: String,
+	      birthControl: String,
+	      birthday: Date,
+	      lastPeriod: Date,
+	      height: Int,
+	      weight: Int,
+	      cycleLength: Int,
+		  periodLength: Int )
+	{
+		self.uid = uid
+		self.birthControl = birthControl
+		self.birthday = birthday
+		self.lastPeriod = lastPeriod
+		self.height = height
+		self.weight = weight
+		self.cycleLength = cycleLength
+		self.periodLength = periodLength
+	}
+	
+	var uid: String
+	var birthControl: String
+	var birthday: Date
+	var lastPeriod: Date
+	var height: Int
+	var weight: Int
+	var cycleLength: Int
+	var periodLength: Int
+}
+
+final class User
+{
+	// MARK: Public API
+	//
+
+	init( userData: UserDataProtocol )
     {
-        return _dataService
-    }
-    
-    var userID: String
-    {
-        return _userID
-    }
-    
-    var birthday: Date
-    {
-        return _birthday
-    }
-    
-    var height: Int
-    {
-        return _height
-    }
-    
-    var weight : Int
-    {
-        return _weight
-    }
-    
-    var cycleLen: Int
-    {
-        return _cycleLen
-    }
-    
-    var periodLen: Int
-    {
-        return _periodLen
-    }
-    
-    var lastPeriod: Date
-    {
-        return _lastPeriod
-    }
-    
-    var birthCtrl: String
-    {
-        return _birthCtrl
-    }
-    
-    init( userID: String, birthday: Date, height: Int, weight: Int, cycleLen: Int, periodLen: Int, lastPeriod: Date, birthctrl: String )
-    {
-        self._userID = userID
-        self._birthday = birthday
-        self._height = height
-        self._weight = weight
-        self._cycleLen = cycleLen
-        self._periodLen = periodLen
-        self._lastPeriod = lastPeriod
-        self._birthCtrl = birthctrl
-        
-        
-        self._dataService = FirebaseService()
-    }
-    
-    init( userID: String, dictionary: Dictionary<String, AnyObject> )
-    {
-        self._userID = userID
-        
-        if let bDate = dictionary["birthday"] as? Date
-        {
-            self._birthday = bDate
-        }
-        
-        if let hght = dictionary["height"] as? Int
-        {
-            self._height = hght
-        }
-        
-        if let wght = dictionary["weight"] as? Int
-        {
-            self._weight = wght
-        }
-        
-        if let cLen = dictionary["cycleLength"] as? Int
-        {
-            self._cycleLen = cLen
-        }
-        
-        if let pLen = dictionary["periodLength"] as? Int
-        {
-            self._periodLen = pLen
-        }
-        
-        if let lPeriod = dictionary["lastPeriod"] as? Date
-        {
-            self._lastPeriod = lPeriod
-        }
-        
-        if let bCtrl = dictionary["birthControl"] as? String
-        {
-            self._birthCtrl = bCtrl
-        }
-        
-        self._dataService = FirebaseService()
-        
-    }
-    
+        self.uid = userData.uid
+		self.birthControl = userData.birthControl
+        self.birthday = userData.birthday
+		self.lastPeriod = userData.lastPeriod
+        self.height = userData.height
+        self.weight = userData.weight
+        self.cycleLength = userData.cycleLength
+        self.periodLength = userData.periodLength
+	}
     
     ///This method is for posting single data to firebase
-    func postDataToFirebase ( postType: String, postData: AnyObject )
+    func postDataToFirebase( _ postType: String, postData: Any )
     {
-        dataService.refUsers.child((dataService.refCurrentUser)!).child(postType).setValue(postData)
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child( postType ).setValue( postData )
     }
     
     ///This method is for posting an entire user to firebase
-    func postToFirbase ()
+    func postToFirebase()
     {
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("userID").setValue(userID)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("birthday").setValue(birthday)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("height").setValue(height)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("weight").setValue(weight)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("cycleLength").setValue(cycleLen)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("periodLength").setValue(periodLen)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("lastPeriod").setValue(lastPeriod)
-        
-        dataService.refUsers.child((dataService.refCurrentUser)!).child("birthControl").setValue(birthCtrl)
-        
-    }
-    
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("userID").setValue( uid )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthday").setValue( birthday )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("height").setValue( height )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("weight").setValue( weight )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("cycleLength").setValue( cycleLength )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("periodLength").setValue( periodLength )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("lastPeriod").setValue( lastPeriod )
+        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthControl").setValue( birthControl )
+	}
+	
+	// MARK: Implementation details
+	//
+	
+	fileprivate(set) var uid: String
+	fileprivate(set) var birthControl: String
+	fileprivate(set) var birthday: Date
+	fileprivate(set) var lastPeriod: Date
+	fileprivate(set) var height: Int
+	fileprivate(set) var weight: Int
+	fileprivate(set) var cycleLength: Int
+	fileprivate(set) var periodLength: Int
 }
 

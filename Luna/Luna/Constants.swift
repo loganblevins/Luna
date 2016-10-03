@@ -6,53 +6,36 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
-import Firebase
-
 struct Constants
 {
-	let SEGUE_START_ONBOARD = "startOnboard"
-    
-    let SEGUE_TO_HEIGHT = "toHeight"
-	
-//	struct IBStrings
-//	{
-//		
-//	}
-//	
-//	struct FirebaseAPIStrings
-//	{
-//		static let baseURL = "https://luna-c2c2f.firebaseio.com"
-//	}
-//	
-//	struct LunaAPIStrings
-//	{
-//		static let baseURL = "http://luna-track.com/api/v1/"
-//	}
-//	
+	struct InterfaceBuilderStrings
+	{
+		static let SegueStartOnboard = "startOnboard"
+		static let SegueToHeight = "toHeight"
+	}
 
-	let baseURL = "https://luna-track.com/api/v1/"
-
-	let FirebaseBaseURL = "https://luna-c2c2f.firebaseio.com"
+	struct LunaStrings
+	{
+		static let BaseURL = "https://luna-track.com/api/v1/"
+		static let UsernameKey = "username"
+		static let PasswordKey = "password"
+		static let LoginEndpoint = "auth/login/"
+		static let MeEndpoint = "auth/me/"
+		static let LogoutEndpoint = "auth/logout"
+		static let ChangeUsernameEndpoint = "auth/username"
+		static let ChangePasswordEndpoint = "auth/password"
+		static let PasswordResetEndpoint = "auth/password/reset"
+		static let PasswordResetConfirmEndpoint = "auth/password/reset/confirm"
+		static let ActivateEndpoint = "auth/activate"
+		static let RegisterEnpoint = "auth/register"
+	}
 	
-	
-}
-
-
-let FIREBASE_REF = FIRDatabase.database().reference()
-
-let REF_CURRENT_USER = FIRAuth.auth()?.currentUser
-
-class FirebaseService
-{
-	
-	var refCurrentUser = REF_CURRENT_USER?.uid
-	
-	var refUsers = FIREBASE_REF.child("Users")
-	
-	var refDailyEntries = FIREBASE_REF.child("DailyEntries")
-	
-	var refEntry = FIREBASE_REF.child("Entry")
-	
-
-
+	struct FirebaseStrings
+	{
+		static let BaseURL = "https://luna-c2c2f.firebaseio.com"
+		static let ChildUsers = "Users"
+		static let ChildEntry = "Entry"
+		static let ChildDailyEntries = "DailyEntries"
+		static let ChildUserToken = "userToken"
+	}
 }

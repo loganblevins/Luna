@@ -43,19 +43,19 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         dateFormatter.dateFormat = "dd MMM yyyy"
         
         let selectedDate = dateFormatter.string( from: datePicker.date )
-        let page = onboardViewModel?.getDataType(key: pageControl.currentPage)
+        let page = onboardViewModel?.getDataType( pageControl.currentPage )
         
         if (pageControl.currentPage != 0)
         {
-            onboardViewModel?.saveInfo(postType: page!, postData: selectedDate)
+            onboardViewModel?.saveInfo(page!, postData: selectedDate)
         
             success = true
         }
         else
         {
-            if (onboardViewModel?.calculateAge( birthday: datePicker.date ))!
+            if (onboardViewModel?.calculateAge( datePicker.date ))!
             {
-                onboardViewModel?.saveInfo(postType: page!, postData: selectedDate)
+                onboardViewModel?.saveInfo(page!, postData: selectedDate)
                 
                 success = true
             }
@@ -63,7 +63,7 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         
         if(success)
         {
-            let segueType = onboardViewModel?.getSegueType(segue: pageControl.currentPage)
+            let segueType = onboardViewModel?.getSegueType(pageControl.currentPage)
             
             self.performSegue(withIdentifier: segueType!, sender: nil)
         }
@@ -79,8 +79,8 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         
         if (segue.identifier != nil)
         {
-            let pickerVC = segue.destination as! PickerViewController
-            pickerVC.uidReceived = onboardViewModel?.anonymousID
+            _ = segue.destination as! PickerViewController
+//            pickerVC.uidReceived = onboardViewModel?.anonymousID
         }
         
     }

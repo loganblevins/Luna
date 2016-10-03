@@ -59,7 +59,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func getPickerValues()
     {
         let page = pageControl.currentPage
-        self.pickerValues = (onboardViewModel?.getPickerData(page: page))!
+        self.pickerValues = (onboardViewModel?.getPickerData( page))!
         
         //setDefaultPickerRow()
         
@@ -67,21 +67,21 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func setDefaultPickerRow()
     {
-        let defaultRow = onboardViewModel?.getDefaultPickerValue(type: pageControl.currentPage)
+        let defaultRow = onboardViewModel?.getDefaultPickerValue( pageControl.currentPage)
         optionsPicker.selectedRow(inComponent: defaultRow!)
     }
     
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
-        let page = onboardViewModel?.getDataType(key: pageControl.currentPage)
+        let page = onboardViewModel?.getDataType(pageControl.currentPage)
         let data = selectedData
 
-        onboardViewModel?.saveInfo(postType: page!, postData: data!)
+        onboardViewModel?.saveInfo( page!, postData: data!)
         
         if(pageControl.currentPage != pageControl.numberOfPages)
         {
-             let segueType = onboardViewModel?.getSegueType(segue: pageControl.currentPage)
+			let segueType = onboardViewModel?.getSegueType( pageControl.currentPage)
             self.performSegue(withIdentifier: segueType!, sender: nil)
         }
 
@@ -97,13 +97,13 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         //NEED TO CHANGE FOR DATE SEGUE
         if (segue.identifier == "toLastPeriod")
         {
-            let pickerVC = segue.destination as! DatePickerViewController
-            pickerVC.uidReceived = onboardViewModel?.anonymousID
+            _ = segue.destination as! DatePickerViewController
+//            pickerVC.uidReceived = onboardViewModel?.anonymousID
         }
         else
         {
-            let pickerVC = segue.destination as! PickerViewController
-            pickerVC.uidReceived = onboardViewModel?.anonymousID
+            _ = segue.destination as! PickerViewController
+//            pickerVC.uidReceived = onboardViewModel?.anonymousID
         }
         
     }
