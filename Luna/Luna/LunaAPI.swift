@@ -9,105 +9,106 @@
 import Alamofire
 import Freddy
 
-final class LunaAPI: Requestor
+class LunaAPI
 {
 	// MARK: Public API
 	//
 	
-	static func login( _ credentials: Credentials ) throws
+	init( requestor: Requestor )
 	{
-		request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
-		{
-			response in
-			
-			// TODO: Handle response
-			//
-			
-		}
+		self.requestor = requestor
 	}
 	
-	static func request<T: Endpoint>( endpoint: T, credentials: Credentials, completion: @escaping( Result<Any> ) -> Void )
+	typealias FirebaseToken = String
+	
+	static func login( _ credentials: Credentials ) throws -> FirebaseToken?
 	{
-		let lunaEndpoint = endpoint as! LunaEndpointAlamofire
-		let urlString = Constants.LunaStrings.BaseURL.appending( lunaEndpoint.path )
-		let httpBody = [Constants.LunaStrings.UsernameKey: JSON( credentials.username ),
-		                Constants.LunaStrings.PasswordKey: JSON( credentials.password )]
-		let json = JSON( httpBody )
-		let jsonData = try! json.serialize()
-		
-		var request = try! URLRequest( url: urlString, method: lunaEndpoint.method )
-		request.httpBody = jsonData
-		request.setValue( "application/json", forHTTPHeaderField: "Content-Type" )
-		
-		Alamofire.request( request ).validate().responseJSON()
+		firebaseAuthToken( credentials: credentials )
 		{
-			response in
-			if let value = response.result.value, response.result.isSuccess
-			{
-				completion( .success( value ) )
-			}
-			else
-			{
-				completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
-			}
+			
 		}
 	}
 	
 	// MARK: Implementation Details
 	//
 	
-	fileprivate func validLogin( _ response: JSON ) -> Bool
+	static fileprivate func fetchFirebaseToken( credentials: Credentials, completion: ( Result<FirebaseToken> ) -> Void )
 	{
 		// TODO: Parse response.
 		//
+		request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
+		{
+			result in
+			
+			switch result
+			{
+			case .success( let data ):
+				// TODO: Save credentials to disk or something.
+				//
+				
+				guard let token = firebaseAuthToken( credentials: credentials ) else
+				{
+					
+				}
+				
+			case .failure( let error ):
+				
+			}
+		}
+
 		
-		
-		
-		return false
+		return ""
 	}
+	
+	fileprivate let requestor: Requestor
+
+}
+
+extension Requestor where Self: LunaAPI
+{
+	static func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( Result<Any> ) -> Void )
+	{
+		let lunaEndpoint = endpoint as! LunaEndpointAlamofire
+		let urlString = Constants.LunaStrings.BaseURL.appending( lunaEndpoint.path )
+		var request = try! URLRequest( url: urlString, method: lunaEndpoint.method )
+		
+		// TODO: Currently we only need `login`, but may need other endpoints later.
+		// This method is gerneric so the endpoint matters here.
+		// e.g. `login` is a POST request requiring credentials sent in a JSON data format
+		// of the request body. Other endpoints are different. Let's crash on anything other
+		// than `login`, since it shouldn't be implemented yet.
+		//
+		switch lunaEndpoint
+		{
+		case .login:
+			let httpBody = [Constants.LunaStrings.UsernameKey: JSON( credentials!.username ),
+			                Constants.LunaStrings.PasswordKey: JSON( credentials!.password )]
+			let json = JSON( httpBody )
+			let jsonData = try! json.serialize()
+			request.httpBody = jsonData
+			request.setValue( "application/json", forHTTPHeaderField: "Content-Type" )
+		default:
+			assertionFailure( "Called Luna endpoint that isn't yet implemented!" )
+		}
+		
+		Alamofire.request( request ).validate().responseJSON()
+			{
+				response in
+				if let value = response.result.value, response.result.isSuccess
+				{
+					completion( .success( value ) )
+				}
+				else
+				{
+					completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
+				}
+		}
+	}
+	
 }
 
 
 
-//    func loginTokenRequest( userid: String, username: String,  userpassword: String, completion: ((_ result:Bool?) -> Void)!)    {
-//
-//        let uid = userid
-//        let user = username
-//        let password = userpassword
-//
-//
-//        var request = URLRequest( url: URL.init( string: "http://luna-track.com/api/v1/auth/login/" )! )
-//        request.httpMethod = "POST"
-//
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let values = [ "username" : user, "password" : password ]
-//
-//        request.httpBody = try! JSONSerialization.data(withJSONObject: values, options: [])
-//
-//        Alamofire.request(request)
-//            .responseJSON{ response in
-//                debugPrint(response)
-//
-//                switch response.result {
-//                case .failure(let error):
-//                    print(error)
-//
-//                    if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
-//                        print(responseString)
-//                    }
-//                    completion(false)
-//
-//                case .success(let responseObject):
-//                    print(responseObject)
-//                    self.postDataToFirebase(postid: uid, postType: "userToken", postData: responseObject as AnyObject)
-//
-//                    completion(true)
-//                }
-//
-//        }
-//
-//    }
 
 //    func postDataToFirebase ( postid: String, postType: String, postData: AnyObject )
 //    {

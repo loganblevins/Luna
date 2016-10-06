@@ -24,7 +24,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
 
         uid = uidReceived
-        onboardViewModel = OnBoardViewModel( uid: uid )
+        onboardViewModel = OnBoardViewModel( uid: "dummy" /*uid*/ )
         
         self.optionsPicker.dataSource = self
         self.optionsPicker.delegate = self

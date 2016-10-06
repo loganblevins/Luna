@@ -1,5 +1,5 @@
 //
-//  DatePickerViewController.swift
+//  OnboardingViewController.swift
 //  Luna
 //
 //  Created by Erika Wilcox on 9/24/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
+class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -22,7 +22,7 @@ class DatePickerViewController: UIViewController, UIPageViewControllerDelegate {
         super.viewDidLoad()
 
         uid = uidReceived
-        onboardViewModel = OnBoardViewModel( uid: uid )
+        onboardViewModel = OnBoardViewModel( uid: "dummyUID" /*uid*/ )
         
         datePicker.datePickerMode = UIDatePickerMode.date
         
