@@ -15,14 +15,18 @@ protocol UserViewable
 
 final class UserViewModel
 {
+	// MARK: Public API
+	//
+	
     var age: Int
     {
         return calculateAge( (user.birthday) )
     }
 	
-    init( user: User )
+	init( user: User, userViewable: UserViewable )
     {
         self.user = user
+		self.userViewable = userViewable
     }
     
     func calculateAge ( _ birthday: Date ) -> Int
@@ -33,7 +37,11 @@ final class UserViewModel
         
         return age
     }
-    
+	
+	// MARK: Implementation details
+	//
+	
     fileprivate var user: User
+	fileprivate var userViewable: UserViewable
 }
 

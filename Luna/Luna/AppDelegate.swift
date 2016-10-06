@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
 		Fabric.with( [ Crashlytics.self ] )
 		FIRApp.configure()
-		try! LunaAPI.login( ( "0pl5-np7g", "testing" ) )
 		return true
 	}
+	
+	fileprivate func 
 }

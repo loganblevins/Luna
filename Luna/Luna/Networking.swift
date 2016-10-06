@@ -98,5 +98,5 @@ enum LunaEndpointAlamofire: Endpoint
 
 protocol Requestor
 {
-	static func request<T: Endpoint>( endpoint: T, credentials: Credentials, completion: @escaping( _ result: Result<Any> ) -> Void )
+	static func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
 }

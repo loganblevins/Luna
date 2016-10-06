@@ -7,76 +7,63 @@
 //
 
 import UIKit
-import Foundation
-import Alamofire
-import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController
+{
+	// MARK: Public API
+	//
+	
+	
+	// MARK: Implementation details
+	//
+	
+	private func login( credentials: Credentials )
+	{
+		// Put network request on background thread.
+		//
+		DispatchQueue.global( qos: .userInitiated ).async
+		{
+			do
+			{
+				let token = try LunaAPI.login( credentials )
+				
+				
+				// Bounce back to main thread to update UI.
+				//
+				DispatchQueue.main.async
+				{
+					// TODO: Dismiss this ViewController
+					//
+					
+					// TODO: Present the onboarding ViewController
+					//
+				}
+			}
+			catch
+			{
+				
+				// Bounce back to main thread to update UI.
+				//
+				DispatchQueue.main.async
+				{
+					// TODO: Show alert or something.
+					//
+				}
+			}
+		}
+	}
+	
+    @IBAction private func loginPressed()
+	{
+		guard let user = usernameTextField.text else { return }
+		guard let password = passwordTextField.text else { return }
+		
+		let credentials = ( user, password )
+		login( credentials: credentials )
+	}
 
-    @IBOutlet weak var userIDtextfield: UITextField!
-    @IBOutlet weak var userPasswordtextfield: UITextField!
-    
-    var loginViewModel: LoginViewModel?
-    
-    required init!(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        loginViewModel = LoginViewModel()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func LoginAttempt(_ sender: AnyObject) {
-
-        _ =  userIDtextfield.text!
-        _ = userPasswordtextfield.text!
-        
-//        if ( user.isEmpty && password.isEmpty )
-//        {
-//            self.loginViewModel?.loginUser( user, userpassword: password )
-//			{
-//				results in
-//                if (results)!
-//                {
-//                    print ("yes")
-//                    self.performSegue(withIdentifier: Constants.InterfaceBuilderStrings.SegueStartOnboard, sender: nil)
-//                }
-//                else
-//                {
-//                    print ("no")
-//                }
-//            }
-//        }
-
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("identifier")
-        print(segue.identifier)
-        
-        print("sender")
-        print(sender)
-        
-        if(segue.identifier == Constants.InterfaceBuilderStrings.SegueStartOnboard )
-        {
-            let onBoardVC = segue.destination as! DatePickerViewController
-            onBoardVC.uidReceived = loginViewModel?.anonymousID
-            
-        }
-    }
-
-    
-//    func anonymouseAuth()
-//    {
-//        self.loginViewModel?.anonymousAuth()
-//    }
+	@IBOutlet private weak var usernameTextField: UITextField!
+	@IBOutlet private weak var passwordTextField: UITextField!
+	
+	private var loginViewModel = LoginViewModel()
 }

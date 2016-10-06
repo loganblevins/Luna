@@ -6,9 +6,6 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
-import Foundation
-import Firebase
-
 class OnBoardViewModel
 {
 //    var userService: UserService
