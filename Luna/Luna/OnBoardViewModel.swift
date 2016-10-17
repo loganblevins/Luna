@@ -6,6 +6,8 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
+import Foundation
+
 class OnBoardViewModel
 {
 //    var userService: UserService

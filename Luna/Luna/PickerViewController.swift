@@ -97,7 +97,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         //NEED TO CHANGE FOR DATE SEGUE
         if (segue.identifier == "toLastPeriod")
         {
-            _ = segue.destination as! DatePickerViewController
+            _ = segue.destination as! OnboardingViewController
 //            pickerVC.uidReceived = onboardViewModel?.anonymousID
         }
         else

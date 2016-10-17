@@ -19,13 +19,20 @@ class LoginViewController: UIViewController
 	
 	private func login( credentials: Credentials )
 	{
+		
 		// Put network request on background thread.
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
 			do
 			{
-				let token = try LunaAPI.login( credentials )
+				let lunaAPI = LunaAPI( requestor: LunaRequestor() )
+				let _ = try lunaAPI.login( credentials )
+				{
+					result in
+					
+					
+				}
 				
 				
 				// Bounce back to main thread to update UI.
