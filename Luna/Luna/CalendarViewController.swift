@@ -12,8 +12,14 @@ final class CalendarViewController: UIViewController
 {
 	init( viewModel: CalendarViewModel )
 	{
+		super.init( nibName: nil, bundle: nil )
 		self.viewModel = viewModel
 	}
 	
-	fileprivate let viewModel: CalendarViewModel
+	required init?(coder aDecoder: NSCoder)
+	{
+		super.init( coder: aDecoder )
+	}
+	
+	fileprivate var viewModel: CalendarViewModel?
 }

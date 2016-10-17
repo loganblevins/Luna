@@ -9,34 +9,44 @@
 import Alamofire
 import Freddy
 
-class LunaAPI
+protocol LunaAPIProtocol: class
 {
+	func login( _ credentials: Credentials, completion: ( _ result: Result<Any> ) -> Void ) throws
+}
+
+class LunaAPI: LunaAPIProtocol
+{
+
 	// MARK: Public API
 	//
+	
+	typealias FirebaseToken = String
 	
 	init( requestor: Requestor )
 	{
 		self.requestor = requestor
 	}
 	
-	typealias FirebaseToken = String
-	
-	static func login( _ credentials: Credentials ) throws -> FirebaseToken?
+	func login( _ credentials: Credentials, completion: ( Result<Any> ) -> Void ) throws
 	{
-		firebaseAuthToken( credentials: credentials )
+		fetchFirebaseToken( credentials: credentials )
 		{
+			result in
+			
 			
 		}
 	}
 	
+
+	
 	// MARK: Implementation Details
 	//
 	
-	static fileprivate func fetchFirebaseToken( credentials: Credentials, completion: ( Result<FirebaseToken> ) -> Void )
+	fileprivate func fetchFirebaseToken( credentials: Credentials, completion: @escaping( Result<FirebaseToken> ) -> Void )
 	{
 		// TODO: Parse response.
 		//
-		request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
 		{
 			result in
 			
@@ -46,34 +56,37 @@ class LunaAPI
 				// TODO: Save credentials to disk or something.
 				//
 				
-				guard let token = firebaseAuthToken( credentials: credentials ) else
-				{
-					
-				}
+				completion( .success( data as! FirebaseToken ) )
 				
 			case .failure( let error ):
+				let e = error as! NetworkError
+				completion( .failure( e ) )
 				
 			}
 		}
 
-		
-		return ""
+	}
+	
+	fileprivate func parseLoginResponse( result: Result<Any> ) -> FirebaseToken?
+	{
+		return nil
 	}
 	
 	fileprivate let requestor: Requestor
 
 }
 
-extension Requestor where Self: LunaAPI
+struct LunaRequestor: Requestor
 {
-	static func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( Result<Any> ) -> Void )
+	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( Result<Any> ) -> Void )
 	{
 		let lunaEndpoint = endpoint as! LunaEndpointAlamofire
 		let urlString = Constants.LunaStrings.BaseURL.appending( lunaEndpoint.path )
 		var request = try! URLRequest( url: urlString, method: lunaEndpoint.method )
 		
 		// TODO: Currently we only need `login`, but may need other endpoints later.
-		// This method is gerneric so the endpoint matters here.
+		// This method is generic so the endpoint matters here.
+		//
 		// e.g. `login` is a POST request requiring credentials sent in a JSON data format
 		// of the request body. Other endpoints are different. Let's crash on anything other
 		// than `login`, since it shouldn't be implemented yet.
@@ -81,30 +94,26 @@ extension Requestor where Self: LunaAPI
 		switch lunaEndpoint
 		{
 		case .login:
-			let httpBody = [Constants.LunaStrings.UsernameKey: JSON( credentials!.username ),
-			                Constants.LunaStrings.PasswordKey: JSON( credentials!.password )]
-			let json = JSON( httpBody )
-			let jsonData = try! json.serialize()
-			request.httpBody = jsonData
-			request.setValue( "application/json", forHTTPHeaderField: "Content-Type" )
+			let postString = "\( Constants.LunaStrings.UsernameKey )=\( credentials!.username )&\( Constants.LunaStrings.PasswordKey )=\( credentials!.password )"
+			request.httpBody = postString.data( using: .utf8 )
+//			request.setValue( "application/json", forHTTPHeaderField: "Content-Type" )
 		default:
 			assertionFailure( "Called Luna endpoint that isn't yet implemented!" )
 		}
 		
 		Alamofire.request( request ).validate().responseJSON()
+		{
+			response in
+			if let value = response.result.value, response.result.isSuccess
 			{
-				response in
-				if let value = response.result.value, response.result.isSuccess
-				{
-					completion( .success( value ) )
-				}
-				else
-				{
-					completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
-				}
+				completion( .success( value ) )
+			}
+			else
+			{
+				completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
+			}
 		}
 	}
-	
 }
 
 
