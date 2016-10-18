@@ -6,17 +6,20 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
+import Foundation
+@testable import Luna
+
 extension LunaAPITests
 {
 	class FakeRequestor: Requestor
 	{
 		var response: Result<Any>?
 
-		static func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
+		func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
 		{
 			// TODO: Implement handling of fake response.
 			//
-			completion( result: response )
+			completion( response! )
 			
 			
 		}
@@ -25,25 +28,20 @@ extension LunaAPITests
 	
 	struct JSON
 	{
-		static func fetchLoginJSON() -> Any?
+		static func validLoginResponse() -> Any?
 		{
-			guard let jsonString = LunaAPITests.stringFromFile( path: "FakeLoginResponse" ) else { return nil }
+			guard let _ = LunaAPITests.stringFromFile( path: "FakeLoginResponse" ) else { return nil }
 			// TODO: Manipulate JSON values/structure
 			//
+			
+			return nil
 		}
-		
 	}
 	
 	static fileprivate func stringFromFile( path: String, type: String = "json" ) -> String?
 	{
-		guard let filePath = NSBundle( forClass: self ).pathForResource( path, ofType: type ) else { return nil }
+		guard let filePath = Bundle( for: self ).path( forResource: path, ofType: type ) else { return nil }
 		let string = try? String( contentsOfFile: filePath )
 		return string
 	}
-	
-
 }
-
-
-
-
