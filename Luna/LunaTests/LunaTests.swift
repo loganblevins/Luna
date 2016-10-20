@@ -53,47 +53,47 @@ class LunaAPITests: XCTestCase
 	
 	func testFailureWithTODO_SOME_ERRORLogin()
 	{
-		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
-		
-		fakeRequestor.response = Result.failure(<#T##Error?#>)
-		let sut = LunaAPI( requestor: fakeRequestor )
+//		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
+//		
+////		fakeRequestor.response = Result.failure(<#T##Error?#>)
+//		let sut = LunaAPI( requestor: fakeRequestor )
 
 	}
 	
 	func testFailureWithTODO_SOME_ERROR1Login()
 	{
-		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
-
-		
-		fakeRequestor.response = Result.failure(<#T##Error?#>)
-		let sut = LunaAPI( requestor: fakeRequestor )
+//		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
+//
+//		
+////		fakeRequestor.response = Result.failure(<#T##Error?#>)
+//		let sut = LunaAPI( requestor: fakeRequestor )
 
 	}
 	
 	func testFailureWithTODO_SOME_ERROR2Login()
 	{
-		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
-		
-		fakeRequestor.response = Result.failure(<#T##Error?#>)
-		let sut = LunaAPI( requestor: fakeRequestor )
+//		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
+//		
+////		fakeRequestor.response = Result.failure(<#T##Error?#>)
+//		let sut = LunaAPI( requestor: fakeRequestor )
 
 	}
 	
 	func testFailureInvalidWithTODO_SOME_ERROR3Login()
 	{
-		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
-
-		fakeRequestor.response = Result.failure( NetworkError.invalid( "TODO: SOME ERROR MESSAGE OR NIL" ))
-		let sut = LunaAPI( requestor: fakeRequestor )
+//		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
+//
+//		fakeRequestor.response = Result.failure( NetworkError.invalid( "TODO: SOME ERROR MESSAGE OR NIL" ))
+//		let sut = LunaAPI( requestor: fakeRequestor )
 
 	}
 	
 	func testFailureCannotParseWithTODO_SOME_ERROR4Login()
 	{
-		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
-
-		fakeRequestor.response = Result.failure( NetworkError.cannotParse( "TODO: SOME ERROR MESSAGE OR NIL" ) )
-		let sut = LunaAPI( requestor: fakeRequestor )
+//		let invalidCredentials = ( "someInvalidUsername", "someInvalidPassword" )
+//
+//		fakeRequestor.response = Result.failure( NetworkError.cannotParse( "TODO: SOME ERROR MESSAGE OR NIL" ) )
+//		let sut = LunaAPI( requestor: fakeRequestor )
 
 	}
 	
