@@ -15,7 +15,7 @@ extension String
 		return trimmingCharacters( in: CharacterSet.whitespaces )
 	}
 	
-	func contains( find: String ) -> Bool
+	func contains( _ find: String ) -> Bool
 	{
 		return range( of: find ) != nil
 	}

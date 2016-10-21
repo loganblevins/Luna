@@ -8,24 +8,24 @@
 
 import UIKit
 
-func root( view: UIView ) -> UIViewController?
+func root( _ view: UIView ) -> UIViewController?
 {
 	return view.window?.rootViewController
 }
 
-func rootPresent( fromView: UIView, controller: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil ) -> Bool
+func rootPresent( _ fromView: UIView, controller: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil ) -> Bool
 {
-	guard let root = root( view: fromView ) else { return false }
+	guard let root = root( fromView ) else { return false }
 	root.present( controller, animated: flag, completion: completion )
 	return true
 }
 
-func rootDismiss( fromView: UIView, controller: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil )
+func rootDismiss( _ fromView: UIView, controller: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil )
 {
-	root( view: fromView )?.dismiss( animated: flag, completion: completion )
+	root( fromView )?.dismiss( animated: flag, completion: completion )
 }
 
-func presented( view: UIView ) -> UIViewController?
+func presented( _ view: UIView ) -> UIViewController?
 {
-	return root( view: view )?.presentedViewController
+	return root( view )?.presentedViewController
 }

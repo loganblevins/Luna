@@ -1,20 +1,23 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+def commonPods
+	pod 'Firebase'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Database'
+	pod 'Freddy', '~> 3.0.0'
+	pod 'Alamofire', '~> 4.0'
+end
 
 target 'Luna' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-  
-  pod 'Firebase'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'Alamofire', '~> 4.0'
+  commonPods
+end
   
   # Pods for Luna
 
   target 'LunaTests' do
-    inherit! :search_paths
-    # Pods for testing
+    commonPods
   end
-
-end

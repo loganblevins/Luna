@@ -10,8 +10,7 @@
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
-		CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A551D87B24400EA201C /* LoginViewController.swift */; };
-		CB105A591D87B24400EA201C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* Main.storyboard */; };
+		CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* LoginViewController.storyboard */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
 		CB105A691D87B24400EA201C /* LunaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A681D87B24400EA201C /* LunaTests.swift */; };
@@ -19,10 +18,38 @@
 		CB105A781D87B7DD00EA201C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB105A761D87B7DD00EA201C /* Crashlytics.framework */; };
 		CB2827721D90387F008043BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827701D90387F008043BC /* Constants.swift */; };
 		CB2827731D90387F008043BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827711D90387F008043BC /* Networking.swift */; };
+		CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */; };
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
+		CBC4376F1DA5B78E003D6A0E /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBC4376E1DA5B78E003D6A0E /* CalendarViewController.storyboard */; };
+		CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */; };
+		CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */; };
+		CBC437751DA5C30B003D6A0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437741DA5C30B003D6A0E /* HomeViewController.swift */; };
+		CBC437771DA5C338003D6A0E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437761DA5C338003D6A0E /* HomeViewModel.swift */; };
+		CBC437791DA5D44C003D6A0E /* FakeLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = CBC437781DA5D44C003D6A0E /* FakeLoginResponse.json */; };
+		CBC4377B1DA5D494003D6A0E /* LunaTestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC4377A1DA5D494003D6A0E /* LunaTestsHelper.swift */; };
 		CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7931F1D8CC8D40014A0EA /* Utility.swift */; };
 		CBC793221D8CCA950014A0EA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC793211D8CCA950014A0EA /* String+.swift */; };
 		CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */; };
+		EA292C961D95AD2000C0B0BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C951D95AD2000C0B0BC /* User.swift */; };
+		EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C981D95AD6300C0B0BC /* FirebaseService.swift */; };
+		EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */; };
+		EA292CAB1D95AE3500C0B0BC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA11D95AE3500C0B0BC /* OpenSans-Bold.ttf */; };
+		EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA21D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf */; };
+		EA292CAD1D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA31D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf */; };
+		EA292CAE1D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA41D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf */; };
+		EA292CAF1D95AE3500C0B0BC /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA51D95AE3500C0B0BC /* OpenSans-Italic.ttf */; };
+		EA292CB01D95AE3500C0B0BC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA61D95AE3500C0B0BC /* OpenSans-Light.ttf */; };
+		EA292CB11D95AE3500C0B0BC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA71D95AE3500C0B0BC /* OpenSans-LightItalic.ttf */; };
+		EA292CB21D95AE3500C0B0BC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA81D95AE3500C0B0BC /* OpenSans-Regular.ttf */; };
+		EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */; };
+		EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */; };
+		EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */; };
+		EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */; };
+		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
+		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
+		EA30D9A71D985C5D00373A96 /* OnboardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */; };
+		EA30D9A91D98655000373A96 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9A81D98655000373A96 /* PickerViewController.swift */; };
+		EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9AA1D9868C100373A96 /* PickerViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +70,7 @@
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB105A551D87B24400EA201C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginViewController.storyboard; sourceTree = "<group>"; };
 		CB105A5A1D87B24400EA201C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB105A5D1D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB105A5F1D87B24400EA201C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,10 +82,38 @@
 		CB105A761D87B7DD00EA201C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB2827701D90387F008043BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB2827711D90387F008043BC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaAPI.swift; sourceTree = "<group>"; };
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CBC4376E1DA5B78E003D6A0E /* CalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
+		CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		CBC437741DA5C30B003D6A0E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CBC437761DA5C338003D6A0E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CBC437781DA5D44C003D6A0E /* FakeLoginResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakeLoginResponse.json; sourceTree = "<group>"; };
+		CBC4377A1DA5D494003D6A0E /* LunaTestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaTestsHelper.swift; sourceTree = "<group>"; };
 		CBC7931F1D8CC8D40014A0EA /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		CBC793211D8CCA950014A0EA /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardDefaults.swift; sourceTree = "<group>"; };
+		EA292C951D95AD2000C0B0BC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA292C981D95AD6300C0B0BC /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		EA292CA11D95AE3500C0B0BC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		EA292CA21D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		EA292CA31D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		EA292CA41D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		EA292CA51D95AE3500C0B0BC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		EA292CA61D95AE3500C0B0BC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		EA292CA71D95AE3500C0B0BC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		EA292CA81D95AE3500C0B0BC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
+		EA30D9A61D985C5D00373A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingViewController.storyboard; sourceTree = "<group>"; };
+		EA30D9A81D98655000373A96 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		EA30D9AA1D9868C100373A96 /* PickerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViews.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +165,7 @@
 				CB105A751D87B7DD00EA201C /* Fabric.framework */,
 				CB105A761D87B7DD00EA201C /* Crashlytics.framework */,
 				CB105A521D87B24400EA201C /* Luna */,
+				EA292CA01D95AE1F00C0B0BC /* Resources */,
 				CB105A671D87B24400EA201C /* LunaTests */,
 				CB105A511D87B24400EA201C /* Products */,
 				3CF20532D269E478BCE62B29 /* Pods */,
@@ -130,15 +185,21 @@
 		CB105A521D87B24400EA201C /* Luna */ = {
 			isa = PBXGroup;
 			children = (
+				EA292CB51D95AEE200C0B0BC /* ViewController */,
+				EA292C9D1D95ADBC00C0B0BC /* ViewModel */,
+				EA292C941D95AD1500C0B0BC /* Model */,
 				CB105A731D87B54700EA201C /* Luna.entitlements */,
 				CB105A531D87B24400EA201C /* AppDelegate.swift */,
 				CB2827701D90387F008043BC /* Constants.swift */,
-				CB105A551D87B24400EA201C /* LoginViewController.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
+				CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */,
+				EA292C981D95AD6300C0B0BC /* FirebaseService.swift */,
 				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
-				CB105A571D87B24400EA201C /* Main.storyboard */,
+				CB105A571D87B24400EA201C /* LoginViewController.storyboard */,
+				EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */,
+				CBC4376E1DA5B78E003D6A0E /* CalendarViewController.storyboard */,
 				CB105A5A1D87B24400EA201C /* Assets.xcassets */,
 				CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */,
 				CB105A5F1D87B24400EA201C /* Info.plist */,
@@ -151,9 +212,62 @@
 			isa = PBXGroup;
 			children = (
 				CB105A681D87B24400EA201C /* LunaTests.swift */,
+				CBC4377A1DA5D494003D6A0E /* LunaTestsHelper.swift */,
 				CB105A6A1D87B24400EA201C /* Info.plist */,
+				CBC437781DA5D44C003D6A0E /* FakeLoginResponse.json */,
 			);
 			path = LunaTests;
+			sourceTree = "<group>";
+		};
+		EA292C941D95AD1500C0B0BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA292C951D95AD2000C0B0BC /* User.swift */,
+				EA30D9AA1D9868C100373A96 /* PickerViews.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EA292C9D1D95ADBC00C0B0BC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */,
+				CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */,
+				EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */,
+				EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */,
+				CBC437761DA5C338003D6A0E /* HomeViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		EA292CA01D95AE1F00C0B0BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA292CA11D95AE3500C0B0BC /* OpenSans-Bold.ttf */,
+				EA292CA21D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf */,
+				EA292CA31D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf */,
+				EA292CA41D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf */,
+				EA292CA51D95AE3500C0B0BC /* OpenSans-Italic.ttf */,
+				EA292CA61D95AE3500C0B0BC /* OpenSans-Light.ttf */,
+				EA292CA71D95AE3500C0B0BC /* OpenSans-LightItalic.ttf */,
+				EA292CA81D95AE3500C0B0BC /* OpenSans-Regular.ttf */,
+				EA292CA91D95AE3500C0B0BC /* OpenSans-Semibold.ttf */,
+				EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = Resources;
+			path = Luna;
+			sourceTree = "<group>";
+		};
+		EA292CB51D95AEE200C0B0BC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */,
+				EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */,
+				EA30D9A81D98655000373A96 /* PickerViewController.swift */,
+				CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */,
+				CBC437741DA5C30B003D6A0E /* HomeViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +328,7 @@
 					CB105A4F1D87B24300EA201C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EB79RG3HGC;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -256,10 +371,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA30D9A71D985C5D00373A96 /* OnboardingViewController.storyboard in Resources */,
+				EA292CAF1D95AE3500C0B0BC /* OpenSans-Italic.ttf in Resources */,
+				EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */,
 				CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */,
+				EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */,
+				EA292CAD1D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf in Resources */,
 				CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */,
+				EA292CB11D95AE3500C0B0BC /* OpenSans-LightItalic.ttf in Resources */,
 				CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */,
-				CB105A591D87B24400EA201C /* Main.storyboard in Resources */,
+				EA292CAB1D95AE3500C0B0BC /* OpenSans-Bold.ttf in Resources */,
+				CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */,
+				CBC4376F1DA5B78E003D6A0E /* CalendarViewController.storyboard in Resources */,
+				EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */,
+				EA292CB01D95AE3500C0B0BC /* OpenSans-Light.ttf in Resources */,
+				EA292CB21D95AE3500C0B0BC /* OpenSans-Regular.ttf in Resources */,
+				EA292CAE1D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC437791DA5D44C003D6A0E /* FakeLoginResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B52F3AE49894043DD6C875CE /* [CP] Embed Pods Frameworks */ = {
@@ -373,7 +501,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -384,12 +512,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2827721D90387F008043BC /* Constants.swift in Sources */,
+				EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */,
+				CBC437751DA5C30B003D6A0E /* HomeViewController.swift in Sources */,
+				CBC437771DA5C338003D6A0E /* HomeViewModel.swift in Sources */,
+				CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */,
+				EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */,
+				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
-				CB105A561D87B24400EA201C /* LoginViewController.swift in Sources */,
+				CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */,
+				EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
+				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
+				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
+				CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */,
+				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
+				EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */,
 				CB2827731D90387F008043BC /* Networking.swift in Sources */,
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
+				EA30D9A91D98655000373A96 /* PickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB105A691D87B24400EA201C /* LunaTests.swift in Sources */,
+				CBC4377B1DA5D494003D6A0E /* LunaTestsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,12 +554,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CB105A571D87B24400EA201C /* Main.storyboard */ = {
+		CB105A571D87B24400EA201C /* LoginViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CB105A581D87B24400EA201C /* Base */,
 			);
-			name = Main.storyboard;
+			name = LoginViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */ = {
@@ -426,6 +568,14 @@
 				CB105A5D1D87B24400EA201C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA30D9A61D985C5D00373A96 /* Base */,
+			);
+			name = OnboardingViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -479,6 +629,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -522,6 +673,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -530,6 +682,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 608D3526EF0BE9D1F083404A /* Pods-Luna.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -551,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 842E3A2534E7D3CB26BC6567 /* Pods-Luna.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEVELOPMENT_TEAM = EB79RG3HGC;
@@ -571,13 +725,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = EB79RG3HGC;
 				INFOPLIST_FILE = LunaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.loganblevins.LunaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luna.app/Luna";
 			};
@@ -587,13 +742,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = EB79RG3HGC;
 				INFOPLIST_FILE = LunaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.loganblevins.LunaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luna.app/Luna";
 			};
