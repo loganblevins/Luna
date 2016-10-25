@@ -14,48 +14,22 @@ class LoginViewController: UIViewController
 	//
 	
 	
+	
 	// MARK: Implementation details
 	//
 	
-	private func login( credentials: Credentials )
+	private func login(_ credentials: Credentials )
 	{
-		
 		// Put network request on background thread.
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
-			do
+			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
+			lunaAPI.login( credentials )
 			{
-				let lunaAPI = LunaAPI( requestor: LunaRequestor() )
-				let _ = try lunaAPI.login( credentials )
-				{
-					result in
-					
-					
-				}
+				token in
 				
 				
-				// Bounce back to main thread to update UI.
-				//
-				DispatchQueue.main.async
-				{
-					// TODO: Dismiss this ViewController
-					//
-					
-					// TODO: Present the onboarding ViewController
-					//
-				}
-			}
-			catch
-			{
-				
-				// Bounce back to main thread to update UI.
-				//
-				DispatchQueue.main.async
-				{
-					// TODO: Show alert or something.
-					//
-				}
 			}
 		}
 	}
@@ -66,7 +40,7 @@ class LoginViewController: UIViewController
 		guard let password = passwordTextField.text else { return }
 		
 		let credentials = ( user, password )
-		login( credentials: credentials )
+		login( credentials )
 	}
 
 	@IBOutlet private weak var usernameTextField: UITextField!

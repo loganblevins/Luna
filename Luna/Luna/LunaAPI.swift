@@ -9,70 +9,66 @@
 import Alamofire
 import Freddy
 
+typealias FirebaseToken = String
+
 protocol LunaAPIProtocol: class
 {
-	func login( _ credentials: Credentials, completion: ( _ result: Result<Any> ) -> Void ) throws
+	func login( _ credentials: Credentials, completion: @escaping( FirebaseToken? ) -> Void )
 }
 
 class LunaAPI: LunaAPIProtocol
 {
-
 	// MARK: Public API
 	//
-	
-	typealias FirebaseToken = String
 	
 	init( requestor: Requestor )
 	{
 		self.requestor = requestor
 	}
 	
-	func login( _ credentials: Credentials, completion: ( Result<Any> ) -> Void ) throws
+	func login( _ credentials: Credentials, completion: @escaping( FirebaseToken? ) -> Void )
 	{
-		fetchFirebaseToken( credentials: credentials )
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
 		{
-			result in
+			[weak self] result in
+			guard let strongSelf = self else { return }
 			
-			
+			do
+			{
+				let token = try strongSelf.parseLoginResponse( result )
+				completion( token )
+			}
+			catch
+			{
+				let e = error as! NetworkError
+				print ( e.description )
+				completion( nil )
+			}
 		}
 	}
-	
-
 	
 	// MARK: Implementation Details
 	//
 	
-	fileprivate func fetchFirebaseToken( credentials: Credentials, completion: @escaping( Result<FirebaseToken> ) -> Void )
+	
+	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
 	{
-		// TODO: Parse response.
-		//
-		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
+		switch result
 		{
-			result in
+		case .success( let value ):
 			
-			switch result
-			{
-			case .success( let data ):
-				// TODO: Save credentials to disk or something.
-				//
-				
-				completion( .success( data as! FirebaseToken ) )
-				
-			case .failure( let error ):
-				let e = error as! NetworkError
-				completion( .failure( e ) )
-				
-			}
+			// TODO: Parse with Freddy!
+			//
+			
+			print( value )
+			return ""
+			
+		case .failure( let error ):
+			throw error!
 		}
-
 	}
 	
-	fileprivate func parseLoginResponse( result: Result<Any> ) -> FirebaseToken?
-	{
-		return nil
-	}
-	
-	fileprivate let requestor: Requestor
+	fileprivate let requestor: Requestor!
 
 }
 
