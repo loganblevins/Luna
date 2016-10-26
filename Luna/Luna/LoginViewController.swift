@@ -24,14 +24,46 @@ class LoginViewController: UIViewController
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
+			DispatchQueue.main.async
+			{
+				showNetworkActivity( show: true )
+			}
+			
 			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 			lunaAPI.login( credentials )
 			{
-				token in
-				
-				
+				innerThrows in
+				do
+				{
+					try innerThrows()
+				}
+				catch LunaAPIError.BlankUsername
+				{
+					
+				}
+				catch LunaAPIError.BlankPassword
+				{
+					
+				}
+				catch
+				{
+					// Must be NetworkError
+				}
+			}
+			
+			defer
+			{
+				DispatchQueue.main.async
+				{
+					showNetworkActivity( show: false )
+				}
 			}
 		}
+	}
+	
+	fileprivate func onLoggedIn(_ token: FirebaseToken )
+	{
+		
 	}
 	
     @IBAction private func loginPressed()
