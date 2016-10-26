@@ -86,13 +86,11 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
 
     }
-    
+	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("identifier")
-        print(segue.identifier)
-        
-        print("sender")
-        print(sender)
+        print(segue.identifier!)
+		
         
         //NEED TO CHANGE FOR DATE SEGUE
         if (segue.identifier == "toLastPeriod")
