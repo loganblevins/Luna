@@ -11,9 +11,28 @@ import Freddy
 
 typealias FirebaseToken = String
 
+enum LunaAPIError: Error, CustomStringConvertible
+{
+	case BlankUsername
+	case BlankPassword
+	
+	var description: String
+	{
+		switch self
+		{
+		case .BlankUsername:
+			return "The username may not be blank."
+			
+		case .BlankPassword:
+			return "The password may not be blank."
+		}
+	}
+	
+}
+
 protocol LunaAPIProtocol: class
 {
-	func login( _ credentials: Credentials, completion: @escaping( FirebaseToken? ) -> Void )
+	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> Void ) -> Void )
 }
 
 class LunaAPI: LunaAPIProtocol
@@ -26,7 +45,53 @@ class LunaAPI: LunaAPIProtocol
 		self.requestor = requestor
 	}
 	
-	func login( _ credentials: Credentials, completion: @escaping( FirebaseToken? ) -> Void )
+	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> Void ) -> Void )
+	{
+		if credentials.username.isEmpty
+		{
+			completion( { throw LunaAPIError.BlankUsername } )
+		}
+		if credentials.password.isEmpty
+		{
+			completion( { throw LunaAPIError.BlankPassword } )
+		}
+		
+		fetchToken( credentials )
+		{
+			[weak self] inner in
+			guard let strongSelf = self else { return }
+			
+			do
+			{
+				let token = try inner()
+				strongSelf.onLoginSuccess( token )
+				completion( {} )
+			}
+			catch
+			{
+				let e = error as! NetworkError
+				strongSelf.onLoginFailure()
+				completion( { throw e } )
+			}
+		}
+	}
+	
+	// MARK: Implementation Details
+	//
+	
+	fileprivate func onLoginSuccess(_ token: FirebaseToken )
+	{
+		// TODO: Maybe do internal stuff 
+		//
+	}
+	
+	fileprivate func onLoginFailure()
+	{
+		// TODO: Maybe do internal stuff
+		//
+	}
+	
+	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ inner: () throws -> FirebaseToken ) -> Void )
 	{
 		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
 		{
@@ -36,40 +101,26 @@ class LunaAPI: LunaAPIProtocol
 			do
 			{
 				let token = try strongSelf.parseLoginResponse( result )
-				completion( token )
+				completion( { return token } )
 			}
 			catch
 			{
 				let e = error as! NetworkError
-				print ( e.description )
-				completion( nil )
+				print( e.description )
+				completion( { throw e } )
 			}
 		}
 	}
 	
-	// MARK: Implementation Details
-	//
-	
-	
 	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
 	{
-		switch result
-		{
-		case .success( let value ):
-			
-			// TODO: Parse with Freddy!
-			//
-			
-			print( value )
-			return ""
-			
-		case .failure( let error ):
-			throw error!
-		}
+		// TODO: Parse with Freddy
+		//
+		
+		return ""
 	}
 	
 	fileprivate let requestor: Requestor!
-
 }
 
 struct LunaRequestor: Requestor
@@ -111,22 +162,3 @@ struct LunaRequestor: Requestor
 		}
 	}
 }
-
-
-
-
-//    func postDataToFirebase ( postid: String, postType: String, postData: AnyObject )
-//    {
-//        FirebaseService().refUsers.child(postid).child(postType).setValue(postData)
-//    }
-//
-//    func postUserToFirbase ( user: User )
-//    {
-//
-//    }
-//
-//    func anonymousUser( anonymousId: String )
-//    {
-//        FirebaseService().refUsers.child(anonymousId).setValue(["anonymous": "yes"])
-//    }
-

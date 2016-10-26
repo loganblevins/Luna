@@ -24,14 +24,49 @@ class LoginViewController: UIViewController
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
+			DispatchQueue.main.async
+			{
+				showNetworkActivity( show: true )
+			}
+			
 			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 			lunaAPI.login( credentials )
 			{
-				token in
+				[weak self] innerThrows in
+				guard let strongSelf = self else { return }
 				
-				
+				do
+				{
+					try innerThrows()
+					strongSelf.onLoggedIn()
+				}
+				catch LunaAPIError.BlankUsername
+				{
+					
+				}
+				catch LunaAPIError.BlankPassword
+				{
+					
+				}
+				catch
+				{
+					// Must be NetworkError
+				}
+			}
+			
+			defer
+			{
+				DispatchQueue.main.async
+				{
+					showNetworkActivity( show: false )
+				}
 			}
 		}
+	}
+	
+	fileprivate func onLoggedIn()
+	{
+		
 	}
 	
     @IBAction private func loginPressed()
