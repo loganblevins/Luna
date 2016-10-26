@@ -32,10 +32,13 @@ class LoginViewController: UIViewController
 			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 			lunaAPI.login( credentials )
 			{
-				innerThrows in
+				[weak self] innerThrows in
+				guard let strongSelf = self else { return }
+				
 				do
 				{
 					try innerThrows()
+					strongSelf.onLoggedIn()
 				}
 				catch LunaAPIError.BlankUsername
 				{
@@ -61,7 +64,7 @@ class LoginViewController: UIViewController
 		}
 	}
 	
-	fileprivate func onLoggedIn(_ token: FirebaseToken )
+	fileprivate func onLoggedIn()
 	{
 		
 	}
