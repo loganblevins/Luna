@@ -72,10 +72,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("identifier")
-        print(segue.identifier)
-        
-        print("sender")
-        print(sender)
+        print(segue.identifier!)
         
         if (segue.identifier != nil)
         {
