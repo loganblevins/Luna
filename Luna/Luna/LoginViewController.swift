@@ -13,7 +13,11 @@ class LoginViewController: UIViewController
 	// MARK: Public API
 	//
 	
-	
+	static func storyboardInstance() -> LoginViewController?
+	{
+		let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
+		return storyboard.instantiateInitialViewController() as? LoginViewController
+	}
 	
 	// MARK: Implementation details
 	//
