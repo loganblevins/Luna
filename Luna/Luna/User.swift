@@ -72,20 +72,20 @@ final class User
     ///This method is for posting single data to firebase
     func postDataToFirebase( _ postType: String, postData: Any )
     {
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child( postType ).setValue( postData )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child( postType ).setValue( postData )
     }
     
     ///This method is for posting an entire user to firebase
     func postToFirebase()
     {
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("userID").setValue( uid )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthday").setValue( birthday )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("height").setValue( height )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("weight").setValue( weight )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("cycleLength").setValue( cycleLength )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("periodLength").setValue( periodLength )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("lastPeriod").setValue( lastPeriod )
-        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthControl").setValue( birthControl )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("userID").setValue( uid )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthday").setValue( birthday )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("height").setValue( height )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("weight").setValue( weight )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("cycleLength").setValue( cycleLength )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("periodLength").setValue( periodLength )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("lastPeriod").setValue( lastPeriod )
+//        FirebaseService.refUsers.child( FirebaseService.refCurrentUser! ).child("birthControl").setValue( birthControl )
 	}
 	
 	// MARK: Implementation details
