@@ -30,12 +30,7 @@ enum LunaAPIError: Error, CustomStringConvertible
 	
 }
 
-protocol LunaAPIProtocol: class
-{
-	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> Void ) -> Void )
-}
-
-class LunaAPI: LunaAPIProtocol
+class LunaAPI
 {
 	// MARK: Public API
 	//
@@ -45,7 +40,7 @@ class LunaAPI: LunaAPIProtocol
 		self.requestor = requestor
 	}
 	
-	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> Void ) -> Void )
+	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
 		if credentials.username.isEmpty
 		{
@@ -58,19 +53,16 @@ class LunaAPI: LunaAPIProtocol
 		
 		fetchToken( credentials )
 		{
-			[weak self] inner in
-			guard let strongSelf = self else { return }
+			inner in
 			
 			do
 			{
 				let token = try inner()
-				strongSelf.onLoginSuccess( token )
-				completion( {} )
+				completion( { return token } )
 			}
 			catch
 			{
 				let e = error as! NetworkError
-				strongSelf.onLoginFailure()
 				completion( { throw e } )
 			}
 		}
@@ -78,20 +70,8 @@ class LunaAPI: LunaAPIProtocol
 	
 	// MARK: Implementation Details
 	//
-	
-	fileprivate func onLoginSuccess(_ token: FirebaseToken )
-	{
-		// TODO: Maybe do internal stuff 
-		//
-	}
-	
-	fileprivate func onLoginFailure()
-	{
-		// TODO: Maybe do internal stuff
-		//
-	}
-	
-	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ inner: () throws -> FirebaseToken ) -> Void )
+
+	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
 		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
 		{
