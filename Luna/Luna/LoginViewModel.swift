@@ -6,19 +6,59 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
-
+import Foundation
 
 class LoginViewModel
 {
-    
-//    var userService: UserService
-    var anonymousID: String
-    
-    init()
-    {
-//        userService = UserService()
-        anonymousID = ""
-    }
+	init( withAuthService authService: ServiceAuthenticatable, databaseService: ServiceDBManageable )
+	{
+		self.authService = authService
+		self.databaseService = databaseService
+	}
+	
+	func loginAsync(_ credentials: Credentials, completion: @escaping(_ error: Error? ) -> Void )
+	{
+		// Put network request on background thread.
+		//
+		DispatchQueue.global( qos: .userInitiated ).async
+		{
+			DispatchQueue.main.async
+			{
+				showNetworkActivity( show: true )
+			}
+			
+			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
+			lunaAPI.login( credentials )
+			{
+				[weak self] innerThrows in
+				guard let strongSelf = self else { return }
+				
+				do
+				{
+					let token = try innerThrows()
+					strongSelf.authService.signInUser( withToken: token )
+					{
+						error in
+						
+						completion( error )
+					}
+				}
+				catch
+				{
+					completion( error )
+				}
+			}
+			
+			defer
+			{
+				DispatchQueue.main.async
+				{
+					showNetworkActivity( show: false )
+				}
+			}
+		}
+	}
+
     
 //    func anonymousAuth ()
 //    {
@@ -45,4 +85,7 @@ class LoginViewModel
 //        }
 //    }
 //    
+	
+	fileprivate let authService: ServiceAuthenticatable!
+	fileprivate let databaseService: ServiceDBManageable!
 }
