@@ -8,13 +8,65 @@
 
 import Firebase
 
-struct FirebaseService
+protocol ServiceAuthenticatable
 {
-	static let FIREBASE_REF = FIRDatabase.database().reference()
-	static let REF_CURRENT_USER = FIRAuth.auth()?.currentUser
+	func signInUser( withToken token: String, completion: @escaping(_ error: Error? ) -> Void )
+	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
 	
-	static var refCurrentUser = REF_CURRENT_USER?.uid
-	static var refUsers = FIREBASE_REF.child( Constants.FirebaseStrings.ChildUsers )
-	static var refEntry = FIREBASE_REF.child( Constants.FirebaseStrings.ChildEntry )
-	static var refDailyEntries = FIREBASE_REF.child( Constants.FirebaseStrings.ChildDailyEntries )
+	var currentUser: FIRUser? { get }
+}
+
+protocol ServiceStorable
+{
+	
+}
+
+protocol ServiceDBManageable
+{
+	
+}
+
+struct FirebaseAuthenticationService: ServiceAuthenticatable
+{
+	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void)
+	{
+		FIRAuth.auth()?.signIn( withCustomToken: token )
+		{
+			user, error in
+			
+			completion( error )
+		}
+	}
+	
+	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
+	{
+		do
+		{
+			try FIRAuth.auth()?.signOut()
+			completion( nil )
+		}
+		catch
+		{
+			completion( error )
+		}
+	}
+	
+	var currentUser: FIRUser?
+	{
+		return nil
+	}
+}
+
+struct FirebaseStorageService: ServiceStorable
+{
+	
+}
+
+struct FirebaseDBService: ServiceDBManageable
+{
+	fileprivate let FirebaseDB = FIRDatabase.database().reference()
+	
+//	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+//	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
+//	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
 }
