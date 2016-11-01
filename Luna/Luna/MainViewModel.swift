@@ -6,7 +6,7 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
-class HomeViewModel
+class MainViewModel
 {
 	
 }

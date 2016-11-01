@@ -13,64 +13,46 @@ class LoginViewController: UIViewController
 	// MARK: Public API
 	//
 	
-	
+	static func storyboardInstance() -> LoginViewController?
+	{
+		let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
+		return storyboard.instantiateInitialViewController() as? LoginViewController
+	}
+
 	// MARK: Implementation details
 	//
 	
-	private func login( credentials: Credentials )
-	{
-		
-		// Put network request on background thread.
-		//
-		DispatchQueue.global( qos: .userInitiated ).async
-		{
-			do
-			{
-				let lunaAPI = LunaAPI( requestor: LunaRequestor() )
-				let _ = try lunaAPI.login( credentials )
-				{
-					result in
-					
-					
-				}
-				
-				
-				// Bounce back to main thread to update UI.
-				//
-				DispatchQueue.main.async
-				{
-					// TODO: Dismiss this ViewController
-					//
-					
-					// TODO: Present the onboarding ViewController
-					//
-				}
-			}
-			catch
-			{
-				
-				// Bounce back to main thread to update UI.
-				//
-				DispatchQueue.main.async
-				{
-					// TODO: Show alert or something.
-					//
-				}
-			}
-		}
-	}
-	
-    @IBAction private func loginPressed()
+    @IBAction fileprivate func loginPressed()
 	{
 		guard let user = usernameTextField.text else { return }
 		guard let password = passwordTextField.text else { return }
 		
 		let credentials = ( user, password )
-		login( credentials: credentials )
+		loginViewModel.loginAsync( credentials )
+		{
+			error in
+			
+			DispatchQueue.main.async
+			{
+				switch error
+				{
+				case is LunaAPIError:
+					let e = error as! LunaAPIError
+					print( e.description )
+					
+				case is NetworkError:
+					let e = error as! NetworkError
+					print( e.description )
+					
+				default:
+					print( error?.localizedDescription ?? "Unknown login error." )
+				}
+			}
+		}
 	}
 
-	@IBOutlet private weak var usernameTextField: UITextField!
-	@IBOutlet private weak var passwordTextField: UITextField!
+	@IBOutlet fileprivate weak var usernameTextField: UITextField!
+	@IBOutlet fileprivate weak var passwordTextField: UITextField!
 	
-	private var loginViewModel = LoginViewModel()
+	fileprivate var loginViewModel = LoginViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
 }

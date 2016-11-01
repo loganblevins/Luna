@@ -36,6 +36,16 @@ enum NetworkError: Error, CustomStringConvertible
 	}
 }
 
+protocol Requestor
+{
+	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
+}
+
+func showNetworkActivity( show: Bool )
+{
+	UIApplication.shared.isNetworkActivityIndicatorVisible = show
+}
+
 // TODO: Do I need to include a parameters member??
 //
 protocol Endpoint
@@ -94,9 +104,4 @@ enum LunaEndpointAlamofire: Endpoint
 			return .post
 		}
 	}
-}
-
-protocol Requestor
-{
-	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
 }

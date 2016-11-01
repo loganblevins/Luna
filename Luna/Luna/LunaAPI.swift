@@ -9,71 +9,98 @@
 import Alamofire
 import Freddy
 
-protocol LunaAPIProtocol: class
+typealias FirebaseToken = String
+
+enum LunaAPIError: Error, CustomStringConvertible
 {
-	func login( _ credentials: Credentials, completion: ( _ result: Result<Any> ) -> Void ) throws
+	case BlankUsername
+	case BlankPassword
+	
+	var description: String
+	{
+		switch self
+		{
+		case .BlankUsername:
+			return "The username may not be blank."
+			
+		case .BlankPassword:
+			return "The password may not be blank."
+		}
+	}
+	
 }
 
-class LunaAPI: LunaAPIProtocol
+class LunaAPI
 {
-
 	// MARK: Public API
 	//
-	
-	typealias FirebaseToken = String
 	
 	init( requestor: Requestor )
 	{
 		self.requestor = requestor
 	}
 	
-	func login( _ credentials: Credentials, completion: ( Result<Any> ) -> Void ) throws
+	func login(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
-		fetchFirebaseToken( credentials: credentials )
+		if credentials.username.isEmpty
 		{
-			result in
+			completion( { throw LunaAPIError.BlankUsername } )
+		}
+		if credentials.password.isEmpty
+		{
+			completion( { throw LunaAPIError.BlankPassword } )
+		}
+		
+		fetchToken( credentials )
+		{
+			inner in
 			
-			
+			do
+			{
+				let token = try inner()
+				completion( { return token } )
+			}
+			catch
+			{
+				let e = error as! NetworkError
+				completion( { throw e } )
+			}
 		}
 	}
-	
-
 	
 	// MARK: Implementation Details
 	//
-	
-	fileprivate func fetchFirebaseToken( credentials: Credentials, completion: @escaping( Result<FirebaseToken> ) -> Void )
+
+	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
-		// TODO: Parse response.
-		//
 		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
 		{
-			result in
+			[weak self] result in
+			guard let strongSelf = self else { return }
 			
-			switch result
+			do
 			{
-			case .success( let data ):
-				// TODO: Save credentials to disk or something.
-				//
-				
-				completion( .success( data as! FirebaseToken ) )
-				
-			case .failure( let error ):
+				let token = try strongSelf.parseLoginResponse( result )
+				completion( { return token } )
+			}
+			catch
+			{
 				let e = error as! NetworkError
-				completion( .failure( e ) )
-				
+				print( e.description )
+				completion( { throw e } )
 			}
 		}
-
 	}
 	
-	fileprivate func parseLoginResponse( result: Result<Any> ) -> FirebaseToken?
+	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
 	{
-		return nil
+		// TODO: Parse with Freddy
+		//
+		
+		return ""
 	}
 	
-	fileprivate let requestor: Requestor
-
+	fileprivate let requestor: Requestor!
 }
 
 struct LunaRequestor: Requestor
@@ -115,22 +142,3 @@ struct LunaRequestor: Requestor
 		}
 	}
 }
-
-
-
-
-//    func postDataToFirebase ( postid: String, postType: String, postData: AnyObject )
-//    {
-//        FirebaseService().refUsers.child(postid).child(postType).setValue(postData)
-//    }
-//
-//    func postUserToFirbase ( user: User )
-//    {
-//
-//    }
-//
-//    func anonymousUser( anonymousId: String )
-//    {
-//        FirebaseService().refUsers.child(anonymousId).setValue(["anonymous": "yes"])
-//    }
-
