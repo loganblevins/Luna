@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
 	var window: UIWindow?
 	
+	// MARK: App Delegate callbacks
+	//
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey:Any]? ) -> Bool
     {
 		Fabric.with( [ Crashlytics.self ] )
@@ -26,12 +29,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		return true
 	}
 	
+	func applicationWillTerminate(_ application: UIApplication )
+	{
+		FirebaseAuthenticationService.RemoveAuthChangeListener( self.authChangeHandle )
+	}
+	
+	// MARK: Implmentation Details
+	//
+	
 	fileprivate func signInUser()
 	{
-		// TODO: Check if we have a pre-existing valid token.
+		// Check if we have a pre-existing user.
 		// 
-		// If so, continue on.
-		// If not, present login VC.
+		// If so, do nothing.
+		// If not, present login VC -> present onboarding.
 		//
+		self.authChangeHandle = FirebaseAuthenticationService.AuthChangeListener()
+		{
+			[weak self] user in
+			guard let strongSelf = self else { return }
+			
+			if user == nil
+			{
+				let loginViewController = LoginViewController.storyboardInstance()!
+				let mainVC = strongSelf.mainViewController()
+				mainVC.present( loginViewController, animated: true, completion: nil )
+			}
+		}
 	}
+		
+	fileprivate func mainViewController() -> MainViewController
+	{
+		return ( window!.rootViewController as! MainViewController )
+	}
+	
+	fileprivate var authChangeHandle: FIRAuthStateDidChangeListenerHandle!
 }
