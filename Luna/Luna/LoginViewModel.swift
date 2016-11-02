@@ -22,11 +22,6 @@ class LoginViewModel
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
-			DispatchQueue.main.async
-			{
-				showNetworkActivity( show: true )
-			}
-			
 			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 			lunaAPI.login( credentials )
 			{
@@ -48,43 +43,8 @@ class LoginViewModel
 					completion( error )
 				}
 			}
-			
-			defer
-			{
-				DispatchQueue.main.async
-				{
-					showNetworkActivity( show: false )
-				}
-			}
 		}
-	}
-
-    
-//    func anonymousAuth ()
-//    {
-//        userService.firebaseAuthAnonymous(){
-//            (res) in
-//            
-//            self.anonymousID = res!
-//        }
-//    }
-	
-//    func loginUser( _ username: String, userpassword: String, completion: ((_ result:Bool?) -> Void)!)
-//    {
-//        userService.loginUser(userid: anonymousID, username: username, userpassword: userpassword) { (res) in
-//            if (res)!
-//            {
-//                print ("yes")
-//                completion(true)
-//            }
-//            else
-//            {
-//                print ("no")
-//                completion(false)
-//            }
-//        }
-//    }
-//    
+	}    
 	
 	fileprivate let authService: ServiceAuthenticatable!
 	fileprivate let databaseService: ServiceDBManageable!
