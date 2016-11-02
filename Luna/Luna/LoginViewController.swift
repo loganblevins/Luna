@@ -26,14 +26,17 @@ class LoginViewController: UIViewController
 	{
 		guard let user = usernameTextField.text else { return }
 		guard let password = passwordTextField.text else { return }
-		
 		let credentials = ( user, password )
+
+		showNetworkActivity( show: true )
 		loginViewModel.loginAsync( credentials )
 		{
 			error in
 			
 			DispatchQueue.main.async
 			{
+				showNetworkActivity( show: false )
+				
 				switch error
 				{
 				case is LunaAPIError:
