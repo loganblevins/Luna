@@ -103,7 +103,6 @@ class LunaAPI
 				guard let jsonData = data as? Data else { throw NetworkError.cannotParse( "Bad data" ) }
 				let json = try JSON( data: jsonData )
 				let token = try json.getString( at: "firebase_token", "firebasetoken" )
-				print( "Token: \( token )" )
 				return token
 			}
 			catch
