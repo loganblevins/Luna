@@ -10,6 +10,9 @@ import Foundation
 
 class LoginViewModel
 {
+	// MARK: Public API
+	//
+	
 	init( withAuthService authService: ServiceAuthenticatable, databaseService: ServiceDBManageable )
 	{
 		self.authService = authService
@@ -44,6 +47,9 @@ class LoginViewModel
 			}
 		}
 	}    
+	
+	// MARK: Implementation Details
+	//
 	
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!

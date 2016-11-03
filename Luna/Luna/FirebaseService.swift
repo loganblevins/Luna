@@ -11,7 +11,7 @@ import Firebase
 protocol ServiceAuthenticatable
 {
 	func signInUser( withToken token: String, completion: @escaping(_ error: Error? ) -> Void )
-	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
+	func signOutUser() throws
 	
 	var currentUser: Any? { get }
 }
@@ -48,6 +48,8 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	
 	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void)
 	{
+		print( token )
+		
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
 			user, error in
@@ -56,17 +58,9 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		}
 	}
 	
-	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
+	func signOutUser() throws
 	{
-		do
-		{
-			try FIRAuth.auth()?.signOut()
-			completion( nil )
-		}
-		catch
-		{
-			completion( error )
-		}
+		try FIRAuth.auth()?.signOut()
 	}
 	
 	var currentUser: Any?
