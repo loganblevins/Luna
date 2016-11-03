@@ -22,8 +22,7 @@ class LoginViewModel
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
-			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
-			lunaAPI.login( credentials )
+			self.lunaAPI.login( credentials )
 			{
 				[weak self] innerThrows in
 				guard let strongSelf = self else { return }
@@ -46,6 +45,7 @@ class LoginViewModel
 		}
 	}    
 	
+	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!
 	fileprivate let databaseService: ServiceDBManageable!
 }

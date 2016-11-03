@@ -32,23 +32,36 @@ class LoginViewController: UIViewController
 		loginViewModel.loginAsync( credentials )
 		{
 			error in
+			guard error != nil else { return }
 			
 			DispatchQueue.main.async
 			{
-				showNetworkActivity( show: false )
-				
 				switch error
 				{
 				case is LunaAPIError:
 					let e = error as! LunaAPIError
 					print( e.description )
+					let alertController = UIAlertController( title: e.description, message: nil, preferredStyle: .alert )
+					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
+					self.present( alertController, animated: true, completion: nil )
 					
 				case is NetworkError:
 					let e = error as! NetworkError
 					print( e.description )
+					let alertController = UIAlertController( title: e.description, message: nil, preferredStyle: .alert )
+					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
+					self.present( alertController, animated: true, completion: nil )
 					
 				default:
 					print( error?.localizedDescription ?? "Unknown login error." )
+					let alertController = UIAlertController( title: error?.localizedDescription, message: nil, preferredStyle: .alert )
+					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
+					self.present( alertController, animated: true, completion: nil )
+				}
+				
+				defer
+				{
+					showNetworkActivity( show: false )
 				}
 			}
 		}
