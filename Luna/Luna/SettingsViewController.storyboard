@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings View Controller-->
+        <!--File-->
         <scene sceneID="fG4-1V-ygM">
             <objects>
-                <viewController id="hUm-WJ-Wwl" customClass="SettingsViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hUm-WJ-Wwl" customClass="File" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ftr-ti-Y9m"/>
                         <viewControllerLayoutGuide type="bottom" id="sX6-1E-Mef"/>
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="159" y="318" width="57" height="30"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
-                                    <action selector="settingsButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="Kje-vs-T1Z"/>
+                                    <action selector="settingsButtonPressed:" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="tPA-AH-c64"/>
                                 </connections>
                             </button>
                         </subviews>
