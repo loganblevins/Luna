@@ -36,6 +36,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		{
 			_, user in
 			
+			print( "Firebase auth state did change." )
 			completion( user )
 		}
 		return handle!
@@ -48,7 +49,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	
 	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void)
 	{
-		print( token )
+		print( "Attempting to sign in user." )
 		
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
@@ -60,6 +61,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	
 	func signOutUser() throws
 	{
+		print( "Attempting to sign out user." )
 		try FIRAuth.auth()?.signOut()
 	}
 	
@@ -76,7 +78,7 @@ struct FirebaseStorageService: ServiceStorable
 
 struct FirebaseDBService: ServiceDBManageable
 {
-	fileprivate let FirebaseDB = FIRDatabase.database().reference()
+//	fileprivate let FirebaseDB = FIRDatabase.database().reference()
 	
 //	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
 //	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
