@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol LoginCompletionDelegate: class
+{
+	func onLoginSuccess()
+}
+
 class LoginViewController: UIViewController
 {
 	// MARK: Public API
@@ -19,6 +24,8 @@ class LoginViewController: UIViewController
 		return storyboard.instantiateInitialViewController() as? LoginViewController
 	}
 
+	weak var delegate: LoginCompletionDelegate?
+	
 	// MARK: Implementation details
 	//
 	
@@ -31,31 +38,51 @@ class LoginViewController: UIViewController
 		showNetworkActivity( show: true )
 		loginViewModel.loginAsync( credentials )
 		{
-			error in
+			[weak self] error in
+			guard let strongSelf = self else { return }
 			
-			DispatchQueue.main.async
+			defer
 			{
-				showNetworkActivity( show: false )
-				
-				switch error
+				DispatchQueue.main.async
 				{
-				case is LunaAPIError:
-					let e = error as! LunaAPIError
-					print( e.description )
-					
-				case is NetworkError:
-					let e = error as! NetworkError
-					print( e.description )
-					
-				default:
-					print( error?.localizedDescription ?? "Unknown login error." )
+					showNetworkActivity( show: false )
 				}
 			}
+			
+			guard error == nil else
+			{
+				// Update UI according to error on main thread.
+				//
+				DispatchQueue.main.async
+				{
+					strongSelf.handleLoginError( error! )
+				}
+				return
+			}
+			
+			strongSelf.delegate?.onLoginSuccess()
 		}
 	}
 
+	fileprivate func handleLoginError(_ error: Error )
+	{
+		switch error
+		{
+		case is LunaAPIError:
+			let e = error as! LunaAPIError
+			print( e.description )
+			
+		case is NetworkError:
+			let e = error as! NetworkError
+			print( e.description )
+			
+		default:
+			print( error.localizedDescription )
+		}
+	}
+	
 	@IBOutlet fileprivate weak var usernameTextField: UITextField!
 	@IBOutlet fileprivate weak var passwordTextField: UITextField!
 	
-	fileprivate var loginViewModel = LoginViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
+	fileprivate let loginViewModel = LoginViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
 }

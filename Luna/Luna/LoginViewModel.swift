@@ -10,6 +10,9 @@ import Foundation
 
 class LoginViewModel
 {
+	// MARK: Public API
+	//
+	
 	init( withAuthService authService: ServiceAuthenticatable, databaseService: ServiceDBManageable )
 	{
 		self.authService = authService
@@ -22,8 +25,7 @@ class LoginViewModel
 		//
 		DispatchQueue.global( qos: .userInitiated ).async
 		{
-			let lunaAPI = LunaAPI( requestor: LunaRequestor() )
-			lunaAPI.login( credentials )
+			self.lunaAPI.login( credentials )
 			{
 				[weak self] innerThrows in
 				guard let strongSelf = self else { return }
@@ -46,6 +48,10 @@ class LoginViewModel
 		}
 	}    
 	
+	// MARK: Implementation Details
+	//
+	
+	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!
 	fileprivate let databaseService: ServiceDBManageable!
 }
