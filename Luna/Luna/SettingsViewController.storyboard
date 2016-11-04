@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="fG4-1V-ygM">
             <objects>
-                <viewController id="hUm-WJ-Wwl" sceneMemberID="viewController">
+                <viewController id="hUm-WJ-Wwl" customClass="SettingsViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ftr-ti-Y9m"/>
                         <viewControllerLayoutGuide type="bottom" id="sX6-1E-Mef"/>
@@ -19,7 +19,20 @@
                     <view key="view" contentMode="scaleToFill" id="9FA-O3-IVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-Wo-fhi">
+                                <rect key="frame" x="159" y="318" width="57" height="30"/>
+                                <state key="normal" title="Sign out"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="GIU-8q-aic"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a6G-Wo-fhi" firstAttribute="centerX" secondItem="9FA-O3-IVg" secondAttribute="centerX" id="Reb-TD-hgT"/>
+                            <constraint firstItem="a6G-Wo-fhi" firstAttribute="centerY" secondItem="9FA-O3-IVg" secondAttribute="centerY" id="sEA-XT-iiT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fwg-4M-pTO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

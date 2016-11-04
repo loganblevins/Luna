@@ -52,13 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			if user == nil
 			{
 				let loginViewController = LoginViewController.storyboardInstance()!
-				let mainVC = strongSelf.mainViewController()
+				loginViewController.delegate = strongSelf.MainViewController()
+				let mainVC = strongSelf.MainViewController()
 				mainVC.present( loginViewController, animated: true, completion: nil )
 			}
 		}
 	}
 		
-	fileprivate func mainViewController() -> MainViewController
+	fileprivate func MainViewController() -> MainViewController
 	{
 		return ( window!.rootViewController as! MainViewController )
 	}

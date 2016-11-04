@@ -45,10 +45,12 @@ class LunaAPI
 		if credentials.username.isEmpty
 		{
 			completion( { throw LunaAPIError.BlankUsername } )
+			return
 		}
 		if credentials.password.isEmpty
 		{
 			completion( { throw LunaAPIError.BlankPassword } )
+			return
 		}
 		
 		fetchToken( credentials )
@@ -86,7 +88,6 @@ class LunaAPI
 			catch
 			{
 				let e = error as! NetworkError
-				print( e.description )
 				completion( { throw e } )
 			}
 		}
@@ -94,10 +95,25 @@ class LunaAPI
 	
 	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
 	{
-		// TODO: Parse with Freddy
-		//
+		switch result
+		{
+		case .success( let data ):
+			do
+			{
+				guard let jsonData = data as? Data else { throw NetworkError.cannotParse( "Bad data" ) }
+				let json = try JSON( data: jsonData )
+				let token = try json.getString( at: "firebase_token", "firebasetoken" )
+				return token
+			}
+			catch
+			{
+				throw NetworkError.cannotParse( "Unable to get firebase auth_token." )
+			}
+			
+		case .failure( let error ):
+			throw error ?? NetworkError.invalid( "Unknown NetworkError" )
+		}
 		
-		return ""
 	}
 	
 	fileprivate let requestor: Requestor!
@@ -123,7 +139,6 @@ struct LunaRequestor: Requestor
 		case .login:
 			let postString = "\( Constants.LunaStrings.UsernameKey )=\( credentials!.username )&\( Constants.LunaStrings.PasswordKey )=\( credentials!.password )"
 			request.httpBody = postString.data( using: .utf8 )
-//			request.setValue( "application/json", forHTTPHeaderField: "Content-Type" )
 		default:
 			assertionFailure( "Called Luna endpoint that isn't yet implemented!" )
 		}
@@ -131,9 +146,9 @@ struct LunaRequestor: Requestor
 		Alamofire.request( request ).validate().responseJSON()
 		{
 			response in
-			if let value = response.result.value, response.result.isSuccess
+			if let data = response.data, response.result.isSuccess
 			{
-				completion( .success( value ) )
+				completion( .success( data ) )
 			}
 			else
 			{

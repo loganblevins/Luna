@@ -11,7 +11,7 @@ import Firebase
 protocol ServiceAuthenticatable
 {
 	func signInUser( withToken token: String, completion: @escaping(_ error: Error? ) -> Void )
-	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
+	func signOutUser() throws
 	
 	var currentUser: Any? { get }
 }
@@ -36,6 +36,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		{
 			_, user in
 			
+			print( "Firebase auth state did change." )
 			completion( user )
 		}
 		return handle!
@@ -48,6 +49,8 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	
 	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void)
 	{
+		print( "Attempting to sign in user." )
+		
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
 			user, error in
@@ -56,17 +59,10 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		}
 	}
 	
-	func signOutUser( completion: @escaping(_ error: Error? ) -> Void )
+	func signOutUser() throws
 	{
-		do
-		{
-			try FIRAuth.auth()?.signOut()
-			completion( nil )
-		}
-		catch
-		{
-			completion( error )
-		}
+		print( "Attempting to sign out user." )
+		try FIRAuth.auth()?.signOut()
 	}
 	
 	var currentUser: Any?
@@ -82,7 +78,7 @@ struct FirebaseStorageService: ServiceStorable
 
 struct FirebaseDBService: ServiceDBManageable
 {
-	fileprivate let FirebaseDB = FIRDatabase.database().reference()
+//	fileprivate let FirebaseDB = FIRDatabase.database().reference()
 	
 //	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
 //	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
