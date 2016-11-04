@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol LoginCompletionDelegate: class
+{
+	func onLoginSuccess()
+}
+
 class LoginViewController: UIViewController
 {
 	// MARK: Public API
@@ -19,6 +24,8 @@ class LoginViewController: UIViewController
 		return storyboard.instantiateInitialViewController() as? LoginViewController
 	}
 
+	weak var delegate: LoginCompletionDelegate?
+	
 	// MARK: Implementation details
 	//
 	
@@ -31,42 +38,49 @@ class LoginViewController: UIViewController
 		showNetworkActivity( show: true )
 		loginViewModel.loginAsync( credentials )
 		{
-			error in
-			guard error != nil else { return }
+			[weak self] error in
+			guard let strongSelf = self else { return }
 			
-			DispatchQueue.main.async
+			defer
 			{
-				switch error
-				{
-				case is LunaAPIError:
-					let e = error as! LunaAPIError
-					print( e.description )
-					let alertController = UIAlertController( title: e.description, message: nil, preferredStyle: .alert )
-					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
-					self.present( alertController, animated: true, completion: nil )
-					
-				case is NetworkError:
-					let e = error as! NetworkError
-					print( e.description )
-					let alertController = UIAlertController( title: e.description, message: nil, preferredStyle: .alert )
-					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
-					self.present( alertController, animated: true, completion: nil )
-					
-				default:
-					print( error?.localizedDescription ?? "Unknown login error." )
-					let alertController = UIAlertController( title: error?.localizedDescription, message: nil, preferredStyle: .alert )
-					alertController.addAction( UIAlertAction( title: "Ok", style: .default, handler: nil ) )
-					self.present( alertController, animated: true, completion: nil )
-				}
-				
-				defer
+				DispatchQueue.main.async
 				{
 					showNetworkActivity( show: false )
 				}
 			}
+			
+			guard error == nil else
+			{
+				// Update UI according to error on main thread.
+				//
+				DispatchQueue.main.async
+				{
+					strongSelf.handleLoginError( error! )
+				}
+				return
+			}
+			
+			strongSelf.delegate?.onLoginSuccess()
 		}
 	}
 
+	fileprivate func handleLoginError(_ error: Error )
+	{
+		switch error
+		{
+		case is LunaAPIError:
+			let e = error as! LunaAPIError
+			print( e.description )
+			
+		case is NetworkError:
+			let e = error as! NetworkError
+			print( e.description )
+			
+		default:
+			print( error.localizedDescription )
+		}
+	}
+	
 	@IBOutlet fileprivate weak var usernameTextField: UITextField!
 	@IBOutlet fileprivate weak var passwordTextField: UITextField!
 	

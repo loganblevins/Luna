@@ -23,7 +23,8 @@
 		CB2827721D90387F008043BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827701D90387F008043BC /* Constants.swift */; };
 		CB2827731D90387F008043BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2827711D90387F008043BC /* Networking.swift */; };
 		CB2928C21DCBCD9C004B3027 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2928C11DCBCD9C004B3027 /* SettingsViewModel.swift */; };
-		CB34794D1DCBE8C400B3E60C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34794C1DCBE8C400B3E60C /* File.swift */; };
+		CB34794D1DCBE8C400B3E60C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */; };
+		CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */; };
 		CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */; };
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
 		CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */; };
@@ -92,7 +93,8 @@
 		CB2827701D90387F008043BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB2827711D90387F008043BC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		CB2928C11DCBCD9C004B3027 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		CB34794C1DCBE8C400B3E60C /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaAPI.swift; sourceTree = "<group>"; };
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +290,8 @@
 				EA30D9A81D98655000373A96 /* PickerViewController.swift */,
 				CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */,
 				CBC437741DA5C30B003D6A0E /* MainViewController.swift */,
-				CB34794C1DCBE8C400B3E60C /* File.swift */,
+				CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */,
+				CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -542,7 +545,8 @@
 				CBC437751DA5C30B003D6A0E /* MainViewController.swift in Sources */,
 				CBC437771DA5C338003D6A0E /* MainViewModel.swift in Sources */,
 				CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */,
-				CB34794D1DCBE8C400B3E60C /* File.swift in Sources */,
+				CB34794D1DCBE8C400B3E60C /* SettingsViewController.swift in Sources */,
+				CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */,
 				EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,

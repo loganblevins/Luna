@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  HomeViewController.swift
 //  Luna
 //
 //  Created by Logan Blevins on 11/3/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class File: UIViewController
+class HomeViewController: UIViewController
 {
 	
 }
