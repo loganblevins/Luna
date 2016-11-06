@@ -78,9 +78,9 @@ struct FirebaseStorageService: ServiceStorable
 
 struct FirebaseDBService: ServiceDBManageable
 {
-//	fileprivate let FirebaseDB = FIRDatabase.database().reference()
+	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
 	
-//	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
-//	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
-//	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
+	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
+	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
 }
