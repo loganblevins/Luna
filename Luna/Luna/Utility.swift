@@ -13,6 +13,7 @@ func root(_ view: UIView ) -> UIViewController?
 	return view.window?.rootViewController
 }
 
+@discardableResult
 func rootPresent(_ fromView: UIView, controller: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil ) -> Bool
 {
 	guard let root = root( fromView ) else { return false }
