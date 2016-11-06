@@ -10,16 +10,16 @@ import UIKit
 
 final class MainViewController: UITabBarController, LoginCompletionDelegate
 {
-	// TODO: I really hate this. It's bad design and somewhat fragile. 
-	// Either I need this class to own the instance of LoginViewController, or 
-	// I need to use a different method of dismissing the login screen, rather than delegation.
-	//
 	func onLoginSuccess()
 	{
-		if presentedViewController != nil && presentedViewController is LoginViewController
-		{
-			presentedViewController?.dismiss( animated: true, completion: nil )
-		}
+		loginViewController?.dismiss( animated: true, completion: nil )
+	}
+	
+	func presentLogin()
+	{
+		loginViewController = LoginViewController.storyboardInstance()
+		loginViewController!.delegate = self
+		rootPresent( self.view, controller: loginViewController! )
 	}
 	
 	func HomeViewController() -> HomeViewController
@@ -36,4 +36,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate
 	{
 		return self.viewControllers![2] as! SettingsViewController
 	}
+	
+	fileprivate var loginViewController: LoginViewController?
 }

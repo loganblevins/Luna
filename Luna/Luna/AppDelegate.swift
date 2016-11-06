@@ -51,10 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			
 			if user == nil
 			{
-				let loginViewController = LoginViewController.storyboardInstance()!
-				loginViewController.delegate = strongSelf.MainViewController()
-				let mainVC = strongSelf.MainViewController()
-				mainVC.present( loginViewController, animated: true, completion: nil )
+				strongSelf.MainViewController().presentLogin()
 			}
 		}
 	}
