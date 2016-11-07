@@ -13,10 +13,10 @@ class LoginViewModel
 	// MARK: Public API
 	//
 	
-	init( withAuthService authService: ServiceAuthenticatable, databaseService: ServiceDBManageable )
+	init( withAuthService authService: ServiceAuthenticatable, dbService: ServiceDBManageable )
 	{
 		self.authService = authService
-		self.databaseService = databaseService
+		self.dbService = dbService
 	}
 	
 	func loginAsync(_ credentials: Credentials, completion: @escaping(_ error: Error? ) -> Void )
@@ -39,7 +39,7 @@ class LoginViewModel
 						
 						if let strongUid = uid
 						{
-							strongSelf.databaseService.createUserRecord( forUid: strongUid, username: credentials.username )
+							strongSelf.dbService.createUserRecord( forUid: strongUid, username: credentials.username )
 						}
 						completion( error )
 					}
@@ -57,5 +57,5 @@ class LoginViewModel
 	
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!
-	fileprivate let databaseService: ServiceDBManageable!
+	fileprivate let dbService: ServiceDBManageable!
 }
