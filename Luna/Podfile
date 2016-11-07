@@ -9,6 +9,7 @@ def commonPods
 	pod 'Firebase/Database'
 	pod 'Freddy', '~> 3.0.0'
 	pod 'Alamofire', '~> 4.0'
+	pod 'CVCalendar', '~> 1.4.0'
 end
 
 target 'Luna' do
