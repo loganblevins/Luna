@@ -37,7 +37,7 @@ class LoginViewModel
 					{
 						uidOrNil, errorOrNil in
 						
-						strongSelf.dbService.createUserRecord( forUid: uidOrNil, username: credentials.username )
+						strongSelf.onAuthServiceSignInAttempt( uidOrNil, username: credentials.username )
 						completion( errorOrNil )
 					}
 				}
@@ -47,7 +47,15 @@ class LoginViewModel
 				}
 			}
 		}
-	}    
+	}
+	
+	fileprivate func onAuthServiceSignInAttempt(_ uid: String?, username: String )
+	{
+		guard let uid = uid else { return }
+		self.dbService.createUserRecord( forUid: uid, username: username )
+		StandardDefaults.sharedInstance.uid = uid
+		
+	}
 	
 	// MARK: Implementation Details
 	//
