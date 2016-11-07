@@ -35,13 +35,10 @@ class LoginViewModel
 					let token = try innerThrows()
 					strongSelf.authService.signInUser( withToken: token )
 					{
-						uid, error in
+						uidOrNil, errorOrNil in
 						
-						if let strongUid = uid
-						{
-							strongSelf.dbService.createUserRecord( forUid: strongUid, username: credentials.username )
-						}
-						completion( error )
+						strongSelf.dbService.createUserRecord( forUid: uidOrNil, username: credentials.username )
+						completion( errorOrNil )
 					}
 				}
 				catch
