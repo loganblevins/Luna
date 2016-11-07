@@ -84,5 +84,5 @@ class LoginViewController: UIViewController
 	@IBOutlet fileprivate weak var usernameTextField: UITextField!
 	@IBOutlet fileprivate weak var passwordTextField: UITextField!
 	
-	fileprivate let loginViewModel = LoginViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
+	fileprivate let loginViewModel = LoginViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }

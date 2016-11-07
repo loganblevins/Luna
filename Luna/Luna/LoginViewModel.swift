@@ -13,10 +13,10 @@ class LoginViewModel
 	// MARK: Public API
 	//
 	
-	init( withAuthService authService: ServiceAuthenticatable, databaseService: ServiceDBManageable )
+	init( withAuthService authService: ServiceAuthenticatable, dbService: ServiceDBManageable )
 	{
 		self.authService = authService
-		self.databaseService = databaseService
+		self.dbService = dbService
 	}
 	
 	func loginAsync(_ credentials: Credentials, completion: @escaping(_ error: Error? ) -> Void )
@@ -35,9 +35,10 @@ class LoginViewModel
 					let token = try innerThrows()
 					strongSelf.authService.signInUser( withToken: token )
 					{
-						error in
+						uidOrNil, errorOrNil in
 						
-						completion( error )
+						strongSelf.dbService.createUserRecord( forUid: uidOrNil, username: credentials.username )
+						completion( errorOrNil )
 					}
 				}
 				catch
@@ -53,5 +54,5 @@ class LoginViewModel
 	
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!
-	fileprivate let databaseService: ServiceDBManageable!
+	fileprivate let dbService: ServiceDBManageable!
 }
