@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oE6-As-j6t">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oE6-As-j6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,11 +41,13 @@
             </objects>
             <point key="canvasLocation" x="1289" y="130"/>
         </scene>
-        <!--Item 3-->
+        <!--Navigation Controller-->
         <scene sceneID="iDn-Bf-t69">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oE6-As-j6t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="ypA-Q3-fs3"/>
+                    <tabBarItem key="tabBarItem" title="" image="Settings" id="ypA-Q3-fs3">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SWA-2n-gTl">
@@ -62,4 +64,7 @@
             <point key="canvasLocation" x="506" y="130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Settings" width="27" height="27"/>
+    </resources>
 </document>
