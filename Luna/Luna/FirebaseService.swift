@@ -10,7 +10,7 @@ import Firebase
 
 protocol ServiceAuthenticatable
 {
-	func signInUser( withToken token: String, completion: @escaping(_ error: Error? ) -> Void )
+	func signInUser( withToken token: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	func signOutUser() throws
 	
 	var currentUser: Any? { get }
@@ -24,8 +24,8 @@ protocol ServiceStorable
 
 protocol ServiceDBManageable
 {
-	// TODO: Fill in generic database needs.
-	//
+	func createUserRecord( forUid uid: String, username: String )
+	
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -47,15 +47,14 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		FIRAuth.auth()?.removeStateDidChangeListener( handle )
 	}
 	
-	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void)
+	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	{
 		print( "Attempting to sign in user." )
 		
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
-			user, error in
-			
-			completion( error )
+			userOrNil, errorOrNil in
+			completion( userOrNil?.uid, errorOrNil )
 		}
 	}
 	
@@ -81,6 +80,11 @@ struct FirebaseDBService: ServiceDBManageable
 	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
 	
 	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
-	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
-	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
+//	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
+//	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
+	
+	func createUserRecord( forUid uid: String, username: String )
+	{
+		Users.child( uid ).setValue( ["Username": username] )
+	}
 }
