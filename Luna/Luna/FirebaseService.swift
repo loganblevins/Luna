@@ -12,8 +12,6 @@ protocol ServiceAuthenticatable
 {
 	func signInUser( withToken token: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	func signOutUser() throws
-	
-	var currentUser: Any? { get }
 }
 
 protocol ServiceStorable
@@ -24,8 +22,7 @@ protocol ServiceStorable
 
 protocol ServiceDBManageable
 {
-	func createUserRecord( forUid uid: String, username: String )
-	
+	func createUserRecord( forUid uid: String?, username: String )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -63,11 +60,6 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		print( "Attempting to sign out user." )
 		try FIRAuth.auth()?.signOut()
 	}
-	
-	var currentUser: Any?
-	{
-		return nil
-	}
 }
 
 struct FirebaseStorageService: ServiceStorable
@@ -83,8 +75,9 @@ struct FirebaseDBService: ServiceDBManageable
 //	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
 //	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
 	
-	func createUserRecord( forUid uid: String, username: String )
+	func createUserRecord( forUid uid: String?, username: String )
 	{
-		Users.child( uid ).setValue( ["Username": username] )
+		guard uid != nil else { return }
+		Users.child( uid! ).setValue( ["Username": username] )
 	}
 }
