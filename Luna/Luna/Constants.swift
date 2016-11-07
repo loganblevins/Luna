@@ -36,5 +36,6 @@ struct Constants
 		static let ChildUsers = "Users"
 		static let ChildEntry = "Entry"
 		static let ChildDailyEntries = "DailyEntries"
+		static let DictionaryUsernameKey = "Username"
 	}
 }
