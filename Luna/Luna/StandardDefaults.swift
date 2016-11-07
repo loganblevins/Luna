@@ -33,6 +33,7 @@ class StandardDefaults: StandardDefaultsProtocol
 		}
 		set
 		{
+			print( "Persisting uid: \( newValue )" )
 			standardDefaults.set( newValue, forKey: uidKey )
 		}
 	}
