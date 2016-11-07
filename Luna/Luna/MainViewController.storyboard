@@ -31,7 +31,7 @@
         <scene sceneID="S1R-2A-tVs">
             <objects>
                 <viewControllerPlaceholder storyboardName="SettingsViewController" id="6ta-Tg-MqZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="fK6-eZ-aD1"/>
+                    <tabBarItem key="tabBarItem" title="" id="fK6-eZ-aD1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgn-Hg-ETa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
         <scene sceneID="U3M-BO-QZ2">
             <objects>
                 <viewControllerPlaceholder storyboardName="CalendarViewController" id="eF1-UY-Kp3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" image="Calendar" selectedImage="Calendar" id="JLC-9Q-ctU" userLabel="Item 2"/>
+                    <tabBarItem key="tabBarItem" title="" id="JLC-9Q-ctU" userLabel="Item 2"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzT-FK-WJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,16 +51,12 @@
         <scene sceneID="odq-hN-cta">
             <objects>
                 <viewControllerPlaceholder storyboardName="HomeViewController" id="z2t-Fo-q0R" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="Home" selectedImage="Home" id="usP-dg-To7" userLabel="Item 1"/>
+                    <tabBarItem key="tabBarItem" title="" id="usP-dg-To7" userLabel="Item 1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lv5-BD-cdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-909"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Calendar" width="25" height="25"/>
-        <image name="Home" width="25" height="25"/>
-        <image name="Settings" width="25" height="25"/>
-    </resources>
+    <color key="tintColor" red="0.37844973802566528" green="0.53978103399276733" blue="0.63994473218917847" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
