@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e1r-4B-hbi">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e1r-4B-hbi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +31,7 @@
         <scene sceneID="S1R-2A-tVs">
             <objects>
                 <viewControllerPlaceholder storyboardName="SettingsViewController" id="6ta-Tg-MqZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="fK6-eZ-aD1"/>
+                    <tabBarItem key="tabBarItem" title="" id="fK6-eZ-aD1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgn-Hg-ETa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
         <scene sceneID="U3M-BO-QZ2">
             <objects>
                 <viewControllerPlaceholder storyboardName="CalendarViewController" id="eF1-UY-Kp3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="JLC-9Q-ctU" userLabel="Item 2"/>
+                    <tabBarItem key="tabBarItem" title="" id="JLC-9Q-ctU" userLabel="Item 2"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzT-FK-WJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,7 +51,7 @@
         <scene sceneID="odq-hN-cta">
             <objects>
                 <viewControllerPlaceholder storyboardName="HomeViewController" id="z2t-Fo-q0R" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="usP-dg-To7" userLabel="Item 1"/>
+                    <tabBarItem key="tabBarItem" title="" id="usP-dg-To7" userLabel="Item 1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lv5-BD-cdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
