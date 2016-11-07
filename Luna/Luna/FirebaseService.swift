@@ -22,7 +22,7 @@ protocol ServiceStorable
 
 protocol ServiceDBManageable
 {
-	func createUserRecord( forUid uid: String?, username: String )
+	func createUserRecord( forUid uid: String, username: String )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -75,9 +75,9 @@ struct FirebaseDBService: ServiceDBManageable
 //	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
 //	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
 	
-	func createUserRecord( forUid uid: String?, username: String )
+	func createUserRecord( forUid uid: String, username: String )
 	{
-		guard uid != nil else { return }
-		Users.child( uid! ).setValue( ["Username": username] )
+		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
+		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
 	}
 }
