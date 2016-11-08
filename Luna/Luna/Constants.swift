@@ -33,9 +33,11 @@ struct Constants
 	struct FirebaseStrings
 	{
 		static let BaseURL = "https://luna-c2c2f.firebaseio.com"
+        static let StorageURL = "gs://luna-c2c2f.appspot.com"
 		static let ChildUsers = "Users"
 		static let ChildEntry = "Entry"
 		static let ChildDailyEntries = "DailyEntries"
 		static let DictionaryUsernameKey = "Username"
+        static let DictionaryUserImageKey = "UserImage"
 	}
 }
