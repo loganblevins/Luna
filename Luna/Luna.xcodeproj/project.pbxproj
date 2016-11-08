@@ -88,7 +88,7 @@
 		CB105A761D87B7DD00EA201C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB2352C71DC3052F008E8493 /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		CB2352CC1DC312D3008E8493 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
-		CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CalendarViewController.storyboard; path = Luna/CalendarViewController.storyboard; sourceTree = "<group>"; };
+		CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
 		CB2352D21DC31464008E8493 /* HomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		CB2827701D90387F008043BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB2827711D90387F008043BC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -180,7 +180,6 @@
 				EA292CA01D95AE1F00C0B0BC /* Resources */,
 				CB105A671D87B24400EA201C /* LunaTests */,
 				CB105A511D87B24400EA201C /* Products */,
-				CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */,
 				3CF20532D269E478BCE62B29 /* Pods */,
 				6AA29B12C42B8105B132AA8A /* Frameworks */,
 			);
@@ -236,6 +235,7 @@
 				EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */,
 				CB2352C71DC3052F008E8493 /* MainViewController.storyboard */,
 				CB2352D21DC31464008E8493 /* HomeViewController.storyboard */,
+				CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */,
 				CB2352CC1DC312D3008E8493 /* SettingsViewController.storyboard */,
 				CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */,
 			);
