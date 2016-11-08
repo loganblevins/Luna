@@ -38,7 +38,13 @@ final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CV
 	
 	func presentedDateUpdated(_ date: CVDate )
 	{
+		print( "presentedDateUpdated: \(date.commonDescription)" )
 		updateNavigationBarTitle()
+	}
+	
+	func shouldAnimateResizing() -> Bool
+	{
+		return false
 	}
 	
 	fileprivate func updateNavigationBarTitle()
