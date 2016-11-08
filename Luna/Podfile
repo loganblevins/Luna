@@ -7,6 +7,7 @@ def commonPods
 	pod 'Firebase'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
+	pod 'Firebase/Storage'
 	pod 'Freddy', '~> 3.0.0'
 	pod 'Alamofire', '~> 4.0'
 	pod 'CVCalendar', '~> 1.4.0'

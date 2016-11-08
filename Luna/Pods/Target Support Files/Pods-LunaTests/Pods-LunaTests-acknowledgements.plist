@@ -125,6 +125,16 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2016 Google</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>FirebaseStorage</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2015 Big Nerd Ranch Inc
