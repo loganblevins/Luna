@@ -1,34 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gm9-4h-ZkE">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="15G1205" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dHf-6j-Coa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calendar Delegate-->
         <scene sceneID="AVN-3Z-aUe">
             <objects>
-                <viewController id="gm9-4h-ZkE" sceneMemberID="viewController">
+                <viewController id="gm9-4h-ZkE" customClass="CalendarViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hcY-jh-Nfh"/>
                         <viewControllerLayoutGuide type="bottom" id="qWg-g5-ULz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="u3M-tf-IXi">
+                    <view key="view" contentMode="scaleToFill" id="u3M-tf-IXi" userLabel="backgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0J-jH-Eov" userLabel="menuView" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="33.5"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="gm9-4h-ZkE" id="rt1-sy-aM5"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAN-fZ-bdg" userLabel="calendarView" customClass="CVCalendarView" customModule="CVCalendar">
+                                <rect key="frame" x="0.0" y="105" width="375" height="333.5"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="calendarDelegate" destination="gm9-4h-ZkE" id="0sq-4v-eAd"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w0J-jH-Eov" firstAttribute="width" secondItem="u3M-tf-IXi" secondAttribute="width" id="4o4-mg-RRb"/>
+                            <constraint firstItem="w0J-jH-Eov" firstAttribute="top" secondItem="hcY-jh-Nfh" secondAttribute="bottom" id="7Qx-WV-L4t"/>
+                            <constraint firstItem="w0J-jH-Eov" firstAttribute="height" secondItem="AAN-fZ-bdg" secondAttribute="height" multiplier="0.1" id="A2W-61-8gT"/>
+                            <constraint firstItem="AAN-fZ-bdg" firstAttribute="top" secondItem="w0J-jH-Eov" secondAttribute="bottom" constant="7.5" id="Fk6-Ws-F8t"/>
+                            <constraint firstItem="AAN-fZ-bdg" firstAttribute="width" secondItem="u3M-tf-IXi" secondAttribute="width" id="HtO-I9-GU1"/>
+                            <constraint firstItem="AAN-fZ-bdg" firstAttribute="centerX" secondItem="u3M-tf-IXi" secondAttribute="centerX" id="XhC-kv-Gwq"/>
+                            <constraint firstItem="AAN-fZ-bdg" firstAttribute="height" secondItem="u3M-tf-IXi" secondAttribute="height" multiplier="0.5" id="fIw-T1-ZKe"/>
+                            <constraint firstItem="w0J-jH-Eov" firstAttribute="centerX" secondItem="u3M-tf-IXi" secondAttribute="centerX" id="fpl-T7-Hq3"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Calendar" id="b32-Ef-s0K">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="&lt;InsertMonth&gt;" id="vQL-BS-8yz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="calendarView" destination="AAN-fZ-bdg" id="KPz-sP-j1q"/>
+                        <outlet property="menuView" destination="w0J-jH-Eov" id="ij5-Aa-pak"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptV-AA-drr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-713"/>
+            <point key="canvasLocation" x="1906.4000000000001" y="-784.85757121439292"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2sP-S3-4J2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dHf-6j-Coa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Calendar" id="b32-Ef-s0K">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6KY-Lv-CDa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gm9-4h-ZkE" kind="relationship" relationship="rootViewController" id="9M6-SY-FGK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVk-FW-wOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967.20000000000005" y="-784.85757121439292"/>
         </scene>
     </scenes>
     <resources>
