@@ -26,6 +26,8 @@ protocol ServiceStorable
 protocol ServiceDBManageable
 {
 	func createUserRecord( forUid uid: String, username: String )
+    
+    func getCurrentUser() -> FIRUser
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -156,4 +158,9 @@ struct FirebaseDBService: ServiceDBManageable
 		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
 		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
 	}
+    
+    func getCurrentUser() -> FIRUser
+    {
+        return (FIRAuth.auth()?.currentUser)!
+    }
 }
