@@ -46,24 +46,19 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
-                
-    }
-    
-    fileprivate func handleLoginError(_ error: Error )
-    {
-        switch error
+        if imageSelected
         {
-        case is LunaAPIError:
-            let e = error as! LunaAPIError
-            print( e.description )
+            let userImage = img.image
             
-        case is NetworkError:
-            let e = error as! NetworkError
-            print( e.description )
+            let imgData = UIImageJPEGRepresentation(userImage!, 0.5)
             
-        default:
-            print( error.localizedDescription )
+            addImageViewModel.onUploadImageAttempt(imageData: imgData!)
+            {
+                error in
+                
+            }
         }
+        //NEED TO MOVE ON TO NEXT VIEW
     }
     
     
