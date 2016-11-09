@@ -28,6 +28,8 @@ protocol ServiceDBManageable
 	func createUserRecord( forUid uid: String, username: String )
     
     func getCurrentUser() -> FIRUser
+    
+    func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -162,5 +164,10 @@ struct FirebaseDBService: ServiceDBManageable
     func getCurrentUser() -> FIRUser
     {
         return (FIRAuth.auth()?.currentUser)!
+    }
+    
+    func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
+    {
+        Users.child( uid ).setValue( [ key: data ] )
     }
 }

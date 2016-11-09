@@ -46,14 +46,14 @@ class OnBoardViewModel
         
     }
     
-    func getDefaultPickerValue ( _ type: Int ) -> Int
+    func getDefaultPickerValue ( _ type: Int ) 
     {
-        return pickerView.selectDefaultValues(type)
+        //return pickerView.selectDefaultValues(type)
     }
     
-    func getPickerData ( _ page: Int ) -> [String]
+    func getPickerData ( _ page: Int )
     {
-        return pickerView.selectPicker(page)
+        //return pickerView.selectPicker(page)
     }
     
     func getDataType ( _ key: Int ) -> String

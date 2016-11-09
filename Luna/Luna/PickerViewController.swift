@@ -58,8 +58,8 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func getPickerValues()
     {
-        let page = pageControl.currentPage
-        self.pickerValues = (onboardViewModel?.getPickerData( page))!
+        //let page = pageControl.currentPage
+       // self.pickerValues = (onboardViewModel?.getPickerData( page))!
         
         //setDefaultPickerRow()
         
@@ -67,8 +67,8 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func setDefaultPickerRow()
     {
-        let defaultRow = onboardViewModel?.getDefaultPickerValue( pageControl.currentPage)
-        optionsPicker.selectedRow(inComponent: defaultRow!)
+        //let defaultRow = onboardViewModel?.getDefaultPickerValue( pageControl.currentPage)
+        //optionsPicker.selectedRow(inComponent: defaultRow!)
     }
     
     @IBAction func nextPressed(_ sender: AnyObject)
