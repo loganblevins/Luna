@@ -42,7 +42,6 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         present(imagePicker, animated: true, completion: nil)
     }
     
-    
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
@@ -60,7 +59,6 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         }
         //NEED TO MOVE ON TO NEXT VIEW
     }
-    
     
     @IBOutlet weak var img: UIImageView!
     

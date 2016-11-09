@@ -39,5 +39,12 @@ struct Constants
 		static let ChildDailyEntries = "DailyEntries"
 		static let DictionaryUsernameKey = "Username"
         static let DictionaryUserImageKey = "UserImage"
+        static let DictionaryUserBirthControl = "BirthControlType"
+        static let DictionaryUserCycleDate = "DateLastCycle"
+        static let DictionaryUserMenstrualLen = "MenstrualLen"
+        static let DictionaryUserDisorder = "Disorder"
+        static let DictionaryUserRelationshipStatus = "RelationshipStatus"
 	}
+    
+    
 }

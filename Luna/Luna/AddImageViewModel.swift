@@ -20,7 +20,7 @@ class AddImageViewModel
     
     func onUploadImageAttempt( imageData: Data, completion: @escaping(_ error: Error? ) -> Void )
     {
-        let uid = self.getUID()
+        let uid = getUID()
         let imgPath = createImagePath( uid: uid )
         
         DispatchQueue.global( qos: .userInitiated ).async
