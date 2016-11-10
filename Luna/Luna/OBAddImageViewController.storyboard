@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Add Image View Controller-->
         <scene sceneID="0gB-mi-vTx">
             <objects>
-                <viewController id="8cZ-B6-lKg" sceneMemberID="viewController">
+                <viewController id="8cZ-B6-lKg" customClass="OBAddImageViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GxB-rs-9hs"/>
                         <viewControllerLayoutGuide type="bottom" id="h7l-Fl-aNL"/>
@@ -40,7 +40,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="donePressed:" destination="8cZ-B6-lKg" eventType="touchUpInside" id="Tit-Qb-mwJ"/>
+                                    <action selector="nextPressed:" destination="8cZ-B6-lKg" eventType="touchUpInside" id="Ob1-S2-NzC"/>
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="302-aG-X45">
@@ -79,7 +79,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image-add-button" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
                                 <rect key="frame" x="119" y="190" width="137" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -107,20 +107,16 @@
                     </view>
                     <connections>
                         <outlet property="img" destination="LPG-ta-Lw6" id="kFI-qw-Hag"/>
-                        <outlet property="pageControl" destination="302-aG-X45" id="8OW-yh-V7u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhA-ZS-0ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="eBj-Om-26C">
                     <connections>
-                        <action selector="imageTap:" destination="8cZ-B6-lKg" id="Loc-C6-v9F"/>
+                        <action selector="imageTap:" destination="8cZ-B6-lKg" id="bmL-OR-VqT"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="538" y="297"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="image-add-button" width="256" height="256"/>
-    </resources>
 </document>

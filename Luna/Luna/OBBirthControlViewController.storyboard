@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Picker View Controller-->
+        <!--Birth Control View Controller-->
         <scene sceneID="2lE-ML-AdX">
             <objects>
-                <viewController id="rsV-uJ-HeH" customClass="PickerViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rsV-uJ-HeH" customClass="OBBirthControlViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yXl-mF-C4V"/>
                         <viewControllerLayoutGuide type="bottom" id="hph-ni-NfC"/>
@@ -102,8 +102,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="optionsPicker" destination="Czr-RI-noB" id="OQG-hK-43V"/>
-                        <outlet property="pageControl" destination="qFA-eH-6ch" id="qu4-SV-ZB2"/>
+                        <outlet property="birthControlPicker" destination="Czr-RI-noB" id="NfI-hJ-jOm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihj-LG-o4I" userLabel="First Responder" sceneMemberID="firstResponder"/>

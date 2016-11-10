@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Picker View Controller-->
+        <!--Relationship View Controller-->
         <scene sceneID="WvY-vE-W7y">
             <objects>
-                <viewController id="7Tm-ap-B0y" customClass="PickerViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Tm-ap-B0y" customClass="OBRelationshipViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9gr-fO-jI3"/>
                         <viewControllerLayoutGuide type="bottom" id="qGW-xC-GgL"/>
@@ -102,8 +102,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="optionsPicker" destination="2tm-Uh-GNw" id="0WW-IT-Qzo"/>
-                        <outlet property="pageControl" destination="KuZ-by-55l" id="AHL-RF-mWS"/>
+                        <outlet property="relationshipControlPicker" destination="2tm-Uh-GNw" id="UUm-2T-BaV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOd-gn-6Yd" userLabel="First Responder" sceneMemberID="firstResponder"/>

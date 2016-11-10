@@ -17,6 +17,8 @@ class OBBirthControlViewController: UIViewController
         return storyboard.instantiateInitialViewController() as? OBBirthControlViewController
     }
     
+    weak var delegate: OnBoardDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

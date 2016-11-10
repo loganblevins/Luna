@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Date Picker View Controller-->
+        <!--Last Cycle View Controller-->
         <scene sceneID="JAG-R0-7C5">
             <objects>
-                <viewController id="kZi-mO-LVa" customClass="DatePickerViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kZi-mO-LVa" customClass="OBLastCycleViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vOx-vr-qNC"/>
                         <viewControllerLayoutGuide type="bottom" id="Jd3-xE-eJf"/>
@@ -108,7 +108,6 @@ think it was.</string>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="L7h-rb-hbX" id="NQq-L3-ESQ"/>
-                        <outlet property="pageControl" destination="YfG-mM-Ivz" id="xW7-au-2tz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhI-LA-WGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
