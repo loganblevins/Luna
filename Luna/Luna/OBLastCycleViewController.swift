@@ -15,6 +15,8 @@ class OBLastCycleViewController: UIViewController
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBLastCycleViewController
     }
+    
+    weak var delegate: OnBoardDelegate?
 
     override func viewDidLoad()
     {

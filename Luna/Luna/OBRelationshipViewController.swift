@@ -17,6 +17,8 @@ class OBRelationshipViewController: UIViewController
         return storyboard.instantiateInitialViewController() as? OBRelationshipViewController
     }
     
+    weak var delegate: OnBoardDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,7 +71,7 @@ class OBRelationshipViewController: UIViewController
     }
     
     
-    @IBOutlet weak var birthControlPicker: UIPickerView!
+    @IBOutlet weak var relationshipControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
     fileprivate var selectedValue: String = ""

@@ -159,6 +159,8 @@ struct FirebaseDBService: ServiceDBManageable
 	{
 		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
 		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
+        
+        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryOnBoardStatus: false] )
 	}
     
     func getCurrentUser() -> FIRUser

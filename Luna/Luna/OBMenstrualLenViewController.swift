@@ -16,6 +16,8 @@ class OBMenstrualLenViewController: UIViewController
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBMenstrualLenViewController
     }
+    
+    weak var delegate: OnBoardDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +73,7 @@ class OBMenstrualLenViewController: UIViewController
     }
     
     
-    @IBOutlet weak var birthControlPicker: UIPickerView!
+    @IBOutlet weak var lenControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
     fileprivate var selectedValue: String = ""

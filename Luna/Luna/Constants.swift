@@ -38,6 +38,7 @@ struct Constants
 		static let ChildEntry = "Entry"
 		static let ChildDailyEntries = "DailyEntries"
 		static let DictionaryUsernameKey = "Username"
+        static let DictionaryOnBoardStatus = "OnBoardStatus"
         static let DictionaryUserImageKey = "UserImage"
         static let DictionaryUserBirthControl = "BirthControlType"
         static let DictionaryUserCycleDate = "DateLastCycle"

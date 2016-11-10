@@ -61,7 +61,6 @@
 		EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */; };
 		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
 		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
-		EA30D9A71D985C5D00373A96 /* OnboardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */; };
 		EA30D9A91D98655000373A96 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9A81D98655000373A96 /* PickerViewController.swift */; };
 		EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9AA1D9868C100373A96 /* PickerViews.swift */; };
 		EA685D821DD2BE90006FAB3E /* OBBirthControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */; };
@@ -149,7 +148,6 @@
 		EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
-		EA30D9A61D985C5D00373A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingViewController.storyboard; sourceTree = "<group>"; };
 		EA30D9A81D98655000373A96 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		EA30D9AA1D9868C100373A96 /* PickerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViews.swift; sourceTree = "<group>"; };
 		EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBBirthControlViewController.swift; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				EA013EB61DD168990072634C /* OBRelationshipViewController.storyboard */,
 				EA013EB01DD168710072634C /* OBAddImageViewController.storyboard */,
 				CB105A571D87B24400EA201C /* LoginViewController.storyboard */,
-				EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */,
 				CB2352C71DC3052F008E8493 /* MainViewController.storyboard */,
 				CB2352D21DC31464008E8493 /* HomeViewController.storyboard */,
 				CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */,
@@ -451,7 +448,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA30D9A71D985C5D00373A96 /* OnboardingViewController.storyboard in Resources */,
 				EA292CAF1D95AE3500C0B0BC /* OpenSans-Italic.ttf in Resources */,
 				EA013EBB1DD168990072634C /* OBRelationshipViewController.storyboard in Resources */,
 				EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */,
@@ -672,14 +668,6 @@
 				CB105A5D1D87B24400EA201C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		EA30D9A51D985C5D00373A96 /* OnboardingViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA30D9A61D985C5D00373A96 /* Base */,
-			);
-			name = OnboardingViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

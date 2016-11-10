@@ -15,6 +15,8 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBAddImageViewController
     }
+    
+    weak var delegate: OnBoardDelegate?
 
     override func viewDidLoad()
     {
@@ -54,6 +56,8 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
             addImageViewModel.onUploadImageAttempt(imageData: imgData!)
             {
                 error in
+                
+                self.delegate?.toBirthControlView()
                 
             }
         }

@@ -19,7 +19,7 @@
         <!--Disorder View Controller-->
         <scene sceneID="WFW-pd-YQb">
             <objects>
-                <viewController id="tBR-cB-MOx" customClass="DisorderViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tBR-cB-MOx" customClass="OBDisorderViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FRa-xc-yER"/>
                         <viewControllerLayoutGuide type="bottom" id="y7g-Q7-Jr7"/>
@@ -87,8 +87,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="disorderText" destination="Kg8-Ip-YT5" id="WWh-3i-kPP"/>
-                        <outlet property="pageControl" destination="Avl-Gl-J35" id="txN-Iw-ToF"/>
+                        <outlet property="disorderTextField" destination="Kg8-Ip-YT5" id="iAG-Vm-Y7H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fj4-Ph-E3G" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Picker View Controller-->
+        <!--Menstrual Len View Controller-->
         <scene sceneID="0ty-bR-EiY">
             <objects>
-                <viewController id="Ca4-cg-Qgw" customClass="PickerViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ca4-cg-Qgw" customClass="OBMenstrualLenViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Yl-g7-l8F"/>
                         <viewControllerLayoutGuide type="bottom" id="CCA-Xc-WfH"/>
@@ -102,8 +102,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="optionsPicker" destination="QEo-Mi-tO8" id="mfp-ds-Ht5"/>
-                        <outlet property="pageControl" destination="bT1-lC-lOp" id="7r5-LZ-esL"/>
+                        <outlet property="lenControlPicker" destination="QEo-Mi-tO8" id="GeK-4R-bhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hC-3b-Sjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
