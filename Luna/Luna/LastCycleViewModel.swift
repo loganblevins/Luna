@@ -19,11 +19,13 @@ class LastCycleViewModel
     {
         let uid = getUID()
         
+        let date = convertDateFormat(date: data)
+        
         DispatchQueue.global( qos: .userInitiated ).async
         {
             do
             {
-                self.onSaveDataAttempt( uid: uid, data: data )
+               self.onSaveDataAttempt( uid: uid, data: date )
             }
         }
     }
@@ -34,14 +36,18 @@ class LastCycleViewModel
         return firebaseUID.uid
     }
     
-    fileprivate func onSaveDataAttempt( uid: String, data: Date )
+    fileprivate func onSaveDataAttempt( uid: String, data: String )
     {
         self.dbService.saveUserRecord(forUid: uid, key: Constants.FirebaseStrings.DictionaryUserCycleDate, data: data as AnyObject)
     }
     
-    fileprivate func convertDateFormat( date: Date )
+    fileprivate func convertDateFormat( date: Date ) -> String
     {
-    
+        let timestamp = date.timeIntervalSince1970
+        
+        let ret = String(format:"%f", timestamp)
+        
+        return ret
     }
     
 

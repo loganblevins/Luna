@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -50,7 +51,7 @@
                                 <color key="pageIndicatorTintColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.81568627449999997" green="0.28235294119999998" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Do you have known reproductive disorders? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJc-AF-i6M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have known reproductive disorders? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJc-AF-i6M">
                                 <rect key="frame" x="16" y="93" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jaJ-O8-Vc4"/>
@@ -59,7 +60,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="If yes, please enter what you have been diagnosed with." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-Xg-iYm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="If yes, please enter what you have been diagnosed with." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-Xg-iYm">
                                 <rect key="frame" x="44" y="139" width="287" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -69,9 +70,8 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-Ip-YT5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-Ip-YT5">
                                 <rect key="frame" x="16" y="217" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -79,11 +79,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Kg8-Ip-YT5" firstAttribute="top" secondItem="L4s-Xg-iYm" secondAttribute="bottom" constant="22" id="6UH-g1-hPI"/>
+                            <constraint firstItem="JJc-AF-i6M" firstAttribute="centerX" secondItem="L4s-Xg-iYm" secondAttribute="centerX" id="7Sz-fm-Wtu"/>
+                            <constraint firstItem="JJc-AF-i6M" firstAttribute="trailing" secondItem="Kg8-Ip-YT5" secondAttribute="trailing" id="G9o-2X-lU5"/>
                             <constraint firstItem="QV9-Zu-7xR" firstAttribute="top" secondItem="Avl-Gl-J35" secondAttribute="bottom" constant="57" id="Hil-7v-IeM"/>
                             <constraint firstItem="QV9-Zu-7xR" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="Zzl-Fi-D3R"/>
+                            <constraint firstItem="L4s-Xg-iYm" firstAttribute="leading" secondItem="Zg5-Uo-HYV" secondAttribute="leadingMargin" constant="28" id="b9C-aQ-8Gs"/>
                             <constraint firstItem="JJc-AF-i6M" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="bON-9I-9KS"/>
+                            <constraint firstItem="JJc-AF-i6M" firstAttribute="leading" secondItem="Kg8-Ip-YT5" secondAttribute="leading" id="h4C-hH-GMR"/>
+                            <constraint firstItem="JJc-AF-i6M" firstAttribute="top" secondItem="FRa-xc-yER" secondAttribute="bottom" constant="73" id="hjO-Tw-cI8"/>
                             <constraint firstItem="y7g-Q7-Jr7" firstAttribute="top" secondItem="QV9-Zu-7xR" secondAttribute="bottom" constant="43" id="nVW-M3-8vq"/>
                             <constraint firstItem="Avl-Gl-J35" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="rZC-Ma-05r"/>
+                            <constraint firstItem="L4s-Xg-iYm" firstAttribute="top" secondItem="JJc-AF-i6M" secondAttribute="bottom" constant="25" id="rhD-Co-KVx"/>
                         </constraints>
                     </view>
                     <connections>

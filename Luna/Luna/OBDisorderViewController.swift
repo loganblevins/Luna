@@ -46,9 +46,10 @@ class OBDisorderViewController: UIViewController
         {
             error in
             
+            
         }
         
-        //NEED TO MOVE ON TO NEXT VIEW
+        self.delegate?.toRelationshipView()
     }
 
     @IBOutlet fileprivate weak var disorderTextField: UITextField!

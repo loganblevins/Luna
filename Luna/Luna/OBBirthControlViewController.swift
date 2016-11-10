@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OBBirthControlViewController: UIViewController
+class OBBirthControlViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
 
     static func storyboardInstance() -> OBBirthControlViewController?
@@ -21,14 +21,24 @@ class OBBirthControlViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        initPicker()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func initPicker()
+    {
+        birthControlPicker.dataSource = self
+        birthControlPicker.delegate = self
+        
+        setUIPickerView()
+    }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
@@ -59,7 +69,11 @@ class OBBirthControlViewController: UIViewController
             {
                 error in
                 
+                
+                
             }
+            
+            self.delegate?.toMenstrualLenView()
         }
        
         //NEED TO MOVE ON TO NEXT VIEW

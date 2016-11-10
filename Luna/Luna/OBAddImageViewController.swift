@@ -57,9 +57,11 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
             {
                 error in
                 
-                self.delegate?.toBirthControlView()
+               
                 
             }
+            
+             self.delegate?.toBirthControlView()
         }
         //NEED TO MOVE ON TO NEXT VIEW
     }

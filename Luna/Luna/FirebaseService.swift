@@ -141,7 +141,7 @@ struct FirebaseStorageService: ServiceStorable
     
     func addUserImageDownloadLink( forUid uid: String, downloadLink: String )
     {
-        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUserImageKey: downloadLink] )
+        Users.child( uid ).child(Constants.FirebaseStrings.DictionaryUserImageKey).setValue( downloadLink )
         print( "Add user image download url in DB for uid: \( uid ), downloadUrl: \( downloadLink )")
     }
     
@@ -159,9 +159,14 @@ struct FirebaseDBService: ServiceDBManageable
 	{
 		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
 		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
-        
-        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryOnBoardStatus: false] )
+
 	}
+    
+    func setOnBoardStatus( forUid uid: String, status: Bool )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).setValue( status );
+    }
+
     
     func getCurrentUser() -> FIRUser
     {
@@ -170,11 +175,32 @@ struct FirebaseDBService: ServiceDBManageable
     
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
     {
-        Users.child( uid ).setValue( [ key: data ] )
+        Users.child( uid ).child( key ).setValue( data )
     }
     
-    func isUserOnBoard( forUid uid: String ) -> Bool
+    func getUserOnBoardStatus( forUid uid: String, completion: @escaping(_ status: Bool?) -> Void)
     {
-        return false
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent(of: .value, with: {
+        
+                snapshot in
+            
+                if let snap = snapshot.value
+                {
+                    let status = snap as! Bool
+                   completion( status )
+                    
+                }
+                else
+                {
+                    let status = false
+                    completion( status )
+                }
+            
+            })
+        
+
     }
+    
+    
+    
 }

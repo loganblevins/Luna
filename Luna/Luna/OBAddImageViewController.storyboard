@@ -79,20 +79,25 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
-                                <rect key="frame" x="119" y="190" width="137" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
+                                <rect key="frame" x="82" y="150" width="211" height="194"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="j5o-qe-Ad7"/>
+                                </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eBj-Om-26C" appends="YES" id="M9l-WZ-uxi"/>
+                                    <outletCollection property="gestureRecognizers" destination="RtS-zK-ElH" appends="YES" id="igq-6T-SOh"/>
                                 </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LPG-ta-Lw6" firstAttribute="top" secondItem="NDj-qD-yVz" secondAttribute="bottom" constant="36" id="6Ej-ic-mG9"/>
                             <constraint firstItem="302-aG-X45" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="6oB-1G-VBa"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="top" secondItem="GxB-rs-9hs" secondAttribute="bottom" constant="73" id="Dny-OO-T3N"/>
                             <constraint firstItem="h7l-Fl-aNL" firstAttribute="top" secondItem="OMO-d4-M0a" secondAttribute="bottom" constant="43" id="H3b-vz-Gkt"/>
+                            <constraint firstItem="LPG-ta-Lw6" firstAttribute="leading" secondItem="1a8-jb-QPe" secondAttribute="leadingMargin" constant="66" id="H65-Es-2Ij"/>
+                            <constraint firstItem="LPG-ta-Lw6" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="JLS-56-oDw"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="Qwx-Xv-7UC"/>
                             <constraint firstItem="71T-tU-uc9" firstAttribute="leading" secondItem="1a8-jb-QPe" secondAttribute="leadingMargin" constant="28" id="SSb-cn-kEX"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="leading" secondItem="1a8-jb-QPe" secondAttribute="leadingMargin" id="e0e-ED-5jo"/>
@@ -110,13 +115,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhA-ZS-0ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="eBj-Om-26C">
+                <tapGestureRecognizer id="RtS-zK-ElH">
                     <connections>
-                        <action selector="imageTap:" destination="8cZ-B6-lKg" id="bmL-OR-VqT"/>
+                        <action selector="imageTap:" destination="8cZ-B6-lKg" id="Fgq-eM-dKf"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="538" y="297"/>
+            <point key="canvasLocation" x="536.79999999999995" y="296.40179910044981"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchScreen" width="1242" height="1242"/>
+    </resources>
 </document>

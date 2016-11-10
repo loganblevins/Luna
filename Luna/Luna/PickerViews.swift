@@ -11,51 +11,10 @@ import Foundation
 
 class PickerViews
 {
-    
-    
     init()
     {
         
     }
-    
-    /*func selectDefaultValues ( _ type: Int ) -> Int
-    {
-        switch type
-        {
-        case 1:
-            return 1
-        case 2:
-            return 2
-        case 3:
-            return 28
-        case 4:
-            return 5
-        case 6:
-            return 1
-        default:
-            return 1
-        }
-    }
-    
-    func selectPicker ( _ type: Int ) -> [String]
-    {
-        
-        switch type
-        {
-        case 1:
-            return createHeightPicker()
-        case 2:
-            return createWeightPicker()
-        case 3:
-            return createCycleLengths()
-        case 4:
-            return createPeriodLengths()
-        case 6:
-            return createBirthControlPicker()
-        default:
-            return [String]()
-        }
-    }*/
     
     func createRelationStatusPicker () -> [String]
     {
@@ -66,9 +25,9 @@ class PickerViews
     
     func createBirthControlPicker () -> [String]
     {
-        let birthControls = ["None", "Male Condom", "Female Condom", "Diaphragm", "Cervical cap",
+        let birthControls = ["None", "Diaphragm", "Cervical cap",
                              "IUD", "IUD Copper-based", "Implant", "Sponge", "Spermicide", "Injections",
-                             "Pill", "Vaginal Ring", "Patch", "Natural Planning", "Other"]
+                             "Pill", "Vaginal Ring", "Patch", "Male Condom", "Female Condom", "Natural Planning", "Other"]
         
         return birthControls
     }

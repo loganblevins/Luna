@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OBRelationshipViewController: UIViewController
+class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
 
     static func storyboardInstance() -> OBRelationshipViewController?
@@ -23,11 +23,20 @@ class OBRelationshipViewController: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        initPicker()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initPicker()
+    {
+        relationshipControlPicker.dataSource = self
+        relationshipControlPicker.delegate = self
+        
+        setUIPickerView()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int
@@ -59,7 +68,11 @@ class OBRelationshipViewController: UIViewController
             {
                 error in
                 
+                
+                
             }
+            
+            self.delegate?.onBoardComplete()
         }
         
         //NEED TO MOVE ON TO NEXT VIEW

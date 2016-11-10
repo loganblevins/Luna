@@ -39,8 +39,10 @@ class OBLastCycleViewController: UIViewController
         lastCycleViewModel.onAddDataAttempt(data: date)
         {
             error in
+            
         }
-    
+        
+        self.delegate?.toDisorderView()
         
     }
 

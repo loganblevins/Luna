@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OBMenstrualLenViewController: UIViewController
+class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
 
     static func storyboardInstance() -> OBMenstrualLenViewController?
@@ -23,11 +23,20 @@ class OBMenstrualLenViewController: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        initPicker()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initPicker()
+    {        
+        lenControlPicker.dataSource = self
+        lenControlPicker.delegate = self
+        
+        setUIPickerView()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int
@@ -61,7 +70,11 @@ class OBMenstrualLenViewController: UIViewController
             {
                 error in
                 
+                
+                
             }
+            
+            self.delegate?.toLastCycleView()
         }
         
         //NEED TO MOVE ON TO NEXT VIEW
