@@ -10,11 +10,13 @@ import Alamofire
 import Freddy
 
 typealias FirebaseToken = String
+typealias AuthToken = String
 
 enum LunaAPIError: Error, CustomStringConvertible
 {
 	case BlankUsername
 	case BlankPassword
+	case MissingToken
 	
 	var description: String
 	{
@@ -25,9 +27,11 @@ enum LunaAPIError: Error, CustomStringConvertible
 			
 		case .BlankPassword:
 			return "The password may not be blank."
+			
+		case .MissingToken:
+			return "The auth token may not be missing."
 		}
 	}
-	
 }
 
 class LunaAPI
@@ -53,7 +57,7 @@ class LunaAPI
 			return
 		}
 		
-		fetchToken( credentials )
+		fetchFirebaseToken( credentials )
 		{
 			inner in
 			
@@ -70,19 +74,24 @@ class LunaAPI
 		}
 	}
 	
+	func deleteAccount( forToken token: FirebaseToken, completion: @escaping(_ error: Error? ) -> Void )
+	{
+		
+	}
+	
 	// MARK: Implementation Details
 	//
 
-	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
+	fileprivate func fetchFirebaseToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
-		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials, authToken: nil )
 		{
 			[weak self] result in
 			guard let strongSelf = self else { return }
 			
 			do
 			{
-				let token = try strongSelf.parseLoginResponse( result )
+				let token = try strongSelf.parseLoginResponseForFirebaseToken( result )
 				completion( { return token } )
 			}
 			catch
@@ -93,7 +102,7 @@ class LunaAPI
 		}
 	}
 	
-	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
+	fileprivate func parseLoginResponseForFirebaseToken(_ result: Result<Any> ) throws -> FirebaseToken
 	{
 		switch result
 		{
@@ -107,13 +116,39 @@ class LunaAPI
 			}
 			catch
 			{
-				throw NetworkError.cannotParse( "Unable to get firebase auth_token." )
+				throw NetworkError.cannotParse( "Unable to get firebasetoken." )
 			}
 			
 		case .failure( let error ):
 			throw error ?? NetworkError.invalid( "Unknown NetworkError" )
 		}
-		
+	}
+	
+	fileprivate func fetchAuthToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> AuthToken ) -> Void )
+	{
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials, authToken: nil )
+		{
+			
+		}
+	}
+	
+	fileprivate func parseLoginResponseforAuthToken(_ result: Result<Any> ) throws -> AuthToken
+	{
+		switch result
+		{
+		case .success( let data ):
+			do
+			{
+				
+			}
+			catch
+			{
+				throw NetworkError.cannotParse( "Unable to get authtoken.")
+			}
+			
+		case .failure( let error ):
+			throw error ?? NetworkError.invalid( "Unknown NetworkError" )
+		}
 	}
 	
 	fileprivate let requestor: Requestor!
@@ -121,7 +156,7 @@ class LunaAPI
 
 struct LunaRequestor: Requestor
 {
-	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( Result<Any> ) -> Void )
+	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, authToken: String?, completion: @escaping( Result<Any> ) -> Void )
 	{
 		let lunaEndpoint = endpoint as! LunaEndpointAlamofire
 		let urlString = Constants.LunaStrings.BaseURL.appending( lunaEndpoint.path )
@@ -130,15 +165,37 @@ struct LunaRequestor: Requestor
 		// TODO: Currently we only need `login`, but may need other endpoints later.
 		// This method is generic so the endpoint matters here.
 		//
-		// e.g. `login` is a POST request requiring credentials sent in a JSON data format
-		// of the request body. Other endpoints are different. Let's crash on anything other
-		// than `login`, since it shouldn't be implemented yet.
+		// Let's crash on anything other than `login` or `deleteUser`, since it shouldn't be implemented yet.
 		//
 		switch lunaEndpoint
 		{
 		case .login:
-			let postString = "\( Constants.LunaStrings.UsernameKey )=\( credentials!.username )&\( Constants.LunaStrings.PasswordKey )=\( credentials!.password )"
+			guard let username = credentials?.username else
+			{
+				completion( .failure( LunaAPIError.BlankUsername ) )
+				return
+			}
+			guard let password = credentials?.password else
+			{
+				completion( .failure( LunaAPIError.BlankPassword ) )
+				return
+			}
+			let postString = "\( Constants.LunaStrings.UsernameKey )=\( username )&\( Constants.LunaStrings.PasswordKey )=\( password )"
 			request.httpBody = postString.data( using: .utf8 )
+			
+		case .deleteUser:
+			guard let token = authToken else
+			{
+				completion( .failure( LunaAPIError.MissingToken ) )
+				return
+			}
+			// Let's just assume that the token is convertible to data and base64 string. 
+			// If it's `nil`, we have bigger problems at stake.
+			//
+			let tokenData = token.data( using: .utf8 )
+			let base64Token = tokenData?.base64EncodedString()
+			request.setValue( "Token \( base64Token )", forHTTPHeaderField: "Authorization" )
+			
 		default:
 			assertionFailure( "Called Luna endpoint that isn't yet implemented!" )
 		}

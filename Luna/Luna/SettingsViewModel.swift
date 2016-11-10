@@ -24,6 +24,14 @@ class SettingsViewModel
 		try authService.signOutUser()
 	}
 	
+	func deleteAccountAsync( completion: (_ error: Error? ) -> Void )
+	{
+		DispatchQueue.global( qos: .userInitiated ).async
+		{
+			
+		}
+	}
+	
 	// MARK: Implementation Details
 	//
 	

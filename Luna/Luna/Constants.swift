@@ -26,6 +26,7 @@ struct Constants
 		static let ChangePasswordEndpoint = "auth/password"
 		static let PasswordResetEndpoint = "auth/password/reset"
 		static let PasswordResetConfirmEndpoint = "auth/password/reset/confirm"
+		static let DeleteUserEndpoint = "auth/delete/"
 		static let ActivateEndpoint = "auth/activate"
 		static let RegisterEnpoint = "auth/register"
 	}

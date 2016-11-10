@@ -12,6 +12,7 @@ protocol ServiceAuthenticatable
 {
 	func signInUser( withToken token: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	func signOutUser() throws
+	func getTokenForCurrentUser( completion: @escaping(_ token: String?, _ error: Error? ) -> Void )
 }
 
 protocol ServiceStorable
@@ -59,6 +60,26 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	{
 		print( "Attempting to sign out user." )
 		try FIRAuth.auth()?.signOut()
+	}
+	
+	func getTokenForCurrentUser( completion: @escaping(_ token: String?, _ error: Error? ) -> Void )
+	{
+		currentUser?.getTokenWithCompletion()
+		{
+			tokenOrNil, errorOrNil in
+			completion( tokenOrNil, errorOrNil )
+		}
+	}
+	
+	// Firebase recommends to grab the current user from the auth state change handler,
+	// but this should be safe, in some specific cases, e.g. `getTokenForSignedInUser()` since the user
+	// will already be logged in and initialized.
+	// 
+	// TODO: Grab current user that has been persisted from disk.
+	//
+	fileprivate var currentUser: FIRUser?
+	{
+		return FIRAuth.auth()?.currentUser
 	}
 }
 
