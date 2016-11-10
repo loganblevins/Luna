@@ -59,9 +59,6 @@
 		EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */; };
 		EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */; };
 		EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */; };
-		EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */; };
-		EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */; };
-		EA30D9A91D98655000373A96 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9A81D98655000373A96 /* PickerViewController.swift */; };
 		EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D9AA1D9868C100373A96 /* PickerViews.swift */; };
 		EA685D821DD2BE90006FAB3E /* OBBirthControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */; };
 		EA685D841DD2BF48006FAB3E /* BirthControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D831DD2BF48006FAB3E /* BirthControlViewModel.swift */; };
@@ -146,9 +143,6 @@
 		EA292CAA1D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
-		EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
-		EA30D9A81D98655000373A96 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		EA30D9AA1D9868C100373A96 /* PickerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViews.swift; sourceTree = "<group>"; };
 		EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBBirthControlViewController.swift; sourceTree = "<group>"; };
 		EA685D831DD2BF48006FAB3E /* BirthControlViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthControlViewModel.swift; sourceTree = "<group>"; };
@@ -296,7 +290,6 @@
 				EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */,
 				CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */,
 				EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */,
-				EA292CC61D97264500C0B0BC /* OnBoardViewModel.swift */,
 				CBC437761DA5C338003D6A0E /* MainViewModel.swift */,
 				CB2928C11DCBCD9C004B3027 /* SettingsViewModel.swift */,
 				EA013EBE1DD168B30072634C /* AddImageViewModel.swift */,
@@ -331,8 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				EA292CB61D95AEF900C0B0BC /* LoginViewController.swift */,
-				EA292CC41D97257B00C0B0BC /* DatePickerViewController.swift */,
-				EA30D9A81D98655000373A96 /* PickerViewController.swift */,
 				CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */,
 				CBC437741DA5C30B003D6A0E /* MainViewController.swift */,
 				CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */,
@@ -608,7 +599,6 @@
 				CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */,
 				EA013EBF1DD168B30072634C /* AddImageViewModel.swift in Sources */,
 				EA685D901DD2CC9D006FAB3E /* OBLastCycleViewController.swift in Sources */,
-				EA292CC71D97264500C0B0BC /* OnBoardViewModel.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */,
@@ -623,14 +613,12 @@
 				EA685D881DD2CA6B006FAB3E /* OBRelationshipViewController.swift in Sources */,
 				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
 				EA685D841DD2BF48006FAB3E /* BirthControlViewModel.swift in Sources */,
-				EA292CC51D97257B00C0B0BC /* DatePickerViewController.swift in Sources */,
 				CB2827731D90387F008043BC /* Networking.swift in Sources */,
 				EA685D8C1DD2CB6B006FAB3E /* MenstrualLenViewModel.swift in Sources */,
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CB2928C21DCBCD9C004B3027 /* SettingsViewModel.swift in Sources */,
 				EA013EBD1DD168AB0072634C /* OBAddImageViewController.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
-				EA30D9A91D98655000373A96 /* PickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -172,4 +172,9 @@ struct FirebaseDBService: ServiceDBManageable
     {
         Users.child( uid ).setValue( [ key: data ] )
     }
+    
+    func isUserOnBoard( forUid uid: String ) -> Bool
+    {
+        return false
+    }
 }
