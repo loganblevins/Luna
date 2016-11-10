@@ -23,5 +23,10 @@ class SettingsViewController: UIViewController
 		}
 	}
 	
+	@IBAction func deleteAccountButtonPressed()
+	{
+		
+	}
+	
 	fileprivate let settingsViewModel = SettingsViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
 }
