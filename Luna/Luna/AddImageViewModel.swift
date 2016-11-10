@@ -47,7 +47,8 @@ class AddImageViewModel
     
     fileprivate func createImagePath( uid: String ) -> String
     {
-        return (uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg")
+        //return (uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000) ).jpg")
+        return ( uid + "/UserImage.jpg")
     }
     
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )

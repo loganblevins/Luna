@@ -30,6 +30,10 @@ protocol ServiceDBManageable
     func getCurrentUser() -> FIRUser
     
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
+    
+    func getUserOnBoardStatus( forUid uid: String, completion: @escaping(_ status: Bool?) -> Void)
+    
+    func setOnBoardStatus( forUid uid: String, status: Bool )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -157,7 +161,8 @@ struct FirebaseDBService: ServiceDBManageable
 	
 	func createUserRecord( forUid uid: String, username: String )
 	{
-		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
+		//Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUsernameKey ).setValue( username )
 		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
 
 	}
@@ -180,23 +185,32 @@ struct FirebaseDBService: ServiceDBManageable
     
     func getUserOnBoardStatus( forUid uid: String, completion: @escaping(_ status: Bool?) -> Void)
     {
-        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent(of: .value, with: {
-        
-                snapshot in
+    
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent(of: .value, with:
+        {
+            snapshot in
             
-                if let snap = snapshot.value
-                {
-                    let status = snap as! Bool
-                   completion( status )
+            print( snapshot )
+
+            if snapshot.value is NSNull
+            {
+                print("dude, snapshot was null")
+                //self.setOnBoardStatus( forUid: uid, status: false )
                     
-                }
-                else
-                {
-                    let status = false
-                    completion( status )
-                }
+                completion ( false )
+                    
+            }
+            else
+            {
+                print(snapshot.key)
+                    
+                //self.setOnBoardStatus( forUid: uid, status: (snapshot.value != nil) )
+                    
+                completion ( snapshot.value as! Bool? )
+            }
             
-            })
+            
+        })
         
 
     }

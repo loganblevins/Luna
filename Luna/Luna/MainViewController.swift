@@ -21,12 +21,26 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     func startOnBoard()
     {
         //NEED TO ADD CHECK IF THEY HAVE ALREADY ONBOARDED
-        toAddImageView()
+        mainViewModel.checkOnBoardStatus()
+        {
+                result in
+            
+                let status = result! as Bool
+            
+                if (!status)
+                {
+                    print("to add image")
+                    self.toAddImageView()
+                }
+        }
+        
     }
     
     func onBoardComplete()
     {
         relationshipViewController?.dismiss( animated: true, completion: nil )
+        
+        mainViewModel.setOnBoardComplete()
     }
     
     func checkOnBoardStatus()
@@ -121,9 +135,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         
         present( relationshipViewController!, animated: true, completion: nil )
     }
-    
-
-    
+        
 	
 	fileprivate var loginViewController: LoginViewController?
     
@@ -133,6 +145,8 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     fileprivate var lastCycleViewController: OBLastCycleViewController?
     fileprivate var relationshipViewController: OBRelationshipViewController?
     fileprivate var disorderViewController: OBDisorderViewController?
+    
+    fileprivate let mainViewModel = MainViewModel( dbService: FirebaseDBService() )
 }
 
 
@@ -152,3 +166,5 @@ protocol OnBoardDelegate: class
     
     func toDisorderView()
 }
+
+
