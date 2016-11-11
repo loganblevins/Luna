@@ -38,7 +38,7 @@ enum NetworkError: Error, CustomStringConvertible
 
 protocol Requestor
 {
-	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( _ result: Result<Any> ) -> Void )
+	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, authToken: String?, completion: @escaping(_ result: Result<Any> ) -> Void )
 }
 
 func showNetworkActivity( show: Bool )
@@ -68,6 +68,7 @@ enum LunaEndpointAlamofire: Endpoint
 	case register
 	case passwordReset
 	case passwordResetConfirm
+	case deleteUser
 	
 	var path: String
 	{
@@ -91,6 +92,8 @@ enum LunaEndpointAlamofire: Endpoint
 			return Constants.LunaStrings.PasswordResetEndpoint
 		case .passwordResetConfirm:
 			return Constants.LunaStrings.PasswordResetConfirmEndpoint
+		case .deleteUser:
+			return Constants.LunaStrings.DeleteUserEndpoint
 		}
 	}
 
