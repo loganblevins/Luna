@@ -46,6 +46,7 @@ class OBLastCycleViewController: UIViewController
         
     }
 
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     fileprivate let lastCycleViewModel = LastCycleViewModel ( dbService: FirebaseDBService() )

@@ -43,7 +43,7 @@
                                     <action selector="nextPressed:" destination="Ca4-cg-Qgw" eventType="touchUpInside" id="cuP-3x-XJA"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-lC-lOp">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-lC-lOp">
                                 <rect key="frame" x="168" y="500" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="PCB-07-sre"/>
@@ -102,6 +102,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PageControl" destination="bT1-lC-lOp" id="8z4-ik-mNw"/>
                         <outlet property="lenControlPicker" destination="QEo-Mi-tO8" id="GeK-4R-bhv"/>
                     </connections>
                 </viewController>

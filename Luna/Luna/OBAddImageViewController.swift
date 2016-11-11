@@ -24,6 +24,7 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
 
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+
     }
 
     override func didReceiveMemoryWarning()
@@ -66,6 +67,7 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         //NEED TO MOVE ON TO NEXT VIEW
     }
     
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var img: UIImageView!
     
     fileprivate var imagePicker: UIImagePickerController!

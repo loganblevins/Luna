@@ -81,9 +81,15 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
     fileprivate func setUIPickerView()
     {
         uiPickerValues = relationshipStatusViewModel.getPickerValues()
+        
+        if (uiPickerValues.count > 0)
+        {
+            selectedValue = uiPickerValues[0]
+        }
     }
     
     
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var relationshipControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []

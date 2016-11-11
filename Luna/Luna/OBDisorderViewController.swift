@@ -52,6 +52,7 @@ class OBDisorderViewController: UIViewController
         self.delegate?.toRelationshipView()
     }
 
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet fileprivate weak var disorderTextField: UITextField!
     
     fileprivate let disorderViewModel = DisorderViewModel( dbService: FirebaseDBService() )

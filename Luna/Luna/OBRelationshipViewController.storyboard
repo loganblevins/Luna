@@ -43,7 +43,7 @@
                                     <action selector="nextPressed:" destination="7Tm-ap-B0y" eventType="touchUpInside" id="iMw-uR-6Qy"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="4" translatesAutoresizingMaskIntoConstraints="NO" id="KuZ-by-55l">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="5" translatesAutoresizingMaskIntoConstraints="NO" id="KuZ-by-55l">
                                 <rect key="frame" x="168" y="500" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="wLN-pt-ic2"/>
@@ -102,6 +102,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PageControl" destination="KuZ-by-55l" id="CCo-g4-VZi"/>
                         <outlet property="relationshipControlPicker" destination="2tm-Uh-GNw" id="UUm-2T-BaV"/>
                     </connections>
                 </viewController>

@@ -69,22 +69,25 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource, UI
             {
                 error in
                 
-                
-                
             }
             
             self.delegate?.toMenstrualLenView()
         }
-       
-        //NEED TO MOVE ON TO NEXT VIEW
+
     }
 
     fileprivate func setUIPickerView()
     {
         uiPickerValues = birthControlViewModel.getPickerValues()
+        
+        if (uiPickerValues.count > 0)
+        {
+            selectedValue = uiPickerValues[0]
+        }
     }
     
     
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var birthControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []

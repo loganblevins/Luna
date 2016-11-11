@@ -83,9 +83,16 @@ class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UI
     fileprivate func setUIPickerView()
     {
         uiPickerValues = menstrualLenViewModel.getPickerValues()
+        
+        if (uiPickerValues.count > 5)
+        {
+             selectedValue = uiPickerValues[5]
+        }
+       
     }
     
     
+    @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var lenControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []

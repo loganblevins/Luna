@@ -111,6 +111,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PageControl" destination="302-aG-X45" id="u80-8c-YfI"/>
                         <outlet property="img" destination="LPG-ta-Lw6" id="kFI-qw-Hag"/>
                     </connections>
                 </viewController>
