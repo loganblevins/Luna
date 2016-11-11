@@ -24,9 +24,9 @@ class SettingsViewModel
 		try authService.signOutUser()
 	}
 	
-	// MARK: Implementation Details
-	//
+	
 	
 	fileprivate let authService: ServiceAuthenticatable!
 	fileprivate let databaseService: ServiceDBManageable!
+    
 }

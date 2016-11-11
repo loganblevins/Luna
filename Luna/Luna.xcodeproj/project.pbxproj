@@ -70,6 +70,15 @@
 		EA685D901DD2CC9D006FAB3E /* OBLastCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D8F1DD2CC9D006FAB3E /* OBLastCycleViewController.swift */; };
 		EA685D921DD2CDF4006FAB3E /* DisorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D911DD2CDF4006FAB3E /* DisorderViewModel.swift */; };
 		EA685D941DD2CE72006FAB3E /* OBDisorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA685D931DD2CE72006FAB3E /* OBDisorderViewController.swift */; };
+		EA7BD5821DD5486000CC6800 /* BirthControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD5811DD5485F00CC6800 /* BirthControlCell.swift */; };
+		EA7BD5841DD5487700CC6800 /* DisorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD5831DD5487700CC6800 /* DisorderCell.swift */; };
+		EA7BD5861DD548B600CC6800 /* RelationshipStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD5851DD548B600CC6800 /* RelationshipStatusCell.swift */; };
+		EA7BD5881DD54B6400CC6800 /* SettingsBirthControlViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7BD5871DD54B6400CC6800 /* SettingsBirthControlViewController.storyboard */; };
+		EA7BD58A1DD54B9300CC6800 /* SettingsDisorderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7BD5891DD54B9300CC6800 /* SettingsDisorderViewController.storyboard */; };
+		EA7BD58C1DD54BBE00CC6800 /* SettingsRelationshipViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7BD58B1DD54BBE00CC6800 /* SettingsRelationshipViewController.storyboard */; };
+		EA7BD58E1DD54DF300CC6800 /* SettingsBirthControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD58D1DD54DF300CC6800 /* SettingsBirthControlViewController.swift */; };
+		EA7BD5901DD54E7D00CC6800 /* SettingsRelationshipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD58F1DD54E7D00CC6800 /* SettingsRelationshipViewController.swift */; };
+		EA7BD5921DD54EEB00CC6800 /* SettingsDisorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BD5911DD54EEB00CC6800 /* SettingsDisorderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +163,15 @@
 		EA685D8F1DD2CC9D006FAB3E /* OBLastCycleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBLastCycleViewController.swift; sourceTree = "<group>"; };
 		EA685D911DD2CDF4006FAB3E /* DisorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisorderViewModel.swift; sourceTree = "<group>"; };
 		EA685D931DD2CE72006FAB3E /* OBDisorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBDisorderViewController.swift; sourceTree = "<group>"; };
+		EA7BD5811DD5485F00CC6800 /* BirthControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthControlCell.swift; sourceTree = "<group>"; };
+		EA7BD5831DD5487700CC6800 /* DisorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisorderCell.swift; sourceTree = "<group>"; };
+		EA7BD5851DD548B600CC6800 /* RelationshipStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelationshipStatusCell.swift; sourceTree = "<group>"; };
+		EA7BD5871DD54B6400CC6800 /* SettingsBirthControlViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsBirthControlViewController.storyboard; sourceTree = "<group>"; };
+		EA7BD5891DD54B9300CC6800 /* SettingsDisorderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsDisorderViewController.storyboard; sourceTree = "<group>"; };
+		EA7BD58B1DD54BBE00CC6800 /* SettingsRelationshipViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsRelationshipViewController.storyboard; sourceTree = "<group>"; };
+		EA7BD58D1DD54DF300CC6800 /* SettingsBirthControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBirthControlViewController.swift; sourceTree = "<group>"; };
+		EA7BD58F1DD54E7D00CC6800 /* SettingsRelationshipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRelationshipViewController.swift; sourceTree = "<group>"; };
+		EA7BD5911DD54EEB00CC6800 /* SettingsDisorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDisorderViewController.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +243,7 @@
 		CB105A521D87B24400EA201C /* Luna */ = {
 			isa = PBXGroup;
 			children = (
+				EA7BD5801DD5481A00CC6800 /* TableView Cells */,
 				EA292CB51D95AEE200C0B0BC /* ViewController */,
 				EA292C9D1D95ADBC00C0B0BC /* ViewModel */,
 				EA292C941D95AD1500C0B0BC /* Model */,
@@ -270,6 +289,9 @@
 				CB2352D21DC31464008E8493 /* HomeViewController.storyboard */,
 				CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */,
 				CB2352CC1DC312D3008E8493 /* SettingsViewController.storyboard */,
+				EA7BD58B1DD54BBE00CC6800 /* SettingsRelationshipViewController.storyboard */,
+				EA7BD5891DD54B9300CC6800 /* SettingsDisorderViewController.storyboard */,
+				EA7BD5871DD54B6400CC6800 /* SettingsBirthControlViewController.storyboard */,
 				CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -334,8 +356,21 @@
 				EA685D891DD2CB2B006FAB3E /* OBMenstrualLenViewController.swift */,
 				EA685D8F1DD2CC9D006FAB3E /* OBLastCycleViewController.swift */,
 				EA685D931DD2CE72006FAB3E /* OBDisorderViewController.swift */,
+				EA7BD58D1DD54DF300CC6800 /* SettingsBirthControlViewController.swift */,
+				EA7BD58F1DD54E7D00CC6800 /* SettingsRelationshipViewController.swift */,
+				EA7BD5911DD54EEB00CC6800 /* SettingsDisorderViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		EA7BD5801DD5481A00CC6800 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EA7BD5811DD5485F00CC6800 /* BirthControlCell.swift */,
+				EA7BD5831DD5487700CC6800 /* DisorderCell.swift */,
+				EA7BD5851DD548B600CC6800 /* RelationshipStatusCell.swift */,
+			);
+			name = "TableView Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,12 +484,14 @@
 				CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */,
 				EA013EBA1DD168990072634C /* OBMenstrualLenViewController.storyboard in Resources */,
 				CB2352D11DC3143E008E8493 /* CalendarViewController.storyboard in Resources */,
+				EA7BD58C1DD54BBE00CC6800 /* SettingsRelationshipViewController.storyboard in Resources */,
 				EA292CB11D95AE3500C0B0BC /* OpenSans-LightItalic.ttf in Resources */,
 				EA013EB71DD168990072634C /* OBBirthControlViewController.storyboard in Resources */,
 				CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */,
 				CB2352C81DC3052F008E8493 /* MainViewController.storyboard in Resources */,
 				EA013EB91DD168990072634C /* OBLastCycleViewController.storyboard in Resources */,
 				EA292CAB1D95AE3500C0B0BC /* OpenSans-Bold.ttf in Resources */,
+				EA7BD58A1DD54B9300CC6800 /* SettingsDisorderViewController.storyboard in Resources */,
 				CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */,
 				EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */,
 				EA292CB01D95AE3500C0B0BC /* OpenSans-Light.ttf in Resources */,
@@ -463,6 +500,7 @@
 				CB2352D31DC31464008E8493 /* HomeViewController.storyboard in Resources */,
 				EA013EB11DD168710072634C /* OBAddImageViewController.storyboard in Resources */,
 				EA292CAE1D95AE3500C0B0BC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				EA7BD5881DD54B6400CC6800 /* SettingsBirthControlViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,16 +630,20 @@
 				EA685D861DD2C7EA006FAB3E /* RelationshipStatusViewModel.swift in Sources */,
 				EA685D8E1DD2CBFF006FAB3E /* LastCycleViewModel.swift in Sources */,
 				EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */,
+				EA7BD5861DD548B600CC6800 /* RelationshipStatusCell.swift in Sources */,
+				EA7BD5841DD5487700CC6800 /* DisorderCell.swift in Sources */,
 				CBC437751DA5C30B003D6A0E /* MainViewController.swift in Sources */,
 				CBC437771DA5C338003D6A0E /* MainViewModel.swift in Sources */,
 				CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */,
 				CB34794D1DCBE8C400B3E60C /* SettingsViewController.swift in Sources */,
 				CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */,
 				EA013EBF1DD168B30072634C /* AddImageViewModel.swift in Sources */,
+				EA7BD5921DD54EEB00CC6800 /* SettingsDisorderViewController.swift in Sources */,
 				EA685D901DD2CC9D006FAB3E /* OBLastCycleViewController.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */,
+				EA7BD58E1DD54DF300CC6800 /* SettingsBirthControlViewController.swift in Sources */,
 				EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */,
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
@@ -610,6 +652,8 @@
 				EA685D921DD2CDF4006FAB3E /* DisorderViewModel.swift in Sources */,
 				CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */,
 				EA685D8A1DD2CB2B006FAB3E /* OBMenstrualLenViewController.swift in Sources */,
+				EA7BD5821DD5486000CC6800 /* BirthControlCell.swift in Sources */,
+				EA7BD5901DD54E7D00CC6800 /* SettingsRelationshipViewController.swift in Sources */,
 				EA685D881DD2CA6B006FAB3E /* OBRelationshipViewController.swift in Sources */,
 				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
 				EA685D841DD2BF48006FAB3E /* BirthControlViewModel.swift in Sources */,
