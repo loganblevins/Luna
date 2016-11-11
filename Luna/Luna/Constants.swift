@@ -12,6 +12,10 @@ struct Constants
 	{
 		static let SegueStartOnboard = "startOnboard"
 		static let SegueToHeight = "toHeight"
+		static let confirmTitle = "Are you sure?"
+		static let yesButtonTitle = "Yes"
+		static let cancelButtonTitle = "Cancel"
+		static let deleteUserConfirmMessage = "Deleting your account will also delete all of your data."
 	}
 
 	struct LunaStrings

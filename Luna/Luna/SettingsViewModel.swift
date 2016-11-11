@@ -35,6 +35,10 @@ class SettingsViewModel
 				assertionFailure( "StandardDefaults returned bad uid." )
 				return
 			}
+			
+			// This method MUST be called BEFORE the Firebase user is deleted!
+			// If the order is reversed, the DB will not have access to read/write.
+			//
 			self.databaseService.deleteUserRecord( forUid: uid )
 			
 			self.authService.deleteUser()
