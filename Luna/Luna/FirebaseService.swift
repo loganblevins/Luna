@@ -8,11 +8,25 @@
 
 import Firebase
 
+enum ServiceAuthenticatableError: Error, CustomStringConvertible
+{
+	case InvalidUser
+	
+	var description: String
+	{
+		switch self
+		{
+		case .InvalidUser:
+			return "Current user is invalid."
+		}
+	}
+}
+
 protocol ServiceAuthenticatable
 {
 	func signInUser( withToken token: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	func signOutUser() throws
-	func getTokenForCurrentUser( completion: @escaping(_ token: String?, _ error: Error? ) -> Void )
+	func deleteUser( completion: @escaping(_ error: Error? ) -> Void )
 }
 
 protocol ServiceStorable
@@ -24,6 +38,7 @@ protocol ServiceStorable
 protocol ServiceDBManageable
 {
 	func createUserRecord( forUid uid: String, username: String )
+	func deleteUserRecord( forUid uid: String )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -61,18 +76,24 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 		print( "Attempting to sign out user." )
 		try FIRAuth.auth()?.signOut()
 	}
-	
-	func getTokenForCurrentUser( completion: @escaping(_ token: String?, _ error: Error? ) -> Void )
+
+	func deleteUser( completion: @escaping(_ error: Error? ) -> Void )
 	{
-		currentUser?.getTokenWithCompletion()
+		guard let user = currentUser else
 		{
-			tokenOrNil, errorOrNil in
-			completion( tokenOrNil, errorOrNil )
+			completion( ServiceAuthenticatableError.InvalidUser )
+			return
+		}
+		
+		user.delete()
+		{
+			errorOrNil in
+			completion( errorOrNil )
 		}
 	}
 	
 	// Firebase recommends to grab the current user from the auth state change handler,
-	// but this should be safe, in some specific cases, e.g. `getTokenForSignedInUser()` since the user
+	// but this should be safe, in some specific cases, e.g. `delete:` since the user
 	// will already be logged in and initialized.
 	// 
 	// TODO: Grab current user that has been persisted from disk.
@@ -100,5 +121,11 @@ struct FirebaseDBService: ServiceDBManageable
 	{
 		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
 		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
+	}
+	
+	func deleteUserRecord( forUid uid: String )
+	{
+		Users.child( uid ).removeValue()
+		print( "Deleted user record in DB for uid: \( uid )" )
 	}
 }

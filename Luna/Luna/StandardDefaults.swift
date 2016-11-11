@@ -11,10 +11,12 @@ import Foundation
 protocol StandardDefaultsProtocol: class
 {
 	// Insert any members needed stored to disk.
-	// Use as getters and setters.
+	// Use as getters and setters. If we write tests involving StandardDefaults, we can override behavior with this interface.
 	//
 	
 	var uid: String? { get set }
+	var username: String? { get set }
+	var password: String? { get set }
 }
 
 class StandardDefaults: StandardDefaultsProtocol
@@ -38,6 +40,32 @@ class StandardDefaults: StandardDefaultsProtocol
 		}
 	}
 	
+	var username: String?
+	{
+		get
+		{
+			return getValue( usernameKey )
+		}
+		set
+		{
+			print( "Persisting username: \( newValue )" )
+			standardDefaults.set( newValue, forKey: usernameKey )
+		}
+	}
+	
+	var password: String?
+	{
+		get
+		{
+			return getValue( passwordKey )
+		}
+		set
+		{
+			print( "Persisting password: \( newValue )" )
+			standardDefaults.set( newValue, forKey: passwordKey )
+		}
+	}
+	
 	// Insert any members needing stored to disk.
 	// Database files?
 	//
@@ -55,6 +83,8 @@ class StandardDefaults: StandardDefaultsProtocol
 	//
 	
 	fileprivate let uidKey = "uidKey"
+	fileprivate let usernameKey = "usernameKey"
+	fileprivate let passwordKey = "passwordKey"
 	fileprivate let standardDefaults = UserDefaults.standard
 	
 	fileprivate func getValue< T >( _ key: String ) -> T?
