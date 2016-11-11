@@ -37,6 +37,7 @@ protocol ServiceStorable
 
 protocol ServiceDBManageable
 {
+	func waitForUserDeletion( forUid uid: String, completion: @escaping(_ error: Error? ) -> Void )
 	func createUserRecord( forUid uid: String, username: String )
 	func deleteUserRecord( forUid uid: String )
 }
@@ -111,11 +112,19 @@ struct FirebaseStorageService: ServiceStorable
 
 struct FirebaseDBService: ServiceDBManageable
 {
-	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
-	
-	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
-//	fileprivate var Entry = FirebaseDB.child( Constants.FirebaseStrings.ChildEntry )
-//	fileprivate var DailyEntries = FirebaseDB.child( Constants.FirebaseStrings.ChildDailyEntries )
+	func waitForUserDeletion( forUid uid: String, completion: @escaping(_ error: Error? ) -> Void )
+	{
+		Users.child( uid ).observeSingleEvent( of: .childRemoved, with:
+		{
+			snapshot in
+			completion( nil )
+		} )
+		{
+			error in
+			print( error.localizedDescription )
+			completion( error )
+		}
+	}
 	
 	func createUserRecord( forUid uid: String, username: String )
 	{
@@ -128,4 +137,7 @@ struct FirebaseDBService: ServiceDBManageable
 		Users.child( uid ).removeValue()
 		print( "Deleted user record in DB for uid: \( uid )" )
 	}
+	
+	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
+	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
 }
