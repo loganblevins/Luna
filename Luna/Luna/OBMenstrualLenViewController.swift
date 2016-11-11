@@ -53,7 +53,7 @@ class OBMenstrualLenViewController: UIViewController
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
-        if( selectedValue != "")
+        if( !selectedValue.isEmpty )
         {
             let valueInt = (selectedValue as NSString).integerValue
             

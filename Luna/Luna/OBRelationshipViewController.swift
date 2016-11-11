@@ -53,7 +53,7 @@ class OBRelationshipViewController: UIViewController
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
-        if( selectedValue != "")
+        if( !selectedValue.isEmpty )
         {
             relationshipStatusViewModel.onAddDataAttempt(data: selectedValue)
             {

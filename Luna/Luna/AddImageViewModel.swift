@@ -41,8 +41,7 @@ class AddImageViewModel
     
     fileprivate func getUID() -> String
     {
-        let firebaseUID = dbService.getCurrentUser()
-        return firebaseUID.uid
+        return StandardDefaults.sharedInstance.uid!
     }
     
     fileprivate func createImagePath( uid: String ) -> String

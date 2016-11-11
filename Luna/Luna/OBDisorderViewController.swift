@@ -33,13 +33,15 @@ class OBDisorderViewController: UIViewController
     {
         var uDisorder: String
         
-        if (disorderTextField.text == "")
+        if ( disorderTextField.text?.isEmpty )!
         {
             uDisorder = "None"
         }
         else
         {
-            uDisorder = disorderTextField.text!
+            guard let text = disorderTextField.text else { return }
+            
+            uDisorder = text
         }
         
         disorderViewModel.onAddDataAttempt(data: uDisorder)

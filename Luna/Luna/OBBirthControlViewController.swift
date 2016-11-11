@@ -53,7 +53,7 @@ class OBBirthControlViewController: UIViewController
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         
-        if( selectedValue != "")
+        if( !selectedValue.isEmpty )
         {
             birthControlViewModel.onAddDataAttempt(data: selectedValue)
             {
