@@ -12,6 +12,10 @@ struct Constants
 	{
 		static let SegueStartOnboard = "startOnboard"
 		static let SegueToHeight = "toHeight"
+		static let confirmTitle = "Are you sure?"
+		static let yesButtonTitle = "Yes"
+		static let cancelButtonTitle = "Cancel"
+		static let deleteUserConfirmMessage = "Deleting your account will purge all of your data."
 	}
 
 	struct LunaStrings
@@ -26,8 +30,14 @@ struct Constants
 		static let ChangePasswordEndpoint = "auth/password"
 		static let PasswordResetEndpoint = "auth/password/reset"
 		static let PasswordResetConfirmEndpoint = "auth/password/reset/confirm"
+		static let DeleteUserEndpoint = "auth/delete/"
 		static let ActivateEndpoint = "auth/activate"
 		static let RegisterEnpoint = "auth/register"
+	}
+	
+	struct NetworkCodes
+	{
+		static let LunaDeleteAccountSuccess = 204
 	}
 	
 	struct FirebaseStrings

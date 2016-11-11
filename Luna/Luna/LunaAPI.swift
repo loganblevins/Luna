@@ -10,11 +10,14 @@ import Alamofire
 import Freddy
 
 typealias FirebaseToken = String
+typealias AuthToken = String
 
 enum LunaAPIError: Error, CustomStringConvertible
 {
 	case BlankUsername
 	case BlankPassword
+	case MissingAuthToken
+	case NoUser
 	
 	var description: String
 	{
@@ -25,9 +28,14 @@ enum LunaAPIError: Error, CustomStringConvertible
 			
 		case .BlankPassword:
 			return "The password may not be blank."
+			
+		case .MissingAuthToken:
+			return "The authtoken may not be missing."
+			
+		case .NoUser:
+			return "The user may not be signed out."
 		}
 	}
-	
 }
 
 class LunaAPI
@@ -52,8 +60,8 @@ class LunaAPI
 			completion( { throw LunaAPIError.BlankPassword } )
 			return
 		}
-		
-		fetchToken( credentials )
+				
+		fetchFirebaseToken( credentials )
 		{
 			inner in
 			
@@ -70,19 +78,65 @@ class LunaAPI
 		}
 	}
 	
+	func deleteAccount( completion: @escaping(_ innterthrows: () throws -> Void ) -> Void )
+	{
+		guard let username = StandardDefaults.sharedInstance.username, let password = StandardDefaults.sharedInstance.password else
+		{
+			completion( { throw LunaAPIError.NoUser } )
+			return
+		}
+		
+		var token: AuthToken?
+		let credentials = ( username, password )
+		fetchAuthToken( credentials )
+		{
+			[weak self] inner in
+			guard let strongSelf = self else
+			{
+				assertionFailure( "Self was nil." )
+				return
+			}
+			
+			do
+			{
+				token = try inner()
+				strongSelf.requestor.request( endpoint: LunaEndpointAlamofire.deleteUser, credentials: nil, authToken: token )
+				{
+					result in
+					
+					switch result
+					{
+					// We don't care about the response, as long as it was a success.
+					//
+					case .success:
+						completion( {} )
+
+					case .failure( let error ):
+						completion( { throw error! } )
+					}
+				}
+			}
+			catch
+			{
+				let e = error as! NetworkError
+				completion( { throw e } )
+			}
+		}
+	}
+	
 	// MARK: Implementation Details
 	//
 
-	fileprivate func fetchToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
+	fileprivate func fetchFirebaseToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> FirebaseToken ) -> Void )
 	{
-		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials )
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials, authToken: nil )
 		{
 			[weak self] result in
 			guard let strongSelf = self else { return }
 			
 			do
 			{
-				let token = try strongSelf.parseLoginResponse( result )
+				let token = try strongSelf.parseLoginResponseForFirebaseToken( result )
 				completion( { return token } )
 			}
 			catch
@@ -93,7 +147,7 @@ class LunaAPI
 		}
 	}
 	
-	fileprivate func parseLoginResponse(_ result: Result<Any> ) throws -> FirebaseToken
+	fileprivate func parseLoginResponseForFirebaseToken(_ result: Result<Any> ) throws -> FirebaseToken
 	{
 		switch result
 		{
@@ -107,13 +161,54 @@ class LunaAPI
 			}
 			catch
 			{
-				throw NetworkError.cannotParse( "Unable to get firebase auth_token." )
+				throw NetworkError.cannotParse( "Unable to get firebasetoken." )
 			}
 			
 		case .failure( let error ):
 			throw error ?? NetworkError.invalid( "Unknown NetworkError" )
 		}
-		
+	}
+	
+	fileprivate func fetchAuthToken(_ credentials: Credentials, completion: @escaping(_ innerThrows: () throws -> AuthToken ) -> Void )
+	{
+		requestor.request( endpoint: LunaEndpointAlamofire.login, credentials: credentials, authToken: nil )
+		{
+			[weak self] result in
+			guard let strongSelf = self else { return }
+			
+			do
+			{
+				let token = try strongSelf.parseLoginResponseforAuthToken( result )
+				completion( { return token } )
+			}
+			catch
+			{
+				let e = error as! NetworkError
+				completion( { throw e } )
+			}
+		}
+	}
+	
+	fileprivate func parseLoginResponseforAuthToken(_ result: Result<Any> ) throws -> AuthToken
+	{
+		switch result
+		{
+		case .success( let data ):
+			do
+			{
+				guard let jsonData = data as? Data else { throw NetworkError.cannotParse( "Bad data" ) }
+				let json = try JSON( data: jsonData )
+				let token = try json.getString( at: "auth_token", "auth_token" )
+				return token
+			}
+			catch
+			{
+				throw NetworkError.cannotParse( "Unable to get authtoken.")
+			}
+			
+		case .failure( let error ):
+			throw error ?? NetworkError.invalid( "Unknown NetworkError" )
+		}
 	}
 	
 	fileprivate let requestor: Requestor!
@@ -121,39 +216,70 @@ class LunaAPI
 
 struct LunaRequestor: Requestor
 {
-	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, completion: @escaping( Result<Any> ) -> Void )
+	func request<T: Endpoint>( endpoint: T, credentials: Credentials?, authToken: String?, completion: @escaping( Result<Any> ) -> Void )
 	{
 		let lunaEndpoint = endpoint as! LunaEndpointAlamofire
 		let urlString = Constants.LunaStrings.BaseURL.appending( lunaEndpoint.path )
 		var request = try! URLRequest( url: urlString, method: lunaEndpoint.method )
 		
-		// TODO: Currently we only need `login`, but may need other endpoints later.
+		// TODO: Currently we only need `login` and `deleteUser`, but may need other endpoints later.
 		// This method is generic so the endpoint matters here.
 		//
-		// e.g. `login` is a POST request requiring credentials sent in a JSON data format
-		// of the request body. Other endpoints are different. Let's crash on anything other
-		// than `login`, since it shouldn't be implemented yet.
+		// Let's crash on anything other than `login` or `deleteUser`, since it shouldn't be implemented yet.
 		//
 		switch lunaEndpoint
 		{
 		case .login:
-			let postString = "\( Constants.LunaStrings.UsernameKey )=\( credentials!.username )&\( Constants.LunaStrings.PasswordKey )=\( credentials!.password )"
+			guard let username = credentials?.username else
+			{
+				completion( .failure( LunaAPIError.BlankUsername ) )
+				return
+			}
+			guard let password = credentials?.password else
+			{
+				completion( .failure( LunaAPIError.BlankPassword ) )
+				return
+			}
+			let postString = "\( Constants.LunaStrings.UsernameKey )=\( username )&\( Constants.LunaStrings.PasswordKey )=\( password )"
 			request.httpBody = postString.data( using: .utf8 )
+			
+			Alamofire.request( request ).validate().responseJSON()
+			{
+				response in
+				if let data = response.data, response.result.isSuccess
+				{
+					completion( .success( data ) )
+				}
+				else
+				{
+					completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
+				}
+			}
+			break
+			
+		case .deleteUser:
+			guard let token = authToken else
+			{
+				completion( .failure( LunaAPIError.MissingAuthToken ) )
+				return
+			}
+			request.setValue( "Token \( token )", forHTTPHeaderField: "Authorization" )
+		
+			Alamofire.request( request ).validate().response()
+			{
+				response in
+				if let result = response.response, response.response?.statusCode == Constants.NetworkCodes.LunaDeleteAccountSuccess
+				{
+					completion( .success( result ) )
+				}
+				else
+				{
+					completion( .failure( NetworkError.invalid( response.error?.localizedDescription ) ) )
+				}
+			}
+			
 		default:
 			assertionFailure( "Called Luna endpoint that isn't yet implemented!" )
-		}
-		
-		Alamofire.request( request ).validate().responseJSON()
-		{
-			response in
-			if let data = response.data, response.result.isSuccess
-			{
-				completion( .success( data ) )
-			}
-			else
-			{
-				completion( .failure( NetworkError.invalid( response.result.error?.localizedDescription ) ) )
-			}
 		}
 	}
 }
