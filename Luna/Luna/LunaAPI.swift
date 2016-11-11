@@ -263,19 +263,13 @@ struct LunaRequestor: Requestor
 				completion( .failure( LunaAPIError.MissingAuthToken ) )
 				return
 			}
-			// Let's just assume that the token is convertible to data and base64 string. 
-			// If it's `nil`, we have bigger problems at stake.
-			//
-//			let tokenData = token.data( using: .utf8 )
-//			let base64Token = tokenData?.base64EncodedString()
 			request.setValue( "Token \( token )", forHTTPHeaderField: "Authorization" )
 		
 			Alamofire.request( request ).validate().response()
 			{
 				response in
-				if let result = response.response
+				if let result = response.response, response.response?.statusCode == Constants.NetworkCodes.LunaDeleteAccountSuccess
 				{
-					print( result )
 					completion( .success( result ) )
 				}
 				else
