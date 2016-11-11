@@ -20,5 +20,11 @@ class RelationshipStatusCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func updateCellUI( user: User )
+    {
+        labelValue.text = user.relationshipStatus
+    }
 
+    @IBOutlet weak var labelValue: UILabel!
 }

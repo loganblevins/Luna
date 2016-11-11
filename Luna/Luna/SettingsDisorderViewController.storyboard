@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Settings Disorder View Controller-->
         <scene sceneID="Pxd-P9-NWc">
             <objects>
-                <viewController id="cH9-r9-CeN" sceneMemberID="viewController">
+                <viewController id="cH9-r9-CeN" customClass="SettingsDisorderViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8io-6V-82U"/>
                         <viewControllerLayoutGuide type="bottom" id="xci-Ot-Tth"/>

@@ -20,5 +20,11 @@ class DisorderCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func updateCellUI( user: User )
+    {
+        labelValue.text = user.disorder
+    }
 
+    @IBOutlet weak var labelValue: UILabel!
 }

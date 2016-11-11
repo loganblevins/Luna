@@ -34,6 +34,8 @@ protocol ServiceDBManageable
     func getUserOnBoardStatus( forUid uid: String, completion: @escaping(_ status: Bool?) -> Void)
     
     func setOnBoardStatus( forUid uid: String, status: Bool )
+    
+    func getUserRecord ( uid: String, completion: ((_ result:Dictionary<String, AnyObject>?) -> Void)! )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -212,7 +214,30 @@ struct FirebaseDBService: ServiceDBManageable
             
         })
         
+    }
+    
+    func getUserRecord ( uid: String, completion: ((_ result:Dictionary<String, AnyObject>?) -> Void)! )
+    {
+        Users.child( uid ).observeSingleEvent(of: .value, with:
+        {
+            snapshot in
+            
+            print ( "User record: \(snapshot.value)" )
+            
+            if snapshot.value is NSNull
+            {
+                print("The user has not data")
 
+            }
+            else
+            {
+                if let dict = snapshot.value as? Dictionary<String, AnyObject>
+                {
+                    completion( dict )
+                }
+            }
+            
+        })
     }
     
     
