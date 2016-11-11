@@ -12,6 +12,26 @@ class SettingsViewController: UIViewController
 {
 	@IBAction func logoutButtonPressed()
 	{
+		let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.confirmTitle,
+		                               message: nil,
+		                               preferredStyle: .alert )
+		alert.addAction( .init( title: Constants.InterfaceBuilderStrings.yesButtonTitle, style: .destructive ) { _ in self.logoutUser() } )
+		alert.addAction( .init( title: Constants.InterfaceBuilderStrings.cancelButtonTitle, style: .cancel, handler: nil ) )
+		present( alert, animated: true, completion: nil )
+	}
+	
+	@IBAction func deleteAccountButtonPressed()
+	{
+		let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.confirmTitle,
+		                               message: Constants.InterfaceBuilderStrings.deleteUserConfirmMessage,
+		                               preferredStyle: .alert )
+		alert.addAction( .init( title: Constants.InterfaceBuilderStrings.yesButtonTitle, style: .destructive ) { _ in self.deleteAccount() } )
+		alert.addAction( .init( title: Constants.InterfaceBuilderStrings.cancelButtonTitle, style: .cancel, handler: nil ) )
+		present( alert, animated: true, completion: nil )
+	}
+	
+	fileprivate func logoutUser()
+	{
 		do
 		{
 			try settingsViewModel.logout()
@@ -25,7 +45,7 @@ class SettingsViewController: UIViewController
 		}
 	}
 	
-	@IBAction func deleteAccountButtonPressed()
+	fileprivate func deleteAccount()
 	{
 		showNetworkActivity( show: true )
 		settingsViewModel.deleteAccountAsync()
