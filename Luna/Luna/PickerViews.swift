@@ -11,91 +11,23 @@ import Foundation
 
 class PickerViews
 {
-    
-    
     init()
     {
         
     }
     
-    func selectDefaultValues ( _ type: Int ) -> Int
+    func createRelationStatusPicker () -> [String]
     {
-        switch type
-        {
-        case 1:
-            return 1
-        case 2:
-            return 2
-        case 3:
-            return 28
-        case 4:
-            return 5
-        case 6:
-            return 1
-        default:
-            return 1
-        }
-    }
-    
-    func selectPicker ( _ type: Int ) -> [String]
-    {
+        let status = ["Single", "Casual Dating", "Committed Relationship"]
         
-        switch type
-        {
-        case 1:
-            return createHeightPicker()
-        case 2:
-            return createWeightPicker()
-        case 3:
-            return createCycleLengths()
-        case 4:
-            return createPeriodLengths()
-        case 6:
-            return createBirthControlPicker()
-        default:
-            return [String]()
-        }
-    }
-    
-    func createHeightPicker () -> [String]
-    {
-        var heights = [String]()
-        
-        for i in stride(from: 1, through: 9, by: 1)
-        {
-            let firstValue: String = String(i)
-            
-            for j in stride(from: 1, through: 10, by: 1)
-            {
-                let inch: String = String(j)
-                
-                let totalHeight = firstValue + " ft " + inch + " in"
-                heights.append(totalHeight)
-            }
-        }
-
-        return heights
-
-    }
-    
-    
-    func createWeightPicker () -> [String]
-    {
-        var weights = [String]()
-        
-        for w in stride(from: 50, through: 700, by: 1)
-        {
-            let weight = String(w) + " lb"
-            
-            weights.append(weight)
-        }
-        
-        return weights
+        return status
     }
     
     func createBirthControlPicker () -> [String]
     {
-        let birthControls = ["None", "Pill", "Vaginal Ring", "Patch", "IUD", "Implant", "Other"]
+        let birthControls = ["None", "Diaphragm", "Cervical cap",
+                             "IUD", "IUD Copper-based", "Implant", "Sponge", "Spermicide", "Injections",
+                             "Pill", "Vaginal Ring", "Patch", "Male Condom", "Female Condom", "Natural Planning", "Other"]
         
         return birthControls
     }
