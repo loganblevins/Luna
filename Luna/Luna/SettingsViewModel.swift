@@ -17,15 +17,19 @@ class SettingsViewModel
 	{
 		self.authService = authService
 		self.databaseService = databaseService
-        
+                
+	}
+    
+    func setUser()
+    {
         setUserViewModel()
         {
             result in
-            
+                
             self.userViewModel = result
-            
+                
         }
-	}
+    }
 	
 	func logout() throws
 	{

@@ -177,7 +177,11 @@ struct FirebaseDBService: ServiceDBManageable
     
     func getCurrentUser() -> FIRUser
     {
-        return (FIRAuth.auth()?.currentUser)!
+        let user = FIRAuth.auth()?.currentUser
+        
+
+        return user!
+
     }
     
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )

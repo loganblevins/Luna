@@ -21,6 +21,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        settingsViewModel.setUser()
+        
+        //NEED TO WAIT ON USERINFO
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -36,6 +40,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
             
+            cell.clipsToBounds = true
+            
             return cell
         }
         else if indexPath.row == 1
@@ -43,6 +49,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "relationshipCell") as! RelationshipStatusCell
             
             cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
+            
+            cell.clipsToBounds = true
             
             return cell
         }
@@ -52,12 +60,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
             
+            cell.clipsToBounds = true
+            
             return cell
         }
         else
         {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
