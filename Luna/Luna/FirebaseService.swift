@@ -32,14 +32,21 @@ protocol ServiceAuthenticatable
 protocol ServiceStorable
 {
 	// TODO: Fill in generic storage needs.
-	//
+    func uploadUserImage( forUid uid: String, imageData: Data, imagePath: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void)
+    
+    func addUserImageDownloadLink( forUid uid: String, downloadLink: String )
+
 }
 
 protocol ServiceDBManageable
 {
 	func waitForUserDeletion( forUid uid: String, completion: @escaping(_ error: Error? ) -> Void )
 	func createUserRecord( forUid uid: String, username: String )
+
+    func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
+
 	func deleteUserRecord( forUid uid: String )
+
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -107,7 +114,80 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 
 struct FirebaseStorageService: ServiceStorable
 {
-	
+    fileprivate static let FirebaseDB = FIRDatabase.database().reference()
+    fileprivate static let FirebaseStorage = FIRStorage.storage().reference( forURL: Constants.FirebaseStrings.StorageURL )
+    
+    fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+    fileprivate var StorageRef = FirebaseStorage
+    
+    func uploadUserImage( forUid uid: String, imageData: Data, imagePath: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void)
+    {
+        print( "Attempting to upload user photo." )
+        
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        
+        let uploadTask = StorageRef.child( imagePath ).put(imageData, metadata: metadata)
+        
+        uploadTask.observe(.failure)
+        {
+            snapshot in
+            
+            guard let storageError = snapshot.error else { return }
+            
+            guard let errorCode = FIRStorageErrorCode(rawValue: storageError as! NSInteger) else { return }
+            
+            print ( "An error has occurred trying to upload photo: \(storageError)" )
+            
+            switch errorCode
+            {
+            case .objectNotFound:
+                // File doesn't exist
+                completion( uid , snapshot.error )
+                break
+                
+            case .unauthorized:
+                // User doesn't have permission to access file
+                completion( uid , snapshot.error )
+                break
+                
+            case .cancelled:
+                // User canceled the upload
+                completion( uid , snapshot.error )
+                break
+                
+            case .unknown:
+                // Unknown error occurred, inspect the server response
+                completion( uid , snapshot.error )
+                break
+                
+            default:
+                completion( uid , snapshot.error )
+                break
+            }
+        }
+        
+        
+        uploadTask.observe(.success)
+        {
+            snapshot in
+            
+            print("Image upload a success")
+            
+            guard let downloadlink = snapshot.metadata?.downloadURL()?.absoluteString else { return }
+            
+            self.addUserImageDownloadLink( forUid: uid, downloadLink: downloadlink )
+        }
+    }
+    
+    
+    func addUserImageDownloadLink( forUid uid: String, downloadLink: String )
+    {
+        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUserImageKey: downloadLink] )
+        print( "Add user image download url in DB for uid: \( uid ), downloadUrl: \( downloadLink )")
+    }
+    
 }
 
 struct FirebaseDBService: ServiceDBManageable
@@ -126,18 +206,30 @@ struct FirebaseDBService: ServiceDBManageable
 		}
 	}
 	
-	func createUserRecord( forUid uid: String, username: String )
-	{
-		Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
-		print( "Created user record in DB for uid: \( uid ), username: \( username )" )
-	}
+    func createUserRecord( forUid uid: String, username: String )
+    {
+        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
+        print( "Created user record in DB for uid: \( uid ), username: \( username )" )
+    }
+    
+    func deleteUserRecord( forUid uid: String )
+    {
+        Users.child( uid ).removeValue()
+        print( "Deleted user record in DB for uid: \( uid )" )
+    }
+    
+    func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
+    {
+        Users.child( uid ).setValue( [ key: data ] )
+    }
+    
+    func isUserOnBoard( forUid uid: String ) -> Bool
+    {
+        return false
+    }
 	
-	func deleteUserRecord( forUid uid: String )
-	{
-		Users.child( uid ).removeValue()
-		print( "Deleted user record in DB for uid: \( uid )" )
-	}
 	
 	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
 	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+
 }
