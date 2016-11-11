@@ -8,6 +8,20 @@
 
 import UIKit
 
+enum LunaError: Error, CustomStringConvertible
+{
+	case BadSelf
+	
+	var description: String
+	{
+		switch self
+		{
+		case .BadSelf:
+			return "Self must not be nil."
+		}
+	}
+}
+
 func root(_ view: UIView ) -> UIViewController?
 {
 	return view.window?.rootViewController
