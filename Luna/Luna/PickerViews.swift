@@ -18,7 +18,7 @@ class PickerViews
         
     }
     
-    func selectDefaultValues ( _ type: Int ) -> Int
+    /*func selectDefaultValues ( _ type: Int ) -> Int
     {
         switch type
         {
@@ -55,47 +55,20 @@ class PickerViews
         default:
             return [String]()
         }
-    }
+    }*/
     
-    func createHeightPicker () -> [String]
+    func createRelationStatusPicker () -> [String]
     {
-        var heights = [String]()
+        let status = ["Single", "Casual Dating", "Committed Relationship"]
         
-        for i in stride(from: 1, through: 9, by: 1)
-        {
-            let firstValue: String = String(i)
-            
-            for j in stride(from: 1, through: 10, by: 1)
-            {
-                let inch: String = String(j)
-                
-                let totalHeight = firstValue + " ft " + inch + " in"
-                heights.append(totalHeight)
-            }
-        }
-
-        return heights
-
-    }
-    
-    
-    func createWeightPicker () -> [String]
-    {
-        var weights = [String]()
-        
-        for w in stride(from: 50, through: 700, by: 1)
-        {
-            let weight = String(w) + " lb"
-            
-            weights.append(weight)
-        }
-        
-        return weights
+        return status
     }
     
     func createBirthControlPicker () -> [String]
     {
-        let birthControls = ["None", "Pill", "Vaginal Ring", "Patch", "IUD", "Implant", "Other"]
+        let birthControls = ["None", "Male Condom", "Female Condom", "Diaphragm", "Cervical cap",
+                             "IUD", "IUD Copper-based", "Implant", "Sponge", "Spermicide", "Injections",
+                             "Pill", "Vaginal Ring", "Patch", "Natural Planning", "Other"]
         
         return birthControls
     }
