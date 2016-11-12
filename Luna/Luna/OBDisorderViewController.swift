@@ -51,6 +51,7 @@ class OBDisorderViewController: UIViewController
         }
         
         //NEED TO MOVE ON TO NEXT VIEW
+        delegate?.toRelationshipView()
     }
 
     @IBOutlet fileprivate weak var disorderTextField: UITextField!

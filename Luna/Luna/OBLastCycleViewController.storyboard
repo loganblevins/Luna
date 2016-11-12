@@ -49,7 +49,7 @@
                                     <action selector="nextPressed:" destination="kZi-mO-LVa" eventType="touchUpInside" id="gEP-ce-w6f"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-mM-Ivz">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="3" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-mM-Ivz">
                                 <rect key="frame" x="168" y="500" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="d7H-QI-oKm"/>

@@ -79,10 +79,13 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
+                            <imageView alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
                                 <rect key="frame" x="119" y="190" width="137" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="Gq0-Ia-vfK"/>
+                                    <constraint firstAttribute="height" constant="126" id="H1o-F4-iLI"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="eBj-Om-26C" appends="YES" id="M9l-WZ-uxi"/>
                                 </connections>
@@ -93,6 +96,8 @@
                             <constraint firstItem="302-aG-X45" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="6oB-1G-VBa"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="top" secondItem="GxB-rs-9hs" secondAttribute="bottom" constant="73" id="Dny-OO-T3N"/>
                             <constraint firstItem="h7l-Fl-aNL" firstAttribute="top" secondItem="OMO-d4-M0a" secondAttribute="bottom" constant="43" id="H3b-vz-Gkt"/>
+                            <constraint firstItem="LPG-ta-Lw6" firstAttribute="top" secondItem="NDj-qD-yVz" secondAttribute="bottom" constant="76" id="HRZ-MO-Riv"/>
+                            <constraint firstItem="LPG-ta-Lw6" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="Ohj-u8-2sv"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="centerX" secondItem="1a8-jb-QPe" secondAttribute="centerX" id="Qwx-Xv-7UC"/>
                             <constraint firstItem="71T-tU-uc9" firstAttribute="leading" secondItem="1a8-jb-QPe" secondAttribute="leadingMargin" constant="28" id="SSb-cn-kEX"/>
                             <constraint firstItem="NDj-qD-yVz" firstAttribute="leading" secondItem="1a8-jb-QPe" secondAttribute="leadingMargin" id="e0e-ED-5jo"/>
@@ -119,4 +124,7 @@
             <point key="canvasLocation" x="538" y="297"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchScreen" width="1242" height="1242"/>
+    </resources>
 </document>

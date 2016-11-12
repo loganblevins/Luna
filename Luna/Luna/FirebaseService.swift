@@ -34,7 +34,7 @@ protocol ServiceStorable
 	// TODO: Fill in generic storage needs.
     func uploadUserImage( forUid uid: String, imageData: Data, imagePath: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void)
     
-    func addUserImageDownloadLink( forUid uid: String, downloadLink: String )
+    func addUserImageDownloadLink( forUid uid: String, key: String, downloadLink: String )
 
 }
 
@@ -46,6 +46,7 @@ protocol ServiceDBManageable
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
 
 	func deleteUserRecord( forUid uid: String )
+    func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
 
 }
 
@@ -177,14 +178,14 @@ struct FirebaseStorageService: ServiceStorable
             
             guard let downloadlink = snapshot.metadata?.downloadURL()?.absoluteString else { return }
             
-            self.addUserImageDownloadLink( forUid: uid, downloadLink: downloadlink )
+            self.addUserImageDownloadLink( forUid: uid, key: Constants.FirebaseStrings.DictionaryUserImageKey, downloadLink: downloadlink )
         }
     }
     
     
-    func addUserImageDownloadLink( forUid uid: String, downloadLink: String )
+    func addUserImageDownloadLink( forUid uid: String, key: String, downloadLink: String )
     {
-        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUserImageKey: downloadLink] )
+        Users.child( uid ).child( key) .setValue( downloadLink )
         print( "Add user image download url in DB for uid: \( uid ), downloadUrl: \( downloadLink )")
     }
     
@@ -208,7 +209,7 @@ struct FirebaseDBService: ServiceDBManageable
 	
     func createUserRecord( forUid uid: String, username: String )
     {
-        Users.child( uid ).setValue( [Constants.FirebaseStrings.DictionaryUsernameKey: username] )
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUsernameKey ).setValue( username )
         print( "Created user record in DB for uid: \( uid ), username: \( username )" )
     }
     
@@ -220,12 +221,33 @@ struct FirebaseDBService: ServiceDBManageable
     
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
     {
-        Users.child( uid ).setValue( [ key: data ] )
+        Users.child( uid ).child( key ).setValue( data )
     }
     
-    func isUserOnBoard( forUid uid: String ) -> Bool
+    func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
     {
-        return false
+        
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent(of: .value, with:
+        {
+            snapshot in
+            
+            guard snapshot.exists() else
+            {
+                print("Status doesn't exist")
+                completion ( nil, false )
+                return
+            }
+            
+            print("Status: \(snapshot.value) exists")
+            
+            completion( nil, snapshot.value as! Bool? )
+            
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
     }
 	
 	
