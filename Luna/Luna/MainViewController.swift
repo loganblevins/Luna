@@ -43,7 +43,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	
 	func SettingsViewController() -> SettingsViewController
 	{
-		return self.viewControllers![2] as! SettingsViewController
+        return self.viewControllers![2] as! SettingsViewController
 	}
     
     func startOnBoard()
@@ -98,7 +98,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         rootPresent( self.view, controller: disorderViewController! )
     }
     
-	
+    
 	fileprivate var loginViewController: LoginViewController?
     
     fileprivate var addImageViewController: OBAddImageViewController?

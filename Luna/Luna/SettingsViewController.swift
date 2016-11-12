@@ -8,8 +8,58 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController
+
+protocol SettingsDelegate: class
 {
+    
+    func editBirthControlInfo()
+    
+    func editRelationshipStatus()
+    
+    func editDisorderInfo()
+}
+
+extension SettingsDelegate
+{
+    
+    func editBirthControlInfo()
+    {
+        
+    }
+    
+    func editRelationshipStatus()
+    {
+        
+    }
+    
+    func editDisorderInfo()
+    {
+        
+    }
+}
+
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+{
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //settingsViewModel.getUserData()
+        //{
+        //    errorOrNil in
+
+        //    guard errorOrNil == nil else
+        //    {
+        //        return
+        //    }
+        //}
+        
+    }
+    
 	@IBAction func logoutButtonPressed()
 	{
 		let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.confirmTitle,
@@ -95,6 +145,64 @@ class SettingsViewController: UIViewController
 			print( error.localizedDescription )
 		}
 	}
-	
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        if indexPath.row == 0
+        {
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsCell
+            
+            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
+            
+            //cell.clipsToBounds = true
+            
+            //return cell
+            return UITableViewCell()
+        }
+        else if indexPath.row == 1
+        {
+           // let cell = tableView.dequeueReusableCell(withIdentifier: "relationshipCell") as! RelationshipStatusCell
+            
+            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
+            
+            //cell.clipsToBounds = true
+            return UITableViewCell()
+            
+            //return cell
+        }
+        else if indexPath.row == 2
+        {
+           // let cell = tableView.dequeueReusableCell(withIdentifier: "disorderCell") as! DisorderCell
+            
+            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
+            
+            //cell.clipsToBounds = true
+            
+            //return cell
+            return UITableViewCell()
+        }
+        else
+        {
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 3
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    
 	fileprivate let settingsViewModel = SettingsViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
 }

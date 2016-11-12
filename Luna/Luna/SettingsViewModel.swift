@@ -23,6 +23,62 @@ class SettingsViewModel
 	{
 		try authService.signOutUser()
 	}
+    
+    func getUserData( completion: @escaping(_ error: Error?) -> Void )
+    {
+        DispatchQueue.global( qos: .userInitiated ).async
+        {
+            self.createUserViewModel()
+            {
+                [weak self] errorOrNil, userViewModelOrNil in
+                
+                guard self != nil else
+                {
+                    assertionFailure( "Self was nil." )
+                    return
+                }
+                guard errorOrNil == nil else
+                {
+                    completion( errorOrNil )
+                    return
+                }
+                guard userViewModelOrNil != nil else
+                {
+                    self?.userViewModel = userViewModelOrNil
+                    completion( errorOrNil )
+                    return
+                }
+            }
+        }
+
+    }
+    
+    fileprivate func createUserViewModel( completion: @escaping(_ error: Error?, _ userViewModel: UserViewModel? ) -> Void )
+    {
+        guard let uid = StandardDefaults.sharedInstance.uid else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return
+        }
+        
+        self.databaseService.retrieveUserRecord( forUid: uid )
+        {
+            errorOrNil, userOrNil in
+            
+            if (userOrNil != nil)
+            {
+                let user = self.createUserData(uKey: uid, user: userOrNil!)
+                
+                let userViewModel = UserViewModel( user: user )
+                
+                completion ( nil, userViewModel )
+            }
+            else
+            {
+                completion ( errorOrNil, nil )
+            }
+        }
+    }
 	
 	// Complex method completing 3 procedures in this order: Delete from ServiceDB -> Delete from ServiceAuthenticatable -> Delete from Luna
 	//
@@ -141,7 +197,37 @@ class SettingsViewModel
 		StandardDefaults.sharedInstance.username = nil
 		StandardDefaults.sharedInstance.password = nil
 	}
-	
+    
+    fileprivate func createUserData( uKey: String, user: Dictionary<String, AnyObject>) -> User
+    {
+        let uid = uKey
+        
+        let birthCrtl = user[Constants.FirebaseStrings.DictionaryUserBirthControl] as? String
+        
+        let cycleDate = user[Constants.FirebaseStrings.DictionaryUserCycleDate] as? String
+        
+        let cycle = convertDate(date: cycleDate!)
+        
+        let len = user[Constants.FirebaseStrings.DictionaryUserMenstrualLen] as? Int
+        
+        let status = user[Constants.FirebaseStrings.DictionaryUserRelationshipStatus] as? String
+        
+        let disorder = user[Constants.FirebaseStrings.DictionaryUserDisorder] as? String
+        
+        let userData: UserData = UserData(uid: uid, birthControl: birthCrtl!, lastCycle: cycle, cycleLength: len!, relationshipStatus: status!, disorder: disorder!)
+        
+        return User(userData: userData)
+    }
+    
+    fileprivate func convertDate( date: String ) -> Date
+    {
+        let time = (date as NSString).doubleValue
+        
+        return Date( timeIntervalSince1970: time )
+    }
+
+    var userViewModel: UserViewModel?
+    
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!
 	fileprivate let databaseService: ServiceDBManageable!

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="15G1206" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oE6-As-j6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oE6-As-j6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,35 +21,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-Wo-fhi">
-                                <rect key="frame" x="159" y="280" width="57" height="30"/>
-                                <state key="normal" title="Sign out"/>
-                                <connections>
-                                    <action selector="logoutButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="GIU-8q-aic"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KG3-ub-amu">
-                                <rect key="frame" x="135" y="318" width="104" height="30"/>
-                                <state key="normal" title="Delete account"/>
-                                <connections>
-                                    <action selector="deleteAccountButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="vgs-1d-9kZ"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOC-1d-g2v">
+                                <rect key="frame" x="0.0" y="538" width="375" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KG3-ub-amu">
+                                        <rect key="frame" x="135" y="42" width="104" height="30"/>
+                                        <state key="normal" title="Delete account"/>
+                                        <connections>
+                                            <action selector="deleteAccountButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="vgs-1d-9kZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-Wo-fhi">
+                                        <rect key="frame" x="159" y="8" width="57" height="30"/>
+                                        <state key="normal" title="Sign out"/>
+                                        <connections>
+                                            <action selector="logoutButtonPressed" destination="hUm-WJ-Wwl" eventType="touchUpInside" id="GIU-8q-aic"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="a6G-Wo-fhi" firstAttribute="centerX" secondItem="YOC-1d-g2v" secondAttribute="centerX" id="DLW-8U-zNu"/>
+                                    <constraint firstItem="KG3-ub-amu" firstAttribute="centerX" secondItem="YOC-1d-g2v" secondAttribute="centerX" id="FXm-Tz-2WK"/>
+                                    <constraint firstItem="KG3-ub-amu" firstAttribute="bottom" secondItem="YOC-1d-g2v" secondAttribute="bottomMargin" id="NPF-fO-3Kz"/>
+                                    <constraint firstItem="a6G-Wo-fhi" firstAttribute="top" secondItem="YOC-1d-g2v" secondAttribute="topMargin" id="k2j-KR-uOH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXd-7C-ZVS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.45098039220000002" green="0.66274509800000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hnj-A7-Od3">
+                                <rect key="frame" x="0.0" y="104" width="375" height="434"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KG3-ub-amu" firstAttribute="top" secondItem="a6G-Wo-fhi" secondAttribute="bottom" constant="8" id="3iC-Ie-R0y"/>
-                            <constraint firstItem="a6G-Wo-fhi" firstAttribute="centerX" secondItem="9FA-O3-IVg" secondAttribute="centerX" id="Reb-TD-hgT"/>
-                            <constraint firstItem="KG3-ub-amu" firstAttribute="centerX" secondItem="9FA-O3-IVg" secondAttribute="centerX" id="TVV-es-ULP"/>
-                            <constraint firstItem="a6G-Wo-fhi" firstAttribute="top" secondItem="Ftr-ti-Y9m" secondAttribute="bottom" constant="216" id="z9i-Bw-Pxg"/>
+                            <constraint firstItem="LXd-7C-ZVS" firstAttribute="centerX" secondItem="9FA-O3-IVg" secondAttribute="centerX" id="0rY-As-a0O"/>
+                            <constraint firstItem="YOC-1d-g2v" firstAttribute="top" secondItem="Hnj-A7-Od3" secondAttribute="bottom" id="CQ2-Q2-9eS"/>
+                            <constraint firstItem="LXd-7C-ZVS" firstAttribute="trailing" secondItem="YOC-1d-g2v" secondAttribute="trailing" id="Hnc-qS-iGs"/>
+                            <constraint firstItem="YOC-1d-g2v" firstAttribute="bottom" secondItem="sX6-1E-Mef" secondAttribute="top" id="RQe-r0-CPY"/>
+                            <constraint firstAttribute="bottom" secondItem="LXd-7C-ZVS" secondAttribute="bottom" constant="563" id="VL2-Wv-Scj"/>
+                            <constraint firstItem="LXd-7C-ZVS" firstAttribute="leading" secondItem="9FA-O3-IVg" secondAttribute="leading" id="Wep-2G-m6Z"/>
+                            <constraint firstItem="Hnj-A7-Od3" firstAttribute="trailing" secondItem="LXd-7C-ZVS" secondAttribute="trailing" id="bUl-9b-5VG"/>
+                            <constraint firstItem="Hnj-A7-Od3" firstAttribute="leading" secondItem="LXd-7C-ZVS" secondAttribute="leading" id="bqB-fv-LLQ"/>
+                            <constraint firstItem="LXd-7C-ZVS" firstAttribute="leading" secondItem="YOC-1d-g2v" secondAttribute="leading" id="fWu-f0-G4e"/>
+                            <constraint firstItem="Hnj-A7-Od3" firstAttribute="top" secondItem="LXd-7C-ZVS" secondAttribute="bottom" id="iNc-i3-2P9"/>
+                            <constraint firstItem="YOC-1d-g2v" firstAttribute="centerX" secondItem="9FA-O3-IVg" secondAttribute="centerX" id="jhk-O5-Ld1"/>
+                            <constraint firstItem="YOC-1d-g2v" firstAttribute="top" secondItem="9FA-O3-IVg" secondAttribute="top" constant="538" id="m2v-vQ-yPh"/>
+                            <constraint firstItem="LXd-7C-ZVS" firstAttribute="top" secondItem="Ftr-ti-Y9m" secondAttribute="bottom" id="uwv-wA-IL4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fwg-4M-pTO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Hnj-A7-Od3" id="7jn-by-Tx1"/>
+                        <segue destination="CMb-R7-45C" kind="show" id="oa0-PW-6QI"/>
+                        <segue destination="ULL-tc-EiU" kind="show" id="xeI-UW-rNY"/>
+                        <segue destination="f0H-5T-c7o" kind="show" id="w8E-FG-crC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFs-U6-c9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="130"/>
+            <point key="canvasLocation" x="1288.8" y="129.98500749625188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iDn-Bf-t69">
@@ -71,6 +107,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Je-Yd-j6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="506" y="130"/>
+        </scene>
+        <!--SettingsDisorderViewController-->
+        <scene sceneID="FTL-EB-imG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsDisorderViewController" id="f0H-5T-c7o" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrG-Pg-NYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2406" y="381"/>
+        </scene>
+        <!--SettingsRelationshipViewController-->
+        <scene sceneID="4gS-qH-osB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsRelationshipViewController" id="ULL-tc-EiU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46A-Sb-cvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2387" y="130"/>
+        </scene>
+        <!--SettingsBirthControlViewController-->
+        <scene sceneID="mZf-jX-B29">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsBirthControlViewController" id="CMb-R7-45C" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTC-fe-dGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2405" y="-86"/>
         </scene>
     </scenes>
     <resources>
