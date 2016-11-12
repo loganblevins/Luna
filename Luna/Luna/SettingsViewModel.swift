@@ -42,7 +42,7 @@ class SettingsViewModel
                     completion( errorOrNil )
                     return
                 }
-                guard userViewModelOrNil != nil else
+                guard userViewModelOrNil == nil else
                 {
                     self?.userViewModel = userViewModelOrNil
                     completion( errorOrNil )
@@ -201,20 +201,38 @@ class SettingsViewModel
     fileprivate func createUserData( uKey: String, user: Dictionary<String, AnyObject>) -> User
     {
         let uid = uKey
+        var birthCrtl = ""
+        var cycleDate: Date = NSDate() as Date
+        var len = 0
+        var status = ""
+        var disorder = ""
         
-        let birthCrtl = user[Constants.FirebaseStrings.DictionaryUserBirthControl] as? String
+        if let bc = user[Constants.FirebaseStrings.DictionaryUserBirthControl] as? String
+        {
+            birthCrtl = bc
+        }
         
-        let cycleDate = user[Constants.FirebaseStrings.DictionaryUserCycleDate] as? String
+        if let cd = user[Constants.FirebaseStrings.DictionaryUserCycleDate] as? String
+        {
+            cycleDate = convertDate(date: cd)
+        }
         
-        let cycle = convertDate(date: cycleDate!)
+        if let l = user[Constants.FirebaseStrings.DictionaryUserMenstrualLen] as? Int
+        {
+            len = l
+        }
         
-        let len = user[Constants.FirebaseStrings.DictionaryUserMenstrualLen] as? Int
+        if let s = user[Constants.FirebaseStrings.DictionaryUserRelationshipStatus] as? String
+        {
+            status = s
+        }
         
-        let status = user[Constants.FirebaseStrings.DictionaryUserRelationshipStatus] as? String
+        if let d = user[Constants.FirebaseStrings.DictionaryUserDisorder] as? String
+        {
+            disorder = d
+        }
         
-        let disorder = user[Constants.FirebaseStrings.DictionaryUserDisorder] as? String
-        
-        let userData: UserData = UserData(uid: uid, birthControl: birthCrtl!, lastCycle: cycle, cycleLength: len!, relationshipStatus: status!, disorder: disorder!)
+        let userData: UserData = UserData(uid: uid, birthControl: birthCrtl, lastCycle: cycleDate, cycleLength: len, relationshipStatus: status, disorder: disorder)
         
         return User(userData: userData)
     }

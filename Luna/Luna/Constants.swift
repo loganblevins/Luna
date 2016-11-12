@@ -57,5 +57,12 @@ struct Constants
         static let DictionaryUserRelationshipStatus = "RelationshipStatus"
 	}
     
+    struct SettingsStrings
+    {
+        static let Relationship = "Relationship Status"
+        static let BirthCtrl = "Birth Control Type"
+        static let Disorder = "Reporductive Disorder"
+    }
+    
     
 }

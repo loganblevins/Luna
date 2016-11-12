@@ -32,7 +32,7 @@ final class UserViewModel
     
     var disorder: String
     {
-        return user.birthControl
+        return user.disorder
     }
 
 	

@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Relationship View Controller-->
+        <!--Settings Relationship View Controller-->
         <scene sceneID="oA0-Pd-aW7">
             <objects>
-                <viewController id="9L5-vx-xdT" customClass="OBRelationshipViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9L5-vx-xdT" customClass="SettingsRelationshipViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4S8-dw-sJh"/>
                         <viewControllerLayoutGuide type="bottom" id="5DR-Wh-5tn"/>
@@ -39,6 +39,9 @@
                                 <state key="normal" title="OK">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="okPressed:" destination="9L5-vx-xdT" eventType="touchUpInside" id="Wi0-eq-oG6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your relationship status?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-Ig-fwa">
                                 <rect key="frame" x="16" y="135" width="343" height="21"/>
@@ -64,6 +67,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="relationshipControlPicker" destination="z0u-nc-jM6" id="fl5-QI-iff"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7j-xO-XFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

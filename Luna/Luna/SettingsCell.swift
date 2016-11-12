@@ -24,10 +24,10 @@ class SettingsCell: UITableViewCell
         // Configure the view for the selected state
     }
     
-    func updateCellUI( title: String, user: User )
+    func updateCellUI( title: String, value: String )
     {
         labelTitle.text = title
-        labelValue.text = user.birthControl
+        labelValue.text = value
     }
     
 

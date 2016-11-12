@@ -54,6 +54,9 @@
                                 <state key="normal" title="OK">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="okPressed:" destination="cH9-r9-CeN" eventType="touchUpInside" id="Wpt-xF-K2y"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zKM-4v-Z2X">
                                 <rect key="frame" x="16" y="239" width="343" height="30"/>
@@ -79,6 +82,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="disorderTextField" destination="zKM-4v-Z2X" id="ag6-kX-LR8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7P-Qz-Qpr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,36 +8,6 @@
 
 import UIKit
 
-
-protocol SettingsDelegate: class
-{
-    
-    func editBirthControlInfo()
-    
-    func editRelationshipStatus()
-    
-    func editDisorderInfo()
-}
-
-extension SettingsDelegate
-{
-    
-    func editBirthControlInfo()
-    {
-        
-    }
-    
-    func editRelationshipStatus()
-    {
-        
-    }
-    
-    func editDisorderInfo()
-    {
-        
-    }
-}
-
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
@@ -48,17 +18,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        //settingsViewModel.getUserData()
-        //{
-        //    errorOrNil in
+        settingsViewModel.getUserData()
+        {
+           errorOrNil in
 
-        //    guard errorOrNil == nil else
-        //    {
-        //        return
-        //    }
-        //}
+            guard errorOrNil == nil else
+            {
+                return
+            }
+            
+            self.tableView.reloadData()
+        }
         
     }
+    
+    weak var delegate: SettingsDelegate?
     
 	@IBAction func logoutButtonPressed()
 	{
@@ -153,54 +127,76 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        if indexPath.row == 0
+        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsCell
+        
+        if(settingsViewModel.userViewModel != nil)
         {
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsCell
-            
-            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
-            
-            //cell.clipsToBounds = true
-            
-            //return cell
-            return UITableViewCell()
-        }
-        else if indexPath.row == 1
-        {
-           // let cell = tableView.dequeueReusableCell(withIdentifier: "relationshipCell") as! RelationshipStatusCell
-            
-            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
-            
-            //cell.clipsToBounds = true
-            return UITableViewCell()
-            
-            //return cell
-        }
-        else if indexPath.row == 2
-        {
-           // let cell = tableView.dequeueReusableCell(withIdentifier: "disorderCell") as! DisorderCell
-            
-            //cell.updateCellUI( user: (settingsViewModel.userViewModel?.getUser())! )
-            
-            //cell.clipsToBounds = true
-            
-            //return cell
-            return UITableViewCell()
+            if indexPath.row == 0
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.BirthCtrl, value: (settingsViewModel.userViewModel?.birthControl)!)
+            }
+            else if indexPath.row == 1
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Relationship, value: (settingsViewModel.userViewModel?.relationshipStatus)!)
+            }
+            else if indexPath.row == 2
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: (settingsViewModel.userViewModel?.disorder)!)
+            }
+            else
+            {
+                cell.updateCellUI(title: "", value: "")
+            }
         }
         else
         {
-            return UITableViewCell()
+            cell.updateCellUI(title: "", value: "")
         }
+        
+        return cell
+
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let selectedRow = indexPath.row
+        print("the index selected is \(selectedRow)")
+        
+        handleRowSelection( row: selectedRow )
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 50
+        return 45
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 3
     }
+    
+    fileprivate func handleRowSelection( row: Int )
+    {
+        switch row
+        {
+        case 0:
+            performSegue(withIdentifier: "toEditBirth", sender: nil)
+            //self.delegate?.editBirthControlInfo()
+            break
+        case 1:
+            performSegue(withIdentifier: "toEditRelationship", sender: nil)
+            //self.delegate?.editRelationshipStatus()
+            break
+        case 2:
+            performSegue(withIdentifier: "toEditDisorder", sender: nil)
+            //self.delegate?.editDisorderInfo()
+            break
+        default:
+            break
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     

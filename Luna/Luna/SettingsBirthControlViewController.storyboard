@@ -48,6 +48,9 @@
                                 <state key="normal" title="OK">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="okPressed:" destination="s1W-mr-iKC" eventType="touchUpInside" id="Aib-dY-Z36"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
