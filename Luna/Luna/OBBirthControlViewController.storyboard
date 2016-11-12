@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rsV-uJ-HeH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Birth Control View Controller-->
+        <scene sceneID="2lE-ML-AdX">
+            <objects>
+                <viewController id="rsV-uJ-HeH" customClass="OBBirthControlViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yXl-mF-C4V"/>
+                        <viewControllerLayoutGuide type="bottom" id="hph-ni-NfC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4WY-21-N49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9u-B1-lob">
+                                <rect key="frame" x="132" y="594" width="112" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="BcW-1y-JaC"/>
+                                    <constraint firstAttribute="height" constant="30" id="JmU-EK-sGU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextPressed:" destination="rsV-uJ-HeH" eventType="touchUpInside" id="Ix5-F6-u0o"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" currentPage="3" translatesAutoresizingMaskIntoConstraints="NO" id="qFA-eH-6ch">
+                                <rect key="frame" x="168" y="500" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="73f-yj-m7P"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.81568627449999997" green="0.28235294119999998" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Control" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbO-fs-87o">
+                                <rect key="frame" x="16" y="93" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="2xS-ck-nI0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your birth control." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5D4-J8-rIx">
+                                <rect key="frame" x="16" y="407" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="t4g-d8-eRd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Birth control type is important for us to create a more accurate prdiction of your cycle." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fd8-Sb-cTQ">
+                                <rect key="frame" x="44" y="436" width="287" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="5kH-Zg-eWm"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czr-RI-noB">
+                                <rect key="frame" x="1" y="166" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qFA-eH-6ch" firstAttribute="top" secondItem="fd8-Sb-cTQ" secondAttribute="bottom" constant="8" symbolic="YES" id="01B-CM-hET"/>
+                            <constraint firstItem="fbO-fs-87o" firstAttribute="leading" secondItem="5D4-J8-rIx" secondAttribute="leading" id="2vh-98-K2A"/>
+                            <constraint firstItem="A9u-B1-lob" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="3jF-7y-4AL"/>
+                            <constraint firstItem="qFA-eH-6ch" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="6Zz-3U-1QL"/>
+                            <constraint firstItem="A9u-B1-lob" firstAttribute="top" secondItem="qFA-eH-6ch" secondAttribute="bottom" constant="57" id="95y-nb-Ac1"/>
+                            <constraint firstItem="fd8-Sb-cTQ" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leadingMargin" constant="28" id="9xh-4d-52X"/>
+                            <constraint firstItem="5D4-J8-rIx" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="I37-T4-OII"/>
+                            <constraint firstItem="fd8-Sb-cTQ" firstAttribute="top" secondItem="5D4-J8-rIx" secondAttribute="bottom" constant="8" symbolic="YES" id="Qoe-gi-Rfz"/>
+                            <constraint firstItem="fbO-fs-87o" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leadingMargin" id="SdR-SE-4H6"/>
+                            <constraint firstItem="hph-ni-NfC" firstAttribute="top" secondItem="A9u-B1-lob" secondAttribute="bottom" constant="43" id="VGU-ip-Bh0"/>
+                            <constraint firstItem="fbO-fs-87o" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="ckX-Oy-x4J"/>
+                            <constraint firstItem="fbO-fs-87o" firstAttribute="top" secondItem="yXl-mF-C4V" secondAttribute="bottom" constant="73" id="llB-nm-mfk"/>
+                            <constraint firstItem="fd8-Sb-cTQ" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="t2K-Jv-bCn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="birthControlPicker" destination="Czr-RI-noB" id="NfI-hJ-jOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihj-LG-o4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3478" y="860"/>
+        </scene>
+    </scenes>
+</document>
