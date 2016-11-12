@@ -62,6 +62,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			{
 				strongSelf.MainViewController().presentLogin()
 			}
+            else
+            {
+                if(self?.runningOnBoard == false)
+                {
+                    self?.runningOnBoard = true
+                    strongSelf.MainViewController().checkOnBoardStatus()
+                }
+                
+            }
+            
 		}
 	}
 		
@@ -70,5 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		return ( window!.rootViewController as! MainViewController )
 	}
 	
+    fileprivate var runningOnBoard: Bool = false
 	fileprivate var authChangeHandle: FIRAuthStateDidChangeListenerHandle!
 }

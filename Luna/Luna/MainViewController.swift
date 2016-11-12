@@ -14,8 +14,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	func onLoginSuccess()
 	{
 		loginViewController?.dismiss( animated: true, completion: nil )
-        
-        checkOnBoardStatus()
+
 	}
     
     func checkOnBoardStatus()
