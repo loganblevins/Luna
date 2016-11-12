@@ -40,6 +40,8 @@ class OBLastCycleViewController: UIViewController
         {
             error in
         }
+        
+        delegate?.toDisorderView()
     
         
     }

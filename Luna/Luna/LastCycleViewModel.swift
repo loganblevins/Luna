@@ -35,12 +35,16 @@ class LastCycleViewModel
     
     fileprivate func onSaveDataAttempt( uid: String, data: Date )
     {
-        self.dbService.saveUserRecord(forUid: uid, key: Constants.FirebaseStrings.DictionaryUserCycleDate, data: data as AnyObject)
+        let timestamp = convertDateFormatToString(date: data)
+        
+        self.dbService.saveUserRecord( forUid: uid, key: Constants.FirebaseStrings.DictionaryUserCycleDate, data: timestamp as AnyObject )
     }
     
-    fileprivate func convertDateFormat( date: Date )
+    fileprivate func convertDateFormatToString( date: Date ) -> String
     {
-    
+        let timestamp = date.timeIntervalSince1970
+        
+        return String(format: "%f", timestamp)
     }
     
 

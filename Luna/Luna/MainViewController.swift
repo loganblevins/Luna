@@ -15,20 +15,31 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	{
 		loginViewController?.dismiss( animated: true, completion: nil )
         
-        startOnBoard()
+        checkOnBoardStatus()
 	}
     
-    func onBoardComplete()
+    func checkOnBoardStatus()
     {
-        disorderViewController?.dismiss( animated: true, completion: nil )
+        mainViewModel.checkOnBoardStatus()
+        {
+            error, status in
+            
+            if status!
+            {
+                //continue to main view
+            }
+            else
+            {
+                self.presentOnBoard()
+            }
+        }
     }
-    
     
 	func presentLogin()
 	{
 		loginViewController = LoginViewController.storyboardInstance()
 		loginViewController!.delegate = self
-		rootPresent( self.view, controller: loginViewController! )
+        present ( loginViewController!, animated: true, completion: nil)
 	}
 	
 	func HomeViewController() -> HomeViewController
@@ -46,11 +57,13 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 		return self.viewControllers![2] as! SettingsViewController
 	}
     
-    func startOnBoard()
+    
+    
+    func presentOnBoard()
     {
         addImageViewController = OBAddImageViewController.storyboardInstance()
         addImageViewController!.delegate = self
-        rootPresent( self.view , controller: addImageViewController! )
+        present ( addImageViewController!, animated: true, completion: nil)
     }
     
     func toBirthControlView()
@@ -59,7 +72,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         
         birthControlViewController = OBBirthControlViewController.storyboardInstance()
         birthControlViewController!.delegate = self
-        rootPresent( self.view , controller: birthControlViewController! )
+        present ( birthControlViewController!, animated: true, completion: nil)
     }
     
     func toMenstrualLenView()
@@ -68,7 +81,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         
         menstrualLenViewcontroller = OBMenstrualLenViewController.storyboardInstance()
         menstrualLenViewcontroller!.delegate = self
-        rootPresent( self.view, controller: menstrualLenViewcontroller! )
+        present ( menstrualLenViewcontroller!, animated: true, completion: nil)
     }
     
     func toLastCycleView()
@@ -77,28 +90,35 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         
         lastCycleViewController = OBLastCycleViewController.storyboardInstance()
         lastCycleViewController?.delegate = self
-        rootPresent( self.view, controller: lastCycleViewController! )
-    }
-    
-    func toRelationshipView()
-    {
-        lastCycleViewController?.dismiss( animated: true, completion: nil )
-        
-        relationshipViewController = OBRelationshipViewController.storyboardInstance()
-        relationshipViewController?.delegate = self
-        rootPresent( self.view , controller: relationshipViewController! )
+        present ( lastCycleViewController!, animated: true, completion: nil)
     }
     
     func toDisorderView()
     {
-        relationshipViewController?.dismiss( animated: true, completion: nil )
+        lastCycleViewController?.dismiss( animated: true, completion: nil )
         
         disorderViewController = OBDisorderViewController.storyboardInstance()
         disorderViewController?.delegate = self
-        rootPresent( self.view, controller: disorderViewController! )
+        present ( disorderViewController!, animated: true, completion: nil)
     }
     
-	
+    func toRelationshipView()
+    {
+        disorderViewController?.dismiss( animated: true, completion: nil )
+        
+        relationshipViewController = OBRelationshipViewController.storyboardInstance()
+        relationshipViewController?.delegate = self
+        present ( relationshipViewController!, animated: true, completion: nil )
+    }
+    
+    func onBoardComplete()
+    {
+        relationshipViewController?.dismiss( animated: true, completion: nil )
+        
+        mainViewModel.setOnBoardStatus(status: true)
+    }
+    
+
 	fileprivate var loginViewController: LoginViewController?
     
     fileprivate var addImageViewController: OBAddImageViewController?
@@ -107,6 +127,8 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     fileprivate var lastCycleViewController: OBLastCycleViewController?
     fileprivate var relationshipViewController: OBRelationshipViewController?
     fileprivate var disorderViewController: OBDisorderViewController?
+    
+    fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
 
 
