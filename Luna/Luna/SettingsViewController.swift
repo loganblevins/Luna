@@ -127,7 +127,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.SettingsStrings.settingsCell) as! SettingsCell
         
         if(settingsViewModel.userViewModel != nil)
         {
@@ -181,20 +181,39 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch row
         {
         case 0:
-            performSegue(withIdentifier: "toEditBirth", sender: nil)
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditBirth, sender: nil)
             //self.delegate?.editBirthControlInfo()
             break
         case 1:
-            performSegue(withIdentifier: "toEditRelationship", sender: nil)
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditRelationship, sender: nil)
             //self.delegate?.editRelationshipStatus()
             break
         case 2:
-            performSegue(withIdentifier: "toEditDisorder", sender: nil)
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditDisorder, sender: nil)
             //self.delegate?.editDisorderInfo()
             break
         default:
             break
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == Constants.SettingsStrings.toEditBirth
+        {
+            if let destinationVC = segue.destination as? SettingsBirthControlViewController
+            {
+                destinationVC.valuePassed = (settingsViewModel.userViewModel?.birthControl)!
+            }
+        }
+        if segue.identifier == Constants.SettingsStrings.toEditRelationship
+        {
+            if let destinationVC = segue.destination as? SettingsRelationshipViewController
+            {
+                destinationVC.valuePassed = (settingsViewModel.userViewModel?.relationshipStatus)!
+            }
+        }
+
     }
     
     

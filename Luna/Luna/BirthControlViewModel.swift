@@ -43,6 +43,7 @@ class BirthControlViewModel
        return pickerViewData.createBirthControlPicker()
     }
     
+    
     fileprivate var pickerViewData = PickerViews()
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let dbService: ServiceDBManageable!

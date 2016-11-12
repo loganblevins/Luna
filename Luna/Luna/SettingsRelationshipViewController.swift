@@ -23,8 +23,10 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        selectedValue = valuePassed
         relationshipControlPicker.delegate = self
         relationshipControlPicker.dataSource = self
+        
         setUIPickerView()
     }
     
@@ -79,7 +81,8 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
         
         if(uiPickerValues.count > 0)
         {
-            selectedValue = uiPickerValues[0]
+            let row = uiPickerValues.index(of: selectedValue)
+            relationshipControlPicker.selectRow(row!, inComponent: 0, animated: false)
         }
     }
     
@@ -87,7 +90,8 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
     @IBOutlet weak var relationshipControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
-    fileprivate var selectedValue: String = ""
+    var valuePassed: String = ""
+    var selectedValue: String = ""
     
     fileprivate let relationshipStatusViewModel = RelationshipStatusViewModel( dbService: FirebaseDBService() )
 }

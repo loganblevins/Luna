@@ -21,10 +21,13 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
     {
         super.viewDidLoad()
         
+        selectedValue = valuePassed
         // Do any additional setup after loading the view.
         birthControlPicker.delegate = self
         birthControlPicker.dataSource = self
         setUIPickerView()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,7 +80,9 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
         
         if(uiPickerValues.count > 0)
         {
-            selectedValue = uiPickerValues[0]
+            //let row = birthControlViewModel.getSelectedValue(value: selectedValue)
+            let row = uiPickerValues.index(of: selectedValue)
+            birthControlPicker.selectRow(row!, inComponent: 0, animated: false)
         }
     }
     
@@ -85,7 +90,8 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
     @IBOutlet weak var birthControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
-    fileprivate var selectedValue: String = ""
+    var valuePassed: String = ""
+    var selectedValue: String = ""
     
     fileprivate let birthControlViewModel = BirthControlViewModel( dbService: FirebaseDBService() )
     
