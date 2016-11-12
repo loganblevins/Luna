@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OBRelationshipViewController: UIViewController
+class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
 
     static func storyboardInstance() -> OBRelationshipViewController?
@@ -23,6 +23,9 @@ class OBRelationshipViewController: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        relationshipControlPicker.delegate = self
+        relationshipControlPicker.dataSource = self
+        setUIPickerView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,16 +61,22 @@ class OBRelationshipViewController: UIViewController
             relationshipStatusViewModel.onAddDataAttempt(data: selectedValue)
             {
                 error in
-                
+            
             }
         }
         
         //NEED TO MOVE ON TO NEXT VIEW
+        delegate?.onBoardComplete()
     }
     
     fileprivate func setUIPickerView()
     {
         uiPickerValues = relationshipStatusViewModel.getPickerValues()
+        
+        if(uiPickerValues.count > 0)
+        {
+            selectedValue = uiPickerValues[0]
+        }
     }
     
     

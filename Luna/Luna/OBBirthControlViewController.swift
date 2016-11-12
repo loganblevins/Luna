@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OBBirthControlViewController: UIViewController
+class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate
 {
 
     static func storyboardInstance() -> OBBirthControlViewController?
@@ -23,6 +23,9 @@ class OBBirthControlViewController: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        birthControlPicker.delegate = self
+        birthControlPicker.dataSource = self
+        setUIPickerView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,11 +66,17 @@ class OBBirthControlViewController: UIViewController
         }
        
         //NEED TO MOVE ON TO NEXT VIEW
+        delegate?.toMenstrualLenView()
     }
 
     fileprivate func setUIPickerView()
     {
         uiPickerValues = birthControlViewModel.getPickerValues()
+        
+        if(uiPickerValues.count > 0)
+        {
+            selectedValue = uiPickerValues[0]
+        }
     }
     
     
