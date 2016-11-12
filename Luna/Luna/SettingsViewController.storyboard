@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFs-U6-c9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1288.8" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1474" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iDn-Bf-t69">
@@ -182,7 +182,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsDisorderViewController" id="f0H-5T-c7o" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrG-Pg-NYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2277" y="417"/>
+            <point key="canvasLocation" x="2467" y="385"/>
         </scene>
         <!--SettingsRelationshipViewController-->
         <scene sceneID="4gS-qH-osB">
@@ -190,7 +190,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsRelationshipViewController" id="ULL-tc-EiU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46A-Sb-cvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="130"/>
+            <point key="canvasLocation" x="2486" y="130"/>
         </scene>
         <!--SettingsBirthControlViewController-->
         <scene sceneID="mZf-jX-B29">
@@ -198,7 +198,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsBirthControlViewController" id="CMb-R7-45C" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTC-fe-dGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2278" y="-157"/>
+            <point key="canvasLocation" x="2468" y="-90"/>
         </scene>
     </scenes>
     <resources>
