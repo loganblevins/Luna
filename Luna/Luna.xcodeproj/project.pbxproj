@@ -80,6 +80,7 @@
 		EAD6E1BB1DD7D54B002E2D83 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1BA1DD7D54B002E2D83 /* HomeViewModel.swift */; };
 		EAD6E1BD1DD7D707002E2D83 /* DailyEntryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD6E1BC1DD7D707002E2D83 /* DailyEntryViewController.storyboard */; };
 		EAD6E1BF1DD7DB6C002E2D83 /* DailyEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1BE1DD7DB6C002E2D83 /* DailyEntryViewController.swift */; };
+		EAD6E1C11DD7FD62002E2D83 /* DailyEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C01DD7FD62002E2D83 /* DailyEntryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		EAD6E1BA1DD7D54B002E2D83 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EAD6E1BC1DD7D707002E2D83 /* DailyEntryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DailyEntryViewController.storyboard; sourceTree = "<group>"; };
 		EAD6E1BE1DD7DB6C002E2D83 /* DailyEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyEntryViewController.swift; sourceTree = "<group>"; };
+		EAD6E1C01DD7FD62002E2D83 /* DailyEntryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyEntryViewModel.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +326,7 @@
 				EA685D8D1DD2CBFF006FAB3E /* LastCycleViewModel.swift */,
 				EA685D911DD2CDF4006FAB3E /* DisorderViewModel.swift */,
 				EAD6E1BA1DD7D54B002E2D83 /* HomeViewModel.swift */,
+				EAD6E1C01DD7FD62002E2D83 /* DailyEntryViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -364,7 +367,6 @@
 				EA4DA39C1DD7A518002DCB07 /* SettingsBirthControlViewController.swift */,
 				EA4DA39E1DD7A59D002DCB07 /* SettingsRelationshipViewController.swift */,
 				EA4DA3A01DD7A5FB002DCB07 /* SettingsDisorderViewController.swift */,
-
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -667,6 +669,7 @@
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CB2928C21DCBCD9C004B3027 /* SettingsViewModel.swift in Sources */,
 				EA013EBD1DD168AB0072634C /* OBAddImageViewController.swift in Sources */,
+				EAD6E1C11DD7FD62002E2D83 /* DailyEntryViewModel.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

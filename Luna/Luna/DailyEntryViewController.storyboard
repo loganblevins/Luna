@@ -23,6 +23,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gez-PP-rb8">
                                 <rect key="frame" x="124" y="348" width="127" height="76"/>
                                 <state key="normal" title="End Period"/>
+                                <connections>
+                                    <action selector="stopPressed:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="6yK-Tu-GsQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPx-Pw-CoL">
                                 <rect key="frame" x="124" y="174" width="127" height="76"/>
@@ -31,6 +34,9 @@
                                     <constraint firstAttribute="height" constant="76" id="WRi-2V-KNs"/>
                                 </constraints>
                                 <state key="normal" title="Start Period"/>
+                                <connections>
+                                    <action selector="startPressed:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="0Ay-oA-qJd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

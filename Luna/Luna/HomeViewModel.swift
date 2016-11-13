@@ -14,6 +14,8 @@ class HomeViewModel
     {
         self.authService = authService
         self.dbService = dbService
+        
+        currentViewDate = Date()
     }
     
     func saveUserDailyEntry(completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
@@ -30,7 +32,18 @@ class HomeViewModel
         }
     }
     
+    func setCurrentDate( date: Date )
+    {
+        currentViewDate = date
+    }
     
+    func returnCurrentDate() -> Date
+    {
+        return currentViewDate
+    }
+    
+    
+    fileprivate var currentViewDate: Date
     
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let authService: ServiceAuthenticatable!

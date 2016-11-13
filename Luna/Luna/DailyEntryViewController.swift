@@ -8,24 +8,43 @@
 
 import UIKit
 
-class DailyEntryViewController: UIViewController {
+
+class DailyEntryViewController: UIViewController
+{
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        entryDate = valuePassed
     }
-
-    override func didReceiveMemoryWarning()
+    
+    @IBAction func startPressed(_ sender: Any)
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        dailyEntryViewModel.onAddStartDataAttempt(data: entryDate!)
+        {
+            error in
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func stopPressed(_ sender: Any)
+    {
+        dailyEntryViewModel.onAddEndDataAttempt(data: entryDate!)
+        {
+            error in
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    var valuePassed: Date?
+    var entryDate: Date?
     
-
-
+    fileprivate let dailyEntryViewModel = DailyEntryViewModel ( dbService: FirebaseDBService() )
+    
 
 }

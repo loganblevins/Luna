@@ -34,7 +34,7 @@ final class UserViewModel
     {
         return user.disorder
     }
-
+    
 	
 	init( user: User )
     {

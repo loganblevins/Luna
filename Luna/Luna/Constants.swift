@@ -68,6 +68,17 @@ struct Constants
         static let settingsCell = "settingsCell"
     }
     
+    struct HomeStrings
+    {
+        static let toEntry = "toEntry"
+    }
+    
+    struct DailyEntry
+    {
+        static let startDate = "StartDate"
+        static let endDate = "EndDate"
+    }
+    
     struct BirthControlValues
     {
         static let values = ["None", "Pill", "Vaginal Ring", "Patch", "Male Condom", "Female Condom", "Diaphragm", "Cervical cap", "IUD", "IUD Copper-based", "Implant", "Sponge", "Spermicide", "Injections", "Natural Planning", "Other"]

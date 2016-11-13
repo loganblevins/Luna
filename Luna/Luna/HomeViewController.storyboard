@@ -72,7 +72,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="ATM-Fg-Y1b" id="ZmE-Q1-Cma"/>
-                        <segue destination="Fb4-l3-SGp" kind="show" id="dHC-CF-9aj"/>
+                        <outlet property="nextDateButton" destination="HG2-jN-Iv4" id="F19-Al-YS3"/>
+                        <segue destination="Fb4-l3-SGp" kind="show" identifier="toEntry" id="dHC-CF-9aj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-c8-x8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,8 +83,8 @@
         <!--DailyEntryViewController-->
         <scene sceneID="XEQ-nw-IfK">
             <objects>
-                <viewControllerPlaceholder storyboardName="DailyEntryViewController" id="Fb4-l3-SGp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRU-FI-chf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="DailyEntryViewController" id="Fb4-l3-SGp" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1855" y="-1375"/>
         </scene>
