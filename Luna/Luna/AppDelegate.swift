@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		
 		maybeSignOutUser()
 		signInUser()
+		PhotoFetcher.requestAuthorization()
 		
 		return true
 	}

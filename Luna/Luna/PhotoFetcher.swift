@@ -12,12 +12,15 @@ struct PhotoFetcher
 {
 //	fileprivate func fetchAll() -> [PHAsset]
 //	{
-//		let assets = PHAssetCollection.fet
+//		let fetchResult = PHAsset.fetchAssets( with: .image, options: nil )
 //	}
 //	
 //	fileprivate let manager = PHImageManager.default()
 	
-	
+	static func requestAuthorization()
+	{
+		PHPhotoLibrary.requestAuthorization() { _ in }
+	}
 }
 //
 //- (void)setup
