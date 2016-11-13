@@ -10,7 +10,6 @@
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
-		CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* LoginViewController.storyboard */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
 		CB105A691D87B24400EA201C /* LunaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A681D87B24400EA201C /* LunaTests.swift */; };
@@ -26,6 +25,7 @@
 		CB34794D1DCBE8C400B3E60C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */; };
 		CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */; };
 		CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */; };
+		CB5954191DD82CFD00594162 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB5954181DD82CFD00594162 /* LoginViewController.storyboard */; };
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
 		CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */; };
 		CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */; };
@@ -97,7 +97,6 @@
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginViewController.storyboard; sourceTree = "<group>"; };
 		CB105A5A1D87B24400EA201C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB105A5D1D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB105A5F1D87B24400EA201C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaAPI.swift; sourceTree = "<group>"; };
+		CB5954181DD82CFD00594162 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -280,9 +280,9 @@
 				EA013EB51DD168990072634C /* OBMenstrualLenViewController.storyboard */,
 				EA013EB61DD168990072634C /* OBRelationshipViewController.storyboard */,
 				EA013EB01DD168710072634C /* OBAddImageViewController.storyboard */,
-				CB105A571D87B24400EA201C /* LoginViewController.storyboard */,
 				CB2352C71DC3052F008E8493 /* MainViewController.storyboard */,
 				CB2352D21DC31464008E8493 /* HomeViewController.storyboard */,
+				CB5954181DD82CFD00594162 /* LoginViewController.storyboard */,
 				CB2352D01DC3143E008E8493 /* CalendarViewController.storyboard */,
 				EA61ABC41DD67F1A0097FDFF /* SettingsBirthControlViewController.storyboard */,
 				EA61ABC51DD67F1A0097FDFF /* SettingsDisorderViewController.storyboard */,
@@ -473,6 +473,7 @@
 				EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */,
 				CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */,
 				EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */,
+				CB5954191DD82CFD00594162 /* LoginViewController.storyboard in Resources */,
 				EA292CAD1D95AE3500C0B0BC /* OpenSans-ExtraBold.ttf in Resources */,
 				EA013EB81DD168990072634C /* OBDisorderViewController.storyboard in Resources */,
 				CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */,
@@ -486,7 +487,6 @@
 				EA013EB91DD168990072634C /* OBLastCycleViewController.storyboard in Resources */,
 				EA292CAB1D95AE3500C0B0BC /* OpenSans-Bold.ttf in Resources */,
 				EA61ABC81DD67F1A0097FDFF /* SettingsDisorderViewController.storyboard in Resources */,
-				CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */,
 				EA292CB41D95AE3500C0B0BC /* OpenSans-SemiboldItalic.ttf in Resources */,
 				EA292CB01D95AE3500C0B0BC /* OpenSans-Light.ttf in Resources */,
 				EA292CB21D95AE3500C0B0BC /* OpenSans-Regular.ttf in Resources */,
@@ -678,14 +678,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CB105A571D87B24400EA201C /* LoginViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB105A581D87B24400EA201C /* Base */,
-			);
-			name = LoginViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
