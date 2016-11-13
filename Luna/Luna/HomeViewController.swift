@@ -10,5 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController
 {
-	
+
+    fileprivate let retrieveModel = RetrieveViewModel(dbService: FirebaseDBService(), storageService: FirebaseStorageService() )
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        print("@HOMELOADED")
+        retrieveModel.fetchPhotos()
+
+    }
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
+		BCF27CAD1DD7DF5C00E38BE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCF27CAC1DD7DF5C00E38BE2 /* GoogleService-Info.plist */; };
+		BCF27CAF1DD7DF6300E38BE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCF27CAE1DD7DF6300E38BE2 /* Info.plist */; };
+		BCF27CB11DD7E8A800E38BE2 /* RetrieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF27CB01DD7E8A800E38BE2 /* RetrieveService.swift */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
 		CB105A591D87B24400EA201C /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A571D87B24400EA201C /* LoginViewController.storyboard */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
@@ -88,6 +91,9 @@
 		842E3A2534E7D3CB26BC6567 /* Pods-Luna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Luna/Pods-Luna.release.xcconfig"; sourceTree = "<group>"; };
 		86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LunaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BCF27CAC1DD7DF5C00E38BE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BCF27CAE1DD7DF6300E38BE2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF27CB01DD7E8A800E38BE2 /* RetrieveService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveService.swift; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB105A581D87B24400EA201C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginViewController.storyboard; sourceTree = "<group>"; };
@@ -234,12 +240,15 @@
 				CB2827711D90387F008043BC /* Networking.swift */,
 				CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */,
 				EA292C981D95AD6300C0B0BC /* FirebaseService.swift */,
+				BCF27CB01DD7E8A800E38BE2 /* RetrieveService.swift */,
 				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
 				CB2352C91DC30563008E8493 /* Storyboards */,
 				CB105A5A1D87B24400EA201C /* Assets.xcassets */,
 				CB105A5F1D87B24400EA201C /* Info.plist */,
+				BCF27CAE1DD7DF6300E38BE2 /* Info.plist */,
+				BCF27CAC1DD7DF5C00E38BE2 /* GoogleService-Info.plist */,
 				CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */,
 			);
 			path = Luna;
@@ -441,6 +450,7 @@
 			files = (
 				EA292CAF1D95AE3500C0B0BC /* OpenSans-Italic.ttf in Resources */,
 				EA013EBB1DD168990072634C /* OBRelationshipViewController.storyboard in Resources */,
+				BCF27CAD1DD7DF5C00E38BE2 /* GoogleService-Info.plist in Resources */,
 				EA292CAC1D95AE3500C0B0BC /* OpenSans-BoldItalic.ttf in Resources */,
 				CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */,
 				EA292CB31D95AE3500C0B0BC /* OpenSans-Semibold.ttf in Resources */,
@@ -450,6 +460,7 @@
 				EA013EBA1DD168990072634C /* OBMenstrualLenViewController.storyboard in Resources */,
 				CB2352D11DC3143E008E8493 /* CalendarViewController.storyboard in Resources */,
 				EA292CB11D95AE3500C0B0BC /* OpenSans-LightItalic.ttf in Resources */,
+				BCF27CAF1DD7DF6300E38BE2 /* Info.plist in Resources */,
 				EA013EB71DD168990072634C /* OBBirthControlViewController.storyboard in Resources */,
 				CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */,
 				CB2352C81DC3052F008E8493 /* MainViewController.storyboard in Resources */,
@@ -600,6 +611,7 @@
 				EA013EBF1DD168B30072634C /* AddImageViewModel.swift in Sources */,
 				EA685D901DD2CC9D006FAB3E /* OBLastCycleViewController.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
+				BCF27CB11DD7E8A800E38BE2 /* RetrieveService.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */,
 				EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */,

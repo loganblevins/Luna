@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 				strongSelf.MainViewController().presentLogin()
 			}
 		}
+
 	}
 		
 	fileprivate func MainViewController() -> MainViewController
@@ -71,4 +72,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 	}
 	
 	fileprivate var authChangeHandle: FIRAuthStateDidChangeListenerHandle!
+
 }
