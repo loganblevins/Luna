@@ -38,8 +38,9 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         {
             [weak self] error, status in
 			guard let strongSelf = self else { return }
+			guard let status = status else { return }
 			
-            if !status!
+            if !status
             {
                 strongSelf.presentOnBoard()
             }

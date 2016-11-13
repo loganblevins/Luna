@@ -25,12 +25,6 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
     }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
     {
@@ -51,7 +45,7 @@ class OBAddImageViewController: UIViewController, UIImagePickerControllerDelegat
         {
             let userImage = img.image
             
-            let imgData = UIImageJPEGRepresentation(userImage!, 0.5)
+            let imgData = UIImageJPEGRepresentation(userImage!, 0.0)
             
             addImageViewModel.onUploadImageAttempt(imageData: imgData!)
             {

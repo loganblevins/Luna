@@ -14,7 +14,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+		
+		navBarTopItem.title = "Settings"
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -216,7 +217,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    
+	fileprivate var navBarTopItem: UINavigationItem!
+	{
+		return self.navigationController?.navigationBar.topItem
+	}
+	
     @IBOutlet weak var tableView: UITableView!
     
 	fileprivate let settingsViewModel = SettingsViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
