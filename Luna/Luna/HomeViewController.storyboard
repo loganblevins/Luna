@@ -1,17 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TDq-cD-MEI">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TDq-cD-MEI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="gBC-sq-Cnp">
             <objects>
-                <viewController id="TDq-cD-MEI" sceneMemberID="viewController">
+                <viewController id="TDq-cD-MEI" customClass="HomeViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XsR-mV-NJW"/>
                         <viewControllerLayoutGuide type="bottom" id="V69-TV-1EW"/>
@@ -19,16 +25,67 @@
                     <view key="view" contentMode="scaleToFill" id="XJh-Xi-3oL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QP3-ft-Kge">
+                                <rect key="frame" x="117" y="291" width="140" height="85"/>
+                                <state key="normal" title="Enter Today's Data"/>
+                                <connections>
+                                    <action selector="enterDataButtonPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="QoV-Tz-AOf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today's Date Goes Here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATM-Fg-Y1b">
+                                <rect key="frame" x="75" y="70" width="225" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG2-jN-Iv4">
+                                <rect key="frame" x="313" y="65" width="46" height="30"/>
+                                <state key="normal" title="'Next'"/>
+                                <connections>
+                                    <action selector="nextDayPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="erW-uc-JJ7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-MK-abu">
+                                <rect key="frame" x="16" y="65" width="46" height="30"/>
+                                <state key="normal" title="'Back'"/>
+                                <connections>
+                                    <action selector="previousDayPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="Hmr-nc-TCz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ATM-Fg-Y1b" firstAttribute="top" secondItem="XsR-mV-NJW" secondAttribute="bottom" constant="50" id="3uC-uQ-a8M"/>
+                            <constraint firstItem="ATM-Fg-Y1b" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="EJz-IP-E9S"/>
+                            <constraint firstItem="HG2-jN-Iv4" firstAttribute="trailing" secondItem="XJh-Xi-3oL" secondAttribute="trailingMargin" id="Sle-O2-q5U"/>
+                            <constraint firstItem="K2n-MK-abu" firstAttribute="top" secondItem="XsR-mV-NJW" secondAttribute="bottom" constant="45" id="aFD-Ul-Jde"/>
+                            <constraint firstItem="QP3-ft-Kge" firstAttribute="centerY" secondItem="XJh-Xi-3oL" secondAttribute="centerY" id="bvo-Bl-kpA"/>
+                            <constraint firstItem="K2n-MK-abu" firstAttribute="leading" secondItem="XJh-Xi-3oL" secondAttribute="leadingMargin" id="g27-rY-DS3"/>
+                            <constraint firstItem="HG2-jN-Iv4" firstAttribute="top" secondItem="XsR-mV-NJW" secondAttribute="bottom" constant="45" id="kHM-O2-GBI"/>
+                            <constraint firstItem="QP3-ft-Kge" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="yx6-Hz-wVB"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Home" id="OxJ-MP-mDn">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="ATM-Fg-Y1b" id="ZmE-Q1-Cma"/>
+                        <segue destination="Fb4-l3-SGp" kind="show" id="dHC-CF-9aj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-c8-x8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-1374"/>
+            <point key="canvasLocation" x="968.79999999999995" y="-1374.9625187406298"/>
+        </scene>
+        <!--DailyEntryViewController-->
+        <scene sceneID="XEQ-nw-IfK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DailyEntryViewController" id="Fb4-l3-SGp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRU-FI-chf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855" y="-1375"/>
         </scene>
     </scenes>
     <resources>

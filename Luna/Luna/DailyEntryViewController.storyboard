@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ut-e1-Hfs">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Daily Entry View Controller-->
+        <scene sceneID="iGR-0v-eEI">
+            <objects>
+                <viewController id="8ut-e1-Hfs" customClass="DailyEntryViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0JI-Cx-v9g"/>
+                        <viewControllerLayoutGuide type="bottom" id="lEk-uu-w4o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3KP-kR-hBQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gez-PP-rb8">
+                                <rect key="frame" x="124" y="348" width="127" height="76"/>
+                                <state key="normal" title="End Period"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPx-Pw-CoL">
+                                <rect key="frame" x="124" y="174" width="127" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="9TC-PF-nu5"/>
+                                    <constraint firstAttribute="height" constant="76" id="WRi-2V-KNs"/>
+                                </constraints>
+                                <state key="normal" title="Start Period"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gez-PP-rb8" firstAttribute="centerX" secondItem="3KP-kR-hBQ" secondAttribute="centerX" id="17S-BY-0sX"/>
+                            <constraint firstItem="Gez-PP-rb8" firstAttribute="top" secondItem="sPx-Pw-CoL" secondAttribute="bottom" constant="98" id="O6h-ZJ-dty"/>
+                            <constraint firstItem="sPx-Pw-CoL" firstAttribute="centerX" secondItem="3KP-kR-hBQ" secondAttribute="centerX" id="Uw5-Db-KXU"/>
+                            <constraint firstItem="sPx-Pw-CoL" firstAttribute="top" secondItem="0JI-Cx-v9g" secondAttribute="bottom" constant="154" id="khr-a2-yPu"/>
+                            <constraint firstItem="lEk-uu-w4o" firstAttribute="top" secondItem="Gez-PP-rb8" secondAttribute="bottom" constant="194" id="sXo-zj-PFe"/>
+                            <constraint firstItem="sPx-Pw-CoL" firstAttribute="leading" secondItem="Gez-PP-rb8" secondAttribute="leading" id="spu-CG-BbF"/>
+                        </constraints>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-JG-S38" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853.5999999999999" y="-1375.8620689655174"/>
+        </scene>
+    </scenes>
+</document>
