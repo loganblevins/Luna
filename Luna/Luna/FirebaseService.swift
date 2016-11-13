@@ -72,7 +72,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	{
 		print( "Attempting to sign in user." )
-		
+
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
 			userOrNil, errorOrNil in
