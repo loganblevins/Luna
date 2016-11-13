@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SettingsDisorderViewController: UIViewController
+class SettingsDisorderViewController: UIViewController, UITextFieldDelegate
 {
-
     static func storyboardInstance() -> SettingsDisorderViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
@@ -21,29 +20,29 @@ class SettingsDisorderViewController: UIViewController
     {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        disorderTextField.delegate = self
     }
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     weak var delegate: SettingsDelegate?
-    
-    @IBAction func okPressed(_ sender: AnyObject)
+	
+	func textFieldShouldReturn(_ textField: UITextField ) -> Bool
+	{
+		textField.resignFirstResponder()
+		return true
+	}
+	
+    @IBAction fileprivate func okPressed(_ sender: AnyObject)
     {
         var uDisorder: String
-        
-        if ( disorderTextField.text?.isEmpty )!
+		guard let text = disorderTextField.text else { return }
+		
+        if text.isEmpty
         {
             uDisorder = "None"
         }
         else
         {
             guard let text = disorderTextField.text else { return }
-            
             uDisorder = text
         }
         
@@ -57,7 +56,6 @@ class SettingsDisorderViewController: UIViewController
         
         //delegate?.dismissEditDisorder()
         _ = navigationController?.popViewController(animated: true)
-        
     }
     
     @IBOutlet fileprivate weak var disorderTextField: UITextField!
