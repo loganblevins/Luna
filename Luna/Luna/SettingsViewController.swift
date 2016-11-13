@@ -30,6 +30,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableView.reloadData()
         }
         
+        settingsViewModel.getPeriods()
+        {
+            errorOrNil in
+                
+            guard errorOrNil == nil else
+            {
+                return
+            }
+                
+        }
+        
     }
     
     weak var delegate: SettingsDelegate?

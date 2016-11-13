@@ -48,14 +48,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG2-jN-Iv4">
-                                <rect key="frame" x="313" y="30" width="46" height="30"/>
-                                <state key="normal" title="'Next'"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-MK-abu">
-                                <rect key="frame" x="16" y="30" width="46" height="30"/>
-                                <state key="normal" title="'Back'"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgm-zD-Vpp">
                                 <rect key="frame" x="154" y="287" width="67" height="45"/>
                                 <constraints>
@@ -192,10 +184,7 @@
                             <constraint firstItem="F2Q-xU-0QQ" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="Hrb-ae-bX8"/>
                             <constraint firstItem="2ix-YF-iWc" firstAttribute="top" secondItem="XJh-Xi-3oL" secondAttribute="top" id="KWb-xx-y5j"/>
                             <constraint firstItem="ATM-Fg-Y1b" firstAttribute="top" secondItem="XsR-mV-NJW" secondAttribute="bottom" constant="15" id="LHH-Ll-jAl"/>
-                            <constraint firstItem="F2Q-xU-0QQ" firstAttribute="trailing" secondItem="HG2-jN-Iv4" secondAttribute="trailing" id="MhY-7S-fIr"/>
-                            <constraint firstItem="ATM-Fg-Y1b" firstAttribute="centerY" secondItem="K2n-MK-abu" secondAttribute="centerY" id="Mos-d9-W6h"/>
                             <constraint firstItem="qEe-6M-QuR" firstAttribute="trailing" secondItem="T4S-7E-edC" secondAttribute="trailing" id="P6N-Ie-915"/>
-                            <constraint firstItem="ATM-Fg-Y1b" firstAttribute="centerY" secondItem="HG2-jN-Iv4" secondAttribute="centerY" id="QbY-JG-DOV"/>
                             <constraint firstItem="ATM-Fg-Y1b" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="R8v-1r-FwV"/>
                             <constraint firstItem="bgm-zD-Vpp" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="TAN-wo-IQ8"/>
                             <constraint firstAttribute="trailing" secondItem="2ix-YF-iWc" secondAttribute="trailing" id="U3v-jy-xqN"/>
@@ -204,14 +193,11 @@
                             <constraint firstItem="2ix-YF-iWc" firstAttribute="leading" secondItem="XJh-Xi-3oL" secondAttribute="leading" id="eUK-O0-4xH"/>
                             <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="2ix-YF-iWc" secondAttribute="bottom" id="fIy-p8-reN"/>
                             <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="T4S-7E-edC" secondAttribute="bottom" constant="30" id="g5A-m4-qYE"/>
-                            <constraint firstItem="F2Q-xU-0QQ" firstAttribute="leading" secondItem="K2n-MK-abu" secondAttribute="leading" id="gRD-41-cBm"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="go8-mR-xCM"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="top" secondItem="F2Q-xU-0QQ" secondAttribute="bottom" constant="8" symbolic="YES" id="h3L-jy-WXc"/>
                             <constraint firstItem="bgm-zD-Vpp" firstAttribute="centerY" secondItem="2ix-YF-iWc" secondAttribute="centerY" id="iuv-A7-gNF"/>
                             <constraint firstItem="gLl-ZW-Naj" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="jiX-k2-Han"/>
                             <constraint firstItem="F2Q-xU-0QQ" firstAttribute="leading" secondItem="XJh-Xi-3oL" secondAttribute="leadingMargin" id="rIW-tT-o1k"/>
-                            <constraint firstItem="ATM-Fg-Y1b" firstAttribute="leading" secondItem="K2n-MK-abu" secondAttribute="trailing" constant="13" id="rRd-Kc-lpM"/>
-                            <constraint firstItem="HG2-jN-Iv4" firstAttribute="leading" secondItem="ATM-Fg-Y1b" secondAttribute="trailing" constant="13" id="ssL-sr-sve"/>
                             <constraint firstItem="qEe-6M-QuR" firstAttribute="trailing" secondItem="2ix-YF-iWc" secondAttribute="trailing" id="uAf-tL-obg"/>
                         </constraints>
                     </view>
@@ -222,7 +208,6 @@
                     <connections>
                         <outlet property="dailyEntryButton" destination="y44-d8-6m0" id="TbA-bK-PLz"/>
                         <outlet property="dateLabel" destination="ATM-Fg-Y1b" id="ZmE-Q1-Cma"/>
-                        <outlet property="nextDateButton" destination="HG2-jN-Iv4" id="F19-Al-YS3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-c8-x8n" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -50,6 +50,9 @@ protocol ServiceDBManageable
     
     func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
     func createPeriodRecord( forUid uid: String, period: Dictionary<String, AnyObject> )
+    func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    
     
 }
 
@@ -230,7 +233,6 @@ struct FirebaseDBService: ServiceDBManageable
             completion( error, nil )
         }
         
-        
     }
 	
     func createUserRecord( forUid uid: String, username: String )
@@ -279,19 +281,44 @@ struct FirebaseDBService: ServiceDBManageable
     func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
     {
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserMenstrualLen ).observeSingleEvent( of: .value, with:
+            {
+                snapshot in
+                
+                guard snapshot.exists() else
+                {
+                    print("Status doesn't exist")
+                    completion ( nil, 5 )
+                    return
+                }
+                
+                print("Length: \(snapshot.value) exists")
+                
+                completion( nil, snapshot.value as! Int? )
+                
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ len: String? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserCycleDate ).observe( .value, with:
         {
             snapshot in
                 
             guard snapshot.exists() else
             {
                 print("Status doesn't exist")
-                completion ( nil, 5 )
+                completion ( nil, nil )
                 return
             }
                 
-            print("Length: \(snapshot.value) exists")
+            print("Last Cycle date is: \(snapshot.value)")
                 
-            completion( nil, snapshot.value as! Int? )
+            completion( nil, snapshot.value as! String? )
                 
         })
         {
@@ -306,6 +333,56 @@ struct FirebaseDBService: ServiceDBManageable
         let pid = Periods.childByAutoId()
         pid.setValue( period )
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).child( pid.key ).setValue( true )
+    }
+    
+    func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).observe(.value, with:
+        {
+            snapshot in
+            
+
+            guard snapshot.exists() else
+            {
+                print("Periods do not exist for this user")
+                completion ( nil,  nil)
+                return
+            }
+            
+            print (snapshot)
+            
+            guard let postDict = snapshot.value as? [String : AnyObject] else { return }
+            
+            completion ( nil, postDict )
+            
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    {
+        Periods.child( pid ).observe(FIRDataEventType.value, with:
+        {
+                snapshot in
+                
+                print (snapshot)
+                
+                guard let postDict = snapshot.value as? [String : AnyObject] else { return }
+                
+                completion ( nil, postDict )
+                
+        })
+        {
+            error in
+            
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+
     }
 	
     

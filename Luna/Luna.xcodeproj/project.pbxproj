@@ -86,6 +86,7 @@
 		EAD6E1C71DD8E67D002E2D83 /* AddPeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */; };
 		EAD6E1C91DD9149F002E2D83 /* EditPeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */; };
 		EAD6E1CB1DD914D8002E2D83 /* EditPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1CA1DD914D8002E2D83 /* EditPeriodViewController.swift */; };
+		EAD6E1CD1DD92701002E2D83 /* SettingsPeriodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1CC1DD92701002E2D83 /* SettingsPeriodsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeriodViewModel.swift; sourceTree = "<group>"; };
 		EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPeriodViewModel.swift; sourceTree = "<group>"; };
 		EAD6E1CA1DD914D8002E2D83 /* EditPeriodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPeriodViewController.swift; sourceTree = "<group>"; };
+		EAD6E1CC1DD92701002E2D83 /* SettingsPeriodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPeriodsViewModel.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +343,7 @@
 				EAD6E1C01DD7FD62002E2D83 /* PeriodViewModel.swift */,
 				EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */,
 				EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */,
+				EAD6E1CC1DD92701002E2D83 /* SettingsPeriodsViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD6E1CD1DD92701002E2D83 /* SettingsPeriodsViewModel.swift in Sources */,
 				CB2827721D90387F008043BC /* Constants.swift in Sources */,
 				EAD6E1BB1DD7D54B002E2D83 /* HomeViewModel.swift in Sources */,
 				EA685D821DD2BE90006FAB3E /* OBBirthControlViewController.swift in Sources */,
