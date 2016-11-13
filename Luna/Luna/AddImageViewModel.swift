@@ -15,35 +15,27 @@ class AddImageViewModel
         self.dbService = dbService
         self.storageService = storageService
     }
-    
-    
-    
+
     func onUploadImageAttempt( imageData: Data, completion: @escaping(_ error: Error? ) -> Void )
     {
-        let uid = getUID()
+        guard let uid = StandardDefaults.sharedInstance.uid else
+		{
+			assertionFailure( "Bad uid." )
+			return
+		}
         let imgPath = createImagePath( uid: uid )
         
-        DispatchQueue.global( qos: .userInitiated ).async
+        DispatchQueue.global( qos: .background ).async
         {
-            do
-            {
-                self.storageService.uploadUserImage(forUid: uid, imageData: imageData, imagePath: imgPath)
-                {
-                    uid , error in
-                    
-                    completion(error)
-                    
-                }
-            }
+            self.storageService.uploadUserImage(forUid: uid, imageData: imageData, imagePath: imgPath)
+			{
+				_, error in
+				
+				completion(error)
+			}
         }
-        
     }
-    
-    fileprivate func getUID() -> String
-    {
-        return StandardDefaults.sharedInstance.uid!
-    }
-    
+
     fileprivate func createImagePath( uid: String ) -> String
     {
         return (uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg")

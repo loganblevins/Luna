@@ -8,38 +8,53 @@
 
 import UIKit
 
-
-final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardDelegate
+protocol OnBoardDelegate: class
 {
+	func onBoardComplete()
+	func toBirthControlView()
+	func toRelationshipView()
+	func toMenstrualLenView()
+	func toLastCycleView()
+	func toDisorderView()
+}
+
+final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardDelegate, SettingsDelegate
+{
+	fileprivate(set) var onboardingActive = false
+	fileprivate(set) var loginActive = false
+	
 	func onLoginSuccess()
 	{
-		loginViewController?.dismiss( animated: true, completion: nil )
-        
-        checkOnBoardStatus()
+		print( "onLoginSuccess" )
+		loginViewController?.dismiss( animated: true )
+		{
+			self.loginActive = false
+		}
 	}
     
     func checkOnBoardStatus()
     {
         mainViewModel.checkOnBoardStatus()
         {
-            error, status in
-            
-            if status!
+            [weak self] error, status in
+			guard let strongSelf = self else { return }
+			
+            if !status!
             {
-                //continue to main view
-            }
-            else
-            {
-                self.presentOnBoard()
+                strongSelf.presentOnBoard()
             }
         }
     }
     
-	func presentLogin()
+	func maybePresentLogin()
 	{
-		loginViewController = LoginViewController.storyboardInstance()
-		loginViewController!.delegate = self
-        present ( loginViewController!, animated: true, completion: nil)
+		if !loginActive
+		{
+			loginActive = true
+			loginViewController = LoginViewController.storyboardInstance()
+			loginViewController!.delegate = self
+			present( loginViewController!, animated: true, completion: nil )
+		}
 	}
 	
 	func HomeViewController() -> HomeViewController
@@ -54,16 +69,15 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	
 	func SettingsViewController() -> SettingsViewController
 	{
-		return self.viewControllers![2] as! SettingsViewController
+        return self.viewControllers![2] as! SettingsViewController
 	}
-    
-    
-    
+	
     func presentOnBoard()
     {
         addImageViewController = OBAddImageViewController.storyboardInstance()
         addImageViewController!.delegate = self
-        present ( addImageViewController!, animated: true, completion: nil)
+		onboardingActive = true
+        present ( addImageViewController!, animated: true, completion: nil )
     }
     
     func toBirthControlView()
@@ -113,12 +127,50 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     
     func onBoardComplete()
     {
-        relationshipViewController?.dismiss( animated: true, completion: nil )
-        
-        mainViewModel.setOnBoardStatus(status: true)
+        relationshipViewController?.dismiss( animated: true )
+		{
+			self.onboardingActive = false
+		}
+		
+        mainViewModel.setOnBoardStatus( status: true )
     }
     
-
+    func editBirthControlInfo()
+    {
+        editBirthControlViewController = SettingsBirthControlViewController.storyboardInstance()
+        editBirthControlViewController!.delegate = self
+        present ( editBirthControlViewController!, animated: true, completion: nil)
+    }
+    
+    func editRelationshipStatus()
+    {
+        editRelationshipViewController = SettingsRelationshipViewController.storyboardInstance()
+        editRelationshipViewController!.delegate = self
+        present ( editRelationshipViewController!, animated: true, completion: nil)
+    }
+    
+    func editDisorderInfo()
+    {
+        editDisorderViewController = SettingsDisorderViewController.storyboardInstance()
+        editDisorderViewController!.delegate = self
+        present ( editDisorderViewController!, animated: true, completion: nil)
+    }
+    
+    func dismissEditBirthControl()
+    {
+        editBirthControlViewController?.dismiss( animated: true, completion: nil )
+    }
+    
+    func dismissEditRelationship()
+    {
+        editRelationshipViewController?.dismiss( animated: true, completion: nil )
+    }
+    
+    func dismissEditDisorder()
+    {
+        editDisorderViewController?.dismiss( animated: true, completion: nil )
+    }
+    
 	fileprivate var loginViewController: LoginViewController?
     
     fileprivate var addImageViewController: OBAddImageViewController?
@@ -127,23 +179,26 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     fileprivate var lastCycleViewController: OBLastCycleViewController?
     fileprivate var relationshipViewController: OBRelationshipViewController?
     fileprivate var disorderViewController: OBDisorderViewController?
+
+    
+    fileprivate var editBirthControlViewController: SettingsBirthControlViewController?
+    fileprivate var editRelationshipViewController: SettingsRelationshipViewController?
+    fileprivate var editDisorderViewController: SettingsDisorderViewController?
     
     fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
 
-
-protocol OnBoardDelegate: class
+protocol EditSettingsDelegate: class
 {
-    func onBoardComplete()
-    
-    func toBirthControlView()
-    
-    func toRelationshipView()
-    
-    func toMenstrualLenView()
-    
-    func toLastCycleView()
-    
-    func toDisorderView()
-    
+   
+    func dismissEditBirthControl()
+    func dismissEditRelationship()
+    func dismissEditDisorder()
+}
+
+protocol SettingsDelegate: class
+{
+    func editBirthControlInfo()
+    func editRelationshipStatus()
+    func editDisorderInfo()
 }

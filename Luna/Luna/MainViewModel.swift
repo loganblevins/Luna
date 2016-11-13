@@ -18,19 +18,19 @@ class MainViewModel
         self.dbService = dbService
     }
     
-    func checkOnBoardStatus(completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
+    func checkOnBoardStatus( completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
     {
+		guard let uid = StandardDefaults.sharedInstance.uid else
+		{
+			assertionFailure( "StandardDefaults returned bad uid." )
+			return
+		}
+		
         // Put network request on background thread.
         //
         DispatchQueue.global( qos: .userInitiated ).async
         {
-            guard let uid = StandardDefaults.sharedInstance.uid else
-            {
-                assertionFailure( "StandardDefaults returned bad uid." )
-                return
-            }
-            
-            self.dbService.checkUserOnBoardStatus(forUid: uid)
+            self.dbService.checkUserOnBoardStatus( forUid: uid )
             {
                 error, status in
                 
@@ -38,8 +38,7 @@ class MainViewModel
             }
         }
     }
-    
-    
+
     func setOnBoardStatus( status: Bool ) -> Void
     {
         guard let uid = StandardDefaults.sharedInstance.uid else
