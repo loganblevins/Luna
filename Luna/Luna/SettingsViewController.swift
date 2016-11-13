@@ -8,8 +8,32 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        settingsViewModel.getUserData()
+        {
+           errorOrNil in
+
+            guard errorOrNil == nil else
+            {
+                return
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    weak var delegate: SettingsDelegate?
+    
 	@IBAction func logoutButtonPressed()
 	{
 		let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.confirmTitle,
@@ -95,6 +119,105 @@ class SettingsViewController: UIViewController
 			print( error.localizedDescription )
 		}
 	}
-	
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.SettingsStrings.settingsCell) as! SettingsCell
+        
+        if(settingsViewModel.userViewModel != nil)
+        {
+            if indexPath.row == 0
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.BirthCtrl, value: (settingsViewModel.userViewModel?.birthControl)!)
+            }
+            else if indexPath.row == 1
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Relationship, value: (settingsViewModel.userViewModel?.relationshipStatus)!)
+            }
+            else if indexPath.row == 2
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: (settingsViewModel.userViewModel?.disorder)!)
+            }
+            else
+            {
+                cell.updateCellUI(title: "", value: "")
+            }
+        }
+        else
+        {
+            cell.updateCellUI(title: "", value: "")
+        }
+        
+        return cell
+
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let selectedRow = indexPath.row
+        print("the index selected is \(selectedRow)")
+        
+        handleRowSelection( row: selectedRow )
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 45
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 3
+    }
+    
+    fileprivate func handleRowSelection( row: Int )
+    {
+        switch row
+        {
+        case 0:
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditBirth, sender: nil)
+            //self.delegate?.editBirthControlInfo()
+            break
+        case 1:
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditRelationship, sender: nil)
+            //self.delegate?.editRelationshipStatus()
+            break
+        case 2:
+            performSegue(withIdentifier: Constants.SettingsStrings.toEditDisorder, sender: nil)
+            //self.delegate?.editDisorderInfo()
+            break
+        default:
+            break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == Constants.SettingsStrings.toEditBirth
+        {
+            if let destinationVC = segue.destination as? SettingsBirthControlViewController
+            {
+                destinationVC.valuePassed = (settingsViewModel.userViewModel?.birthControl)!
+            }
+        }
+        if segue.identifier == Constants.SettingsStrings.toEditRelationship
+        {
+            if let destinationVC = segue.destination as? SettingsRelationshipViewController
+            {
+                destinationVC.valuePassed = (settingsViewModel.userViewModel?.relationshipStatus)!
+            }
+        }
+
+    }
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
 	fileprivate let settingsViewModel = SettingsViewModel( withAuthService: FirebaseAuthenticationService(), databaseService: FirebaseDBService() )
 }

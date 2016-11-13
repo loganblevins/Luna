@@ -41,11 +41,11 @@ protocol ServiceStorable
 protocol ServiceDBManageable
 {
 	func waitForUserDeletion( forUid uid: String, completion: @escaping(_ error: Error? ) -> Void )
-	func createUserRecord( forUid uid: String, username: String )
-
+    func createUserRecord( forUid uid: String, username: String )
     func saveUserRecord( forUid uid: String, key: String, data: AnyObject )
-
 	func deleteUserRecord( forUid uid: String )
+
+    func retrieveUserRecord (forUid uid: String, completion: @escaping(_ error: Error?, _ userDictionary: Dictionary<String, AnyObject>? ) -> Void )
     func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
 
 }
@@ -206,6 +206,29 @@ struct FirebaseDBService: ServiceDBManageable
 			completion( error )
 		}
 	}
+    
+    func retrieveUserRecord (forUid uid: String, completion: @escaping(_ error: Error?, _ userDictionary: Dictionary<String, AnyObject>? ) -> Void )
+    {
+        Users.child( uid ).observe(FIRDataEventType.value, with:
+        {
+            snapshot in
+            
+            print (snapshot)
+            
+            guard let postDict = snapshot.value as? [String : AnyObject] else { return }
+            
+            completion ( nil, postDict )
+            
+        })
+        {
+            error in
+            
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+        
+        
+    }
 	
     func createUserRecord( forUid uid: String, username: String )
     {

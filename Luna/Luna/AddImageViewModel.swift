@@ -34,9 +34,8 @@ class AddImageViewModel
 				completion(error)
 			}
         }
-        
     }
-    
+
     fileprivate func createImagePath( uid: String ) -> String
     {
         return (uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg")

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cH9-r9-CeN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Settings Disorder View Controller-->
+        <scene sceneID="Pxd-P9-NWc">
+            <objects>
+                <viewController id="cH9-r9-CeN" customClass="SettingsDisorderViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8io-6V-82U"/>
+                        <viewControllerLayoutGuide type="bottom" id="xci-Ot-Tth"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YPm-7O-ZzQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any know" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-Sw-OiT">
+                                <rect key="frame" x="16" y="130" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NdS-fx-iDc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reproductive disorders?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODL-tg-mgx">
+                                <rect key="frame" x="16" y="159" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Mo7-fy-gAF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qo2-EP-Wog">
+                                <rect key="frame" x="131" y="479" width="112" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="L5v-VD-YiS"/>
+                                    <constraint firstAttribute="height" constant="30" id="czU-dq-udR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okPressed:" destination="cH9-r9-CeN" eventType="touchUpInside" id="Wpt-xF-K2y"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zKM-4v-Z2X">
+                                <rect key="frame" x="16" y="239" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WBN-Sw-OiT" firstAttribute="top" secondItem="8io-6V-82U" secondAttribute="bottom" constant="66" id="Aep-88-HOb"/>
+                            <constraint firstItem="ODL-tg-mgx" firstAttribute="centerX" secondItem="YPm-7O-ZzQ" secondAttribute="centerX" id="KNR-np-DJW"/>
+                            <constraint firstItem="Qo2-EP-Wog" firstAttribute="centerX" secondItem="YPm-7O-ZzQ" secondAttribute="centerX" id="KUf-QD-SIe"/>
+                            <constraint firstItem="WBN-Sw-OiT" firstAttribute="leading" secondItem="YPm-7O-ZzQ" secondAttribute="leadingMargin" id="Nma-IK-sIi"/>
+                            <constraint firstItem="zKM-4v-Z2X" firstAttribute="top" secondItem="ODL-tg-mgx" secondAttribute="bottom" constant="59" id="OA3-kl-tMV"/>
+                            <constraint firstItem="WBN-Sw-OiT" firstAttribute="centerX" secondItem="YPm-7O-ZzQ" secondAttribute="centerX" id="aix-pl-RI2"/>
+                            <constraint firstItem="zKM-4v-Z2X" firstAttribute="centerX" secondItem="YPm-7O-ZzQ" secondAttribute="centerX" id="mXn-LY-LxF"/>
+                            <constraint firstItem="xci-Ot-Tth" firstAttribute="top" secondItem="Qo2-EP-Wog" secondAttribute="bottom" constant="109" id="uKG-l9-sYc"/>
+                            <constraint firstItem="WBN-Sw-OiT" firstAttribute="leading" secondItem="ODL-tg-mgx" secondAttribute="leading" id="uOs-ku-0aZ"/>
+                            <constraint firstItem="ODL-tg-mgx" firstAttribute="top" secondItem="WBN-Sw-OiT" secondAttribute="bottom" constant="8" symbolic="YES" id="ywE-lD-Mta"/>
+                            <constraint firstItem="ODL-tg-mgx" firstAttribute="leading" secondItem="zKM-4v-Z2X" secondAttribute="leading" id="zMQ-DQ-QYd"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="disorderTextField" destination="zKM-4v-Z2X" id="ag6-kX-LR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7P-Qz-Qpr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3037" y="-142"/>
+        </scene>
+    </scenes>
+</document>
