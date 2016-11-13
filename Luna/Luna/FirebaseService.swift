@@ -47,7 +47,10 @@ protocol ServiceDBManageable
 
     func retrieveUserRecord (forUid uid: String, completion: @escaping(_ error: Error?, _ userDictionary: Dictionary<String, AnyObject>? ) -> Void )
     func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
-
+    
+    func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
+    func createPeriodRecord( forUid uid: String, period: Dictionary<String, AnyObject> )
+    
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -272,9 +275,42 @@ struct FirebaseDBService: ServiceDBManageable
             completion( error, nil )
         }
     }
+    
+    func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserMenstrualLen ).observeSingleEvent( of: .value, with:
+        {
+            snapshot in
+                
+            guard snapshot.exists() else
+            {
+                print("Status doesn't exist")
+                completion ( nil, 5 )
+                return
+            }
+                
+            print("Length: \(snapshot.value) exists")
+                
+            completion( nil, snapshot.value as! Int? )
+                
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func createPeriodRecord( forUid uid: String, period: Dictionary<String, AnyObject> )
+    {
+        let pid = Periods.childByAutoId()
+        pid.setValue( period )
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).child( pid.key ).setValue( true )
+    }
 	
-	
+    
 	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
 	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+    fileprivate var Periods = FirebaseDB.child( Constants.FirebaseStrings.ChildPeriods )
 
 }

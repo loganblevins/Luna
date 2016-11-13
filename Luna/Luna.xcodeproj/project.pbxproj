@@ -83,6 +83,9 @@
 		EAD6E1C11DD7FD62002E2D83 /* PeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C01DD7FD62002E2D83 /* PeriodViewModel.swift */; };
 		EAD6E1C31DD8CB54002E2D83 /* EditPeriodViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD6E1C21DD8CB54002E2D83 /* EditPeriodViewController.storyboard */; };
 		EAD6E1C51DD8E543002E2D83 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C41DD8E543002E2D83 /* Period.swift */; };
+		EAD6E1C71DD8E67D002E2D83 /* AddPeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */; };
+		EAD6E1C91DD9149F002E2D83 /* EditPeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */; };
+		EAD6E1CB1DD914D8002E2D83 /* EditPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E1CA1DD914D8002E2D83 /* EditPeriodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +183,9 @@
 		EAD6E1C01DD7FD62002E2D83 /* PeriodViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodViewModel.swift; sourceTree = "<group>"; };
 		EAD6E1C21DD8CB54002E2D83 /* EditPeriodViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditPeriodViewController.storyboard; sourceTree = "<group>"; };
 		EAD6E1C41DD8E543002E2D83 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeriodViewModel.swift; sourceTree = "<group>"; };
+		EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPeriodViewModel.swift; sourceTree = "<group>"; };
+		EAD6E1CA1DD914D8002E2D83 /* EditPeriodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPeriodViewController.swift; sourceTree = "<group>"; };
 		F0F0547DA627EF03A835C9B9 /* Pods-LunaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +339,8 @@
 				EA685D911DD2CDF4006FAB3E /* DisorderViewModel.swift */,
 				EAD6E1BA1DD7D54B002E2D83 /* HomeViewModel.swift */,
 				EAD6E1C01DD7FD62002E2D83 /* PeriodViewModel.swift */,
+				EAD6E1C61DD8E67D002E2D83 /* AddPeriodViewModel.swift */,
+				EAD6E1C81DD9149F002E2D83 /* EditPeriodViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -373,6 +381,7 @@
 				EA4DA39C1DD7A518002DCB07 /* SettingsBirthControlViewController.swift */,
 				EA4DA39E1DD7A59D002DCB07 /* SettingsRelationshipViewController.swift */,
 				EA4DA3A01DD7A5FB002DCB07 /* SettingsDisorderViewController.swift */,
+				EAD6E1CA1DD914D8002E2D83 /* EditPeriodViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -442,7 +451,6 @@
 				TargetAttributes = {
 					CB105A4F1D87B24300EA201C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = EB79RG3HGC;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -657,6 +665,7 @@
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
 				CBD0B9B01D9589710002A1BF /* StandardDefaults.swift in Sources */,
 				CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */,
+				EAD6E1C71DD8E67D002E2D83 /* AddPeriodViewModel.swift in Sources */,
 				EA4DA39D1DD7A518002DCB07 /* SettingsBirthControlViewController.swift in Sources */,
 				EA30D9AB1D9868C100373A96 /* PickerViews.swift in Sources */,
 				EAD6E1BF1DD7DB6C002E2D83 /* AddPeriodViewController.swift in Sources */,
@@ -666,9 +675,11 @@
 				EA685D941DD2CE72006FAB3E /* OBDisorderViewController.swift in Sources */,
 				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
 				EA685D921DD2CDF4006FAB3E /* DisorderViewModel.swift in Sources */,
+				EAD6E1CB1DD914D8002E2D83 /* EditPeriodViewController.swift in Sources */,
 				CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */,
 				EA685D8A1DD2CB2B006FAB3E /* OBMenstrualLenViewController.swift in Sources */,
 				EA61ABBF1DD67E770097FDFF /* SettingsCell.swift in Sources */,
+				EAD6E1C91DD9149F002E2D83 /* EditPeriodViewModel.swift in Sources */,
 				EA685D881DD2CA6B006FAB3E /* OBRelationshipViewController.swift in Sources */,
 				EA292C961D95AD2000C0B0BC /* User.swift in Sources */,
 				EA685D841DD2BF48006FAB3E /* BirthControlViewModel.swift in Sources */,
@@ -818,7 +829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = EB79RG3HGC;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -839,7 +850,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
-				DEVELOPMENT_TEAM = EB79RG3HGC;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

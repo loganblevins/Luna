@@ -46,6 +46,7 @@ struct Constants
         static let StorageURL = "gs://luna-c2c2f.appspot.com"
 		static let ChildUsers = "Users"
 		static let ChildEntry = "Entry"
+        static let ChildPeriods = "Periods"
 		static let ChildDailyEntries = "DailyEntries"
 		static let DictionaryUsernameKey = "Username"
         static let DictionaryOnBoardStatus = "OnBoardStatus"
@@ -55,6 +56,10 @@ struct Constants
         static let DictionaryUserMenstrualLen = "MenstrualLen"
         static let DictionaryUserDisorder = "Disorder"
         static let DictionaryUserRelationshipStatus = "RelationshipStatus"
+        static let DictionaryUserPeriods = "Periods"
+        static let DictionaryPeriodUid = "uid"
+        static let DictionaryPeriodStart = "start_date"
+        static let DictionaryPeriodEnd = "end_date"
 	}
     
     struct SettingsStrings

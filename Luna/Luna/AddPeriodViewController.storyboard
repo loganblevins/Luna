@@ -33,28 +33,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wv9-xl-aZP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Period" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvj-He-QRV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Period" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvj-He-QRV">
                                         <rect key="frame" x="135" y="22" width="105" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84705882349999995" green="0.1960784314" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Rvj-He-QRV" firstAttribute="centerY" secondItem="Wv9-xl-aZP" secondAttribute="centerY" id="4Nf-Zl-FIb"/>
+                                    <constraint firstItem="Rvj-He-QRV" firstAttribute="centerX" secondItem="Wv9-xl-aZP" secondAttribute="centerX" id="rpG-nv-WCD"/>
                                     <constraint firstAttribute="height" constant="65" id="zmD-ys-NLP"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeE-SS-WS6">
-                                <rect key="frame" x="0.0" y="73" width="375" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="mRR-AT-Nf1"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="changeStartDate:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="OJX-Tw-meG"/>
-                                </connections>
-                            </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-ia-Qqj">
                                 <rect key="frame" x="0.0" y="73" width="375" height="45"/>
                                 <subviews>
@@ -74,7 +66,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="OB3-3V-Ilf" firstAttribute="top" secondItem="lf3-ia-Qqj" secondAttribute="top" constant="12" id="3j3-Ai-dXj"/>
                                     <constraint firstItem="jjK-m7-bot" firstAttribute="leading" secondItem="OB3-3V-Ilf" secondAttribute="trailing" constant="8" symbolic="YES" id="EJq-Vq-bn6"/>
@@ -86,13 +78,13 @@
                                     <constraint firstItem="OB3-3V-Ilf" firstAttribute="leading" secondItem="lf3-ia-Qqj" secondAttribute="leadingMargin" id="f8q-Fa-FPO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxF-7T-yYv">
-                                <rect key="frame" x="0.0" y="126" width="375" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeE-SS-WS6">
+                                <rect key="frame" x="0.0" y="73" width="375" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Ag1-1b-pts"/>
+                                    <constraint firstAttribute="height" constant="45" id="mRR-AT-Nf1"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="changeEndDate:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="Ewy-nd-2B0"/>
+                                    <action selector="changePeriodStartDate:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="eAM-vd-SYT"/>
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eS-wD-Tmi">
@@ -114,7 +106,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZfK-gl-0a3" firstAttribute="top" secondItem="5eS-wD-Tmi" secondAttribute="top" constant="12" id="Dvj-SZ-X7e"/>
                                     <constraint firstItem="uOS-6i-Rqy" firstAttribute="leading" secondItem="ZfK-gl-0a3" secondAttribute="trailing" constant="8" symbolic="YES" id="NPZ-qZ-K5X"/>
@@ -126,6 +118,15 @@
                                     <constraint firstItem="ZfK-gl-0a3" firstAttribute="leading" secondItem="5eS-wD-Tmi" secondAttribute="leadingMargin" id="yND-aM-1g7"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxF-7T-yYv">
+                                <rect key="frame" x="0.0" y="126" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Ag1-1b-pts"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changePeriodEndDate:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="1aI-XY-q7i"/>
+                                </connections>
+                            </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-6l-gs1">
                                 <rect key="frame" x="0.0" y="179" width="375" height="45"/>
                                 <subviews>
@@ -145,7 +146,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="7BG-Hf-f7p" firstAttribute="baseline" secondItem="MHw-pK-VNQ" secondAttribute="baseline" id="G1Y-0c-NRe"/>
                                     <constraint firstItem="MHw-pK-VNQ" firstAttribute="centerY" secondItem="8iP-6l-gs1" secondAttribute="centerY" id="IUH-ql-1vB"/>
@@ -162,32 +163,50 @@
                                 <date key="date" timeIntervalSinceReferenceDate="500748662.294626">
                                     <!--2016-11-13 16:51:02 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerChange:" destination="8ut-e1-Hfs" eventType="valueChanged" id="aCg-6l-iJ4"/>
+                                </connections>
                             </datePicker>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4P-9w-dss">
                                 <rect key="frame" x="0.0" y="456" width="375" height="162"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPk-Lb-8qE">
-                                        <rect key="frame" x="132" y="8" width="111" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Laz-Yk-VqC">
+                                        <rect key="frame" x="8" y="58" width="110" height="45"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="111" id="OeO-nC-Med"/>
+                                            <constraint firstAttribute="height" constant="45" id="Fes-0c-pks"/>
+                                            <constraint firstAttribute="width" constant="110" id="yzs-SQ-3G4"/>
                                         </constraints>
-                                        <state key="normal" title="Save"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
-                                            <action selector="savePeriod:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="e1t-6F-7ao"/>
+                                            <action selector="cancelAddPeriod:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="Mzb-w5-uxs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqP-4i-e5q">
-                                        <rect key="frame" x="132" y="46" width="111" height="30"/>
-                                        <state key="normal" title="Cancel"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wl-s6-8tl">
+                                        <rect key="frame" x="257" y="58" width="110" height="45"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="XHI-ve-r93"/>
+                                            <constraint firstAttribute="height" constant="45" id="o0a-zy-tdc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="savePeriodObject:" destination="8ut-e1-Hfs" eventType="touchUpInside" id="5vo-kI-1eR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="HPk-Lb-8qE" firstAttribute="top" secondItem="r4P-9w-dss" secondAttribute="topMargin" id="9u6-5I-yRE"/>
-                                    <constraint firstItem="HPk-Lb-8qE" firstAttribute="centerX" secondItem="r4P-9w-dss" secondAttribute="centerX" id="Isy-0P-NsY"/>
-                                    <constraint firstItem="HPk-Lb-8qE" firstAttribute="leading" secondItem="xqP-4i-e5q" secondAttribute="leading" id="OcT-xl-FZm"/>
-                                    <constraint firstItem="xqP-4i-e5q" firstAttribute="centerX" secondItem="r4P-9w-dss" secondAttribute="centerX" id="V8R-7y-kPi"/>
-                                    <constraint firstItem="xqP-4i-e5q" firstAttribute="top" secondItem="HPk-Lb-8qE" secondAttribute="bottom" constant="8" symbolic="YES" id="cVm-Gw-fE4"/>
+                                    <constraint firstAttribute="trailing" secondItem="2wl-s6-8tl" secondAttribute="trailing" constant="20" id="Kqa-yl-gOX"/>
+                                    <constraint firstItem="Laz-Yk-VqC" firstAttribute="centerY" secondItem="r4P-9w-dss" secondAttribute="centerY" id="LSi-da-cVN"/>
+                                    <constraint firstItem="2wl-s6-8tl" firstAttribute="centerY" secondItem="r4P-9w-dss" secondAttribute="centerY" id="QvU-0O-THo"/>
+                                    <constraint firstItem="Laz-Yk-VqC" firstAttribute="leading" secondItem="r4P-9w-dss" secondAttribute="leading" constant="20" id="jTM-hV-N8N"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -222,6 +241,14 @@
                         </constraints>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="i8A-B6-foE" id="hYX-Yp-1vh"/>
+                        <outlet property="endDateLabel" destination="uOS-6i-Rqy" id="CZH-t6-rHs"/>
+                        <outlet property="endView" destination="5eS-wD-Tmi" id="tGJ-bO-Cgl"/>
+                        <outlet property="lenLabel" destination="MHw-pK-VNQ" id="rtE-dD-MT0"/>
+                        <outlet property="startDateLabel" destination="jjK-m7-bot" id="7p5-Og-uIE"/>
+                        <outlet property="startView" destination="lf3-ia-Qqj" id="tgO-cJ-dPZ"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1853.5999999999999" y="-1375.8620689655174"/>
