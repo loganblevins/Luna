@@ -17,20 +17,16 @@ class LastCycleViewModel
     
     func onAddDataAttempt( data: Date, completion: @escaping(_ error: Error? ) -> Void )
     {
-        let uid = getUID()
-        
         DispatchQueue.global( qos: .userInitiated ).async
         {
-            do
-            {
-                self.onSaveDataAttempt( uid: uid, data: data )
-            }
+			guard let uid = StandardDefaults.sharedInstance.uid else
+			{
+				assertionFailure( "StandardDefaults returned bad uid." )
+				return
+			}
+
+			self.onSaveDataAttempt( uid: uid, data: data )
         }
-    }
-    
-    fileprivate func getUID() -> String
-    {
-        return StandardDefaults.sharedInstance.uid!
     }
     
     fileprivate func onSaveDataAttempt( uid: String, data: Date )
