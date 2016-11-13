@@ -61,7 +61,7 @@ struct Constants
     {
         static let Relationship = "Relationship Status"
         static let BirthCtrl = "Birth Control Type"
-        static let Disorder = "Reporductive Disorder"
+        static let Disorder = "Reproductive Disorder"
         static let toEditBirth = "toEditBirth"
         static let toEditRelationship = "toEditRelationship"
         static let toEditDisorder = "toEditDisorder"
