@@ -17,6 +17,7 @@ protocol StandardDefaultsProtocol: class
 	var uid: String? { get set }
 	var username: String? { get set }
 	var password: String? { get set }
+	var initialInstall: Bool { get set }
 }
 
 class StandardDefaults: StandardDefaultsProtocol
@@ -66,6 +67,18 @@ class StandardDefaults: StandardDefaultsProtocol
 		}
 	}
 	
+	var initialInstall: Bool
+	{
+		get
+		{
+			return getValue( initialInstallKey ) ?? true
+		}
+		set
+		{
+			standardDefaults.set( newValue, forKey: initialInstallKey )
+		}
+	}
+	
 	// Insert any members needing stored to disk.
 	// Database files?
 	//
@@ -85,6 +98,7 @@ class StandardDefaults: StandardDefaultsProtocol
 	fileprivate let uidKey = "uidKey"
 	fileprivate let usernameKey = "usernameKey"
 	fileprivate let passwordKey = "passwordKey"
+	fileprivate let initialInstallKey = "initialInstallKey"
 	fileprivate let standardDefaults = UserDefaults.standard
 	
 	fileprivate func getValue< T >( _ key: String ) -> T?

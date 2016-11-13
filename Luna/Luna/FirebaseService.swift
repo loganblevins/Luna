@@ -227,7 +227,7 @@ struct FirebaseDBService: ServiceDBManageable
     func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
     {
         
-        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent(of: .value, with:
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryOnBoardStatus ).observeSingleEvent( of: .value, with:
         {
             snapshot in
             

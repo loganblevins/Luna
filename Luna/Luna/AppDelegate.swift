@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
 		Fabric.with( [Crashlytics.self] )
 		
+		maybeSignOutUser()
 		signInUser()
 		
 		return true
@@ -60,26 +61,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			
 			if user == nil
 			{
-				strongSelf.MainViewController().presentLogin()
+				strongSelf.MainViewController().maybePresentLogin()
 			}
             else
             {
-                if(self?.runningOnBoard == false)
-                {
-                    self?.runningOnBoard = true
-                    strongSelf.MainViewController().checkOnBoardStatus()
-                }
-                
+				print( "Have a user" )
+				strongSelf.persist( uid: user!.uid )
+				strongSelf.maybeCheckOnboardStatus()
             }
-            
 		}
 	}
-		
+	
+	fileprivate func maybeSignOutUser()
+	{
+		let authService: ServiceAuthenticatable = FirebaseAuthenticationService()
+		if StandardDefaults.sharedInstance.initialInstall
+		{
+			print( "Initial install." )
+			try? authService.signOutUser()
+			StandardDefaults.sharedInstance.initialInstall = false
+		}
+	}
+	
+	fileprivate func maybeCheckOnboardStatus()
+	{
+		if !self.MainViewController().onboardingActive
+		{
+			self.MainViewController().checkOnBoardStatus()
+		}
+	}
+	
+	fileprivate func persist( uid: String )
+	{
+		StandardDefaults.sharedInstance.uid = uid
+	}
+	
 	fileprivate func MainViewController() -> MainViewController
 	{
 		return ( window!.rootViewController as! MainViewController )
 	}
 	
-    fileprivate var runningOnBoard: Bool = false
 	fileprivate var authChangeHandle: FIRAuthStateDidChangeListenerHandle!
 }
