@@ -57,5 +57,26 @@ struct Constants
         static let DictionaryUserRelationshipStatus = "RelationshipStatus"
 	}
     
+    struct SettingsStrings
+    {
+        static let Relationship = "Relationship Status"
+        static let BirthCtrl = "Birth Control Type"
+        static let Disorder = "Reporductive Disorder"
+        static let toEditBirth = "toEditBirth"
+        static let toEditRelationship = "toEditRelationship"
+        static let toEditDisorder = "toEditDisorder"
+        static let settingsCell = "settingsCell"
+    }
+    
+    struct BirthControlValues
+    {
+        static let values = ["None", "Pill", "Vaginal Ring", "Patch", "Male Condom", "Female Condom", "Diaphragm", "Cervical cap", "IUD", "IUD Copper-based", "Implant", "Sponge", "Spermicide", "Injections", "Natural Planning", "Other"]
+    }
+    
+    struct RelationshipValues
+    {
+        static let values = ["Single", "Casual Dating", "Committed Relationship"]
+    }
+    
     
 }

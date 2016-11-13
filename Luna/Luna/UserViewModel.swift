@@ -8,40 +8,45 @@
 
 import Foundation
 
-protocol UserViewable
-{
-	var age: Int { get }
-}
+//protocol UserViewable
+//{
+//    var birthControlType: String { get }
+//    var relationshipStatus: String { get }
+//    var disorder: String { get }
+//}
 
 final class UserViewModel
 {
 	// MARK: Public API
 	//
-	
-    var age: Int
+    
+    var birthControl: String
     {
-        return calculateAge( (user.birthday) )
+        return user.birthControl
     }
 	
-	init( user: User, userViewable: UserViewable )
+    var relationshipStatus: String
     {
-        self.user = user
-		self.userViewable = userViewable
+        return user.relationshipStatus
     }
     
-    func calculateAge ( _ birthday: Date ) -> Int
+    var disorder: String
     {
-        let ageComps = Calendar.current.dateComponents( [.year], from: birthday, to: Date() )
-        
-        let age = ageComps.year!
-        
-        return age
+        return user.disorder
     }
+
 	
+	init( user: User )
+    {
+        self.user = user
+		//self.userViewable = userViewable
+    }
+    
+
 	// MARK: Implementation details
 	//
 	
     fileprivate var user: User
-	fileprivate var userViewable: UserViewable
+	//fileprivate var userViewable: UserViewable
 }
 
