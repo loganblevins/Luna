@@ -37,7 +37,7 @@ class LoginViewModel
 					{
 						uidOrNil, errorOrNil in
 						
-						strongSelf.onAuthServiceSignInAttempt( uidOrNil, username: credentials.username, password: credentials.password )
+						strongSelf.onAuthServiceSignInAttempt( forUid: uidOrNil, username: credentials.username, password: credentials.password )
 						completion( errorOrNil )
 					}
 				}
@@ -49,16 +49,15 @@ class LoginViewModel
 		}
 	}
 	
-	fileprivate func onAuthServiceSignInAttempt(_ uid: String?, username: String, password: String )
+	fileprivate func onAuthServiceSignInAttempt( forUid uid: String?, username: String, password: String )
 	{
 		guard let uid = uid else { return }
 		self.dbService.createUserRecord( forUid: uid, username: username )
-		persistUserToDisk( forUid: uid, username: username, password: password )
+		persist( username: username, password: password )
 	}
 	
-	fileprivate func persistUserToDisk( forUid uid: String, username: String, password: String )
+	fileprivate func persist( username: String, password: String )
 	{
-		StandardDefaults.sharedInstance.uid = uid
 		StandardDefaults.sharedInstance.username = username
 		StandardDefaults.sharedInstance.password = password
 	}
