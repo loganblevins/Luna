@@ -79,6 +79,18 @@ class StandardDefaults: StandardDefaultsProtocol
 		}
 	}
 	
+	var photosAuthorized: Bool
+	{
+		get
+		{
+			return getValue( photosAuthorizedKey ) ?? false
+		}
+		set
+		{
+			standardDefaults.set( newValue, forKey: photosAuthorizedKey )
+		}
+	}
+	
 	// Insert any members needing stored to disk.
 	// Database files?
 	//
@@ -99,6 +111,7 @@ class StandardDefaults: StandardDefaultsProtocol
 	fileprivate let usernameKey = "usernameKey"
 	fileprivate let passwordKey = "passwordKey"
 	fileprivate let initialInstallKey = "initialInstallKey"
+	fileprivate let photosAuthorizedKey = "photosAuthorizedKey"
 	fileprivate let standardDefaults = UserDefaults.standard
 	
 	fileprivate func getValue< T >( _ key: String ) -> T?

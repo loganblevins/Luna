@@ -27,6 +27,7 @@
 		CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */; };
 		CB5954191DD82CFD00594162 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB5954181DD82CFD00594162 /* LoginViewController.storyboard */; };
 		CB59EFF31D8A0CCA0099F63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */; };
+		CB74B0521DD91FBA007AE5CA /* PhotoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB74B0511DD91FBA007AE5CA /* PhotoFetcher.swift */; };
 		CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */; };
 		CBC437731DA5BF65003D6A0E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */; };
 		CBC437751DA5C30B003D6A0E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC437741DA5C30B003D6A0E /* MainViewController.swift */; };
@@ -118,6 +119,7 @@
 		CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunaAPI.swift; sourceTree = "<group>"; };
 		CB5954181DD82CFD00594162 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		CB59EFF21D8A0CCA0099F63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB74B0511DD91FBA007AE5CA /* PhotoFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFetcher.swift; sourceTree = "<group>"; };
 		CBC437701DA5BC0E003D6A0E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		CBC437721DA5BF65003D6A0E /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		CBC437741DA5C30B003D6A0E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				CBD0B9AF1D9589710002A1BF /* StandardDefaults.swift */,
 				CBC793211D8CCA950014A0EA /* String+.swift */,
 				CBC7931F1D8CC8D40014A0EA /* Utility.swift */,
+				CB74B0511DD91FBA007AE5CA /* PhotoFetcher.swift */,
 				CB2352C91DC30563008E8493 /* Storyboards */,
 				CB105A5A1D87B24400EA201C /* Assets.xcassets */,
 				CB105A5F1D87B24400EA201C /* Info.plist */,
@@ -641,6 +644,7 @@
 				CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */,
 				EA292CBB1D96C3DD00C0B0BC /* LoginViewModel.swift in Sources */,
 				EA685D941DD2CE72006FAB3E /* OBDisorderViewController.swift in Sources */,
+				CB74B0521DD91FBA007AE5CA /* PhotoFetcher.swift in Sources */,
 				EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */,
 				EA685D921DD2CDF4006FAB3E /* DisorderViewModel.swift in Sources */,
 				CB51CDDC1D98DA100054F8C0 /* LunaAPI.swift in Sources */,
