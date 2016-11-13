@@ -13,10 +13,18 @@ protocol LoginCompletionDelegate: class
 	func onLoginSuccess()
 }
 
-class LoginViewController: UIViewController
+class LoginViewController: UIViewController, UITextFieldDelegate
 {
 	// MARK: Public API
 	//
+	
+	override func viewDidLoad()
+	{
+		super.viewDidLoad()
+		
+		usernameTextField.delegate = self
+		passwordTextField.delegate = self
+	}
 	
 	static func storyboardInstance() -> LoginViewController?
 	{
@@ -24,6 +32,12 @@ class LoginViewController: UIViewController
 		return storyboard.instantiateInitialViewController() as? LoginViewController
 	}
 
+	func textFieldShouldReturn(_ textField: UITextField ) -> Bool
+	{
+		textField.resignFirstResponder()
+		return true
+	}
+	
 	weak var delegate: LoginCompletionDelegate?
 	
 	// MARK: Implementation details
@@ -31,10 +45,15 @@ class LoginViewController: UIViewController
 	
     @IBAction fileprivate func loginPressed()
 	{
+		signInUser()
+	}
+
+	fileprivate func signInUser()
+	{
 		guard let user = usernameTextField.text else { return }
 		guard let password = passwordTextField.text else { return }
 		let credentials = ( user, password )
-
+		
 		showNetworkActivity( show: true )
 		loginViewModel.loginAsync( credentials )
 		{
@@ -44,8 +63,8 @@ class LoginViewController: UIViewController
 			defer
 			{
 				DispatchQueue.main.async
-				{
-					showNetworkActivity( show: false )
+					{
+						showNetworkActivity( show: false )
 				}
 			}
 			
@@ -54,8 +73,8 @@ class LoginViewController: UIViewController
 				// Update UI according to error on main thread.
 				//
 				DispatchQueue.main.async
-				{
-					strongSelf.handleLoginError( error! )
+					{
+						strongSelf.handleLoginError( error! )
 				}
 				return
 			}
@@ -63,7 +82,7 @@ class LoginViewController: UIViewController
 			strongSelf.delegate?.onLoginSuccess()
 		}
 	}
-
+	
 	fileprivate func handleLoginError(_ error: Error )
 	{
 		switch error

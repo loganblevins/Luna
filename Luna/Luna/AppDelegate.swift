@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		// This is dumb. But...it fixes the database connection crashes. 
 		//
 		FIRApp.configure()
-		FIRDatabase.database().persistenceEnabled = true
+		FIRDatabase.database().persistenceEnabled = false
 	}
 	
 	// MARK: App Delegate callbacks
