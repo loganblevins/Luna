@@ -7,19 +7,56 @@
 //
 
 import UIKit
+import CVCalendar
 
-final class CalendarViewController: UIViewController
+final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate
 {
-	init( viewModel: CalendarViewModel )
+	override func viewDidLayoutSubviews()
 	{
-		super.init( nibName: nil, bundle: nil )
-		self.viewModel = viewModel
+		super.viewDidLayoutSubviews()
+		
+		menuView.commitMenuViewUpdate()
+		calendarView.commitCalendarViewUpdate()
 	}
 	
-	required init?(coder aDecoder: NSCoder)
+	override func viewDidLoad()
 	{
-		super.init( coder: aDecoder )
+		super.viewDidLoad()
+		
+		updateNavigationBarTitle()
 	}
 	
-	fileprivate var viewModel: CalendarViewModel?
+	func presentationMode() -> CalendarMode
+	{
+		return .monthView
+	}
+	
+	func firstWeekday() -> Weekday
+	{
+		return .sunday
+	}
+	
+	func presentedDateUpdated(_ date: CVDate )
+	{
+		print( "presentedDateUpdated: \(date.commonDescription)" )
+		updateNavigationBarTitle()
+	}
+	
+	func shouldAnimateResizing() -> Bool
+	{
+		return false
+	}
+	
+	fileprivate func updateNavigationBarTitle()
+	{
+		self.navBarTopItem.title = calendarView.presentedDate.globalDescription
+	}
+	
+	fileprivate var navBarTopItem: UINavigationItem!
+	{
+		return self.navigationController?.navigationBar.topItem
+	}
+	
+	@IBOutlet weak var menuView: CVCalendarMenuView!
+	@IBOutlet weak var calendarView: CVCalendarView!
 }
