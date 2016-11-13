@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DailyEntryViewModel
+class PeriodViewModel
 {
     init( dbService: ServiceDBManageable )
     {

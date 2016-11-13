@@ -8,39 +8,20 @@
 
 import UIKit
 
-
 class HomeViewController: UIViewController
 {
     override func viewDidLoad()
     {
         super.viewDidLoad()
         setDisplayCurrentDate( date: Date() )
-    }
-    
-	@IBAction fileprivate func enterDataButtonPressed(_ sender: AnyObject)
-    {
-        performSegue(withIdentifier: Constants.HomeStrings.toEntry, sender: nil)
-    }
-    
-    @IBAction func nextDayPressed(_ sender: Any)
-    {
-        setNextDate()
-    }
-    
-    @IBAction func previousDayPressed(_ sender: Any)
-    {
-        setPreviousDate()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
 
-        if let destinationVC = segue.destination as? DailyEntryViewController
-        {
-            destinationVC.valuePassed = homeViewModel.returnCurrentDate()
-        }
     }
-    
+
+	@IBAction fileprivate func addPeriodButtonPressed(_ sender: AnyObject)
+    {
+        self.MainViewController().presentAddPeriod()
+    }
+        
     //This gunction compares todays date to the current date and decides whether or not
     // to enable the next day button. It should be disabled if the date is Today to prevent
     // the user from entering future data
@@ -112,6 +93,16 @@ class HomeViewController: UIViewController
         homeViewModel.setCurrentDate( date: newDate )
         shouldHideFutureDateButton()
     }
+    
+    func MainViewController() -> MainViewController
+    {
+        return (UIApplication.shared.keyWindow?.rootViewController as? MainViewController)!
+    }
+    
+    
+    var window: UIWindow?
+    
+    @IBOutlet weak var dailyEntryButton: UIButton!
 
     @IBOutlet weak var nextDateButton: UIButton!
     

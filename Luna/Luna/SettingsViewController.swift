@@ -150,7 +150,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else
         {
-            cell.updateCellUI(title: "", value: "")
+            if indexPath.row == 0
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.BirthCtrl, value: "")
+            }
+            else if indexPath.row == 1
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Relationship, value: "")
+            }
+            else if indexPath.row == 2
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: "")
+            }
+            else
+            {
+                cell.updateCellUI(title: "", value: "")
+            }
         }
         
         return cell

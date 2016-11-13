@@ -51,10 +51,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG2-jN-Iv4">
                                 <rect key="frame" x="313" y="30" width="46" height="30"/>
                                 <state key="normal" title="'Next'"/>
+                                <connections>
+                                    <action selector="nextDayPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="erW-uc-JJ7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-MK-abu">
                                 <rect key="frame" x="16" y="30" width="46" height="30"/>
                                 <state key="normal" title="'Back'"/>
+                                <connections>
+                                    <action selector="previousDayPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="Hmr-nc-TCz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgm-zD-Vpp">
                                 <rect key="frame" x="154" y="287" width="67" height="45"/>
@@ -94,9 +100,6 @@
                                 <state key="normal" title="ADD PERIOD">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="addPeriodButtonPressed:" destination="TDq-cD-MEI" eventType="touchUpInside" id="t3K-gF-e27"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4S-7E-edC">
                                 <rect key="frame" x="0.0" y="578" width="375" height="40"/>
@@ -203,7 +206,7 @@
                             <constraint firstItem="T4S-7E-edC" firstAttribute="top" secondItem="qEe-6M-QuR" secondAttribute="bottom" id="Wkz-qf-ATp"/>
                             <constraint firstItem="2ix-YF-iWc" firstAttribute="leading" secondItem="XJh-Xi-3oL" secondAttribute="leading" id="eUK-O0-4xH"/>
                             <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="2ix-YF-iWc" secondAttribute="bottom" id="fIy-p8-reN"/>
-                            <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="T4S-7E-edC" secondAttribute="bottom" constant="30" id="g5A-m4-qYE"/>
+                            <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="T4S-7E-edC" secondAttribute="bottom" constant="20" id="g5A-m4-qYE"/>
                             <constraint firstItem="F2Q-xU-0QQ" firstAttribute="leading" secondItem="K2n-MK-abu" secondAttribute="leading" id="gRD-41-cBm"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="go8-mR-xCM"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="top" secondItem="F2Q-xU-0QQ" secondAttribute="bottom" constant="8" symbolic="YES" id="h3L-jy-WXc"/>
@@ -223,11 +226,39 @@
                         <outlet property="dailyEntryButton" destination="y44-d8-6m0" id="TbA-bK-PLz"/>
                         <outlet property="dateLabel" destination="ATM-Fg-Y1b" id="ZmE-Q1-Cma"/>
                         <outlet property="nextDateButton" destination="HG2-jN-Iv4" id="F19-Al-YS3"/>
+                        <segue destination="Fb4-l3-SGp" kind="show" identifier="toEntry" id="dHC-CF-9aj"/>
+                        <segue destination="iNh-Wn-Nf8" kind="show" id="gOz-Rj-Stu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-c8-x8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968.79999999999995" y="-1374.9625187406298"/>
+        </scene>
+        <!--DailyEntryViewController-->
+        <scene sceneID="XEQ-nw-IfK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DailyEntryViewController" id="Fb4-l3-SGp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRU-FI-chf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="-1593"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="n4Z-nc-4zw">
+            <objects>
+                <viewController id="iNh-Wn-Nf8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NEC-eR-p8e"/>
+                        <viewControllerLayoutGuide type="bottom" id="Exh-5c-pNP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZAv-Iq-WXx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7q-NB-vIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="-1089"/>
         </scene>
     </scenes>
     <resources>
