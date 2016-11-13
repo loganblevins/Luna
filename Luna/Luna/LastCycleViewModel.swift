@@ -19,16 +19,13 @@ class LastCycleViewModel
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {
-            do
-            {
-                guard let uid = StandardDefaults.sharedInstance.uid else
-                {
-                    assertionFailure( "StandardDefaults returned bad uid." )
-                    return
-                }
+			guard let uid = StandardDefaults.sharedInstance.uid else
+			{
+				assertionFailure( "StandardDefaults returned bad uid." )
+				return
+			}
 
-                self.onSaveDataAttempt( uid: uid, data: data )
-            }
+			self.onSaveDataAttempt( uid: uid, data: data )
         }
     }
     
