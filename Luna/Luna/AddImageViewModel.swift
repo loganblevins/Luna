@@ -18,22 +18,20 @@ class AddImageViewModel
 
     func onUploadImageAttempt( imageData: Data, completion: @escaping(_ error: Error? ) -> Void )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        guard let uid = StandardDefaults.sharedInstance.uid else
+		{
+			assertionFailure( "Bad uid." )
+			return
+		}
+        let imgPath = createImagePath( uid: uid )
+        
+        DispatchQueue.global( qos: .background ).async
         {
-			guard let uid = StandardDefaults.sharedInstance.uid else
+            self.storageService.uploadUserImage(forUid: uid, imageData: imageData, imagePath: imgPath)
 			{
-				assertionFailure( "StandardDefaults returned bad uid." )
-				return
-			}
-			
-			let imgPath = self.createImagePath( uid: uid )
-			
-			self.storageService.uploadUserImage(forUid: uid, imageData: imageData, imagePath: imgPath)
-			{
-				uid , error in
+				_, error in
 				
 				completion(error)
-				
 			}
         }
     }
