@@ -463,6 +463,7 @@
 				TargetAttributes = {
 					CB105A4F1D87B24300EA201C = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = EB79RG3HGC;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -845,7 +846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EB79RG3HGC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -866,7 +867,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Luna/Luna.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EB79RG3HGC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
