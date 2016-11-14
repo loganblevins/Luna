@@ -59,6 +59,7 @@ class AddPeriodViewModel
             
             let periodDict = self.createPeriodObject( forUid: uid, start: startDate, end: endDate )
             self.onSavePeriodDataAttempt( uid: uid, dict: periodDict )
+            self.onUpdateLastCycleAttempt(uid: uid, newDate: startDate)
         }
         
     }
@@ -73,6 +74,10 @@ class AddPeriodViewModel
         self.dbService.createPeriodRecord(forUid: uid, period: dict )
     }
     
+    fileprivate func onUpdateLastCycleAttempt ( uid: String, newDate: String )
+    {
+        self.dbService.saveUserRecord( forUid: uid, key: Constants.FirebaseStrings.DictionaryUserCycleDate, data: newDate as AnyObject )
+    }
 
     func setDates( completion: @escaping(_ error: Error? ) -> Void )
     {
