@@ -53,7 +53,8 @@ protocol ServiceDBManageable
     func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
     func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
     
-    
+    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+        
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -303,7 +304,7 @@ struct FirebaseDBService: ServiceDBManageable
         }
     }
     
-    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ len: String? ) -> Void )
+    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
     {
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserCycleDate ).observe( .value, with:
         {

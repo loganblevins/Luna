@@ -208,6 +208,9 @@
                     <connections>
                         <outlet property="dailyEntryButton" destination="y44-d8-6m0" id="TbA-bK-PLz"/>
                         <outlet property="dateLabel" destination="ATM-Fg-Y1b" id="ZmE-Q1-Cma"/>
+                        <outlet property="daysUntilLabel" destination="bgm-zD-Vpp" id="Sa8-FR-ZaD"/>
+                        <outlet property="expectedOvuLabel" destination="FsV-qP-hrl" id="Fqt-YG-LUa"/>
+                        <outlet property="expectedPeriodLabel" destination="JYQ-5S-rke" id="zua-RL-WFL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-c8-x8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
