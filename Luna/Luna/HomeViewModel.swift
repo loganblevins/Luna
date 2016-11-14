@@ -138,6 +138,7 @@ class HomeViewModel
             guard lastOrNil != nil else
             {
                 completion ( nil )
+                return
             }
             
             self.lastCycleDate = self.convertStringToDate( dateString: lastOrNil! )
