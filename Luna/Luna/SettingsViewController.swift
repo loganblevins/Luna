@@ -9,8 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
-    
+{	
     override func viewDidLoad()
     {
         super.viewDidLoad()

@@ -47,7 +47,7 @@ protocol ServiceDBManageable
 
     func retrieveUserRecord (forUid uid: String, completion: @escaping(_ error: Error?, _ userDictionary: Dictionary<String, AnyObject>? ) -> Void )
     func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
-
+	func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -272,6 +272,32 @@ struct FirebaseDBService: ServiceDBManageable
             completion( error, nil )
         }
     }
+	
+	
+	func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+	{
+		Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserCycleDate ).observe( .value, with:
+			{
+				snapshot in
+				
+				guard snapshot.exists() else
+				{
+					print("Status doesn't exist")
+					completion ( nil, nil )
+					return
+				}
+				
+				print("Last Cycle date is: \(snapshot.value)")
+				
+				completion( nil, snapshot.value as! String? )
+				
+		})
+		{
+			error in
+			print( error.localizedDescription )
+			completion( error, nil )
+		}
+	}
 	
 	
 	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
