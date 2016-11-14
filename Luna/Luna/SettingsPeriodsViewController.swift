@@ -52,8 +52,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         self.selectRow = indexPath.row
         print("the index selected is \(selectRow)")
-        //handleRowSelection( row: indexPath.row )
-        performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
+        //performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
     }
     
     fileprivate func handleRowSelection( row: Int )
@@ -69,8 +68,6 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
                 destinationVC.periodVM =  periodArray?[selectRow!]
             }
         }
-
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

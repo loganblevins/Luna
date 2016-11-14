@@ -78,7 +78,6 @@ class EditPeriodViewController: UIViewController
     }
     
 
-    
     @IBAction func dateChange(_ sender: Any)
     {
         print("Date picker date change")
