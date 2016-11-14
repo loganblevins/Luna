@@ -32,46 +32,19 @@ struct PhotoFetcher
 		return status == .authorized
 	}
 	
-	
-	func onUploadImageAttempt( imageData: Data, completion: @escaping(_ error: Error? ) -> Void )
+	fileprivate func dataFromAsset( asset: PHAsset ) -> Data?
 	{
-		guard let uid = StandardDefaults.sharedInstance.uid else
-		{
-			assertionFailure( "Bad uid." )
-			return
-		}
-		let imgPath = createImagePath( uid: uid )
-		
-		DispatchQueue.global( qos: .background ).async
-			{
-				self.storageService.uploadUserImage(forUid: uid, imageData: imageData, imagePath: imgPath)
-				{
-					_, error in
-					
-					completion(error)
-				}
-		}
-	}
-	
-	fileprivate func createImagePath( uid: String ) -> String
-	{
-		return (uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg")
-	}
-	
-	fileprivate func imageFromAsset( asset: PHAsset ) -> UIImage?
-	{
-		var image: UIImage?
+		var imageData: Data?
 		let manager = PHImageManager.default()
 		let options = PHImageRequestOptions()
 		options.isSynchronous = true
-		manager.requestImage( for: asset, targetSize: CGSize( width: 100, height: 100 ), contentMode: .aspectFit, options: options )
+		options.version = .original
+		manager.requestImageData( for: asset, options: options )
 		{
-			result, info in
+			data, response, orientation, info in
 			
-			image = result
+			imageData = data
 		}
-		return image
+		return imageData
 	}
-	
-	fileprivate let storageService: ServiceStorable = FirebaseStorageService()
 }
