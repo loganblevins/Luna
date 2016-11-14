@@ -19,7 +19,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.dataSource = self
         
         periodArray = periodArrayRecieved
-
+        
         // Do any additional setup after loading the view.
     }
 
