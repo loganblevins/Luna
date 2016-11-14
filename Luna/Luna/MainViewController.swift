@@ -76,10 +76,10 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	
     func presentOnBoard()
     {
-        addImageViewController = OBAddImageViewController.storyboardInstance()
-        addImageViewController!.delegate = self
-		onboardingActive = true
-        present ( addImageViewController!, animated: true, completion: nil )
+        //addImageViewController = OBAddImageViewController.storyboardInstance()
+        //addImageViewController!.delegate = self
+		//onboardingActive = true
+        //present ( addImageViewController!, animated: true, completion: nil )
     }
     
     func toBirthControlView()

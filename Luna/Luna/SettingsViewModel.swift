@@ -53,13 +53,7 @@ class SettingsViewModel
 
     }
     
-    func getUserPeriodData( completion: @escaping(_ error: Error?) -> Void )
-    {
-        DispatchQueue.global( qos: .userInitiated ).async
-        {
-            
-        }
-    }
+
     
     fileprivate func createUserViewModel( completion: @escaping(_ error: Error?, _ userViewModel: UserViewModel? ) -> Void )
     {
@@ -72,6 +66,16 @@ class SettingsViewModel
         self.databaseService.retrieveUserRecord( forUid: uid )
         {
             errorOrNil, userOrNil in
+            
+            guard errorOrNil == nil else
+            {
+                return
+            }
+            
+            guard userOrNil != nil else
+            {
+                return
+            }
             
             if (userOrNil != nil)
             {
@@ -91,9 +95,7 @@ class SettingsViewModel
 
 
     
-    
-    
-    
+
 	
 	// Complex method completing 3 procedures in this order: Delete from ServiceDB -> Delete from ServiceAuthenticatable -> Delete from Luna
 	//
@@ -308,7 +310,10 @@ class SettingsViewModel
                 return
             }
             
-            print(self.periods)
+            guard dictOrNil != nil else
+            {
+                return
+            }
             
             self.periods = []
             
@@ -327,25 +332,32 @@ class SettingsViewModel
     
     func getPeriodObjects( periodDict: Dictionary<String, AnyObject>? , completion: @escaping(_ error: Error? ) -> Void )
     {
-        for item in periodDict!
+        if(periodDict != nil)
         {
-            self.createPeriodViewModel( pid: item.key )
+            for item in periodDict!
             {
-                errorOrNil, periodOrNil in
-                
-                guard errorOrNil == nil else
+                self.createPeriodViewModel( pid: item.key )
                 {
-                    return
-                }
-                
-                if (periodOrNil != nil)
-                {
+                    errorOrNil, periodOrNil in
+                    
+                    guard errorOrNil == nil else
+                    {
+                        return
+                    }
+                    
+                    guard periodOrNil != nil else
+                    {
+                        return
+                    }
+                    
                     self.periods.append( periodOrNil! )
                     print(self.periods)
+                    
+                    
                 }
-            
             }
         }
+
     }
     
     fileprivate func createPeriodViewModel( pid: String, completion: @escaping(_ error: Error?, _ periodViewModel: PeriodViewModel? ) -> Void )
@@ -355,16 +367,16 @@ class SettingsViewModel
         {
             errorOrNil, periodOrNil in
             
-            if (periodOrNil != nil)
+            guard periodOrNil != nil else
             {
-                let period = self.createPeriodData( pid: pid, period: periodOrNil! )
-                let periodViewModel = PeriodViewModel ( period: period )
-                completion ( nil, periodViewModel )
+                completion( nil, nil )
+                return
             }
-            else
-            {
-                completion ( errorOrNil, nil )
-            }
+            
+            let period = self.createPeriodData( pid: pid, period: periodOrNil! )
+            let periodViewModel = PeriodViewModel ( period: period )
+            completion ( nil, periodViewModel )
+            
         }
     }
 

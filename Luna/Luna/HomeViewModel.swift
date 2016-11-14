@@ -92,12 +92,21 @@ class HomeViewModel
             guard errorOrNil == nil else
             {
                 //Set the default if there is an error
-                self.LastCycleDate = Date()
-                
+                self.lastCycleDate = Date()
                 self.setExpectedPeriodDate()
                 self.setExpectedOvulation()
                 self.setDaysToExpectedPeriod()
                 return
+            }
+            
+            guard self.lastCycleDate != nil else
+            {
+                self.lastCycleDate = Date()
+                self.setExpectedPeriodDate()
+                self.setExpectedOvulation()
+                self.setDaysToExpectedPeriod()
+                return
+                
             }
             
             self.setExpectedPeriodDate()
@@ -120,15 +129,20 @@ class HomeViewModel
         {
             errorOrNil, lastOrNil in
             
-            if (lastOrNil != nil)
+            guard errorOrNil == nil else
             {
-                self.lastCycleDate = self.convertStringToDate( dateString: lastOrNil! )
+                completion( errorOrNil )
+                return
+            }
+            
+            guard lastOrNil != nil else
+            {
                 completion ( nil )
             }
-            else
-            {
-                completion ( errorOrNil )
-            }
+            
+            self.lastCycleDate = self.convertStringToDate( dateString: lastOrNil! )
+            completion ( nil )
+
         }
         
     }
@@ -144,9 +158,7 @@ class HomeViewModel
         
         print(dateFromServer)
         
-        
         return dateFromServer
-
     }
     
     fileprivate func setDaysToExpectedPeriod()
@@ -163,7 +175,6 @@ class HomeViewModel
     
     fileprivate func setExpectedOvulation()
     {
-        
         self.expectedOvulation = Calendar.current.date(byAdding: .day, value: 14, to: lastCycleDate!)
         print(expectedOvulation!)
     }

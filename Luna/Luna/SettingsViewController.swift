@@ -38,7 +38,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             {
                 return
             }
-                
         }
         
     }
@@ -227,7 +226,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             //self.delegate?.editDisorderInfo()
             break
         case 3:
-            performSegue( withIdentifier: Constants.SettingsStrings.toPeriods, sender: nil )
+            //performSegue( withIdentifier: Constants.SettingsStrings.toPeriods, sender: nil )
+            break
         default:
             break
         }
