@@ -34,6 +34,31 @@ class HomeViewController: UIViewController
         }
 
     }
+    
+    func onOnboardComplete()
+    {
+     
+        setDisplayCurrentDate( date: Date() )
+        
+        guard StandardDefaults.sharedInstance.uid != nil else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return
+        }
+       
+        homeViewModel.setDates()
+        {
+            errorOrNil in
+                
+            guard errorOrNil == nil else
+            {
+                return
+            }
+                
+            self.setLabelDates()
+        }
+        
+    }
 
 	@IBAction fileprivate func addPeriodButtonPressed(_ sender: AnyObject)
     {

@@ -135,6 +135,8 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 		}
 		
         mainViewModel.setOnBoardStatus( status: true )
+        
+        HomeViewController().onOnboardComplete()
     }
     
     
