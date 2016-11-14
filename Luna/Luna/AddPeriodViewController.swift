@@ -77,6 +77,8 @@ class AddPeriodViewController: UIViewController
     @IBAction func savePeriodObject(_ sender: Any)
     {
         createPeriodObject()
+        
+        delegate?.onDismissAddPeriod()
     }
 
     

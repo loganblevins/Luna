@@ -78,9 +78,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y44-d8-6m0">
                                 <rect key="frame" x="133" y="93" width="108" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="ZjI-dj-vpN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="osn-UD-WBh"/>
                                     <constraint firstAttribute="height" constant="30" id="pW2-Fz-DXm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tn1-TS-E7h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                 <state key="normal" title="ADD PERIOD">
@@ -94,13 +97,13 @@
                                 <rect key="frame" x="0.0" y="578" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenDot" translatesAutoresizingMaskIntoConstraints="NO" id="jEW-kn-9V7">
-                                        <rect key="frame" x="8" y="8" width="12" height="23"/>
+                                        <rect key="frame" x="8" y="8" width="12" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="FfQ-4E-UJN"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY, MON 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsV-qP-hrl">
-                                        <rect key="frame" x="28" y="9" width="80" height="21"/>
+                                        <rect key="frame" x="28" y="9" width="80" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="zFL-TY-wzm"/>
                                         </constraints>
@@ -109,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPECTED OVULATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUo-zf-j3D">
-                                        <rect key="frame" x="116" y="9" width="108" height="21"/>
+                                        <rect key="frame" x="116" y="9" width="108" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="9ZS-Ul-OLO"/>
                                         </constraints>
@@ -120,7 +123,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="B39-xa-HBO"/>
+                                    <constraint firstAttribute="height" constant="30" id="B39-xa-HBO"/>
                                     <constraint firstItem="FsV-qP-hrl" firstAttribute="baseline" secondItem="VUo-zf-j3D" secondAttribute="baseline" id="J9q-L2-6Kf"/>
                                     <constraint firstItem="jEW-kn-9V7" firstAttribute="centerY" secondItem="T4S-7E-edC" secondAttribute="centerY" id="KkN-dz-mL2"/>
                                     <constraint firstItem="VUo-zf-j3D" firstAttribute="centerY" secondItem="T4S-7E-edC" secondAttribute="centerY" id="QVB-0l-5oT"/>
@@ -136,13 +139,13 @@
                                 <rect key="frame" x="0.0" y="530" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redDot" translatesAutoresizingMaskIntoConstraints="NO" id="PKR-9X-lOZ">
-                                        <rect key="frame" x="8" y="8" width="12" height="23"/>
+                                        <rect key="frame" x="8" y="8" width="12" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="3Ie-dz-z06"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY, MON 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYQ-5S-rke">
-                                        <rect key="frame" x="28" y="9" width="80" height="21"/>
+                                        <rect key="frame" x="28" y="9" width="80" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Je7-8L-5mI"/>
                                         </constraints>
@@ -151,7 +154,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPECTED PERIOD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6d-OX-4Tm">
-                                        <rect key="frame" x="116" y="9" width="108" height="21"/>
+                                        <rect key="frame" x="116" y="9" width="108" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="m1C-xb-QEt"/>
                                         </constraints>
@@ -171,7 +174,7 @@
                                     <constraint firstItem="JYQ-5S-rke" firstAttribute="top" secondItem="qEe-6M-QuR" secondAttribute="top" constant="9" id="jt8-Dh-LmW"/>
                                     <constraint firstItem="l6d-OX-4Tm" firstAttribute="leading" secondItem="JYQ-5S-rke" secondAttribute="trailing" constant="8" symbolic="YES" id="l0b-MO-uWF"/>
                                     <constraint firstItem="l6d-OX-4Tm" firstAttribute="centerY" secondItem="qEe-6M-QuR" secondAttribute="centerY" id="lti-TY-BJ6"/>
-                                    <constraint firstAttribute="height" constant="40" id="n6q-rh-2ea"/>
+                                    <constraint firstAttribute="height" constant="30" id="n6q-rh-2ea"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -192,7 +195,7 @@
                             <constraint firstItem="T4S-7E-edC" firstAttribute="top" secondItem="qEe-6M-QuR" secondAttribute="bottom" id="Wkz-qf-ATp"/>
                             <constraint firstItem="2ix-YF-iWc" firstAttribute="leading" secondItem="XJh-Xi-3oL" secondAttribute="leading" id="eUK-O0-4xH"/>
                             <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="2ix-YF-iWc" secondAttribute="bottom" id="fIy-p8-reN"/>
-                            <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="T4S-7E-edC" secondAttribute="bottom" constant="30" id="g5A-m4-qYE"/>
+                            <constraint firstItem="V69-TV-1EW" firstAttribute="top" secondItem="T4S-7E-edC" secondAttribute="bottom" constant="50" id="g5A-m4-qYE"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="centerX" secondItem="XJh-Xi-3oL" secondAttribute="centerX" id="go8-mR-xCM"/>
                             <constraint firstItem="y44-d8-6m0" firstAttribute="top" secondItem="F2Q-xU-0QQ" secondAttribute="bottom" constant="8" symbolic="YES" id="h3L-jy-WXc"/>
                             <constraint firstItem="bgm-zD-Vpp" firstAttribute="centerY" secondItem="2ix-YF-iWc" secondAttribute="centerY" id="iuv-A7-gNF"/>
