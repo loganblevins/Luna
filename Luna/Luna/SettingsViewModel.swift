@@ -308,10 +308,6 @@ class SettingsViewModel
                 return
             }
             
-            for snap in dictOrNil!
-            {
-                print(snap)
-            }
             print(self.periods)
             
             self.periods = []
