@@ -52,7 +52,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         self.selectRow = indexPath.row
         print("the index selected is \(selectRow)")
-        performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
+        //performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
     }
     
     fileprivate func handleRowSelection( row: Int )

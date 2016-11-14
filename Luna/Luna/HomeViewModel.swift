@@ -165,7 +165,7 @@ class HomeViewModel
     fileprivate func setDaysToExpectedPeriod()
     {
         let days  = Calendar.current.dateComponents([.day], from: Date(), to: self.expectedPeriod!).day
-        self.daysToExpectedPeriod = days
+        self.daysToExpectedPeriod = days! + 1
     }
     
     fileprivate func setExpectedPeriodDate()
