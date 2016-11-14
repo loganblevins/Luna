@@ -16,11 +16,6 @@ class HomeViewController: UIViewController
         setDisplayCurrentDate( date: Date() )
         
         
-        guard StandardDefaults.sharedInstance.uid != nil else
-        {
-            assertionFailure( "StandardDefaults returned bad uid." )
-            return
-        }
         homeViewModel.setDates()
         {
             errorOrNil in

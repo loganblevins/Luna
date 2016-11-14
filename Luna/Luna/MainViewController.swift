@@ -45,7 +45,13 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
             {
                 strongSelf.presentOnBoard()
             }
+            else
+            {
+                self?.HomeViewController().onOnboardComplete()
+            }
         }
+        
+        
     }
     
 	func maybePresentLogin()
