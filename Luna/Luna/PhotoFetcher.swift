@@ -15,7 +15,7 @@ struct PhotoFetcher
 		PHPhotoLibrary.requestAuthorization() { _ in }
 	}
 	
-	func fetchAssets( fromDate begin: Date, to end: Date )
+	func fetchAssets( fromDate begin: Date, to end: Date ) -> PHFetchResult<PHAsset>
 	{
 		let NSBegin = begin as NSDate
 		let NSEnd = end as NSDate
@@ -23,21 +23,7 @@ struct PhotoFetcher
 		options.includeAssetSourceTypes = .typeUserLibrary
 		options.predicate = NSPredicate( format: "( creationDate >= %@ ) AND ( creationDate <= %@ )", NSBegin, NSEnd )
 		let fetchResult = PHAsset.fetchAssets( with: .image, options: options )
-		fetchResult.enumerateObjects(
-		{
-			asset, index, stop in
-			
-				let image = self.imageFromAsset( asset: asset )
-				let data = UIImageJPEGRepresentation( image!, 0.0 )
-				self.onUploadImageAttempt( imageData: data! )
-				{
-					error in
-					
-				}
-			
-		
-			print( index )
-		} )
+		return fetchResult
 	}
 	
 	static func authorized() -> Bool
