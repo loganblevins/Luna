@@ -27,19 +27,15 @@ class EditPeriodViewController: UIViewController
         
         datePicker.datePickerMode = UIDatePickerMode.date
         
+        if( periodVM != nil)
+        {
+            editPeriodViewModel.setPeriodViewModel( periodVM: periodVM! )
+            editPeriodViewModel.setDates()            
+            setLabelDates()
+        }
+        
         setStartView()
         
-        editPeriodViewModel.setDates()
-            {
-                errorOrNil in
-                
-                guard errorOrNil == nil else
-                {
-                    return
-                }
-                
-                self.setLabelDates()
-        }
     }
     
     static func storyboardInstance() -> AddPeriodViewController?
@@ -50,7 +46,8 @@ class EditPeriodViewController: UIViewController
     
     weak var delegate: AddPeriodDelegate?
     
-    @IBAction func changePeriodStartDate(_ sender: Any)
+
+    @IBAction func changeStartDate(_ sender: Any)
     {
         startPicker = true
         endPicker = false
@@ -60,7 +57,8 @@ class EditPeriodViewController: UIViewController
         
         datePicker.setDate( editPeriodViewModel.Start, animated: true )
     }
-    @IBAction func changePeriodEndDate(_ sender: Any)
+    
+    @IBAction func changeEndDate(_ sender: Any)
     {
         endPicker = true
         startPicker = false
@@ -71,14 +69,16 @@ class EditPeriodViewController: UIViewController
         datePicker.setDate( editPeriodViewModel.End, animated: true )
         
     }
-    
-    
-    @IBAction func savePeriod(_ sender: Any)
+
+    @IBAction func savePeriodObject(_ sender: Any)
     {
         createPeriodObject()
+        
+        _ = navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func datePickerChange(_ sender: Any)
+
+    @IBAction func dateChange(_ sender: Any)
     {
         print("Date picker date change")
         print("New date: \(datePicker.date)")
@@ -94,7 +94,7 @@ class EditPeriodViewController: UIViewController
         updateLen()
         setLabelDates()
     }
-    
+
     fileprivate func setEndView()
     {
         startPicker = false
@@ -115,9 +115,11 @@ class EditPeriodViewController: UIViewController
     
     fileprivate func createPeriodObject()
     {
-        editPeriodViewModel.onCreatePeriodObject(startDate: convertDateFormatToString( date: editPeriodViewModel.Start ), endDate: convertDateFormatToString( date: editPeriodViewModel.End ))
+
+      editPeriodViewModel.onEditPeriodObject(pid: editPeriodViewModel.Pid, startDate: convertDateFormatToUnixString(date: editPeriodViewModel.Start), endDate: convertDateFormatToUnixString(date: editPeriodViewModel.End))
         {
             error in
+            
         }
     }
     
@@ -127,6 +129,14 @@ class EditPeriodViewController: UIViewController
         endDateLabel.text = convertDateFormatToString( date: editPeriodViewModel.End )
         lenLabel.text =  "\(editPeriodViewModel.Length)"
     }
+    
+    fileprivate func convertDateFormatToUnixString( date: Date ) -> String
+    {
+        let timestamp = date.timeIntervalSince1970
+        
+        return String(format: "%f", timestamp)
+    }
+
     
     fileprivate func convertDateFormatToString( date: Date ) -> String
     {
@@ -170,7 +180,9 @@ class EditPeriodViewController: UIViewController
     fileprivate var startPicker: Bool = false
     fileprivate var endPicker: Bool = false
     
-    fileprivate let editPeriodViewModel = EditPeriodViewModel ( dbService: FirebaseDBService() )
+    var periodVM: PeriodViewModel?
+
+    fileprivate let editPeriodViewModel = EditPeriodViewModel( dbService: FirebaseDBService() )
     
     
 }

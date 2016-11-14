@@ -21,7 +21,7 @@ class EditPeriodViewModel
     }
     
     var End: Date
-        {
+    {
         get { return endDate! }
         
         set (newValue)
@@ -31,7 +31,7 @@ class EditPeriodViewModel
     }
     
     var Length: Int
-        {
+    {
         get { return length! }
         
         set (newValue)
@@ -40,103 +40,64 @@ class EditPeriodViewModel
         }
     }
     
+    var Pid: String
+    {
+        get { return (periodViewModel?.pid)! }
+        
+    }
+    
     init( dbService: ServiceDBManageable )
     {
         self.dbService = dbService
     }
     
     
-    func onCreatePeriodObject( startDate: String, endDate: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onEditPeriodObject( pid: String, startDate: String, endDate: String, completion: @escaping(_ error: Error? ) -> Void )
     {
         DispatchQueue.global( qos: .userInitiated ).async
+        {
+            guard let uid = StandardDefaults.sharedInstance.uid else
             {
-                guard let uid = StandardDefaults.sharedInstance.uid else
-                {
-                    assertionFailure( "StandardDefaults returned bad uid." )
-                    return
-                }
+                assertionFailure( "StandardDefaults returned bad uid." )
+                return
+            }
                 
-                let periodDict = self.createPeriodObject( forUid: uid, start: startDate, end: endDate )
-                self.onSavePeriodDataAttempt( uid: uid, dict: periodDict )
+            let periodDict = self.editPeriodObject( forUid: uid, start: startDate, end: endDate )
+            self.onSavePeriodDataAttempt(pid: pid, dict: periodDict)
         }
         
     }
     
-    fileprivate func createPeriodObject( forUid uid: String, start: String, end: String ) -> Dictionary<String, AnyObject>
+    fileprivate func editPeriodObject( forUid uid: String, start: String, end: String ) -> Dictionary<String, AnyObject>
     {
         return [Constants.FirebaseStrings.DictionaryPeriodStart: start as AnyObject, Constants.FirebaseStrings.DictionaryPeriodEnd: end as AnyObject, Constants.FirebaseStrings.DictionaryPeriodUid: uid as AnyObject ]
     }
     
-    fileprivate func onSavePeriodDataAttempt ( uid: String, dict: Dictionary<String, AnyObject> )
+    fileprivate func onSavePeriodDataAttempt ( pid: String, dict: Dictionary<String, AnyObject> )
     {
-        self.dbService.createPeriodRecord(forUid: uid, period: dict )
+        self.dbService.updatePeriodRecord( forPid: pid, period: dict )
     }
     
     
-    func setDates( completion: @escaping(_ error: Error? ) -> Void )
+    func setDates()
     {
-        getUserPeriodLen()
-            {
-                errorOrNil in
-                
-                guard errorOrNil == nil else
-                {
-                    //Set the default if there is an error getting the user length
-                    self.length = 5
-                    self.startDate = Date()
-                    self.setEndDate()
-                    
-                    return
-                }
-                
-                self.startDate = Date()
-                self.setEndDate()
-                
-                completion( nil )
-                
-        }
+        startDate = periodViewModel?.startDate
+        endDate = periodViewModel?.endDate
+        setLength()
     }
     
-    fileprivate func setEndDate()
+    fileprivate func setLength()
     {
-        
-        let daysToAdd:Int = self.length!
-        
-        // Set up date components
-        let dateComponents: NSDateComponents = NSDateComponents()
-        dateComponents.day = daysToAdd
-        
-        // Create a calendar
-        let gregorianCalendar: NSCalendar = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!
-        let endDayDate: NSDate = gregorianCalendar.date(byAdding: dateComponents as DateComponents, to: self.startDate!, options:NSCalendar.Options(rawValue: 0))! as NSDate
-        
-        self.endDate = endDayDate as Date
+        let days  = Calendar.current.dateComponents([.day], from: startDate!, to: endDate!).day
+        length = days
     }
     
-    fileprivate func getUserPeriodLen( completion: @escaping(_ error: Error? ) -> Void )
+    func setPeriodViewModel( periodVM: PeriodViewModel )
     {
-        guard let uid = StandardDefaults.sharedInstance.uid else
-        {
-            assertionFailure( "StandardDefaults returned bad uid." )
-            return
-        }
-        
-        self.dbService.returnPeriodLen(forUid: uid)
-        {
-            errorOrNil, lenOrNil in
-            
-            if (lenOrNil != nil)
-            {
-                self.length = lenOrNil
-                completion ( nil )
-            }
-            else
-            {
-                completion ( errorOrNil )
-            }
-        }
-        
+        periodViewModel = periodVM
     }
+    
+
     
     
     fileprivate var startDate: Date?
@@ -145,4 +106,5 @@ class EditPeriodViewModel
     
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let dbService: ServiceDBManageable!
+    fileprivate var periodViewModel: PeriodViewModel?
 }

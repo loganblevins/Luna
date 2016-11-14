@@ -67,10 +67,14 @@ struct Constants
         static let Relationship = "Relationship Status"
         static let BirthCtrl = "Birth Control Type"
         static let Disorder = "Reproductive Disorder"
+        static let Periods = "Periods"
         static let toEditBirth = "toEditBirth"
         static let toEditRelationship = "toEditRelationship"
         static let toEditDisorder = "toEditDisorder"
         static let settingsCell = "settingsCell"
+        static let periodCell = "periodCell"
+        static let toEditPeriod = "toEditPeriod"
+        static let toPeriods = "toPeriods"
     }
     
     struct HomeStrings

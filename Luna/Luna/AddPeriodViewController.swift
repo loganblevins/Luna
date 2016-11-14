@@ -124,7 +124,7 @@ class AddPeriodViewController: UIViewController
 
     fileprivate func createPeriodObject()
     {
-        addPeriodViewModel.onCreatePeriodObject(startDate: convertDateFormatToString( date: addPeriodViewModel.Start ), endDate: convertDateFormatToString( date: addPeriodViewModel.End ))
+        addPeriodViewModel.onCreatePeriodObject(startDate: convertDateFormatToUnixString(date: addPeriodViewModel.Start ), endDate: convertDateFormatToUnixString( date: addPeriodViewModel.End ))
         {
             error in
         }
@@ -135,6 +135,13 @@ class AddPeriodViewController: UIViewController
         startDateLabel.text = convertDateFormatToString( date: addPeriodViewModel.Start )
         endDateLabel.text = convertDateFormatToString( date: addPeriodViewModel.End )
         lenLabel.text =  "\(addPeriodViewModel.Length)"
+    }
+    
+    fileprivate func convertDateFormatToUnixString( date: Date ) -> String
+    {
+        let timestamp = date.timeIntervalSince1970
+        
+        return String(format: "%f", timestamp)
     }
     
     fileprivate func convertDateFormatToString( date: Date ) -> String

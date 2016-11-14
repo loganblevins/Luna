@@ -15,6 +15,11 @@ class SettingsPeriodsViewModel
         self.databaseService = databaseService
     }
     
+    func setPeriodViewModels( periodVMs: [PeriodViewModel] )
+    {
+        periods = periodVMs
+    }
+    
     var periods: [PeriodViewModel]?
     fileprivate let databaseService: ServiceDBManageable!
     
