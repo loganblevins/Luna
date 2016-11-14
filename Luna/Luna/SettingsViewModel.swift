@@ -49,7 +49,7 @@ class SettingsViewModel
                     return
                 }
             }
-        }
+		}
 
     }
     
@@ -60,6 +60,20 @@ class SettingsViewModel
             assertionFailure( "StandardDefaults returned bad uid." )
             return
         }
+		
+		databaseService.getLastPeriodDate( forUid: uid )
+		{
+			[weak self] errorOrNil, dateOrNil in
+			guard let strongSelf = self else { return }
+			guard errorOrNil == nil else { return }
+			guard let strongDate = dateOrNil else { return }
+			
+			let beginDate = strongSelf.convertDate( date: strongDate )
+			guard let endDate = Calendar.current.date( byAdding: .day, value: 14, to: beginDate ) else { return }
+			
+			let photoFetcher = PhotoFetcher()
+			photoFetcher.fetchAssets( fromDate: beginDate, to: endDate )
+		}
         
         self.databaseService.retrieveUserRecord( forUid: uid )
         {

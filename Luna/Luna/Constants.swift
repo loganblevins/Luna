@@ -50,6 +50,7 @@ struct Constants
 		static let DictionaryUsernameKey = "Username"
         static let DictionaryOnBoardStatus = "OnBoardStatus"
         static let DictionaryUserImageKey = "UserImage"
+		static let DictionaryUserImages = "UserImages"
         static let DictionaryUserBirthControl = "BirthControlType"
         static let DictionaryUserCycleDate = "DateLastCycle"
         static let DictionaryUserMenstrualLen = "MenstrualLen"
