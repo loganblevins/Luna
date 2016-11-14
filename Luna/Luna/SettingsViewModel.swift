@@ -312,6 +312,9 @@ class SettingsViewModel
             {
                 print(snap)
             }
+            print(self.periods)
+            
+            self.periods = []
             
             self.getPeriodObjects(periodDict: dictOrNil)
             {

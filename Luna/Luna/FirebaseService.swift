@@ -283,7 +283,7 @@ struct FirebaseDBService: ServiceDBManageable
     func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
     {
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserMenstrualLen ).observeSingleEvent( of: .value, with:
-            {
+        {
                 snapshot in
                 
                 guard snapshot.exists() else
@@ -372,7 +372,7 @@ struct FirebaseDBService: ServiceDBManageable
     
     func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
     {
-        Periods.child( pid ).observe(FIRDataEventType.value, with:
+        Periods.child( pid ).observeSingleEvent(of: .value, with:
         {
                 snapshot in
                 

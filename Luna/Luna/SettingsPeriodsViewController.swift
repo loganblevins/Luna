@@ -93,7 +93,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     }
     */
     var selectRow: Int?
-    var periodArrayRecieved: [PeriodViewModel]?
+    var periodArrayRecieved: [PeriodViewModel] = []
     var periodArray: [PeriodViewModel]?
     @IBOutlet weak var tableView: UITableView!
     

@@ -20,7 +20,7 @@ class SettingsPeriodsViewModel
         periods = periodVMs
     }
     
-    var periods: [PeriodViewModel]?
+    var periods: [PeriodViewModel] = []
     fileprivate let databaseService: ServiceDBManageable!
     
 }
