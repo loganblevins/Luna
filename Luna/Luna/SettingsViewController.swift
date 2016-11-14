@@ -154,6 +154,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             {
                 cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: (settingsViewModel.userViewModel?.disorder)!)
             }
+            else if indexPath.row == 3
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Periods, value: "")
+            }
             else
             {
                 cell.updateCellUI(title: "", value: "")
@@ -172,6 +176,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             else if indexPath.row == 2
             {
                 cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: "")
+            }
+            else if indexPath.row == 3
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Periods, value: "")
             }
             else
             {
@@ -199,7 +207,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 3
+        return 4
     }
     
     fileprivate func handleRowSelection( row: Int )
@@ -218,6 +226,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             performSegue(withIdentifier: Constants.SettingsStrings.toEditDisorder, sender: nil)
             //self.delegate?.editDisorderInfo()
             break
+        case 3:
+            performSegue( withIdentifier: Constants.SettingsStrings.toPeriods, sender: nil )
         default:
             break
         }
@@ -237,6 +247,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let destinationVC = segue.destination as? SettingsRelationshipViewController
             {
                 destinationVC.valuePassed = (settingsViewModel.userViewModel?.relationshipStatus)!
+            }
+        }
+        if segue.identifier == Constants.SettingsStrings.toPeriods
+        {
+            if let destinationVC = segue.destination as? SettingsPeriodsViewController
+            {
+                destinationVC.periodArrayRecieved = settingsViewModel.periods
             }
         }
 

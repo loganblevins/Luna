@@ -253,8 +253,9 @@ class SettingsViewModel
     }
     
     
-    fileprivate func createPeriodData( period: Dictionary<String, AnyObject>) -> Period
+    fileprivate func createPeriodData( pid: String, period: Dictionary<String, AnyObject>) -> Period
     {
+        let pid = pid
         var uid = ""
         var startDate: Date = NSDate() as Date
         var endDate: Date = NSDate() as Date
@@ -275,7 +276,7 @@ class SettingsViewModel
             endDate = convertDate(date: ed)
         }
         
-        let periodData: PeriodData = PeriodData( uid: uid, startDate: startDate, endDate: endDate )
+        let periodData: PeriodData = PeriodData( pid: pid, uid: uid, startDate: startDate, endDate: endDate )
         
         return Period( periodData: periodData )
 
@@ -340,7 +341,8 @@ class SettingsViewModel
                 
                 if (periodOrNil != nil)
                 {
-                    self.periods?.append( periodOrNil! )
+                    self.periods.append( periodOrNil! )
+                    print(self.periods)
                 }
             
             }
@@ -356,7 +358,7 @@ class SettingsViewModel
             
             if (periodOrNil != nil)
             {
-                let period = self.createPeriodData( period: periodOrNil! )
+                let period = self.createPeriodData( pid: pid, period: periodOrNil! )
                 let periodViewModel = PeriodViewModel ( period: period )
                 completion ( nil, periodViewModel )
             }
@@ -369,7 +371,7 @@ class SettingsViewModel
 
     var userViewModel: UserViewModel?
     
-    var periods: [PeriodViewModel]?
+    var periods: [PeriodViewModel] = []
     
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!

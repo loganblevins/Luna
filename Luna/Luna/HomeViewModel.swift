@@ -169,7 +169,6 @@ class HomeViewModel
     }
     
     
-    
     fileprivate var currentViewDate: Date
     
     fileprivate var lastCycleDate: Date?

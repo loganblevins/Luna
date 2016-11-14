@@ -54,6 +54,7 @@ protocol ServiceDBManageable
     func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
     
     func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+    func updatePeriodRecord( forPid pid: String, period: Dictionary<String, AnyObject> )
         
 }
 
@@ -336,6 +337,11 @@ struct FirebaseDBService: ServiceDBManageable
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).child( pid.key ).setValue( true )
     }
     
+    func updatePeriodRecord( forPid pid: String, period: Dictionary<String, AnyObject> )
+    {
+        Periods.child( pid ).setValue( period )
+    }
+
     func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
     {
         Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).observe(.value, with:

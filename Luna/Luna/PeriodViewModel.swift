@@ -15,6 +15,11 @@ class PeriodViewModel
         self.period = period
     }
     
+    var pid: String
+    {
+        return period.pid
+    }
+        
     var startDate: Date
     {
         return period.startDate
