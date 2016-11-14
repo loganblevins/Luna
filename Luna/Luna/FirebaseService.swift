@@ -189,67 +189,6 @@ struct FirebaseStorageService: ServiceStorable
         print( "Add user image download url in DB for uid: \( uid ), downloadUrl: \( downloadLink )")
     }
 	
-	func uploadUserImages( forUid uid: String, imageData: Data, imagePath: String, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void)
-	{
-		print( "Attempting to upload user photos." )
-		
-		let metadata = FIRStorageMetadata()
-		metadata.contentType = "image/jpeg"
-		
-		
-		let uploadTask = StorageRef.child( imagePath ).put(imageData, metadata: metadata)
-		
-		uploadTask.observe(.failure)
-		{
-			snapshot in
-			
-			guard let storageError = snapshot.error else { return }
-			
-			guard let errorCode = FIRStorageErrorCode(rawValue: storageError as! NSInteger) else { return }
-			
-			print ( "An error has occurred trying to upload photo: \(storageError)" )
-			
-			switch errorCode
-			{
-			case .objectNotFound:
-				// File doesn't exist
-				completion( uid , snapshot.error )
-				break
-				
-			case .unauthorized:
-				// User doesn't have permission to access file
-				completion( uid , snapshot.error )
-				break
-				
-			case .cancelled:
-				// User canceled the upload
-				completion( uid , snapshot.error )
-				break
-				
-			case .unknown:
-				// Unknown error occurred, inspect the server response
-				completion( uid , snapshot.error )
-				break
-				
-			default:
-				completion( uid , snapshot.error )
-				break
-			}
-		}
-		
-		
-		uploadTask.observe(.success)
-		{
-			snapshot in
-			
-			print("Image upload a success")
-			
-			guard let downloadlink = snapshot.metadata?.downloadURL()?.absoluteString else { return }
-			
-			self.addUserImageDownloadLink( forUid: uid, key: Constants.FirebaseStrings.DictionaryUserImageKey, downloadLink: downloadlink )
-		}
-	}
-
 }
 
 struct FirebaseDBService: ServiceDBManageable
