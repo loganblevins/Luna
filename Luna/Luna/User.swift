@@ -67,5 +67,6 @@ final class User
     fileprivate(set) var lastCycle: Date
     fileprivate(set) var cycleLength: Int
     fileprivate(set) var relationshipStatus: String
-    fileprivate(set) var disorder: String}
+    fileprivate(set) var disorder: String
+}
 
