@@ -79,7 +79,7 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
     {
         uiPickerValues = relationshipStatusViewModel.getPickerValues()
         
-        if(uiPickerValues.count > 0)
+        if( !selectedValue.isEmpty )
         {
             let row = uiPickerValues.index(of: selectedValue)
             relationshipControlPicker.selectRow(row!, inComponent: 0, animated: false)

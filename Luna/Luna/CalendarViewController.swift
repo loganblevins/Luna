@@ -9,14 +9,14 @@
 import UIKit
 import CVCalendar
 
-final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate
+final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate
 {
+ 
 	override func viewDidLayoutSubviews()
 	{
 		super.viewDidLayoutSubviews()
 		
 		menuView.commitMenuViewUpdate()
-		calendarView.commitCalendarViewUpdate()
 	}
 	
 	override func viewDidLoad()
@@ -24,6 +24,20 @@ final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CV
 		super.viewDidLoad()
 		
 		updateNavigationBarTitle()
+        calendarViewModel.setDates(){
+            errorOrNil in
+            
+            guard errorOrNil == nil else
+            {
+                return
+            }
+            self.setColors()
+            self.displayDates()
+            self.calendarView.commitCalendarViewUpdate()
+
+        }
+
+
 	}
 	
 	func presentationMode() -> CalendarMode
@@ -51,12 +65,32 @@ final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CV
 	{
 		self.navBarTopItem.title = calendarView.presentedDate.globalDescription
 	}
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool {
+        return true
+    }
 	
+    func displayDates()
+    {
+        self.calendarView.toggleViewWithDate((calendarViewModel.ExpectedPeriodDate))
+
+    }
+    
+    func setColors()
+    {
+        self.calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = UIColor(red: 246/255, green: 70/255, blue: 74/255, alpha: 1)
+        self.calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = UIColor(colorLiteralRed: 175/255, green: 175/255, blue: 175/255, alpha: 1)
+    }
+    
+    
 	fileprivate var navBarTopItem: UINavigationItem!
 	{
 		return self.navigationController?.navigationBar.topItem
 	}
 	
+    
 	@IBOutlet weak var menuView: CVCalendarMenuView!
 	@IBOutlet weak var calendarView: CVCalendarView!
+    
+    fileprivate let calendarViewModel = HomeViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
