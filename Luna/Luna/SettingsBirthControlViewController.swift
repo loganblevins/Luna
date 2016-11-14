@@ -80,9 +80,12 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
         
         if(uiPickerValues.count > 0)
         {
-            //let row = birthControlViewModel.getSelectedValue(value: selectedValue)
-            let row = uiPickerValues.index(of: selectedValue)
-            birthControlPicker.selectRow(row!, inComponent: 0, animated: false)
+            if( !selectedValue.isEmpty )
+            {
+                let row = uiPickerValues.index(of: selectedValue)
+                birthControlPicker.selectRow(row!, inComponent: 0, animated: false)
+            }
+            
         }
     }
     

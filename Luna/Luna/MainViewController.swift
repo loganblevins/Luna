@@ -18,7 +18,8 @@ protocol OnBoardDelegate: class
 	func toDisorderView()
 }
 
-final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardDelegate, SettingsDelegate
+
+final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardDelegate, AddPeriodDelegate
 {
 	fileprivate(set) var onboardingActive = false
 	fileprivate(set) var loginActive = false
@@ -31,6 +32,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 			self.loginActive = false
 		}
 	}
+
     
     func checkOnBoardStatus()
     {
@@ -44,7 +46,13 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
             {
                 strongSelf.presentOnBoard()
             }
+            else
+            {
+                self?.HomeViewController().onOnboardComplete()
+            }
         }
+        
+        
     }
     
 	func maybePresentLogin()
@@ -134,45 +142,27 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 		}
 		
         mainViewModel.setOnBoardStatus( status: true )
+        
+        HomeViewController().onOnboardComplete()
     }
     
-    func editBirthControlInfo()
+    
+    func presentAddPeriod()
     {
-        editBirthControlViewController = SettingsBirthControlViewController.storyboardInstance()
-        editBirthControlViewController!.delegate = self
-        present ( editBirthControlViewController!, animated: true, completion: nil)
+        addPeriodViewController = AddPeriodViewController.storyboardInstance()
+        addPeriodViewController?.delegate = self
+        present( addPeriodViewController!, animated: true, completion: nil )
     }
     
-    func editRelationshipStatus()
+    func onDismissAddPeriod()
     {
-        editRelationshipViewController = SettingsRelationshipViewController.storyboardInstance()
-        editRelationshipViewController!.delegate = self
-        present ( editRelationshipViewController!, animated: true, completion: nil)
+        addPeriodViewController?.dismiss( animated: true, completion: nil )
     }
-    
-    func editDisorderInfo()
-    {
-        editDisorderViewController = SettingsDisorderViewController.storyboardInstance()
-        editDisorderViewController!.delegate = self
-        present ( editDisorderViewController!, animated: true, completion: nil)
-    }
-    
-    func dismissEditBirthControl()
-    {
-        editBirthControlViewController?.dismiss( animated: true, completion: nil )
-    }
-    
-    func dismissEditRelationship()
-    {
-        editRelationshipViewController?.dismiss( animated: true, completion: nil )
-    }
-    
-    func dismissEditDisorder()
-    {
-        editDisorderViewController?.dismiss( animated: true, completion: nil )
-    }
+
     
 	fileprivate var loginViewController: LoginViewController?
+    
+    fileprivate var addPeriodViewController: AddPeriodViewController?
     
     fileprivate var addImageViewController: OBAddImageViewController?
     fileprivate var birthControlViewController: OBBirthControlViewController?
@@ -181,10 +171,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
     fileprivate var relationshipViewController: OBRelationshipViewController?
     fileprivate var disorderViewController: OBDisorderViewController?
 
-    
-    fileprivate var editBirthControlViewController: SettingsBirthControlViewController?
-    fileprivate var editRelationshipViewController: SettingsRelationshipViewController?
-    fileprivate var editDisorderViewController: SettingsDisorderViewController?
     
     fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }

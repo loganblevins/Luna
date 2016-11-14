@@ -47,7 +47,14 @@ protocol ServiceDBManageable
 
     func retrieveUserRecord (forUid uid: String, completion: @escaping(_ error: Error?, _ userDictionary: Dictionary<String, AnyObject>? ) -> Void )
     func checkUserOnBoardStatus( forUid uid: String, completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
-	func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+    
+    func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
+    func createPeriodRecord( forUid uid: String, period: Dictionary<String, AnyObject> )
+    func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    
+    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+    func updatePeriodRecord( forPid pid: String, period: Dictionary<String, AnyObject> )
 }
 
 struct FirebaseAuthenticationService: ServiceAuthenticatable
@@ -72,7 +79,7 @@ struct FirebaseAuthenticationService: ServiceAuthenticatable
 	func signInUser( withToken token: FirebaseToken, completion: @escaping(_ userID: String?, _ error: Error? ) -> Void )
 	{
 		print( "Attempting to sign in user." )
-		
+
 		FIRAuth.auth()?.signIn( withCustomToken: token )
 		{
 			userOrNil, errorOrNil in
@@ -227,7 +234,6 @@ struct FirebaseDBService: ServiceDBManageable
             completion( error, nil )
         }
         
-        
     }
 	
     func createUserRecord( forUid uid: String, username: String )
@@ -272,35 +278,121 @@ struct FirebaseDBService: ServiceDBManageable
             completion( error, nil )
         }
     }
-	
-	
-	func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
-	{
-		Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserCycleDate ).observe( .value, with:
-			{
-				snapshot in
-				
-				guard snapshot.exists() else
-				{
-					print("Status doesn't exist")
-					completion ( nil, nil )
-					return
-				}
-				
-				print("Last Cycle date is: \(snapshot.value)")
-				
-				completion( nil, snapshot.value as! String? )
-				
-		})
-		{
-			error in
-			print( error.localizedDescription )
-			completion( error, nil )
-		}
-	}
-	
+    
+    func returnPeriodLen( forUid uid: String, completion: @escaping(_ error: Error?, _ len: Int? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserMenstrualLen ).observeSingleEvent( of: .value, with:
+        {
+                snapshot in
+                
+                guard snapshot.exists() else
+                {
+                    print("Status doesn't exist")
+                    completion ( nil, 5 )
+                    return
+                }
+                
+                print("Length: \(snapshot.value) exists")
+                
+                completion( nil, snapshot.value as! Int? )
+                
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func getLastPeriodDate( forUid uid: String, completion: @escaping(_ error: Error?, _ date: String? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserCycleDate ).observe( .value, with:
+        {
+            snapshot in
+                
+            guard snapshot.exists() else
+            {
+                print("Status doesn't exist")
+                completion ( nil, nil )
+                return
+            }
+                
+            print("Last Cycle date is: \(snapshot.value)")
+                
+            completion( nil, snapshot.value as! String? )
+                
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func createPeriodRecord( forUid uid: String, period: Dictionary<String, AnyObject> )
+    {
+        let pid = Periods.childByAutoId()
+        pid.setValue( period )
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).child( pid.key ).setValue( true )
+    }
+    
+    func updatePeriodRecord( forPid pid: String, period: Dictionary<String, AnyObject> )
+    {
+        Periods.child( pid ).setValue( period )
+    }
+
+    func returnPeriodIds( forUid uid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    {
+        Users.child( uid ).child( Constants.FirebaseStrings.DictionaryUserPeriods ).observe(.value, with:
+        {
+            snapshot in
+            
+
+            guard snapshot.exists() else
+            {
+                print("Periods do not exist for this user")
+                completion ( nil,  nil)
+                return
+            }
+            
+            print (snapshot)
+            
+            guard let postDict = snapshot.value as? [String : AnyObject] else { return }
+            
+            completion ( nil, postDict )
+            
+        })
+        {
+            error in
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+    }
+    
+    func returnPeriodObject( forPid pid: String, completion: @escaping(_ error: Error?, _  periodDict: Dictionary<String, AnyObject>? ) -> Void )
+    {
+        Periods.child( pid ).observeSingleEvent(of: .value, with:
+        {
+                snapshot in
+                
+                print (snapshot)
+                
+                guard let postDict = snapshot.value as? [String : AnyObject] else { return }
+                
+                completion ( nil, postDict )
+                
+        })
+        {
+            error in
+            
+            print( error.localizedDescription )
+            completion( error, nil )
+        }
+
+    }
 	
 	fileprivate static let FirebaseDB = FIRDatabase.database().reference()
 	fileprivate var Users = FirebaseDB.child( Constants.FirebaseStrings.ChildUsers )
+    fileprivate var Periods = FirebaseDB.child( Constants.FirebaseStrings.ChildPeriods )
 
 }

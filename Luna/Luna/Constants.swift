@@ -46,6 +46,7 @@ struct Constants
         static let StorageURL = "gs://luna-c2c2f.appspot.com"
 		static let ChildUsers = "Users"
 		static let ChildEntry = "Entry"
+        static let ChildPeriods = "Periods"
 		static let ChildDailyEntries = "DailyEntries"
 		static let DictionaryUsernameKey = "Username"
         static let DictionaryOnBoardStatus = "OnBoardStatus"
@@ -55,17 +56,36 @@ struct Constants
         static let DictionaryUserMenstrualLen = "MenstrualLen"
         static let DictionaryUserDisorder = "Disorder"
         static let DictionaryUserRelationshipStatus = "RelationshipStatus"
+        static let DictionaryUserPeriods = "Periods"
+        static let DictionaryPeriodUid = "uid"
+        static let DictionaryPeriodStart = "start_date"
+        static let DictionaryPeriodEnd = "end_date"
 	}
     
     struct SettingsStrings
     {
         static let Relationship = "Relationship Status"
         static let BirthCtrl = "Birth Control Type"
-        static let Disorder = "Reporductive Disorder"
+        static let Disorder = "Reproductive Disorder"
+        static let Periods = "Periods"
         static let toEditBirth = "toEditBirth"
         static let toEditRelationship = "toEditRelationship"
         static let toEditDisorder = "toEditDisorder"
         static let settingsCell = "settingsCell"
+        static let periodCell = "periodCell"
+        static let toEditPeriod = "toEditPeriod"
+        static let toPeriods = "toPeriods"
+    }
+    
+    struct HomeStrings
+    {
+        static let toEntry = "toEntry"
+    }
+    
+    struct DailyEntry
+    {
+        static let startDate = "StartDate"
+        static let endDate = "EndDate"
     }
     
     struct BirthControlValues

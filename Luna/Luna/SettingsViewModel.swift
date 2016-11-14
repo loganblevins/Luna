@@ -53,6 +53,8 @@ class SettingsViewModel
 
     }
     
+
+    
     fileprivate func createUserViewModel( completion: @escaping(_ error: Error?, _ userViewModel: UserViewModel? ) -> Void )
     {
         guard let uid = StandardDefaults.sharedInstance.uid else
@@ -64,6 +66,16 @@ class SettingsViewModel
         self.databaseService.retrieveUserRecord( forUid: uid )
         {
             errorOrNil, userOrNil in
+            
+            guard errorOrNil == nil else
+            {
+                return
+            }
+            
+            guard userOrNil != nil else
+            {
+                return
+            }
             
             if (userOrNil != nil)
             {
@@ -79,6 +91,11 @@ class SettingsViewModel
             }
         }
     }
+    
+
+
+    
+
 	
 	// Complex method completing 3 procedures in this order: Delete from ServiceDB -> Delete from ServiceAuthenticatable -> Delete from Luna
 	//
@@ -237,14 +254,135 @@ class SettingsViewModel
         return User(userData: userData)
     }
     
+    
+    fileprivate func createPeriodData( pid: String, period: Dictionary<String, AnyObject>) -> Period
+    {
+        let pid = pid
+        var uid = ""
+        var startDate: Date = NSDate() as Date
+        var endDate: Date = NSDate() as Date
+
+        
+        if let puid = period[Constants.FirebaseStrings.DictionaryPeriodUid] as? String
+        {
+            uid = puid
+        }
+        
+        if let sd = period[Constants.FirebaseStrings.DictionaryPeriodStart] as? String
+        {
+            startDate = convertDate(date: sd)
+        }
+        
+        if let ed = period[Constants.FirebaseStrings.DictionaryPeriodEnd] as? String
+        {
+            endDate = convertDate(date: ed)
+        }
+        
+        let periodData: PeriodData = PeriodData( pid: pid, uid: uid, startDate: startDate, endDate: endDate )
+        
+        return Period( periodData: periodData )
+
+    }
+    
+    
     fileprivate func convertDate( date: String ) -> Date
     {
         let time = (date as NSString).doubleValue
         
         return Date( timeIntervalSince1970: time )
     }
+    
+    func getPeriods( completion: @escaping(_ error: Error? ) -> Void )
+    {
+        guard let uid = StandardDefaults.sharedInstance.uid else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return
+        }
+        
+        databaseService.returnPeriodIds(forUid: uid)
+        {
+            errorOrNil, dictOrNil in
+            
+            guard errorOrNil == nil else
+            {
+                //completion( errorOrNil )
+                return
+            }
+            
+            guard dictOrNil != nil else
+            {
+                return
+            }
+            
+            self.periods = []
+            
+            self.getPeriodObjects(periodDict: dictOrNil)
+            {
+                errorONil in
+                
+                guard errorONil == nil else
+                {
+                    
+                    return
+                }
+            }
+        }
+    }
+    
+    func getPeriodObjects( periodDict: Dictionary<String, AnyObject>? , completion: @escaping(_ error: Error? ) -> Void )
+    {
+        if(periodDict != nil)
+        {
+            for item in periodDict!
+            {
+                self.createPeriodViewModel( pid: item.key )
+                {
+                    errorOrNil, periodOrNil in
+                    
+                    guard errorOrNil == nil else
+                    {
+                        return
+                    }
+                    
+                    guard periodOrNil != nil else
+                    {
+                        return
+                    }
+                    
+                    self.periods.append( periodOrNil! )
+                    print(self.periods)
+                    
+                    
+                }
+            }
+        }
+
+    }
+    
+    fileprivate func createPeriodViewModel( pid: String, completion: @escaping(_ error: Error?, _ periodViewModel: PeriodViewModel? ) -> Void )
+    {
+
+        self.databaseService.returnPeriodObject( forPid: pid )
+        {
+            errorOrNil, periodOrNil in
+            
+            guard periodOrNil != nil else
+            {
+                completion( nil, nil )
+                return
+            }
+            
+            let period = self.createPeriodData( pid: pid, period: periodOrNil! )
+            let periodViewModel = PeriodViewModel ( period: period )
+            completion ( nil, periodViewModel )
+            
+        }
+    }
 
     var userViewModel: UserViewModel?
+    
+    var periods: [PeriodViewModel] = []
     
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!

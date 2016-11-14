@@ -30,6 +30,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableView.reloadData()
         }
         
+        settingsViewModel.getPeriods()
+        {
+            errorOrNil in
+                
+            guard errorOrNil == nil else
+            {
+                return
+            }
+        }
+        
     }
     
     weak var delegate: SettingsDelegate?
@@ -143,6 +153,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             {
                 cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: (settingsViewModel.userViewModel?.disorder)!)
             }
+            else if indexPath.row == 3
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Periods, value: "")
+            }
             else
             {
                 cell.updateCellUI(title: "", value: "")
@@ -150,7 +164,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else
         {
-            cell.updateCellUI(title: "", value: "")
+            if indexPath.row == 0
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.BirthCtrl, value: "")
+            }
+            else if indexPath.row == 1
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Relationship, value: "")
+            }
+            else if indexPath.row == 2
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Disorder, value: "")
+            }
+            else if indexPath.row == 3
+            {
+                cell.updateCellUI(title: Constants.SettingsStrings.Periods, value: "")
+            }
+            else
+            {
+                cell.updateCellUI(title: "", value: "")
+            }
         }
         
         return cell
@@ -173,7 +206,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 3
+        return 4
     }
     
     fileprivate func handleRowSelection( row: Int )
@@ -191,6 +224,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 2:
             performSegue(withIdentifier: Constants.SettingsStrings.toEditDisorder, sender: nil)
             //self.delegate?.editDisorderInfo()
+            break
+        case 3:
+            //performSegue( withIdentifier: Constants.SettingsStrings.toPeriods, sender: nil )
             break
         default:
             break
@@ -211,6 +247,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let destinationVC = segue.destination as? SettingsRelationshipViewController
             {
                 destinationVC.valuePassed = (settingsViewModel.userViewModel?.relationshipStatus)!
+            }
+        }
+        if segue.identifier == Constants.SettingsStrings.toPeriods
+        {
+            if let destinationVC = segue.destination as? SettingsPeriodsViewController
+            {
+                destinationVC.periodArrayRecieved = settingsViewModel.periods
             }
         }
 
