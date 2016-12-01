@@ -32,10 +32,12 @@ class EditPeriodViewController: UIViewController
             editPeriodViewModel.setPeriodViewModel( periodVM: periodVM! )
             editPeriodViewModel.setDates()            
             setLabelDates()
+            
+            datePicker.setDate( editPeriodViewModel.Start, animated: true )
         }
         
         setStartView()
-        
+
     }
     
     static func storyboardInstance() -> AddPeriodViewController?

@@ -18,8 +18,11 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
         loadPeriodsArray()
-
     }
 
     override func didReceiveMemoryWarning()
@@ -62,7 +65,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         self.selectRow = indexPath.row
         print("the index selected is \(selectRow)")
-        //performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
+        performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
     }
     
     fileprivate func handleRowSelection( row: Int )

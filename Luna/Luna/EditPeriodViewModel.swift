@@ -97,8 +97,6 @@ class EditPeriodViewModel
         periodViewModel = periodVM
     }
     
-
-    
     
     fileprivate var startDate: Date?
     fileprivate var endDate: Date?
