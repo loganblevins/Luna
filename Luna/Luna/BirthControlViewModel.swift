@@ -28,10 +28,20 @@ class BirthControlViewModel
                 }
 
                 self.onSaveDataAttempt( uid: uid, data: data )
+                self.persist( birthcontrol: data )
             }
         }
     }
     
+    func getBirthControlData() -> String?
+    {
+        guard let birthCtrl = StandardDefaults.sharedInstance.birthCtrl else
+        {
+            return nil
+        }
+        
+        return birthCtrl
+    }
     
     fileprivate func onSaveDataAttempt( uid: String, data: String )
     {
@@ -41,6 +51,11 @@ class BirthControlViewModel
     func getPickerValues() -> [String]
     {
        return pickerViewData.createBirthControlPicker()
+    }
+    
+    fileprivate func persist( birthcontrol: String )
+    {
+        StandardDefaults.sharedInstance.birthCtrl = birthcontrol
     }
     
     

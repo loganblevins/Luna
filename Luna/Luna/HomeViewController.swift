@@ -14,19 +14,6 @@ class HomeViewController: UIViewController
     {
         super.viewDidLoad()
         setDisplayCurrentDate( date: Date() )
-        
-        
-        homeViewModel.setDates()
-        {
-            errorOrNil in
-                
-            guard errorOrNil == nil else
-            {
-                return
-            }
-                
-            self.setLabelDates()
-        }
 
     }
     
@@ -42,17 +29,13 @@ class HomeViewController: UIViewController
         }
        
         homeViewModel.setDates()
-        {
-            errorOrNil in
-                
-            guard errorOrNil == nil else
-            {
-                return
-            }
-                
-            self.setLabelDates()
-        }
+        self.hideHomeViewCover()
         
+    }
+    
+    func hideHomeViewCover()
+    {
+        homeviewCover.isHidden = true
     }
 
 	@IBAction fileprivate func addPeriodButtonPressed(_ sender: AnyObject)
@@ -108,6 +91,9 @@ class HomeViewController: UIViewController
     
     
     var window: UIWindow?
+    
+    
+    @IBOutlet weak var homeviewCover: UIView!
     
     @IBOutlet weak var expectedOvuLabel: UILabel!
     @IBOutlet weak var expectedPeriodLabel: UILabel!

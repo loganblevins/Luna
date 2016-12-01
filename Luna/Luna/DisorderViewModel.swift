@@ -28,8 +28,19 @@ class DisorderViewModel
                 }
 
                 self.onSaveDataAttempt( uid: uid, data: data )
+                self.persist( disorder: data )
             }
         }
+    }
+    
+    func getDisorderData() -> String?
+    {
+        guard let disorder = StandardDefaults.sharedInstance.disorder else
+        {
+            return nil
+        }
+        
+        return disorder
     }
     
     
@@ -38,6 +49,10 @@ class DisorderViewModel
         self.dbService.saveUserRecord(forUid: uid, key: Constants.FirebaseStrings.DictionaryUserDisorder, data: data as AnyObject)
     }
     
+    fileprivate func persist( disorder: String )
+    {
+        StandardDefaults.sharedInstance.disorder = disorder
+    }
 
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let dbService: ServiceDBManageable!

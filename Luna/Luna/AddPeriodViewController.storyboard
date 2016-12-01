@@ -20,7 +20,6 @@
         <!--Add Period View Controller-->
         <scene sceneID="iGR-0v-eEI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-JG-S38" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8ut-e1-Hfs" customClass="AddPeriodViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDh-Ul-ong"/>
@@ -250,6 +249,7 @@
                         <outlet property="startView" destination="lf3-ia-Qqj" id="tgO-cJ-dPZ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-JG-S38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1853.5999999999999" y="-1375.8620689655174"/>
         </scene>

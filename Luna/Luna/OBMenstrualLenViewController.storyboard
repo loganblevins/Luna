@@ -69,7 +69,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="If you do not know, that is okay. We will use an average of 28 days." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2QO-va-fax">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="If you do not know, that is okay. We will use an average of 5 days." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2QO-va-fax">
                                 <rect key="frame" x="44" y="436" width="287" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

@@ -24,20 +24,11 @@ final class CalendarViewController: UIViewController, CVCalendarViewDelegate, CV
 		super.viewDidLoad()
 		
 		updateNavigationBarTitle()
-        calendarViewModel.setDates(){
-            errorOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                return
-            }
-            self.setColors()
-            self.displayDates()
-            self.calendarView.commitCalendarViewUpdate()
+        calendarViewModel.setDates()
 
-        }
-
-
+        self.setColors()
+        self.displayDates()
+        self.calendarView.commitCalendarViewUpdate()
 	}
 	
 	func presentationMode() -> CalendarMode

@@ -24,79 +24,82 @@ class SettingsViewModel
 		try authService.signOutUser()
 	}
     
-    func getUserData( completion: @escaping(_ error: Error?) -> Void )
+    
+    func createUserViewModel( completion: ( _ userViewModel: UserViewModel? ) -> Void )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        
+        let user = createUserDataObject()
+        if user != nil
         {
-            self.createUserViewModel()
-            {
-                [weak self] errorOrNil, userViewModelOrNil in
-                
-                guard self != nil else
-                {
-                    assertionFailure( "Self was nil." )
-                    return
-                }
-                guard errorOrNil == nil else
-                {
-                    completion( errorOrNil )
-                    return
-                }
-                guard userViewModelOrNil == nil else
-                {
-                    self?.userViewModel = userViewModelOrNil
-                    completion( errorOrNil )
-                    return
-                }
-            }
+            let userViewModel = UserViewModel ( user: user! )
+            completion ( userViewModel )
+        }
+        else
+        {
+            completion ( nil )
         }
 
     }
     
-
+    func setUserViewModel( userVM: UserViewModel )
+    {
+        userViewModel = userVM
+    }
     
-    fileprivate func createUserViewModel( completion: @escaping(_ error: Error?, _ userViewModel: UserViewModel? ) -> Void )
+    fileprivate func createUserDataObject() -> User?
     {
         guard let uid = StandardDefaults.sharedInstance.uid else
         {
             assertionFailure( "StandardDefaults returned bad uid." )
-            return
+            return nil
         }
         
-        self.databaseService.retrieveUserRecord( forUid: uid )
+        guard let uBirthCtrl = StandardDefaults.sharedInstance.birthCtrl else
         {
-            errorOrNil, userOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                return
-            }
-            
-            guard userOrNil != nil else
-            {
-                return
-            }
-            
-            if (userOrNil != nil)
-            {
-                let user = self.createUserData(uKey: uid, user: userOrNil!)
-                
-                let userViewModel = UserViewModel( user: user )
-                
-                completion ( nil, userViewModel )
-            }
-            else
-            {
-                completion ( errorOrNil, nil )
-            }
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return nil
         }
+        
+        guard let uLastCycle = StandardDefaults.sharedInstance.lastCycle else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return nil
+        }
+        
+        guard let uCycleLen = StandardDefaults.sharedInstance.cycleLen else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return nil
+        }
+        
+        guard let uRelationship = StandardDefaults.sharedInstance.relationship else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return nil
+        }
+        
+        guard let uDisorder = StandardDefaults.sharedInstance.disorder else
+        {
+            assertionFailure( "StandardDefaults returned bad uid." )
+            return nil
+        }
+        
+        let userData: UserData = UserData(uid: uid, birthControl: uBirthCtrl, lastCycle: uLastCycle, cycleLength: uCycleLen, relationshipStatus: uRelationship, disorder: uDisorder)
+        
+        return User( userData: userData )
+    
+    }
+    
+    
+    fileprivate func convertDate( date: String ) -> Date
+    {
+        let time = (date as NSString).doubleValue
+        
+        return Date( timeIntervalSince1970: time )
     }
     
 
 
-    
-
-	
 	// Complex method completing 3 procedures in this order: Delete from ServiceDB -> Delete from ServiceAuthenticatable -> Delete from Luna
 	//
 	// If any one of the procedures fails, the entire chain stops.
@@ -215,174 +218,11 @@ class SettingsViewModel
 		StandardDefaults.sharedInstance.password = nil
 	}
     
-    fileprivate func createUserData( uKey: String, user: Dictionary<String, AnyObject>) -> User
-    {
-        let uid = uKey
-        var birthCrtl = ""
-        var cycleDate: Date = NSDate() as Date
-        var len = 0
-        var status = ""
-        var disorder = ""
-        
-        if let bc = user[Constants.FirebaseStrings.DictionaryUserBirthControl] as? String
-        {
-            birthCrtl = bc
-        }
-        
-        if let cd = user[Constants.FirebaseStrings.DictionaryUserCycleDate] as? String
-        {
-            cycleDate = convertDate(date: cd)
-        }
-        
-        if let l = user[Constants.FirebaseStrings.DictionaryUserMenstrualLen] as? Int
-        {
-            len = l
-        }
-        
-        if let s = user[Constants.FirebaseStrings.DictionaryUserRelationshipStatus] as? String
-        {
-            status = s
-        }
-        
-        if let d = user[Constants.FirebaseStrings.DictionaryUserDisorder] as? String
-        {
-            disorder = d
-        }
-        
-        let userData: UserData = UserData(uid: uid, birthControl: birthCrtl, lastCycle: cycleDate, cycleLength: len, relationshipStatus: status, disorder: disorder)
-        
-        return User(userData: userData)
-    }
-    
-    
-    fileprivate func createPeriodData( pid: String, period: Dictionary<String, AnyObject>) -> Period
-    {
-        let pid = pid
-        var uid = ""
-        var startDate: Date = NSDate() as Date
-        var endDate: Date = NSDate() as Date
 
-        
-        if let puid = period[Constants.FirebaseStrings.DictionaryPeriodUid] as? String
-        {
-            uid = puid
-        }
-        
-        if let sd = period[Constants.FirebaseStrings.DictionaryPeriodStart] as? String
-        {
-            startDate = convertDate(date: sd)
-        }
-        
-        if let ed = period[Constants.FirebaseStrings.DictionaryPeriodEnd] as? String
-        {
-            endDate = convertDate(date: ed)
-        }
-        
-        let periodData: PeriodData = PeriodData( pid: pid, uid: uid, startDate: startDate, endDate: endDate )
-        
-        return Period( periodData: periodData )
-
-    }
     
     
-    fileprivate func convertDate( date: String ) -> Date
-    {
-        let time = (date as NSString).doubleValue
-        
-        return Date( timeIntervalSince1970: time )
-    }
-    
-    func getPeriods( completion: @escaping(_ error: Error? ) -> Void )
-    {
-        guard let uid = StandardDefaults.sharedInstance.uid else
-        {
-            assertionFailure( "StandardDefaults returned bad uid." )
-            return
-        }
-        
-        databaseService.returnPeriodIds(forUid: uid)
-        {
-            errorOrNil, dictOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                //completion( errorOrNil )
-                return
-            }
-            
-            guard dictOrNil != nil else
-            {
-                return
-            }
-            
-            self.periods = []
-            
-            self.getPeriodObjects(periodDict: dictOrNil)
-            {
-                errorONil in
-                
-                guard errorONil == nil else
-                {
-                    
-                    return
-                }
-            }
-        }
-    }
-    
-    func getPeriodObjects( periodDict: Dictionary<String, AnyObject>? , completion: @escaping(_ error: Error? ) -> Void )
-    {
-        if(periodDict != nil)
-        {
-            for item in periodDict!
-            {
-                self.createPeriodViewModel( pid: item.key )
-                {
-                    errorOrNil, periodOrNil in
-                    
-                    guard errorOrNil == nil else
-                    {
-                        return
-                    }
-                    
-                    guard periodOrNil != nil else
-                    {
-                        return
-                    }
-                    
-                    self.periods.append( periodOrNil! )
-                    print(self.periods)
-                    
-                    
-                }
-            }
-        }
-
-    }
-    
-    fileprivate func createPeriodViewModel( pid: String, completion: @escaping(_ error: Error?, _ periodViewModel: PeriodViewModel? ) -> Void )
-    {
-
-        self.databaseService.returnPeriodObject( forPid: pid )
-        {
-            errorOrNil, periodOrNil in
-            
-            guard periodOrNil != nil else
-            {
-                completion( nil, nil )
-                return
-            }
-            
-            let period = self.createPeriodData( pid: pid, period: periodOrNil! )
-            let periodViewModel = PeriodViewModel ( period: period )
-            completion ( nil, periodViewModel )
-            
-        }
-    }
 
     var userViewModel: UserViewModel?
-    
-    var periods: [PeriodViewModel] = []
     
 	fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
 	fileprivate let authService: ServiceAuthenticatable!

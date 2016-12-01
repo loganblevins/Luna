@@ -23,11 +23,11 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        selectedValue = valuePassed
         relationshipControlPicker.delegate = self
         relationshipControlPicker.dataSource = self
         
         setUIPickerView()
+        setSelectedValue()
     }
     
     override func didReceiveMemoryWarning()
@@ -78,19 +78,36 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
     fileprivate func setUIPickerView()
     {
         uiPickerValues = relationshipStatusViewModel.getPickerValues()
-        
-        if( !selectedValue.isEmpty )
+    }
+    
+    fileprivate func setSelectedValue()
+    {
+        if(uiPickerValues.count > 0)
         {
-            let row = uiPickerValues.index(of: selectedValue)
-            relationshipControlPicker.selectRow(row!, inComponent: 0, animated: false)
+            if( !selectedValue.isEmpty )
+            {
+                let row = uiPickerValues.index(of: selectedValue)
+                relationshipControlPicker.selectRow(row!, inComponent: 0, animated: false)
+            }
+            else
+            {
+                guard let defaultValue = relationshipStatusViewModel.getRelationshipData() else
+                {
+                    return
+                }
+                
+                let row = uiPickerValues.index(of: defaultValue)
+                relationshipControlPicker.selectRow(row!, inComponent: 0, animated: false)
+                
+            }
         }
     }
+
     
     
     @IBOutlet weak var relationshipControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
-    var valuePassed: String = ""
     var selectedValue: String = ""
     
     fileprivate let relationshipStatusViewModel = RelationshipStatusViewModel( dbService: FirebaseDBService() )

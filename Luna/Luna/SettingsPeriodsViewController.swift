@@ -18,15 +18,25 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.dataSource = self
         
-        periodArray = periodArrayRecieved
-        
-        // Do any additional setup after loading the view.
+        loadPeriodsArray()
+
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func loadPeriodsArray()
+    {
+        settingsPeriodViewModel.getPeriods()
+        {
+            errorOrNil in
+            
+            self.tableView.reloadData()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -38,11 +48,11 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.SettingsStrings.periodCell) as! PeriodCell
         
-        if((periodArray?.count)! > 0)
+        if((settingsPeriodViewModel.periods.count) > 0)
         {
-            let startDate = periodArray?[indexPath.row].startDate
-            let endDate = periodArray?[indexPath.row].endDate
-            cell.updateCellUI( date: startDate!, endDate: endDate! )
+            let startDate = settingsPeriodViewModel.periods[indexPath.row].startDate
+            let endDate = settingsPeriodViewModel.periods[indexPath.row].endDate
+            cell.updateCellUI( date: startDate, endDate: endDate )
         }
         
         return cell        
@@ -65,7 +75,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
         {
             if let destinationVC = segue.destination as? EditPeriodViewController
             {
-                destinationVC.periodVM =  periodArray?[selectRow!]
+                destinationVC.periodVM =  settingsPeriodViewModel.periods[selectRow!]
             }
         }
     }
@@ -77,7 +87,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let rowCount = periodArray?.count ?? 0
+        let rowCount = settingsPeriodViewModel.periods.count
         return rowCount
     }
 
@@ -93,9 +103,10 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     }
     */
     var selectRow: Int?
-    var periodArrayRecieved: [PeriodViewModel] = []
-    var periodArray: [PeriodViewModel]?
+    var periodArray: [PeriodViewModel] = []
     @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate let settingsPeriodViewModel = SettingsPeriodsViewModel( databaseService: FirebaseDBService() )
     
 
 }

@@ -31,16 +31,9 @@ class AddPeriodViewController: UIViewController
         setStartView()
         
         addPeriodViewModel.setDates()
-        {
-            errorOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                return
-            }
-            
-            self.setLabelDates()
-        }
+  
+        self.setLabelDates()
+    
     }
     
     static func storyboardInstance() -> AddPeriodViewController?
@@ -188,5 +181,4 @@ class AddPeriodViewController: UIViewController
     
     fileprivate let addPeriodViewModel = AddPeriodViewModel ( dbService: FirebaseDBService() )
     
-
 }

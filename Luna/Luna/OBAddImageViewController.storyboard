@@ -69,7 +69,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Something about the photo and privacy." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="71T-tU-uc9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This photo is for internal use only." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="71T-tU-uc9">
                                 <rect key="frame" x="44" y="436" width="287" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -79,7 +79,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="LPG-ta-Lw6">
                                 <rect key="frame" x="119" y="190" width="137" height="126"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -125,6 +125,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreen" width="1242" height="1242"/>
+        <image name="picture" width="512" height="512"/>
     </resources>
 </document>

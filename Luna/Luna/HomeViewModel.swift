@@ -59,19 +59,6 @@ class HomeViewModel
         currentViewDate = Date()
     }
     
-    func saveUserDailyEntry(completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
-    {
-        // Put network request on background thread.
-        //
-        DispatchQueue.global( qos: .userInitiated ).async
-        {
-            guard StandardDefaults.sharedInstance.uid != nil else
-            {
-                assertionFailure( "StandardDefaults returned bad uid." )
-                return
-            }
-        }
-    }
     
     func setCurrentDate( date: Date )
     {
@@ -83,84 +70,33 @@ class HomeViewModel
         return currentViewDate
     }
     
-    func setDates( completion: @escaping(_ error: Error? ) -> Void )
+    func setDates()
     {
-        getUserLastCycleDate()
+        
+        guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
         {
-            errorOrNil in
-                
-            guard errorOrNil == nil else
-            {
-                //Set the default if there is an error
-                self.lastCycleDate = Date()
-                self.setExpectedPeriodDate()
-                self.setExpectedOvulation()
-                self.setDaysToExpectedPeriod()
-                return
-            }
-            
-            guard self.lastCycleDate != nil else
-            {
-                self.lastCycleDate = Date()
-                self.setExpectedPeriodDate()
-                self.setExpectedOvulation()
-                self.setDaysToExpectedPeriod()
-                return
-                
-            }
-            
-            self.setExpectedPeriodDate()
-            self.setExpectedOvulation()
-            self.setDaysToExpectedPeriod()
-            
-            completion( nil )
-        }
-    }
-    
-    fileprivate func getUserLastCycleDate( completion: @escaping(_ error: Error? ) -> Void )
-    {
-        guard let uid = StandardDefaults.sharedInstance.uid else
-        {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad date." )
             return
         }
         
-        self.dbService.getLastPeriodDate( forUid: uid )
+        self.lastCycleDate = lastDate
+        
+        guard self.lastCycleDate != nil else
         {
-            errorOrNil, lastOrNil in
+            self.lastCycleDate = Date()
+            self.setExpectedPeriodDate()
+            self.setExpectedOvulation()
+            self.setDaysToExpectedPeriod()
+            return
             
-            guard errorOrNil == nil else
-            {
-                completion( errorOrNil )
-                return
-            }
-            
-            guard lastOrNil != nil else
-            {
-                completion ( nil )
-                return
-            }
-            
-            self.lastCycleDate = self.convertStringToDate( dateString: lastOrNil! )
-            completion ( nil )
-
         }
+        
+        self.setExpectedPeriodDate()
+        self.setExpectedOvulation()
+        self.setDaysToExpectedPeriod()
         
     }
     
-    fileprivate func convertStringToDate( dateString: String ) -> Date
-    {
-  
-        let string : String = dateString
-        
-        let timeinterval : TimeInterval = (string as NSString).doubleValue // convert it in to NSTimeInteral
-        
-        let dateFromServer = NSDate( timeIntervalSince1970:timeinterval ) as Date // you can the Date object from here
-        
-        print(dateFromServer)
-        
-        return dateFromServer
-    }
     
     fileprivate func setDaysToExpectedPeriod()
     {
