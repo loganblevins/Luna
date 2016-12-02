@@ -47,7 +47,7 @@ class AddPeriodViewModel
     }
     
     
-    func onCreatePeriodObject( startDate: String, endDate: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onCreatePeriodObject( startDate: String, endDate: String ) -> Void
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {
@@ -109,6 +109,11 @@ class AddPeriodViewModel
         let endDayDate: NSDate = gregorianCalendar.date(byAdding: dateComponents as DateComponents, to: self.startDate!, options:NSCalendar.Options(rawValue: 0))! as NSDate
         
         self.endDate = endDayDate as Date
+    }
+    
+    func persist( last: Date )
+    {
+        StandardDefaults.sharedInstance.lastCycle = last
     }
         
     

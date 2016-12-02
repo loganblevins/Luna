@@ -23,6 +23,7 @@ protocol StandardDefaultsProtocol: class
     var cycleLen: Int? { get set }
     var relationship: String? { get set }
     var disorder: String? { get set }
+    var lastPeriodUid: String? { get set }
 }
 
 class StandardDefaults: StandardDefaultsProtocol
@@ -148,6 +149,21 @@ class StandardDefaults: StandardDefaultsProtocol
             standardDefaults.set( newValue, forKey: disorderKey )
         }
     }
+    
+    var lastPeriodUid: String?
+    {
+        get
+        {
+            return getValue( lastPeriodUidKey )
+        }
+        set
+        {
+            print( "Persisting disorder: \( newValue )" )
+            standardDefaults.set( newValue, forKey: lastPeriodUidKey )
+        }
+    }
+    
+    
 	
 	// Insert any members needing stored to disk.
 	// Database files?
@@ -174,6 +190,7 @@ class StandardDefaults: StandardDefaultsProtocol
     fileprivate let relationshipKey = "relationshipKey"
     fileprivate let disorderKey = "disorderKey"
     fileprivate let cycleLenKey = "cycleLenKey"
+    fileprivate let lastPeriodUidKey = "lastPeriodKey"
 	
 	fileprivate func getValue< T >( _ key: String ) -> T?
 	{

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController
 {
     override func viewDidLoad()
@@ -15,6 +16,12 @@ class HomeViewController: UIViewController
         super.viewDidLoad()
         setDisplayCurrentDate( date: Date() )
 
+    }
+    
+    func onLastCycleChange()
+    {
+        homeViewModel.upDateView()
+        setLabelDates()
     }
     
     func onOnboardComplete()
@@ -29,6 +36,8 @@ class HomeViewController: UIViewController
         }
        
         homeViewModel.setDates()
+        
+        setLabelDates()
         self.hideHomeViewCover()
         
     }
@@ -45,8 +54,8 @@ class HomeViewController: UIViewController
     
     fileprivate func setLabelDates()
     {
-        setExpectedPeriodDate( date: homeViewModel.ExpectedPeriodDate )
-        setExpectedOvulationDate( date: homeViewModel.ExpectedOvulationDate )
+        formatDate(label: expectedOvuLabel, date: homeViewModel.ExpectedOvulationDate)
+        formatDate(label: expectedPeriodLabel, date: homeViewModel.ExpectedPeriodDate)
         setDaysUntil()
     }
 
@@ -65,22 +74,13 @@ class HomeViewController: UIViewController
         
     }
     
-    fileprivate func setExpectedPeriodDate ( date: Date )
+    fileprivate func formatDate( label: UILabel, date: Date )
     {
         let currentDate = date
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "E, MMM d"
-        expectedPeriodLabel.text = dateFormatter.string(from: currentDate)
-    }
-    
-    fileprivate func setExpectedOvulationDate( date: Date )
-    {
-        let currentDate = date
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "E, MMM d"
-        expectedOvuLabel.text = dateFormatter.string(from: currentDate)
+        label.text = dateFormatter.string(from: currentDate)
     }
     
     
@@ -89,18 +89,12 @@ class HomeViewController: UIViewController
         return (UIApplication.shared.keyWindow?.rootViewController as? MainViewController)!
     }
     
-    
-    var window: UIWindow?
-    
-    
+
     @IBOutlet weak var homeviewCover: UIView!
-    
     @IBOutlet weak var expectedOvuLabel: UILabel!
     @IBOutlet weak var expectedPeriodLabel: UILabel!
     @IBOutlet weak var dailyEntryButton: UIButton!
-
     @IBOutlet weak var daysUntilLabel: UILabel!
-    
     @IBOutlet weak var dateLabel: UILabel!
     
     fileprivate let homeViewModel = HomeViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )

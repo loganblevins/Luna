@@ -52,7 +52,7 @@ class EditPeriodViewModel
     }
     
     
-    func onEditPeriodObject( pid: String, startDate: String, endDate: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onEditPeriodObject( pid: String, startDate: String, endDate: String) -> Void 
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {

@@ -119,10 +119,7 @@ class EditPeriodViewController: UIViewController
     {
 
       editPeriodViewModel.onEditPeriodObject(pid: editPeriodViewModel.Pid, startDate: convertDateFormatToUnixString(date: editPeriodViewModel.Start), endDate: convertDateFormatToUnixString(date: editPeriodViewModel.End))
-        {
-            error in
-            
-        }
+
     }
     
     fileprivate func setLabelDates()

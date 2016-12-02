@@ -70,6 +70,26 @@ class HomeViewModel
         return currentViewDate
     }
     
+    
+    func upDateView()
+    {
+        guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
+        {
+            return
+        }
+        
+        if lastDate != lastCycleDate
+        {
+            setDates()
+        }
+    }
+    
+    func persist( last: Date )
+    {
+        StandardDefaults.sharedInstance.lastCycle = last
+    }
+    
+    
     func setDates()
     {
         
@@ -115,6 +135,7 @@ class HomeViewModel
         self.expectedOvulation = Calendar.current.date(byAdding: .day, value: 14, to: lastCycleDate!)
         print(expectedOvulation!)
     }
+    
     
     
     fileprivate var currentViewDate: Date
