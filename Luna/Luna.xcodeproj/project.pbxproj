@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		521C84CE55D242D26396AE3B /* Pods_LunaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */; };
 		B1B32145809EBD815C0C400E /* Pods_Luna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D6A37AC3167AE4E2EB8DD /* Pods_Luna.framework */; };
-		CB088F0F1DD98F1C0068511D /* PhotosHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB088F0E1DD98F1C0068511D /* PhotosHelper.swift */; };
 		CB105A541D87B24400EA201C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB105A531D87B24400EA201C /* AppDelegate.swift */; };
 		CB105A5B1D87B24400EA201C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5A1D87B24400EA201C /* Assets.xcassets */; };
 		CB105A5E1D87B24400EA201C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB105A5C1D87B24400EA201C /* LaunchScreen.storyboard */; };
@@ -43,8 +42,6 @@
 		EA013EB91DD168990072634C /* OBLastCycleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA013EB41DD168990072634C /* OBLastCycleViewController.storyboard */; };
 		EA013EBA1DD168990072634C /* OBMenstrualLenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA013EB51DD168990072634C /* OBMenstrualLenViewController.storyboard */; };
 		EA013EBB1DD168990072634C /* OBRelationshipViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA013EB61DD168990072634C /* OBRelationshipViewController.storyboard */; };
-		EA013EBD1DD168AB0072634C /* OBAddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA013EBC1DD168AB0072634C /* OBAddImageViewController.swift */; };
-		EA013EBF1DD168B30072634C /* AddImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA013EBE1DD168B30072634C /* AddImageViewModel.swift */; };
 		EA292C961D95AD2000C0B0BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C951D95AD2000C0B0BC /* User.swift */; };
 		EA292C991D95AD6300C0B0BC /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C981D95AD6300C0B0BC /* FirebaseService.swift */; };
 		EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */; };
@@ -109,7 +106,6 @@
 		842E3A2534E7D3CB26BC6567 /* Pods-Luna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Luna/Pods-Luna.release.xcconfig"; sourceTree = "<group>"; };
 		86A1028D93A3FE5E2B27DBA8 /* Pods_LunaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LunaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98AA2E6AD0B96B2A96553D9B /* Pods-LunaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunaTests/Pods-LunaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CB088F0E1DD98F1C0068511D /* PhotosHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosHelper.swift; sourceTree = "<group>"; };
 		CB105A501D87B24400EA201C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB105A531D87B24400EA201C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB105A5A1D87B24400EA201C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,8 +144,6 @@
 		EA013EB41DD168990072634C /* OBLastCycleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OBLastCycleViewController.storyboard; sourceTree = "<group>"; };
 		EA013EB51DD168990072634C /* OBMenstrualLenViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OBMenstrualLenViewController.storyboard; sourceTree = "<group>"; };
 		EA013EB61DD168990072634C /* OBRelationshipViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OBRelationshipViewController.storyboard; sourceTree = "<group>"; };
-		EA013EBC1DD168AB0072634C /* OBAddImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBAddImageViewController.swift; sourceTree = "<group>"; };
-		EA013EBE1DD168B30072634C /* AddImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageViewModel.swift; sourceTree = "<group>"; };
 		EA292C951D95AD2000C0B0BC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA292C981D95AD6300C0B0BC /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		EA292C9E1D95ADE300C0B0BC /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -273,7 +267,6 @@
 				EA292C941D95AD1500C0B0BC /* Model */,
 				CB105A731D87B54700EA201C /* Luna.entitlements */,
 				CB105A531D87B24400EA201C /* AppDelegate.swift */,
-				CB088F0E1DD98F1C0068511D /* PhotosHelper.swift */,
 				CB2827701D90387F008043BC /* Constants.swift */,
 				CB2827711D90387F008043BC /* Networking.swift */,
 				CB51CDDB1D98DA100054F8C0 /* LunaAPI.swift */,
@@ -343,7 +336,6 @@
 				EA292CBA1D96C3DD00C0B0BC /* LoginViewModel.swift */,
 				CBC437761DA5C338003D6A0E /* MainViewModel.swift */,
 				CB2928C11DCBCD9C004B3027 /* SettingsViewModel.swift */,
-				EA013EBE1DD168B30072634C /* AddImageViewModel.swift */,
 				EA685D831DD2BF48006FAB3E /* BirthControlViewModel.swift */,
 				EA685D851DD2C7EA006FAB3E /* RelationshipStatusViewModel.swift */,
 				EA685D8B1DD2CB6B006FAB3E /* MenstrualLenViewModel.swift */,
@@ -384,7 +376,6 @@
 				CBC437741DA5C30B003D6A0E /* MainViewController.swift */,
 				CB34794E1DCC0DEC00B3E60C /* HomeViewController.swift */,
 				CB34794C1DCBE8C400B3E60C /* SettingsViewController.swift */,
-				EA013EBC1DD168AB0072634C /* OBAddImageViewController.swift */,
 				EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */,
 				EA685D871DD2CA6B006FAB3E /* OBRelationshipViewController.swift */,
 				EA685D891DD2CB2B006FAB3E /* OBMenstrualLenViewController.swift */,
@@ -673,13 +664,11 @@
 				EA292C9F1D95ADE300C0B0BC /* UserViewModel.swift in Sources */,
 				CBC437751DA5C30B003D6A0E /* MainViewController.swift in Sources */,
 				CBC437771DA5C338003D6A0E /* MainViewModel.swift in Sources */,
-				CB088F0F1DD98F1C0068511D /* PhotosHelper.swift in Sources */,
 				CBC437711DA5BC0E003D6A0E /* CalendarViewController.swift in Sources */,
 				CB34794D1DCBE8C400B3E60C /* SettingsViewController.swift in Sources */,
 				EAD6E1C51DD8E543002E2D83 /* Period.swift in Sources */,
 				CB34794F1DCC0DEC00B3E60C /* HomeViewController.swift in Sources */,
 				EAD6E1D91DD952EA002E2D83 /* PeriodCell.swift in Sources */,
-				EA013EBF1DD168B30072634C /* AddImageViewModel.swift in Sources */,
 				EA4DA3A11DD7A5FB002DCB07 /* SettingsDisorderViewController.swift in Sources */,
 				EA685D901DD2CC9D006FAB3E /* OBLastCycleViewController.swift in Sources */,
 				EA292CB71D95AEF900C0B0BC /* LoginViewController.swift in Sources */,
@@ -708,7 +697,6 @@
 				EA685D8C1DD2CB6B006FAB3E /* MenstrualLenViewModel.swift in Sources */,
 				CBC793221D8CCA950014A0EA /* String+.swift in Sources */,
 				CB2928C21DCBCD9C004B3027 /* SettingsViewModel.swift in Sources */,
-				EA013EBD1DD168AB0072634C /* OBAddImageViewController.swift in Sources */,
 				EAD6E1C11DD7FD62002E2D83 /* PeriodViewModel.swift in Sources */,
 				CBC793201D8CC8D40014A0EA /* Utility.swift in Sources */,
 			);

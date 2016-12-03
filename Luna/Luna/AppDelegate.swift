@@ -33,10 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
 		Fabric.with( [Crashlytics.self] )
 		
-		PhotosHelper.requestAuthorization()
 		maybeSignOutUser()
 		signInUser()
-		
+	
 		return true
 	}
 	
@@ -62,12 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			
 			if user == nil
 			{
+				print( "No user." )
 				strongSelf.MainViewController().maybePresentLogin()
 			}
-            else
+            else if let strongUser = user
             {
 				print( "Have a user" )
-				strongSelf.persist( uid: user!.uid )
+				strongSelf.persist( uid: strongUser.uid )
 				strongSelf.maybeCheckOnboardStatus()
             }
 		}
