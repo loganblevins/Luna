@@ -17,20 +17,18 @@ class OBLastCycleViewController: UIViewController
     }
     
     weak var delegate: OnBoardDelegate?
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        datePicker.datePickerMode = UIDatePickerMode.date
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	override func viewDidLoad()
+	{
+		super.viewDidLoad()
+		
+		// This method is really sketchy and I hate it, but it works!
+		// Natively, the UIDatePicker is not meant to be customizable.
+		// This is sort of a hack...
+		//
+		datePicker.setValue( UIColor.white, forKey: "textColor" )
+	}
+	
     @IBAction func nextPressed(_ sender: AnyObject)
     {
         

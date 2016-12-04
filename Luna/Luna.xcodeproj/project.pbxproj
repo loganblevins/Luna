@@ -243,10 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				EA685D811DD2BE90006FAB3E /* OBBirthControlViewController.swift */,
-				EA685D871DD2CA6B006FAB3E /* OBRelationshipViewController.swift */,
 				EA685D891DD2CB2B006FAB3E /* OBMenstrualLenViewController.swift */,
 				EA685D8F1DD2CC9D006FAB3E /* OBLastCycleViewController.swift */,
 				EA685D931DD2CE72006FAB3E /* OBDisorderViewController.swift */,
+				EA685D871DD2CA6B006FAB3E /* OBRelationshipViewController.swift */,
 				CB0B26461DF27D5F00D30395 /* OBPageViewController.swift */,
 			);
 			name = OBViewControllers;
@@ -316,9 +316,9 @@
 			isa = PBXGroup;
 			children = (
 				EA013EB21DD168990072634C /* OBBirthControlViewController.storyboard */,
-				EA013EB31DD168990072634C /* OBDisorderViewController.storyboard */,
-				EA013EB41DD168990072634C /* OBLastCycleViewController.storyboard */,
 				EA013EB51DD168990072634C /* OBMenstrualLenViewController.storyboard */,
+				EA013EB41DD168990072634C /* OBLastCycleViewController.storyboard */,
+				EA013EB31DD168990072634C /* OBDisorderViewController.storyboard */,
 				EA013EB61DD168990072634C /* OBRelationshipViewController.storyboard */,
 				CB5E05771DF3459A003FD034 /* OBPageViewController.storyboard */,
 				CB2352C71DC3052F008E8493 /* MainViewController.storyboard */,

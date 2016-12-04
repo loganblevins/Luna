@@ -8,26 +8,20 @@
 
 import UIKit
 
-class OBDisorderViewController: UIViewController
+class OBDisorderViewController: UIViewController, UITextFieldDelegate
 {
     static func storyboardInstance() -> OBDisorderViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBDisorderViewController
     }
-    
+	
+	override func viewDidLoad()
+	{
+		disorderTextField.delegate = self
+	}
+	
     weak var delegate: OnBoardDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func nextPressed(_ sender: AnyObject)
     {
@@ -53,6 +47,12 @@ class OBDisorderViewController: UIViewController
         //NEED TO MOVE ON TO NEXT VIEW
         delegate?.toRelationshipView()
     }
+	
+	func textFieldShouldReturn(_ textField: UITextField ) -> Bool
+	{
+		textField.resignFirstResponder()
+		return true
+	}
 
     @IBOutlet fileprivate weak var disorderTextField: UITextField!
     

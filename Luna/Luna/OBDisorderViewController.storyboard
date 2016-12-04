@@ -36,16 +36,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If so, please enter what you have been diagnosed with." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8I-ys-6CC">
-                                <rect key="frame" x="50" y="135" width="275" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="aBg-Aw-eZu"/>
-                                </constraints>
+                                <rect key="frame" x="50" y="135" width="275" height="38.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Disorder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-Ip-YT5">
-                                <rect key="frame" x="16" y="217" width="343" height="30"/>
+                                <rect key="frame" x="16" y="198.5" width="343" height="30"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -53,12 +50,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.38823529411764707" green="0.5490196078431373" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kg8-Ip-YT5" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="Hec-9W-Jo7"/>
+                            <constraint firstAttribute="trailing" secondItem="JJc-AF-i6M" secondAttribute="trailing" constant="16" id="C3q-pk-okc"/>
                             <constraint firstAttribute="trailing" secondItem="u8I-ys-6CC" secondAttribute="trailing" constant="50" id="R9L-jy-7Nu"/>
-                            <constraint firstItem="JJc-AF-i6M" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="RVv-Gd-Yvp"/>
-                            <constraint firstItem="u8I-ys-6CC" firstAttribute="centerX" secondItem="Zg5-Uo-HYV" secondAttribute="centerX" id="WDH-c0-PXM"/>
                             <constraint firstItem="Kg8-Ip-YT5" firstAttribute="leading" secondItem="Zg5-Uo-HYV" secondAttribute="leadingMargin" id="XuG-UM-UZp"/>
                             <constraint firstItem="u8I-ys-6CC" firstAttribute="top" secondItem="JJc-AF-i6M" secondAttribute="bottom" constant="20" id="bQy-tb-al8"/>
+                            <constraint firstItem="JJc-AF-i6M" firstAttribute="leading" secondItem="Zg5-Uo-HYV" secondAttribute="leading" constant="16" id="dar-Ma-Vnb"/>
                             <constraint firstItem="JJc-AF-i6M" firstAttribute="top" secondItem="FRa-xc-yER" secondAttribute="bottom" constant="73" id="de2-ec-igi"/>
                             <constraint firstItem="u8I-ys-6CC" firstAttribute="leading" secondItem="Zg5-Uo-HYV" secondAttribute="leading" constant="50" id="idg-U1-KVO"/>
                             <constraint firstItem="Kg8-Ip-YT5" firstAttribute="trailing" secondItem="Zg5-Uo-HYV" secondAttribute="trailingMargin" id="nco-6w-Yho"/>

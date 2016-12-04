@@ -51,8 +51,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
                 self?.HomeViewController().onOnboardComplete()
             }
         }
-        
-        
     }
     
 	func maybePresentLogin()
@@ -86,57 +84,8 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
 		guard let pageVC = OBPageViewController.storyboardInstance() else { return }
 		onboardingActive = true
 		present( pageVC, animated: true, completion: nil )
-		
-//        addImageViewController = OBAddImageViewController.storyboardInstance()
-//        addImageViewController!.delegate = self
-//		onboardingActive = true
-//        present ( addImageViewController!, animated: true, completion: nil )
     }
-    
-//    func toBirthControlView()
-//    {
-//        addImageViewController?.dismiss( animated: true, completion: nil )
-//        
-//        birthControlViewController = OBBirthControlViewController.storyboardInstance()
-//        birthControlViewController!.delegate = self
-//        present ( birthControlViewController!, animated: true, completion: nil)
-//    }
-//    
-//    func toMenstrualLenView()
-//    {
-//        birthControlViewController?.dismiss( animated: true, completion: nil )
-//        
-//        menstrualLenViewcontroller = OBMenstrualLenViewController.storyboardInstance()
-//        menstrualLenViewcontroller!.delegate = self
-//        present ( menstrualLenViewcontroller!, animated: true, completion: nil)
-//    }
-//    
-//    func toLastCycleView()
-//    {
-//        menstrualLenViewcontroller?.dismiss( animated: true, completion: nil )
-//        
-//        lastCycleViewController = OBLastCycleViewController.storyboardInstance()
-//        lastCycleViewController?.delegate = self
-//        present ( lastCycleViewController!, animated: true, completion: nil)
-//    }
-//    
-//    func toDisorderView()
-//    {
-//        lastCycleViewController?.dismiss( animated: true, completion: nil )
-//        
-//        disorderViewController = OBDisorderViewController.storyboardInstance()
-//        disorderViewController?.delegate = self
-//        present ( disorderViewController!, animated: true, completion: nil)
-//    }
-//    
-//    func toRelationshipView()
-//    {
-//        disorderViewController?.dismiss( animated: true, completion: nil )
-//        
-//        relationshipViewController = OBRelationshipViewController.storyboardInstance()
-//        relationshipViewController?.delegate = self
-//        present ( relationshipViewController!, animated: true, completion: nil )
-//    }
+	
 //    
 //    func onBoardComplete()
 //    {

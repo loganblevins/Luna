@@ -44,26 +44,15 @@
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Czr-RI-noB">
                                 <rect key="frame" x="0.0" y="166" width="375" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="BES-X3-Bs1"/>
-                                    <constraint firstAttribute="height" constant="216" id="NCw-bh-Nvc"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your birth control." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5D4-J8-rIx">
-                                <rect key="frame" x="16" y="407" width="343" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="XRc-m1-c2a"/>
-                                    <constraint firstAttribute="width" constant="343" id="cRL-NA-jMH"/>
-                                </constraints>
+                                <rect key="frame" x="92" y="407" width="191" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth control type is important for us to create a more accurate prediction of your cycle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZx-ih-YlQ">
-                                <rect key="frame" x="39" y="436" width="298" height="72"/>
+                                <rect key="frame" x="39" y="437" width="298" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="298" id="3MD-0N-xpE"/>
                                     <constraint firstAttribute="height" constant="72" id="B3Z-mO-PBK"/>
@@ -76,13 +65,15 @@
                         <color key="backgroundColor" red="0.38823529411764707" green="0.5490196078431373" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Czr-RI-noB" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leading" id="5jc-JX-T9q"/>
+                            <constraint firstItem="Czr-RI-noB" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leading" id="6cL-bF-PAL"/>
                             <constraint firstItem="5D4-J8-rIx" firstAttribute="top" secondItem="Czr-RI-noB" secondAttribute="bottom" constant="25" id="EfH-mR-tPJ"/>
-                            <constraint firstItem="Czr-RI-noB" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="F9h-a8-DTt"/>
                             <constraint firstItem="cZx-ih-YlQ" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="Nwy-R3-U8l"/>
                             <constraint firstItem="cZx-ih-YlQ" firstAttribute="top" secondItem="5D4-J8-rIx" secondAttribute="bottom" constant="8" id="OJA-t9-dFV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5D4-J8-rIx" secondAttribute="trailing" constant="76" id="Z3h-j3-jD3"/>
                             <constraint firstItem="fbO-fs-87o" firstAttribute="top" secondItem="4WY-21-N49" secondAttribute="topMargin" constant="93" id="er9-Yy-ewa"/>
                             <constraint firstAttribute="trailing" secondItem="Czr-RI-noB" secondAttribute="trailing" id="fIr-M5-fEZ"/>
                             <constraint firstItem="fbO-fs-87o" firstAttribute="centerX" secondItem="4WY-21-N49" secondAttribute="centerX" id="jXQ-lt-3Pl"/>
+                            <constraint firstItem="5D4-J8-rIx" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leadingMargin" constant="76" id="kOX-7k-LxG"/>
                             <constraint firstAttribute="trailing" secondItem="fbO-fs-87o" secondAttribute="trailing" constant="135.5" id="n6e-yU-IoC"/>
                             <constraint firstItem="fbO-fs-87o" firstAttribute="leading" secondItem="4WY-21-N49" secondAttribute="leading" constant="135.5" id="o3M-yP-Pqy"/>
                             <constraint firstItem="Czr-RI-noB" firstAttribute="top" secondItem="fbO-fs-87o" secondAttribute="bottom" constant="52" id="z88-1D-BxW"/>

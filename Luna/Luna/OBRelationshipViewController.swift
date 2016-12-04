@@ -27,11 +27,6 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
         setUIPickerView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
@@ -54,9 +49,8 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
         selectedValue = uiPickerValues[row]
     }
     
-    @IBAction func nextPressed(_ sender: AnyObject)
+    @IBAction func continuePressed()
     {
-        
         if( !selectedValue.isEmpty )
         {
             relationshipStatusViewModel.onAddDataAttempt(data: selectedValue)
