@@ -121,7 +121,7 @@ class HomeViewModel
     {
         guard let uid = StandardDefaults.sharedInstance.uid else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+			completion( LunaAPIError.NoUser )
             return
         }
         

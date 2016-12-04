@@ -10,7 +10,6 @@ import UIKit
 
 class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate
 {
-
     static func storyboardInstance() -> OBBirthControlViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
@@ -33,7 +32,7 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIP
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    func numberOfComponents( in pickerView: UIPickerView ) -> Int
     {
         return 1
     }
@@ -42,11 +41,13 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIP
     {
         return uiPickerValues.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
-        return uiPickerValues[row]
-    }
+	
+	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int ) -> NSAttributedString?
+	{
+		let attributes = [NSForegroundColorAttributeName: UIColor.white]
+		let text = NSAttributedString( string: uiPickerValues[row], attributes: attributes )
+		return text
+	}
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {

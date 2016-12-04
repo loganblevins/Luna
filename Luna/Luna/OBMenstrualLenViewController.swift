@@ -10,7 +10,6 @@ import UIKit
 
 class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
-
     static func storyboardInstance() -> OBMenstrualLenViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
@@ -43,11 +42,13 @@ class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UI
         return uiPickerValues.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
-        return uiPickerValues[row]
-    }
-    
+	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int ) -> NSAttributedString?
+	{
+		let attributes = [NSForegroundColorAttributeName: UIColor.white]
+		let text = NSAttributedString( string: uiPickerValues[row], attributes: attributes )
+		return text
+	}
+	
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         selectedValue = uiPickerValues[row]
