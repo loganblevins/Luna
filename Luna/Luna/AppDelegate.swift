@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
 		Fabric.with( [Crashlytics.self] )
 		
+		PhotosHelper.requestAuthorization()
 		maybeSignOutUser()
 		signInUser()
 		
