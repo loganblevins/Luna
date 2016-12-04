@@ -78,6 +78,7 @@ class HomeViewModel
             return
         }
         
+        //The view needs to be updated if they created a new period object
         if lastDate != lastCycleDate
         {
             setDates()
@@ -108,7 +109,6 @@ class HomeViewModel
             self.setExpectedOvulation()
             self.setDaysToExpectedPeriod()
             return
-            
         }
         
         self.setExpectedPeriodDate()
@@ -137,14 +137,11 @@ class HomeViewModel
     }
     
     
-    
     fileprivate var currentViewDate: Date
-    
     fileprivate var lastCycleDate: Date?
     fileprivate var daysToExpectedPeriod: Int?
     fileprivate var expectedPeriod: Date?
     fileprivate var expectedOvulation: Date?
-    
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let authService: ServiceAuthenticatable!
     fileprivate let dbService: ServiceDBManageable!
