@@ -41,9 +41,9 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
             {
                 return
             }
+
             
-            //Reload the table after retrieving the period objects from Firebase
-            self.tableView.reloadData()
+            DispatchQueue.main.async { self.tableView.reloadData() }
         }
     }
     

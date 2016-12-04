@@ -25,18 +25,18 @@ class SettingsViewModel
 	}
     
     
-    func createUserViewModel( completion: ( _ userViewModel: UserViewModel? ) -> Void )
+    func createUserViewModel() -> UserViewModel?
     {
         
         let user = createUserDataObject()
         if user != nil
         {
             let userViewModel = UserViewModel ( user: user! )
-            completion ( userViewModel )
+            return userViewModel
         }
         else
         {
-            completion ( nil )
+            return nil
         }
 
     }
