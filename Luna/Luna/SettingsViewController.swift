@@ -10,7 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -22,19 +21,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool)
     {
-        settingsViewModel.createUserViewModel()
-        {
-            userVMorNil in
-                
-            guard userVMorNil != nil else
-            {
-                return
-            }
-                
-            settingsViewModel.setUserViewModel( userVM: userVMorNil! )
-            self.tableView.reloadData()
-        }
-
+		super.viewWillAppear( animated )
+		
+		guard let userViewModel = settingsViewModel.createUserViewModel() else { return }
+		settingsViewModel.setUserViewModel( userVM: userViewModel )
+		tableView.reloadData()
     }
     
     weak var delegate: SettingsDelegate?
