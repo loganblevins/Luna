@@ -10,30 +10,24 @@ import UIKit
 
 class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate
 {
-
+	var itemIndex = 0
+	
     static func storyboardInstance() -> OBBirthControlViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBBirthControlViewController
     }
-    
-    weak var delegate: OnBoardDelegate?
-    
-    override func viewDidLoad() {
+        
+    override func viewDidLoad()
+	{
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         birthControlPicker.delegate = self
         birthControlPicker.dataSource = self
         setUIPickerView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    func numberOfComponents( in pickerView: UIPickerView ) -> Int
     {
         return 1
     }
@@ -42,52 +36,41 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIP
     {
         return uiPickerValues.count
     }
+	
+	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int ) -> NSAttributedString?
+	{
+		let attributes = [NSForegroundColorAttributeName: UIColor.white]
+		let text = NSAttributedString( string: uiPickerValues[row], attributes: attributes )
+		return text
+	}
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
-        return uiPickerValues[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int )
     {
         selectedValue = uiPickerValues[row]
     }
     
-    @IBAction func nextPressed(_ sender: AnyObject)
+    func maybeUploadData()
     {
-        
-        if( !selectedValue.isEmpty )
+        if !selectedValue.isEmpty
         {
-            birthControlViewModel.onAddDataAttempt(data: selectedValue)
-            {
-                error in
-                
-            }
+            birthControlViewModel.onAddDataAttempt( data: selectedValue )
         }
-       
-        //NEED TO MOVE ON TO NEXT VIEW
-        delegate?.toMenstrualLenView()
     }
 
     fileprivate func setUIPickerView()
     {
         uiPickerValues = birthControlViewModel.getPickerValues()
         
-        if(uiPickerValues.count > 0)
+        if ( uiPickerValues.count > 0 )
         {
             selectedValue = uiPickerValues[0]
         }
     }
-    
-    
+	
     @IBOutlet weak var birthControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
     fileprivate var selectedValue: String = ""
-    
+	
     fileprivate let birthControlViewModel = BirthControlViewModel( dbService: FirebaseDBService() )
-    
-    
-
-
 }

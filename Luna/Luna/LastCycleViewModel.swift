@@ -15,7 +15,7 @@ class LastCycleViewModel
         self.dbService = dbService
     }
     
-    func onAddDataAttempt( data: Date, completion: @escaping(_ error: Error? ) -> Void )
+    func onAddDataAttempt( data: Date )
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {

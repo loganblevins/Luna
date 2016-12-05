@@ -10,16 +10,16 @@ import UIKit
 
 class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
-
+	var itemIndex = 1
+	
     static func storyboardInstance() -> OBMenstrualLenViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBMenstrualLenViewController
     }
-    
-    weak var delegate: OnBoardDelegate?
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+	{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -27,12 +27,7 @@ class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UI
         lenControlPicker.dataSource = self
         setUIPickerView()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
@@ -43,32 +38,25 @@ class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UI
         return uiPickerValues.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
-        return uiPickerValues[row]
-    }
-    
+	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int ) -> NSAttributedString?
+	{
+		let attributes = [NSForegroundColorAttributeName: UIColor.white]
+		let text = NSAttributedString( string: uiPickerValues[row], attributes: attributes )
+		return text
+	}
+	
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         selectedValue = uiPickerValues[row]
     }
     
-    @IBAction func nextPressed(_ sender: AnyObject)
+    func maybeUploadData()
     {
-        
-        if( !selectedValue.isEmpty )
+        if !selectedValue.isEmpty 
         {
-            let valueInt = (selectedValue as NSString).integerValue
-            
-            menstrualLenViewModel.onAddDataAttempt(data: valueInt)
-            {
-                error in
-                
-            }
+			let value = (selectedValue as NSString).integerValue
+            menstrualLenViewModel.onAddDataAttempt( data: value )
         }
-        
-        //NEED TO MOVE ON TO NEXT VIEW
-        delegate?.toLastCycleView()
     }
     
     fileprivate func setUIPickerView()
@@ -81,11 +69,10 @@ class OBMenstrualLenViewController: UIViewController, UIPickerViewDataSource, UI
         }
     }
     
-    
     @IBOutlet weak var lenControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
     fileprivate var selectedValue: String = ""
-    
+	
     fileprivate let menstrualLenViewModel = MenstrualLenViewModel( dbService: FirebaseDBService() )
 }

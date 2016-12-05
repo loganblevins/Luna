@@ -8,54 +8,48 @@
 
 import UIKit
 
-class OBDisorderViewController: UIViewController
+class OBDisorderViewController: UIViewController, UITextFieldDelegate
 {
+	var itemIndex = 3
+
     static func storyboardInstance() -> OBDisorderViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBDisorderViewController
     }
-    
-    weak var delegate: OnBoardDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func nextPressed(_ sender: AnyObject)
+	
+	override func viewDidLoad()
+	{
+		disorderTextField.delegate = self
+	}
+	
+    func maybeUploadData()
     {
-        var uDisorder: String
-        
-        if ( disorderTextField.text?.isEmpty )!
+        var uDisorder: String?
+		guard let text = disorderTextField.text else { return }
+		
+        if text.isEmpty
         {
             uDisorder = "None"
         }
         else
         {
-            guard let text = disorderTextField.text else { return }
-            
-            uDisorder = text
+            if let text = disorderTextField.text
+			{
+				uDisorder = text
+			}
         }
         
-        disorderViewModel.onAddDataAttempt(data: uDisorder)
-        {
-            error in
-            
-        }
-        
-        //NEED TO MOVE ON TO NEXT VIEW
-        delegate?.toRelationshipView()
-    }
+        disorderViewModel.onAddDataAttempt( data: uDisorder )
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField ) -> Bool
+	{
+		textField.resignFirstResponder()
+		return true
+	}
 
     @IBOutlet fileprivate weak var disorderTextField: UITextField!
     
     fileprivate let disorderViewModel = DisorderViewModel( dbService: FirebaseDBService() )
-
 }

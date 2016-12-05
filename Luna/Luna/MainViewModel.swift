@@ -47,9 +47,8 @@ class MainViewModel
             return
         }
         
-        self.dbService.saveUserRecord(forUid: uid, key: Constants.FirebaseStrings.DictionaryOnBoardStatus, data: status as AnyObject)
+        dbService.saveUserRecord( forUid: uid, key: Constants.FirebaseStrings.DictionaryOnBoardStatus, data: status as AnyObject )
     }
-  
     
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let authService: ServiceAuthenticatable!

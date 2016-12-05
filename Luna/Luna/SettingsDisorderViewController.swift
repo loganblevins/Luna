@@ -47,14 +47,6 @@ class SettingsDisorderViewController: UIViewController, UITextFieldDelegate
         }
         
         disorderViewModel.onAddDataAttempt(data: uDisorder)
-        {
-            error in
-            
-        }
-        
-        //NEED TO MOVE ON TO NEXT VIEW
-        
-        //delegate?.dismissEditDisorder()
         _ = navigationController?.popViewController(animated: true)
     }
     

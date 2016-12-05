@@ -58,14 +58,9 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
     
     @IBAction func okPressed(_ sender: AnyObject)
     {
-        
         if( !selectedValue.isEmpty )
         {
-            birthControlViewModel.onAddDataAttempt(data: selectedValue)
-            {
-                error in
-                
-            }
+            birthControlViewModel.onAddDataAttempt( data: selectedValue )
         }
         
         //NEED TO MOVE ON TO NEXT VIEW
@@ -76,7 +71,6 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
     fileprivate func setUIPickerView()
     {
         uiPickerValues = birthControlViewModel.getPickerValues()
-        
     }
     
     fileprivate func setSelectedValue()
@@ -95,14 +89,12 @@ class SettingsBirthControlViewController: UIViewController,UIPickerViewDataSourc
                     return
                 }
                 
-                let row = uiPickerValues.index(of: defaultValue)
-                birthControlPicker.selectRow(row!, inComponent: 0, animated: false)
-
+                let row = uiPickerValues.index( of: defaultValue )
+                birthControlPicker.selectRow( row!, inComponent: 0, animated: false )
             }
         }
     }
-    
-    
+	
     @IBOutlet weak var birthControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []

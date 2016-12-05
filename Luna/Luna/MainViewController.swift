@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol OnBoardDelegate: class
-{
-	func onBoardComplete()
-	func toBirthControlView()
-	func toRelationshipView()
-	func toMenstrualLenView()
-	func toLastCycleView()
-	func toDisorderView()
-}
-
 protocol SettingsDelegate: class
 {
     func editBirthControlInfo()
@@ -32,7 +22,7 @@ protocol AddPeriodDelegate: class
     func onLastCycleChange()
 }
 
-final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardDelegate, AddPeriodDelegate
+final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardCompletionDelegate, AddPeriodDelegate
 {
 	fileprivate(set) var onboardingActive = false
 	fileprivate(set) var loginActive = false
@@ -46,7 +36,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 		}
 	}
 
-    
     func checkOnBoardStatus()
     {
         mainViewModel.checkOnBoardStatus()
@@ -64,8 +53,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
                 self?.HomeViewController().onOnboardComplete()
             }
         }
-        
-        
     }
     
     func onLastCycleChange()
@@ -101,70 +88,23 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 	
     func presentOnBoard()
     {
-        addImageViewController = OBAddImageViewController.storyboardInstance()
-        addImageViewController!.delegate = self
+		pageViewController = OBPageViewController.storyboardInstance()
+		pageViewController?.onboardCompletionDelegate = self
 		onboardingActive = true
-        present ( addImageViewController!, animated: true, completion: nil )
+		guard let strongVC = pageViewController else { return }
+		present( strongVC, animated: true, completion: nil )
     }
-    
-    func toBirthControlView()
+	
+    func onOnboardComplete()
     {
-        addImageViewController?.dismiss( animated: true, completion: nil )
-        
-        birthControlViewController = OBBirthControlViewController.storyboardInstance()
-        birthControlViewController!.delegate = self
-        present ( birthControlViewController!, animated: true, completion: nil)
-    }
-    
-    func toMenstrualLenView()
-    {
-        birthControlViewController?.dismiss( animated: true, completion: nil )
-        
-        menstrualLenViewcontroller = OBMenstrualLenViewController.storyboardInstance()
-        menstrualLenViewcontroller!.delegate = self
-        present ( menstrualLenViewcontroller!, animated: true, completion: nil)
-    }
-    
-    func toLastCycleView()
-    {
-        menstrualLenViewcontroller?.dismiss( animated: true, completion: nil )
-        
-        lastCycleViewController = OBLastCycleViewController.storyboardInstance()
-        lastCycleViewController?.delegate = self
-        present ( lastCycleViewController!, animated: true, completion: nil)
-    }
-    
-    func toDisorderView()
-    {
-        lastCycleViewController?.dismiss( animated: true, completion: nil )
-        
-        disorderViewController = OBDisorderViewController.storyboardInstance()
-        disorderViewController?.delegate = self
-        present ( disorderViewController!, animated: true, completion: nil)
-    }
-    
-    func toRelationshipView()
-    {
-        disorderViewController?.dismiss( animated: true, completion: nil )
-        
-        relationshipViewController = OBRelationshipViewController.storyboardInstance()
-        relationshipViewController?.delegate = self
-        present ( relationshipViewController!, animated: true, completion: nil )
-    }
-    
-    func onBoardComplete()
-    {
-        relationshipViewController?.dismiss( animated: true )
+        pageViewController?.dismiss( animated: true )
 		{
 			self.onboardingActive = false
 		}
-		
         mainViewModel.setOnBoardStatus( status: true )
-        
         HomeViewController().onOnboardComplete()
     }
-    
-    
+	
     func presentAddPeriod()
     {
         addPeriodViewController = AddPeriodViewController.storyboardInstance()
@@ -179,17 +119,8 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 
     
 	fileprivate var loginViewController: LoginViewController?
-    
     fileprivate var addPeriodViewController: AddPeriodViewController?
-    
-    fileprivate var addImageViewController: OBAddImageViewController?
-    fileprivate var birthControlViewController: OBBirthControlViewController?
-    fileprivate var menstrualLenViewcontroller: OBMenstrualLenViewController?
-    fileprivate var lastCycleViewController: OBLastCycleViewController?
-    fileprivate var relationshipViewController: OBRelationshipViewController?
-    fileprivate var disorderViewController: OBDisorderViewController?
-
-    
+	fileprivate var pageViewController: OBPageViewController?
     fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
 

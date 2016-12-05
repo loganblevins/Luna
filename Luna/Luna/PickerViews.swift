@@ -6,39 +6,27 @@
 //  Copyright © 2016 Logan Blevins. All rights reserved.
 //
 
-import Foundation
-
-
 class PickerViews
 {
-        
-    init()
-    {
-        
-    }
-    
-    
-    func createRelationStatusPicker () -> [String]
+    func createRelationStatusPicker() -> [String]
     {
         return Constants.RelationshipValues.values
-
     }
     
-    func createBirthControlPicker () -> [String]
+    func createBirthControlPicker() -> [String]
     {
         return Constants.BirthControlValues.values
-
     }
     
-    func createCycleLengths () -> [String]
+    func createCycleLengths() -> [String]
     {
         var cycle = [String]()
         
-        for c in stride(from: 0, through: 30, by: 1)
+        for c in stride( from: 0, through: 30, by: 1 )
         {
-            let day = String(c) + " days"
+            let day = String( c ) + " Days"
             
-            cycle.append(day)
+            cycle.append( day )
         }
         
         return cycle
@@ -48,28 +36,14 @@ class PickerViews
     {
         var period = [String]()
         
-        for p in stride(from: 0, through: 30, by: 1)
+        for p in stride( from: 0, through: 30, by: 1 )
         {
-            let day = String(p) + " days"
+            let day = String( p ) + " days"
             
-            period.append(day)
+            period.append( day )
         }
         
         return period
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

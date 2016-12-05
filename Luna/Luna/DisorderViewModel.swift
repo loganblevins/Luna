@@ -15,22 +15,25 @@ class DisorderViewModel
         self.dbService = dbService
     }
     
-    func onAddDataAttempt( data: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onAddDataAttempt( data: String? )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        DispatchQueue.global( qos: .background ).async
         {
-            do
-            {
-                guard let uid = StandardDefaults.sharedInstance.uid else
-                {
-                    assertionFailure( "StandardDefaults returned bad uid." )
-                    return
-                }
+			guard let uid = StandardDefaults.sharedInstance.uid else
+			{
+				assertionFailure( "StandardDefaults returned bad uid." )
+				return
+			}
 
-                self.onSaveDataAttempt( uid: uid, data: data )
-                self.persist( disorder: data )
-            }
+			if let data = data
+			{
+				self.onSaveDataAttempt( uid: uid, data: data )
+			}
         }
+		if let data = data
+		{
+			self.persist( disorder: data )
+		}
     }
     
     func getDisorderData() -> String?
