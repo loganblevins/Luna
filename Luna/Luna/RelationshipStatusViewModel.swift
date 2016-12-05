@@ -15,9 +15,9 @@ class RelationshipStatusViewModel
         self.dbService = dbService
     }
     
-    func onAddDataAttempt( data: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onAddDataAttempt( data: String )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        DispatchQueue.global( qos: .background ).async
         {
 			guard let uid = StandardDefaults.sharedInstance.uid else
 			{
@@ -26,10 +26,10 @@ class RelationshipStatusViewModel
 			}
 
 			self.onSaveDataAttempt( uid: uid, data: data )
-            self.persist( relationship: data )
         }
+		self.persist( relationship: data )
     }
-    
+	
     func getRelationshipData() -> String?
     {
         guard let relationship = StandardDefaults.sharedInstance.relationship else

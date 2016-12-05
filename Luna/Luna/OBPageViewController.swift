@@ -14,6 +14,7 @@ class OBPageViewController: UIPageViewController
 	{
 		super.viewDidLoad()
 		dataSource = self
+		delegate = self
 		setupPages()
 	}
 	
@@ -40,6 +41,8 @@ class OBPageViewController: UIPageViewController
 	fileprivate var menstrualVC: OBMenstrualLenViewController?
 	fileprivate var cycleVC: OBLastCycleViewController?
 	fileprivate var disorderVC: OBDisorderViewController?
+	fileprivate var currentIndex: Int = 0
+	fileprivate var nextIndex: Int = 0
 }
 
 extension OBPageViewController: UIPageViewControllerDataSource
@@ -103,5 +106,94 @@ extension OBPageViewController: UIPageViewControllerDataSource
 	func presentationIndex( for pageViewController: UIPageViewController ) -> Int
 	{
 		return 0
+	}
+}
+
+extension OBPageViewController: UIPageViewControllerDelegate
+{
+	func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController] )
+	{
+		let viewController = pendingViewControllers.first
+		switch viewController
+		{
+		case is OBBirthControlViewController:
+			let targetVC = viewController as! OBBirthControlViewController
+			nextIndex = targetVC.itemIndex
+			maybeUploadDataFor( vc: targetVC )
+			
+		case is OBMenstrualLenViewController:
+			let targetVC = viewController as! OBMenstrualLenViewController
+			nextIndex = targetVC.itemIndex
+			maybeUploadDataFor( vc: targetVC )
+
+		case is OBLastCycleViewController:
+			let targetVC = viewController as! OBLastCycleViewController
+			nextIndex = targetVC.itemIndex
+			maybeUploadDataFor( vc: targetVC )
+
+		case is OBDisorderViewController:
+			let targetVC = viewController as! OBDisorderViewController
+			nextIndex = targetVC.itemIndex
+			maybeUploadDataFor( vc: targetVC )
+
+		case is OBRelationshipViewController:
+			let targetVC = viewController as! OBRelationshipViewController
+			nextIndex = targetVC.itemIndex
+			maybeUploadDataFor( vc: targetVC )
+
+		default:
+			return
+		}
+	}
+	
+	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool )
+	{
+		if completed
+		{
+			currentIndex = nextIndex
+		}
+	}
+	
+	fileprivate func maybeUploadDataFor( vc: UIViewController )
+	{
+		// Are we going forward?
+		//
+		if nextIndex > currentIndex
+		{
+			switch vc
+			{
+			case is OBMenstrualLenViewController:
+				birthControlVC?.maybeUploadData()
+				
+			case is OBLastCycleViewController:
+				menstrualVC?.maybeUploadData()
+				
+			case is OBDisorderViewController:
+				cycleVC?.maybeUploadData()
+				
+			case is OBRelationshipViewController:
+				disorderVC?.maybeUploadData()
+				
+			default:
+				return
+			}
+		}
+		else if nextIndex < currentIndex // Or backward?
+		{
+			switch vc
+			{
+			case is OBBirthControlViewController:
+				menstrualVC?.maybeUploadData()
+				
+			case is OBMenstrualLenViewController:
+				cycleVC?.maybeUploadData()
+				
+			case is OBLastCycleViewController:
+				disorderVC?.maybeUploadData()
+				
+			default:
+				return
+			}
+		}
 	}
 }

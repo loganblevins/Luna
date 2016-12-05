@@ -15,22 +15,19 @@ class BirthControlViewModel
         self.dbService = dbService
     }
     
-    func onAddDataAttempt( data: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onAddDataAttempt( data: String )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        DispatchQueue.global( qos: .background ).async
         {
-            do
-            {
-                guard let uid = StandardDefaults.sharedInstance.uid else
-                {
-                    assertionFailure( "StandardDefaults returned bad uid." )
-                    return
-                }
+			guard let uid = StandardDefaults.sharedInstance.uid else
+			{
+				assertionFailure( "StandardDefaults returned bad uid." )
+				return
+			}
 
-                self.onSaveDataAttempt( uid: uid, data: data )
-                self.persist( birthcontrol: data )
-            }
+			self.onSaveDataAttempt( uid: uid, data: data )
         }
+		self.persist( birthcontrol: data )
     }
     
     func getBirthControlData() -> String?

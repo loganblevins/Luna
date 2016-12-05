@@ -15,9 +15,9 @@ class MenstrualLenViewModel
         self.dbService = dbService
     }
     
-    func onAddDataAttempt( data: Int, completion: @escaping(_ error: Error? ) -> Void )
+    func onAddDataAttempt( data: Int )
     {
-        DispatchQueue.global( qos: .userInitiated ).async
+        DispatchQueue.global( qos: .background ).async
         {
 			guard let uid = StandardDefaults.sharedInstance.uid else
 			{
@@ -26,10 +26,10 @@ class MenstrualLenViewModel
 			}
 
 			self.onSaveDataAttempt( uid: uid, data: data )
-            self.persist( len: data )
         }
+		self.persist( len: data )
     }
-    
+	
     func getLengthData() -> Int?
     {
         guard let len = StandardDefaults.sharedInstance.cycleLen else

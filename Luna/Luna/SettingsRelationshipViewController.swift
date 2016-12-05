@@ -60,14 +60,9 @@ class SettingsRelationshipViewController: UIViewController, UIPickerViewDataSour
     
     @IBAction func okPressed(_ sender: AnyObject)
     {
-        
         if( !selectedValue.isEmpty )
         {
-            relationshipStatusViewModel.onAddDataAttempt(data: selectedValue)
-            {
-                error in
-                
-            }
+            relationshipStatusViewModel.onAddDataAttempt( data: selectedValue )
         }
         
         //NEED TO MOVE ON TO NEXT VIEW

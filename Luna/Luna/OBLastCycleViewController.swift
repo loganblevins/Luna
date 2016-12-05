@@ -10,13 +10,13 @@ import UIKit
 
 class OBLastCycleViewController: UIViewController
 {
+	var itemIndex = 2
+
     static func storyboardInstance() -> OBLastCycleViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBLastCycleViewController
     }
-    
-    weak var delegate: OnBoardDelegate?
 	
 	override func viewDidLoad()
 	{
@@ -29,23 +29,13 @@ class OBLastCycleViewController: UIViewController
 		datePicker.setValue( UIColor.white, forKey: "textColor" )
 	}
 	
-    @IBAction func nextPressed(_ sender: AnyObject)
+    func maybeUploadData()
     {
-        
         let date = datePicker.date
-        
-        lastCycleViewModel.onAddDataAttempt(data: date)
-        {
-            error in
-        }
-        
-        delegate?.toDisorderView()
-    
-        
+        lastCycleViewModel.onAddDataAttempt( data: date )
     }
 
     @IBOutlet weak var datePicker: UIDatePicker!
     
     fileprivate let lastCycleViewModel = LastCycleViewModel ( dbService: FirebaseDBService() )
-
 }

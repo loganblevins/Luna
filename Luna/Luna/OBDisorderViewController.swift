@@ -10,6 +10,8 @@ import UIKit
 
 class OBDisorderViewController: UIViewController, UITextFieldDelegate
 {
+	var itemIndex = 3
+
     static func storyboardInstance() -> OBDisorderViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
@@ -21,32 +23,25 @@ class OBDisorderViewController: UIViewController, UITextFieldDelegate
 		disorderTextField.delegate = self
 	}
 	
-    weak var delegate: OnBoardDelegate?
-    
-    @IBAction func nextPressed(_ sender: AnyObject)
+    func maybeUploadData()
     {
-        var uDisorder: String
-        
-        if ( disorderTextField.text?.isEmpty )!
+        var uDisorder: String?
+		guard let text = disorderTextField.text else { return }
+		
+        if text.isEmpty
         {
             uDisorder = "None"
         }
         else
         {
-            guard let text = disorderTextField.text else { return }
-            
-            uDisorder = text
+            if let text = disorderTextField.text
+			{
+				uDisorder = text
+			}
         }
         
-        disorderViewModel.onAddDataAttempt(data: uDisorder)
-        {
-            error in
-            
-        }
-        
-        //NEED TO MOVE ON TO NEXT VIEW
-        delegate?.toRelationshipView()
-    }
+        disorderViewModel.onAddDataAttempt( data: uDisorder )
+	}
 	
 	func textFieldShouldReturn(_ textField: UITextField ) -> Bool
 	{
@@ -57,5 +52,4 @@ class OBDisorderViewController: UIViewController, UITextFieldDelegate
     @IBOutlet fileprivate weak var disorderTextField: UITextField!
     
     fileprivate let disorderViewModel = DisorderViewModel( dbService: FirebaseDBService() )
-
 }

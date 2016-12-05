@@ -10,15 +10,16 @@ import UIKit
 
 class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
+	var itemIndex = 4
+
     static func storyboardInstance() -> OBRelationshipViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
         return storyboard.instantiateInitialViewController() as? OBRelationshipViewController
     }
-    
-    weak var delegate: OnBoardDelegate?
-    
-    override func viewDidLoad() {
+	
+    override func viewDidLoad()
+	{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -51,35 +52,35 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
     
     @IBAction func continuePressed()
     {
-        if( !selectedValue.isEmpty )
-        {
-            relationshipStatusViewModel.onAddDataAttempt(data: selectedValue)
-            {
-                error in
-            
-            }
-        }
-        
-        //NEED TO MOVE ON TO NEXT VIEW
-        delegate?.onBoardComplete()
-    }
-    
+		maybeUploadData()
+		
+	}
+	
+	func maybeUploadData()
+	{
+		if !selectedValue.isEmpty
+		{
+			relationshipStatusViewModel.onAddDataAttempt( data: selectedValue )
+		}
+	}
+	
     fileprivate func setUIPickerView()
     {
         uiPickerValues = relationshipStatusViewModel.getPickerValues()
         
-        if(uiPickerValues.count > 0)
+        if uiPickerValues.count > 0
         {
-            selectedValue = uiPickerValues[0]
+            if let value = uiPickerValues.first
+			{
+				selectedValue = value
+			}
         }
     }
-    
     
     @IBOutlet weak var relationshipControlPicker: UIPickerView!
     
     fileprivate var uiPickerValues: [String] = []
     fileprivate var selectedValue: String = ""
-    
+	
     fileprivate let relationshipStatusViewModel = RelationshipStatusViewModel( dbService: FirebaseDBService() )
-
 }
