@@ -96,7 +96,7 @@ class HomeViewModel
         
         guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
         {
-            assertionFailure( "StandardDefaults returned bad date." )
+//            assertionFailure( "StandardDefaults returned bad date." )
             return
         }
         

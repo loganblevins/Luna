@@ -44,17 +44,22 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
 			guard let strongSelf = self else { return }
 			guard let status = status else { return }
 			
-            if !status
-            {
-                strongSelf.presentOnBoard()
-            }
-            else
-            {
-                self?.HomeViewController().onOnboardComplete()
-            }
+			DispatchQueue.main.async
+			{
+				if !status && !strongSelf.isOnboardingActive
+				{
+					self?.onboardingActive = true
+					strongSelf.presentOnBoard()
+				}
+				else
+				{
+					self?.HomeViewController().onOnboardComplete()
+				}
+			}
+
         }
     }
-    
+	
     func onLastCycleChange()
     {
         self.HomeViewController().onLastCycleChange()
@@ -86,21 +91,10 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         return self.viewControllers![2] as! SettingsViewController
 	}
 	
-    func presentOnBoard()
-    {
-		pageViewController = OBPageViewController.storyboardInstance()
-		pageViewController?.onboardCompletionDelegate = self
-		onboardingActive = true
-		guard let strongVC = pageViewController else { return }
-		present( strongVC, animated: true, completion: nil )
-    }
-	
     func onOnboardComplete()
     {
-        pageViewController?.dismiss( animated: true )
-		{
-			self.onboardingActive = false
-		}
+		pageViewController?.dismiss( animated: true, completion: nil )
+		self.onboardingActive = false
         mainViewModel.setOnBoardStatus( status: true )
         HomeViewController().onOnboardComplete()
     }
@@ -117,7 +111,19 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, OnB
         addPeriodViewController?.dismiss( animated: true, completion: nil )
     }
 
-    
+	fileprivate func presentOnBoard()
+	{
+		pageViewController = OBPageViewController.storyboardInstance()
+		pageViewController?.onboardCompletionDelegate = self
+		guard let strongVC = pageViewController else { return }
+		present( strongVC, animated: true, completion: nil )
+	}
+	
+	fileprivate var isOnboardingActive: Bool
+	{
+		return presentedViewController is OBPageViewController
+	}
+	
 	fileprivate var loginViewController: LoginViewController?
     fileprivate var addPeriodViewController: AddPeriodViewController?
 	fileprivate var pageViewController: OBPageViewController?
