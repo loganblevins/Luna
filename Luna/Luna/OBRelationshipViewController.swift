@@ -11,7 +11,7 @@ import UIKit
 class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
 	var itemIndex = 4
-
+	
     static func storyboardInstance() -> OBRelationshipViewController?
     {
         let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
@@ -22,7 +22,6 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
 	{
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         relationshipControlPicker.delegate = self
         relationshipControlPicker.dataSource = self
         setUIPickerView()
@@ -53,7 +52,10 @@ class OBRelationshipViewController: UIViewController, UIPickerViewDataSource, UI
     @IBAction func continuePressed()
     {
 		maybeUploadData()
-		
+		if let pageViewController = parent as? OBPageViewController
+		{
+			pageViewController.onboardComplete()
+		}
 	}
 	
 	func maybeUploadData()

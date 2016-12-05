@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol OnBoardCompletionDelegate: class
+{
+	func onOnboardComplete()
+}
+
 class OBPageViewController: UIPageViewController
 {
+	weak var onboardCompletionDelegate: OnBoardCompletionDelegate?
+	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -22,6 +29,11 @@ class OBPageViewController: UIPageViewController
 	{
 		let storyboard = UIStoryboard( name: String( describing: self ), bundle: nil )
 		return storyboard.instantiateInitialViewController() as? OBPageViewController
+	}
+	
+	func onboardComplete()
+	{
+		onboardCompletionDelegate?.onOnboardComplete()
 	}
 	
 	fileprivate func setupPages()

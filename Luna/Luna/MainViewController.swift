@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol OnBoardDelegate: class
-{
-	func onBoardComplete()
-	func toBirthControlView()
-	func toRelationshipView()
-	func toMenstrualLenView()
-	func toLastCycleView()
-	func toDisorderView()
-}
-
 protocol SettingsDelegate: class
 {
     func editBirthControlInfo()
@@ -32,7 +22,7 @@ protocol AddPeriodDelegate: class
     func onLastCycleChange()
 }
 
-final class MainViewController: UITabBarController, LoginCompletionDelegate, /*OnBoardDelegate,*/ AddPeriodDelegate
+final class MainViewController: UITabBarController, LoginCompletionDelegate, OnBoardCompletionDelegate, AddPeriodDelegate
 {
 	fileprivate(set) var onboardingActive = false
 	fileprivate(set) var loginActive = false
@@ -46,7 +36,6 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
 		}
 	}
 
-    
     func checkOnBoardStatus()
     {
         mainViewModel.checkOnBoardStatus()
@@ -99,25 +88,23 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
 	
     func presentOnBoard()
     {
-		guard let pageVC = OBPageViewController.storyboardInstance() else { return }
+		pageViewController = OBPageViewController.storyboardInstance()
+		pageViewController?.onboardCompletionDelegate = self
 		onboardingActive = true
-		present( pageVC, animated: true, completion: nil )
+		guard let strongVC = pageViewController else { return }
+		present( strongVC, animated: true, completion: nil )
     }
 	
-//    
-//    func onBoardComplete()
-//    {
-//        relationshipViewController?.dismiss( animated: true )
-//		{
-//			self.onboardingActive = false
-//		}
-//		
-//        mainViewModel.setOnBoardStatus( status: true )
-//        
-//        HomeViewController().onOnboardComplete()
-//    }
+    func onOnboardComplete()
+    {
+        pageViewController?.dismiss( animated: true )
+		{
+			self.onboardingActive = false
+		}
+        mainViewModel.setOnBoardStatus( status: true )
+        HomeViewController().onOnboardComplete()
+    }
 	
-    
     func presentAddPeriod()
     {
         addPeriodViewController = AddPeriodViewController.storyboardInstance()
@@ -133,6 +120,7 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
     
 	fileprivate var loginViewController: LoginViewController?
     fileprivate var addPeriodViewController: AddPeriodViewController?
+	fileprivate var pageViewController: OBPageViewController?
     fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
 
