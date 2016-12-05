@@ -18,7 +18,8 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIP
     
     weak var delegate: OnBoardDelegate?
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+	{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -27,11 +28,6 @@ class OBBirthControlViewController: UIViewController, UIPickerViewDataSource,UIP
         setUIPickerView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func numberOfComponents( in pickerView: UIPickerView ) -> Int
     {
         return 1

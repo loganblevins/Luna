@@ -48,7 +48,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.38823529411764707" green="0.5490196078431373" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.45826506614685059" green="0.62039810419082642" blue="0.70837301015853882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="JJc-AF-i6M" secondAttribute="trailing" constant="16" id="C3q-pk-okc"/>
                             <constraint firstAttribute="trailing" secondItem="u8I-ys-6CC" secondAttribute="trailing" constant="50" id="R9L-jy-7Nu"/>
