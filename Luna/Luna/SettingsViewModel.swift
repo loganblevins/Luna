@@ -23,11 +23,9 @@ class SettingsViewModel
 	{
 		try authService.signOutUser()
 	}
-    
-    
+	
     func createUserViewModel() -> UserViewModel?
     {
-        
         let user = createUserDataObject()
         if user != nil
         {
@@ -38,7 +36,6 @@ class SettingsViewModel
         {
             return nil
         }
-
     }
     
     func setUserViewModel( userVM: UserViewModel )
@@ -56,31 +53,31 @@ class SettingsViewModel
         
         guard let uBirthCtrl = StandardDefaults.sharedInstance.birthCtrl else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad birthCtrl." )
             return nil
         }
         
         guard let uLastCycle = StandardDefaults.sharedInstance.lastCycle else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad lastCycle." )
             return nil
         }
         
         guard let uCycleLen = StandardDefaults.sharedInstance.cycleLen else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad cycleLen." )
             return nil
         }
         
         guard let uRelationship = StandardDefaults.sharedInstance.relationship else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad relationship." )
             return nil
         }
         
         guard let uDisorder = StandardDefaults.sharedInstance.disorder else
         {
-            assertionFailure( "StandardDefaults returned bad uid." )
+            assertionFailure( "StandardDefaults returned bad disorder." )
             return nil
         }
         
