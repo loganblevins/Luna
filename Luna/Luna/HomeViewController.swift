@@ -38,14 +38,7 @@ class HomeViewController: UIViewController
         homeViewModel.setDates()
         
         setLabelDates()
-        self.hideHomeViewCover()
-        
-    }
-    
-    func hideHomeViewCover()
-    {
-        homeviewCover.isHidden = true
-    }
+	}
 
 	@IBAction fileprivate func addPeriodButtonPressed(_ sender: AnyObject)
     {
@@ -90,7 +83,6 @@ class HomeViewController: UIViewController
     }
     
 
-    @IBOutlet weak var homeviewCover: UIView!
     @IBOutlet weak var expectedOvuLabel: UILabel!
     @IBOutlet weak var expectedPeriodLabel: UILabel!
     @IBOutlet weak var dailyEntryButton: UIButton!
