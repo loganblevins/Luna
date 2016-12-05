@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ut-e1-Hfs">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ut-e1-Hfs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,7 +20,6 @@
         <!--Add Period View Controller-->
         <scene sceneID="iGR-0v-eEI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-JG-S38" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8ut-e1-Hfs" customClass="AddPeriodViewController" customModule="Luna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDh-Ul-ong"/>
@@ -78,7 +77,7 @@
                                     <constraint firstItem="OB3-3V-Ilf" firstAttribute="leading" secondItem="lf3-ia-Qqj" secondAttribute="leadingMargin" id="f8q-Fa-FPO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeE-SS-WS6">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeE-SS-WS6">
                                 <rect key="frame" x="0.0" y="73" width="375" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="mRR-AT-Nf1"/>
@@ -250,6 +249,7 @@
                         <outlet property="startView" destination="lf3-ia-Qqj" id="tgO-cJ-dPZ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-JG-S38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1853.5999999999999" y="-1375.8620689655174"/>
         </scene>

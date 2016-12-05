@@ -26,7 +26,18 @@ class RelationshipStatusViewModel
 			}
 
 			self.onSaveDataAttempt( uid: uid, data: data )
+            self.persist( relationship: data )
         }
+    }
+    
+    func getRelationshipData() -> String?
+    {
+        guard let relationship = StandardDefaults.sharedInstance.relationship else
+        {
+            return nil
+        }
+        
+        return relationship
     }
 
     
@@ -38,6 +49,11 @@ class RelationshipStatusViewModel
     func getPickerValues() -> [String]
     {
         return pickerViewData.createRelationStatusPicker()
+    }
+    
+    fileprivate func persist( relationship: String )
+    {
+        StandardDefaults.sharedInstance.relationship = relationship
     }
     
     fileprivate var pickerViewData = PickerViews()

@@ -59,19 +59,6 @@ class HomeViewModel
         currentViewDate = Date()
     }
     
-    func saveUserDailyEntry(completion: @escaping(_ error: Error?, _ status: Bool? ) -> Void )
-    {
-        // Put network request on background thread.
-        //
-        DispatchQueue.global( qos: .userInitiated ).async
-        {
-            guard StandardDefaults.sharedInstance.uid != nil else
-            {
-                assertionFailure( "StandardDefaults returned bad uid." )
-                return
-            }
-        }
-    }
     
     func setCurrentDate( date: Date )
     {
@@ -83,84 +70,53 @@ class HomeViewModel
         return currentViewDate
     }
     
-    func setDates( completion: @escaping(_ error: Error? ) -> Void )
-    {
-        getUserLastCycleDate()
-        {
-            errorOrNil in
-                
-            guard errorOrNil == nil else
-            {
-                //Set the default if there is an error
-                self.lastCycleDate = Date()
-                self.setExpectedPeriodDate()
-                self.setExpectedOvulation()
-                self.setDaysToExpectedPeriod()
-                return
-            }
-            
-            guard self.lastCycleDate != nil else
-            {
-                self.lastCycleDate = Date()
-                self.setExpectedPeriodDate()
-                self.setExpectedOvulation()
-                self.setDaysToExpectedPeriod()
-                return
-                
-            }
-            
-            self.setExpectedPeriodDate()
-            self.setExpectedOvulation()
-            self.setDaysToExpectedPeriod()
-            
-            completion( nil )
-        }
-    }
     
-    fileprivate func getUserLastCycleDate( completion: @escaping(_ error: Error? ) -> Void )
+    func upDateView()
     {
-        guard let uid = StandardDefaults.sharedInstance.uid else
+        guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
         {
-			completion( LunaAPIError.NoUser )
             return
         }
         
-        self.dbService.getLastPeriodDate( forUid: uid )
+        //The view needs to be updated if they created a new period object
+        if lastDate != lastCycleDate
         {
-            errorOrNil, lastOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                completion( errorOrNil )
-                return
-            }
-            
-            guard lastOrNil != nil else
-            {
-                completion ( nil )
-                return
-            }
-            
-            self.lastCycleDate = self.convertStringToDate( dateString: lastOrNil! )
-            completion ( nil )
-
+            setDates()
         }
+    }
+    
+    func persist( last: Date )
+    {
+        StandardDefaults.sharedInstance.lastCycle = last
+    }
+    
+    
+    func setDates()
+    {
+        
+        guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
+        {
+            assertionFailure( "StandardDefaults returned bad date." )
+            return
+        }
+        
+        self.lastCycleDate = lastDate
+        
+        guard self.lastCycleDate != nil else
+        {
+            self.lastCycleDate = Date()
+            self.setExpectedPeriodDate()
+            self.setExpectedOvulation()
+            self.setDaysToExpectedPeriod()
+            return
+        }
+        
+        self.setExpectedPeriodDate()
+        self.setExpectedOvulation()
+        self.setDaysToExpectedPeriod()
         
     }
     
-    fileprivate func convertStringToDate( dateString: String ) -> Date
-    {
-  
-        let string : String = dateString
-        
-        let timeinterval : TimeInterval = (string as NSString).doubleValue // convert it in to NSTimeInteral
-        
-        let dateFromServer = NSDate( timeIntervalSince1970:timeinterval ) as Date // you can the Date object from here
-        
-        print(dateFromServer)
-        
-        return dateFromServer
-    }
     
     fileprivate func setDaysToExpectedPeriod()
     {
@@ -182,12 +138,10 @@ class HomeViewModel
     
     
     fileprivate var currentViewDate: Date
-    
     fileprivate var lastCycleDate: Date?
     fileprivate var daysToExpectedPeriod: Int?
     fileprivate var expectedPeriod: Date?
     fileprivate var expectedOvulation: Date?
-    
     fileprivate let lunaAPI = LunaAPI( requestor: LunaRequestor() )
     fileprivate let authService: ServiceAuthenticatable!
     fileprivate let dbService: ServiceDBManageable!

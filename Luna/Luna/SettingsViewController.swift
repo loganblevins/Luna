@@ -18,29 +18,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		navBarTopItem.title = "Settings"
         tableView.delegate = self
         tableView.dataSource = self
-        
-        settingsViewModel.getUserData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        settingsViewModel.createUserViewModel()
         {
-           errorOrNil in
-
-            guard errorOrNil == nil else
+            userVMorNil in
+                
+            guard userVMorNil != nil else
             {
                 return
             }
-            
+                
+            settingsViewModel.setUserViewModel( userVM: userVMorNil! )
             self.tableView.reloadData()
         }
-        
-        settingsViewModel.getPeriods()
-        {
-            errorOrNil in
-                
-            guard errorOrNil == nil else
-            {
-                return
-            }
-        }
-        
+
     }
     
     weak var delegate: SettingsDelegate?
@@ -234,31 +228,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == Constants.SettingsStrings.toEditBirth
-        {
-            if let destinationVC = segue.destination as? SettingsBirthControlViewController
-            {
-                destinationVC.valuePassed = (settingsViewModel.userViewModel?.birthControl)!
-            }
-        }
-        if segue.identifier == Constants.SettingsStrings.toEditRelationship
-        {
-            if let destinationVC = segue.destination as? SettingsRelationshipViewController
-            {
-                destinationVC.valuePassed = (settingsViewModel.userViewModel?.relationshipStatus)!
-            }
-        }
-        if segue.identifier == Constants.SettingsStrings.toPeriods
-        {
-            if let destinationVC = segue.destination as? SettingsPeriodsViewController
-            {
-                destinationVC.periodArrayRecieved = settingsViewModel.periods
-            }
-        }
-
-    }
     
 	fileprivate var navBarTopItem: UINavigationItem!
 	{

@@ -18,6 +18,19 @@ protocol OnBoardDelegate: class
 	func toDisorderView()
 }
 
+protocol SettingsDelegate: class
+{
+    func editBirthControlInfo()
+    func editRelationshipStatus()
+    func editDisorderInfo()
+}
+
+protocol AddPeriodDelegate: class
+{
+    func presentAddPeriod()
+    func onDismissAddPeriod()
+    func onLastCycleChange()
+}
 
 final class MainViewController: UITabBarController, LoginCompletionDelegate, /*OnBoardDelegate,*/ AddPeriodDelegate
 {
@@ -51,6 +64,11 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
                 self?.HomeViewController().onOnboardComplete()
             }
         }
+    }
+    
+    func onLastCycleChange()
+    {
+        self.HomeViewController().onLastCycleChange()
     }
     
 	func maybePresentLogin()
@@ -118,17 +136,4 @@ final class MainViewController: UITabBarController, LoginCompletionDelegate, /*O
     fileprivate let mainViewModel = MainViewModel( withAuthService: FirebaseAuthenticationService(), dbService: FirebaseDBService() )
 }
 
-protocol EditSettingsDelegate: class
-{
-   
-    func dismissEditBirthControl()
-    func dismissEditRelationship()
-    func dismissEditDisorder()
-}
 
-protocol SettingsDelegate: class
-{
-    func editBirthControlInfo()
-    func editRelationshipStatus()
-    func editDisorderInfo()
-}

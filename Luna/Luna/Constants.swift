@@ -16,6 +16,10 @@ struct Constants
 		static let yesButtonTitle = "Yes"
 		static let cancelButtonTitle = "Cancel"
 		static let deleteUserConfirmMessage = "Deleting your account will purge all of your data."
+        static let pastDateTitle = "Date Before Start Date"
+        static let pastDateMessage = "Please select a different date."
+        static let sameDateTitle = "Date Same as Start Date"
+        static let sameDateMessage = "Please select a different date."
 	}
 
 	struct LunaStrings
