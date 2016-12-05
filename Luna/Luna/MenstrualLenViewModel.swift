@@ -26,13 +26,28 @@ class MenstrualLenViewModel
 			}
 
 			self.onSaveDataAttempt( uid: uid, data: data )
+            self.persist( len: data )
         }
     }
     
+    func getLengthData() -> Int?
+    {
+        guard let len = StandardDefaults.sharedInstance.cycleLen else
+        {
+            return nil
+        }
+        
+        return len
+    }
     
     fileprivate func onSaveDataAttempt( uid: String, data: Int )
     {
         self.dbService.saveUserRecord(forUid: uid, key: Constants.FirebaseStrings.DictionaryUserMenstrualLen, data: data as AnyObject)
+    }
+    
+    fileprivate func persist( len: Int )
+    {
+        StandardDefaults.sharedInstance.cycleLen = len
     }
     
     func getPickerValues() -> [String]

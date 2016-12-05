@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		//
 		FIRApp.configure()
 		FIRDatabase.database().persistenceEnabled = false
+        
 	}
 	
 	// MARK: App Delegate callbacks

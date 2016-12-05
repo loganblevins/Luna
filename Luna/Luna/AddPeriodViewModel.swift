@@ -47,7 +47,7 @@ class AddPeriodViewModel
     }
     
     
-    func onCreatePeriodObject( startDate: String, endDate: String, completion: @escaping(_ error: Error? ) -> Void )
+    func onCreatePeriodObject( startDate: String, endDate: String ) -> Void
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {
@@ -79,28 +79,20 @@ class AddPeriodViewModel
         self.dbService.saveUserRecord( forUid: uid, key: Constants.FirebaseStrings.DictionaryUserCycleDate, data: newDate as AnyObject )
     }
 
-    func setDates( completion: @escaping(_ error: Error? ) -> Void )
+    func setDates()
     {
-        getUserPeriodLen()
+        guard let periodLen = StandardDefaults.sharedInstance.cycleLen else
         {
-            errorOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                //Set the default if there is an error getting the user length
-                self.length = 5
-                self.startDate = Date()
-                self.setEndDate()
-                
-                return
-            }
-            
+            self.length = 5
             self.startDate = Date()
             self.setEndDate()
-            
-            completion( nil )
-            
+            return
         }
+        
+        self.length = periodLen
+        self.startDate = Date()
+        self.setEndDate()
+
     }
     
     fileprivate func setEndDate()
@@ -119,29 +111,9 @@ class AddPeriodViewModel
         self.endDate = endDayDate as Date
     }
     
-    fileprivate func getUserPeriodLen( completion: @escaping(_ error: Error? ) -> Void )
+    func persist( last: Date )
     {
-        guard let uid = StandardDefaults.sharedInstance.uid else
-        {
-            assertionFailure( "StandardDefaults returned bad uid." )
-            return
-        }
-        
-        self.dbService.returnPeriodLen(forUid: uid)
-        {
-            errorOrNil, lenOrNil in
-            
-            if (lenOrNil != nil)
-            {
-                self.length = lenOrNil
-                completion ( nil )
-            }
-            else
-            {
-                completion ( errorOrNil )
-            }
-        }
-        
+        StandardDefaults.sharedInstance.lastCycle = last
     }
         
     

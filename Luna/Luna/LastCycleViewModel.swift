@@ -26,7 +26,18 @@ class LastCycleViewModel
 			}
 
 			self.onSaveDataAttempt( uid: uid, data: data )
+            self.persist( last: data )
         }
+    }
+    
+    func getLastCycleData() -> Date?
+    {
+        guard let lastDate = StandardDefaults.sharedInstance.lastCycle else
+        {
+            return nil
+        }
+        
+        return lastDate
     }
     
     fileprivate func onSaveDataAttempt( uid: String, data: Date )
@@ -41,6 +52,11 @@ class LastCycleViewModel
         let timestamp = date.timeIntervalSince1970
         
         return String(format: "%f", timestamp)
+    }
+    
+    fileprivate func persist( last: Date )
+    {
+        StandardDefaults.sharedInstance.lastCycle = last
     }
     
 

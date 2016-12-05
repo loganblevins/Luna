@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
 			defer
 			{
 				DispatchQueue.main.async
-					{
+                {
 						showNetworkActivity( show: false )
 				}
 			}
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
 				// Update UI according to error on main thread.
 				//
 				DispatchQueue.main.async
-					{
+                {
 						strongSelf.handleLoginError( error! )
 				}
 				return

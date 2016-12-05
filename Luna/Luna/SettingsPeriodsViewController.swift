@@ -17,16 +17,34 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        periodArray = periodArrayRecieved
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        //Need to reload the period objects after they have been editted
+        loadPeriodsArray()
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func loadPeriodsArray()
+    {
+        settingsPeriodViewModel.getPeriods()
+        {
+            errorOrNil in
+            
+            guard errorOrNil == nil else
+            {
+                return
+            }
+
+            
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -38,11 +56,11 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.SettingsStrings.periodCell) as! PeriodCell
         
-        if((periodArray?.count)! > 0)
+        if((settingsPeriodViewModel.periods.count) > 0)
         {
-            let startDate = periodArray?[indexPath.row].startDate
-            let endDate = periodArray?[indexPath.row].endDate
-            cell.updateCellUI( date: startDate!, endDate: endDate! )
+            let startDate = settingsPeriodViewModel.periods[indexPath.row].startDate
+            let endDate = settingsPeriodViewModel.periods[indexPath.row].endDate
+            cell.updateCellUI( date: startDate, endDate: endDate )
         }
         
         return cell        
@@ -52,22 +70,7 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     {
         self.selectRow = indexPath.row
         print("the index selected is \(selectRow)")
-        //performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
-    }
-    
-    fileprivate func handleRowSelection( row: Int )
-    {
-            }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == Constants.SettingsStrings.toEditPeriod
-        {
-            if let destinationVC = segue.destination as? EditPeriodViewController
-            {
-                destinationVC.periodVM =  periodArray?[selectRow!]
-            }
-        }
+        performSegue(withIdentifier: Constants.SettingsStrings.toEditPeriod, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -77,25 +80,27 @@ class SettingsPeriodsViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let rowCount = periodArray?.count ?? 0
+        let rowCount = settingsPeriodViewModel.periods.count
         return rowCount
     }
-
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == Constants.SettingsStrings.toEditPeriod
+        {
+            if let destinationVC = segue.destination as? EditPeriodViewController
+            {
+                destinationVC.periodVM =  settingsPeriodViewModel.periods[selectRow!]
+            }
+        }
     }
-    */
+
     var selectRow: Int?
-    var periodArrayRecieved: [PeriodViewModel] = []
-    var periodArray: [PeriodViewModel]?
+    var periodArray: [PeriodViewModel] = []
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate let settingsPeriodViewModel = SettingsPeriodsViewModel( databaseService: FirebaseDBService() )
     
 
 }

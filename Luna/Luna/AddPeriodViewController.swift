@@ -8,13 +8,6 @@
 
 import UIKit
 
-
-protocol AddPeriodDelegate: class
-{
-    func presentAddPeriod()
-    func onDismissAddPeriod()
-}
-
 class AddPeriodViewController: UIViewController
 {
 
@@ -27,20 +20,16 @@ class AddPeriodViewController: UIViewController
         lenLabel.text = "\(5)"
         
         datePicker.datePickerMode = UIDatePickerMode.date
-
-        setStartView()
+        setNewPeriod()
         
+    }
+    
+    func setNewPeriod()
+    {
+        setEndView()
         addPeriodViewModel.setDates()
-        {
-            errorOrNil in
-            
-            guard errorOrNil == nil else
-            {
-                return
-            }
-            
-            self.setLabelDates()
-        }
+        self.setLabelDates()
+        datePicker.setDate( addPeriodViewModel.End, animated: true )
     }
     
     static func storyboardInstance() -> AddPeriodViewController?
@@ -61,6 +50,7 @@ class AddPeriodViewController: UIViewController
         
         datePicker.setDate( addPeriodViewModel.Start, animated: true )
     }
+    
     @IBAction func changePeriodEndDate(_ sender: Any)
     {
         endPicker = true
@@ -76,9 +66,7 @@ class AddPeriodViewController: UIViewController
     
     @IBAction func savePeriodObject(_ sender: Any)
     {
-        createPeriodObject()
-        
-        delegate?.onDismissAddPeriod()
+        onSavePressed()
     }
 
     
@@ -104,6 +92,58 @@ class AddPeriodViewController: UIViewController
         setLabelDates()
     }
     
+    fileprivate func onSavePressed()
+    {
+        let canSave = checkDate()
+        
+        if canSave
+        {
+            createPeriodObject()
+            delegate?.onLastCycleChange()
+            delegate?.onDismissAddPeriod()
+        }
+    }
+    
+    fileprivate func checkDate() -> Bool
+    {
+        
+        let selectDate = addPeriodViewModel.Start
+        let endDate = addPeriodViewModel.End
+     
+        let order = Calendar.current.compare(selectDate, to: endDate, toGranularity: .day)
+        
+        switch order
+        {
+            case .orderedDescending:
+                let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.pastDateTitle,
+                                               message: Constants.InterfaceBuilderStrings.pastDateMessage,
+                                               preferredStyle: .alert )
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                present( alert, animated: true, completion: nil )
+                print("DESCENDING")
+                return false
+            
+            case .orderedAscending:
+                print("ASCENDING")
+                return true
+            
+            case .orderedSame:
+                let alert = UIAlertController( title: Constants.InterfaceBuilderStrings.sameDateTitle,
+                                               message: Constants.InterfaceBuilderStrings.sameDateMessage,
+                                               preferredStyle: .alert )
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                present( alert, animated: true, completion: nil )
+                print("SAME")
+                return false
+        }
+        
+    }
+
+    
     fileprivate func setEndView()
     {
         startPicker = false
@@ -125,9 +165,10 @@ class AddPeriodViewController: UIViewController
     fileprivate func createPeriodObject()
     {
         addPeriodViewModel.onCreatePeriodObject(startDate: convertDateFormatToUnixString(date: addPeriodViewModel.Start ), endDate: convertDateFormatToUnixString( date: addPeriodViewModel.End ))
-        {
-            error in
-        }
+        
+        
+        addPeriodViewModel.persist( last: addPeriodViewModel.Start )
+
     }
     
     fileprivate func setLabelDates()
@@ -172,21 +213,17 @@ class AddPeriodViewController: UIViewController
     
  
     @IBOutlet weak var startView: UIView!
-    @IBOutlet weak var endView: UIView!
-    
-    fileprivate var startDate: Date?
-    fileprivate var endDate: Date?
-    
+    @IBOutlet weak var endView: UIView!    
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var lenLabel: UILabel!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    fileprivate var startDate: Date?
+    fileprivate var endDate: Date?
     fileprivate var startPicker: Bool = false
     fileprivate var endPicker: Bool = false
     
     fileprivate let addPeriodViewModel = AddPeriodViewModel ( dbService: FirebaseDBService() )
     
-
 }
